@@ -1,0 +1,40 @@
+name: Deploy Astro App to Firebase Hosting
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Checkout the repository
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      # Setup Node.js
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22 # Specify the version of Node.js your Astro app requires
+          cache: "yarn"
+
+      # Install dependencies
+      - name: Install dependencies
+        run: yarn install
+
+      # Build the Astro app
+      - name: Build the Astro app
+        run: yarn build
+
+      # Install Firebase CLI
+      - name: Install Firebase CLI
+        run: yarn global add firebase-tools
+
+      # Deploy to Firebase Hosting
+      - name: Deploy to Firebase Hosting
+        env:
+          FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
+        run: firebase deploy
