@@ -39,13 +39,14 @@ import MainBanner from "../components/mainBanner.astro";
 
   body {
     background-color: #cddcf0;
-	position: relative;
+    position: relative;
   }
 
   .body-container {
     padding: 20px 10% 0;
     max-width: var(--max-container-width);
     margin: auto;
+    box-sizing: unset;
   }
 
   * {
@@ -62,8 +63,14 @@ import MainBanner from "../components/mainBanner.astro";
     margin: 0;
   }
 
-  a{
-	text-decoration: none;
-	color: inherit;
+  h2 {
+    font-size: 36px;
+    margin-bottom: 16px;
+    font-weight: 100;
+  }
+
+  a {
+    text-decoration: none;
+    color: inherit;
   }
 </style>
