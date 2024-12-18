@@ -1,0 +1,98 @@
+---
+import type { GetStaticPaths } from "astro";
+import Layout from "../../layouts/Layout.astro";
+import { getTeamMembers } from "../../helpers/getTeam";
+import { Image } from "astro:assets";
+
+export const getStaticPaths = (async () => {
+  const teamMembers = await getTeamMembers();
+
+  return teamMembers.map((teamMember) => ({
+    params: {
+      teamMember: teamMember.slug,
+    },
+    props: { ...teamMember },
+  }));
+}) satisfies GetStaticPaths;
+
+const { name, title, company, bio, linkedin, twitter, image } = Astro.props;
+
+// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
+// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+---
+
+<Layout>
+  <div class="main-container">
+    <div class="media-socials-container">
+      {image && <Image src={image} alt={name} width="250px" />}
+      <div class="links">
+        {
+          linkedin && (
+            <a target="_blank" href={linkedin}>
+              <Image
+                alt="linkedin"
+                width={40}
+                height={40}
+                src="https://static.wixstatic.com/media/11062b_a06d85fa94d64ef68680321f5a043a8c~mv2.png/v1/fill/w_86,h_84,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/LinkedIn.png"
+              />
+            </a>
+          )
+        }
+        {
+          twitter && (
+            <a target="_blank" href={twitter}>
+              Tw
+            </a>
+          )
+        }
+      </div>
+    </div>
+    <div class="info-container">
+      <h2 class="name">{name}</h2>
+      <p class="title">{title}</p>
+      <p class="company">{company}</p>
+      <p class="bio">{bio}</p>
+    </div>
+  </div>
+</Layout>
+
+<style lang="scss">
+  .main-container {
+    display: flex;
+    gap: 40px;
+
+    .media-socials-container {
+      img {
+        border-radius: 50%;
+      }
+
+      .links {
+        margin-top: 6px;
+        display: flex;
+        gap: 8px;
+
+        a {
+        }
+      }
+    }
+
+    .info-container {
+      font-size: 16px;
+
+      .name {
+        font-size: 28px;
+        font-weight: 100;
+      }
+
+      .title {
+        margin: 2px 0 8px;
+      }
+      .company {
+        margin-bottom: 12px;
+      }
+      .bio {
+        font-size: 14px;
+      }
+    }
+  }
+</style>

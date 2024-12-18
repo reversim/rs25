@@ -1,0 +1,64 @@
+---
+import { Image } from "astro:assets";
+
+import reversim24Icon from "../assets/reversim-24-icon.png";
+---
+
+<div class="header">
+  <div class="inner-container">
+    <a data-astro-prefetch href="/">
+      <Image class="rv-icon" alt="" src={reversim24Icon} />
+    </a>
+    <div class="navbar-container">
+      <a
+        class={`navbar-link ${Astro.url.pathname === "/about" && "active"}`}
+        href="/about">About</a
+      >
+      <a
+        class={`navbar-link ${Astro.url.pathname === "/coc" && "active"}`}
+        href="/coc">coC</a
+      >
+    </div>
+  </div>
+</div>
+
+<style lang="scss">
+  .header {
+    background-color: var(--main-blue);
+    position: sticky;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 99999;
+    padding: 0px 10%;
+  }
+
+  .inner-container {
+    max-width: var(--max-container-width);
+    margin: auto;
+
+    padding: 8px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .navbar-container {
+      display: flex;
+      gap: 30px;
+
+      .navbar-link {
+        color: white;
+
+        &:hover,
+        &.active {
+          color: var(--main-orange);
+        }
+      }
+    }
+  }
+
+  .rv-icon {
+    width: 220px;
+    height: auto;
+  }
+</style>

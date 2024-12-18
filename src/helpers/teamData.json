@@ -1,0 +1,170 @@
+[
+  {
+    "name": "Ori Lahav",
+    "title": "GM Israel",
+    "company": "Outbrain",
+    "bio": "Lot's of Bio but right now. Co-founder of Outbrain and Reversim podcast. Outbrain GM Israel",
+    "linkedin": "https://www.linkedin.com/in/ori-lahav-74945b2/",
+    "twitter": ""
+  },
+  {
+    "name": "Ran Tavory",
+    "title": "Everything software, data, ML",
+    "company": "XPOZ",
+    "bio": "The voice @ reversim, ML, data and software dude",
+    "linkedin": "https://www.linkedin.com/in/rantav/",
+    "twitter": "https://twitter.com/rantav"
+  },
+  {
+    "name": "Gili Alperovich",
+    "title": "Tech Marketing and Developers Relations",
+    "company": "Outbrain",
+    "bio": "A marketing and communication specialist for the past 7 years. I enjoy working with developers and taking part in nurturing this community and telling the technology story of Outbrain",
+    "linkedin": "https://www.linkedin.com/in/gili-alperovitch-zohar-5a6ba135/",
+    "twitter": ""
+  },
+  {
+    "name": "Haim Yadid",
+    "title": "Engineering Fellow",
+    "company": "Next Insurance",
+    "bio": "I am a software engineer with 30 years of experience in various technology fields: software development, engineering management, software architecture, HPC and algorithmic research. In my day job I am an Engineering Fellow in Next Insurance. Before that has been focusing for 8 years on Java platform performance optimization as an independent consultant and was involved in more than a dozen optimization projects.\nMy passion for performance optimization hasn't faded, and I still love to tackle challenging problems of this kind. In addition to my work, I am a Java Champion and one of the organizers of Java.IL, the Israeli Java user group.",
+    "linkedin": "https://www.linkedin.com/in/haimyadid/",
+    "twitter": "https://twitter.com/lifeyx"
+  },
+  {
+    "name": "Michal Brosh",
+    "title": "VP People",
+    "company": "Riverside.fm",
+    "bio": "Passionate about people, technology and content creation and consumption :) with over 15 years of HR leadership in the tech space",
+    "linkedin": "https://www.linkedin.com/in/michalbrosh/",
+    "twitter": ""
+  },
+  {
+    "name": "Asya Frumkin",
+    "title": "Algorithm Team lead",
+    "company": "Evinced",
+    "bio": "Asya Frumkin is an algorithm developer and team lead, specializing in computer vision. She is also a proud Albino and visually impaired from birth. However, her disability never stopped her and gave her the irresistible drive to make a real impact. After building models in the automotive and medical imaging industries, it was fairly natural for her to join Evinced, a startup focused on improving digital accessibility. At Evinced she is responsible for end-to-end data solutions that help people like her take an equal part in the online world.",
+    "linkedin": "https://www.linkedin.com/in/asya-frumkin",
+    "twitter": ""
+  },
+  {
+    "name": "Erez Posner",
+    "title": "3D Algorithms Team Lead",
+    "company": "Intuitive Surgical",
+    "bio": "Signa sealing systems co-founder and algorithms team leader at intuitive Surgical, Erez Posner is a machine learning researcher with a track record of developing and deploying state-of-the-art techniques in the fields of Computer Graphics and Computer Vision. Erez's research is primarily focused on cutting-edge techniques for 3D reconstruction, SLAM, and AI-driven video synthesis. Erez holds a BSc and an MSc in Electrical Engineering from Afeka college and Ben Gurion University, respectively.",
+    "linkedin": "https://www.linkedin.com/in/erezposner/",
+    "twitter": "https://twitter.com/ErezPosner"
+  },
+  {
+    "name": "Shlomi Noach",
+    "title": "Engineer",
+    "company": "PlanetScale",
+    "bio": "Engineer and database geek at PlanetScale. Maintainer for open source Vitess. Previously at GitHub. Interested in database infrastructure solutions such as high availability, reliability, enablement, automation and testing. Shlomi is an active MySQL community member, authors orchestrator, gh-ost, common_schema and other open source tools, and blogs at http://openark.org. He is the recipient of MySQL Community Member of the Year, Oracle ACE (Alumni) & Oracle Technologist of the Year awards.",
+    "linkedin": "https://www.linkedin.com/in/shlominoach/",
+    "twitter": "https://twitter.com/ShlomiNoach"
+  },
+  {
+    "name": "Shai Yallin",
+    "title": "Freelance Software Engineer",
+    "company": "",
+    "bio": "Freelance software engineer; Refactoring artist; Holistic systems consultant; Father; Musician; Ex-Wix.",
+    "linkedin": "https://www.linkedin.com/in/electricmonk/",
+    "twitter": "https://twitter.com/shaiyallin"
+  },
+  {
+    "name": "Dafna Mordechai",
+    "title": "Deep Learning Compiler Engineer",
+    "company": "",
+    "bio": "Dafna is a Deep Learning Compiler Engineer with extensive experience in designing, implementing, and testing software systems across various architectures, ranging from microcontrollers to high-performance computing systems. She is passionate about technology and enjoys sharing her knowledge with others through mentoring, giving talks and workshops, tech-blogging, and volunteering in tech communities and initiatives aimed at promoting diversity within the industry.",
+    "linkedin": "https://www.linkedin.com/in/dafna-mordechai/",
+    "twitter": "https://twitter.com/dafna_mordechai"
+  },
+  {
+    "name": "Alon Nativ",
+    "title": "Head of Data",
+    "company": "Tomorrow.io",
+    "bio": "Problem solver, developer at heart and a monitoring freak, for the last 15 years Alon has been building systems as developers, managing large teams and hacking systems. he's passionate about building large scale systems, and the process of making an impact, always looking for a way to improve the development process and optimize the system.",
+    "linkedin": "https://www.linkedin.com/in/anativ/",
+    "twitter": ""
+  },
+  {
+    "name": "Itay Maman",
+    "title": "CTO, Co-founder",
+    "company": "Moojo",
+    "bio": "Addicted to dark chocolate and refactoring, Itay has been (and still is) spending his time coding, designing, debugging, architecting, and solving production outages. Earlier gigs include Forter (principal engineer DX), Wix (ditto) ,Testim.io, Google (TL of Google Sites' backend team), and a lecturer at the Technion's computer science department. Itay holds a Ph.D. in Computer Science (title: Formal Patterns in Java Programs) from the Technion.",
+    "linkedin": "https://www.linkedin.com/in/itay-maman/",
+    "twitter": "https://twitter.com/pembleton"
+  },
+  {
+    "name": "Yael Oshri Bala",
+    "title": "VP R&D",
+    "company": "",
+    "bio": "Experienced R&D leader, loves technology and sharing knowledge with others",
+    "linkedin": "https://www.linkedin.com/in/yael-oshri-balla-6b56686",
+    "twitter": ""
+  },
+  {
+    "name": "Yoav Abrahami",
+    "title": "Head of Coding products",
+    "company": "WiX",
+    "bio": "Yoav Abrahami is the chief architect and Head of Wix coding products. He has developed Wix development methodology and the Wix App Market, moving to build Velo in 2015. Experience in JVM (Java, Scala), JS (Web, Node.js), Building Developer platforms, Performance and creating products.",
+    "linkedin": "https://www.linkedin.com/in/yoavabrahami/",
+    "twitter": ""
+  },
+  {
+    "name": "Victor Trakhtenberg",
+    "title": "VP R&D",
+    "company": "Payem",
+    "bio": "I am a software engineering manager with vast experience leading people, products, and processes. Passionate about building engineering teams and organizations that build products people need. Eager to connect between business needs and engineers' professional aspirations. Served as a VP of Engineering at Next Insurance, leading the Growth Engineering organization that is a driver for the company's growth as well as VP of Technology, responsible for engineering excellence. Prior to this role, led the development of Personalization Products at Taboola, following its acquisition of Commerce Sciences in which I served as a VP R&D. Co-founder of the JavaIL community (www.meetup.com/JavaIL/). Co-organizer of the Reversim Summit 2016 - responsible for the conference content, moderator 2014, 2015, 2017, 2019 and 2024",
+    "linkedin": "https://www.linkedin.com/in/victortrakhtenberg/",
+    "twitter": ""
+  },
+  {
+    "name": "Eloise Ann Friedman",
+    "title": "Director, Cloud Platform",
+    "company": "Outbrain",
+    "bio": "Forward looking, making changes, believing that the best code she ever wrote is the code she deleted. After 20 years in various R&D roles Eloise realized the best way to scale up making an impact is by moving closer to the infrastructure, where changes in concepts, design patterns or tools can impact thousands of servers and improve the efficiency of hundreds of engineers. She believes that the path towards diversity is by education, and has mentored various different communities.",
+    "linkedin": "https://www.linkedin.com/in/eloise-ann-friedman-741742121/",
+    "twitter": ""
+  },
+  {
+    "name": "Einat Mahat",
+    "title": "R&D Group Leader",
+    "company": "Payoneer",
+    "bio": "Einat has been mastering the engineering field for two decades. She has vast experience in scale and architecture challenges. Over the years, she took leadership roles and became an engineering manager whose passion is to develop people, software, and products. She mentors managers and developers and helps them in their professional growth and volunteers as part of the core-team at \"Baot\", Israel's largest community for women in R&D.",
+    "linkedin": "https://www.linkedin.com/in/einat-mahat/",
+    "twitter": ""
+  },
+  {
+    "name": "Ayelet Dekel",
+    "title": "Data Engineer",
+    "company": "worthy.com",
+    "bio": "Data engineer with a shady backgroud as QA, BI and Product. Reversim ignites speaker at 2018. Volunteer at Midaat. Singer, mother, and, occasionally, writer.",
+    "linkedin": "https://www.linkedin.com/in/ayelet-dekel-bb01321/",
+    "twitter": ""
+  },
+  {
+    "name": "Noa Kurman",
+    "title": "DevOps and software engineer",
+    "company": "Elementary Data",
+    "bio": "A DevOps and software engineer, CI/CD pedant, debugging lover, bash enthusiast by day and wine enthusiast by night",
+    "linkedin": "https://www.linkedin.com/in/noa-kurman-4a694ab7",
+    "twitter": "https://twitter.com/noakurman"
+  },
+  {
+    "name": "Erez Lotan",
+    "title": "CDO & VP R&D",
+    "company": "Skai.io",
+    "bio": "I am an Engineering Manager, Data professional, Agile Coach, and Software Craftsman with solid leadership skills and a deep understanding of software development. Passionate about solving real problems with cool technology",
+    "linkedin": "https://www.linkedin.com/in/erezlotan/",
+    "twitter": ""
+  },
+  {
+    "name": "Inbar Danieli",
+    "title": "FromEnd Software",
+    "company": "Common Ninja",
+    "bio": "😸",
+    "linkedin": "https://www.linkedin.com/in/inbar-danieli/",
+    "twitter": ""
+  }
+]

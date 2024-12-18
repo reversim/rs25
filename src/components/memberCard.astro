@@ -1,0 +1,48 @@
+---
+import { Image } from "astro:assets";
+import type { teamMember } from "../helpers/getTeam";
+import type { ImageFunction } from "astro:content";
+
+interface Props extends teamMember {}
+
+const { company, name, title, image, slug } = Astro.props;
+---
+
+<a data-astro-prefetch href={`/about/${slug}`} class="card">
+  <Image class="image" alt={name} src={image} width="120px" />
+  <h3 class="name">{name}</h3>
+  <p class="title">{title}</p>
+  <p class="company">{company}</p>
+</a>
+
+<style lang="scss">
+  h3,
+  p {
+    margin: 0;
+    text-align: center;
+  }
+
+  .card {
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+    flex: 1;
+
+    min-height: 250px;
+
+    color: black;
+
+    &:hover {
+      .image {
+        border-color: #1f1747ca;
+      }
+    }
+    .image {
+      transition: 0.3s;
+      border-radius: 50%;
+      margin-bottom: 5px;
+      border: 4px solid #bccadd;
+    }
+  }
+</style>

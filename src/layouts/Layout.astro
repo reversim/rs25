@@ -1,0 +1,69 @@
+---
+import Header from "../components/header.astro";
+import MainBanner from "../components/mainBanner.astro";
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    <title>Astro Basics</title>
+  </head>
+  <body>
+    <Header />
+    {Astro.url.pathname === "/" && <MainBanner />}
+    <div class="body-container">
+      <slot class="layout-container" />
+    </div>
+  </body>
+</html>
+
+<style is:global>
+  :root {
+    --max-container-width: 1200px;
+    --main-blue: #1f1747;
+    --main-orange: #f27127;
+  }
+
+  html,
+  body {
+    margin: 0;
+    width: 100%;
+    height: 100%;
+    font-family: Questrial, sans-serif;
+    font-weight: 100;
+  }
+
+  body {
+    background-color: #cddcf0;
+	position: relative;
+  }
+
+  .body-container {
+    padding: 20px 10% 0;
+    max-width: var(--max-container-width);
+    margin: auto;
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+
+  p,
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    margin: 0;
+  }
+
+  a{
+	text-decoration: none;
+	color: inherit;
+  }
+</style>

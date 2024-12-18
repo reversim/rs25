@@ -1,0 +1,77 @@
+---
+import MainBanner from "../components/mainBanner.astro";
+import Layout from "../layouts/Layout.astro";
+
+// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
+// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+---
+
+<style is:global>
+  @font-face {
+    font-family: Questrial;
+    src: url("/fonts/Questrial-Regular.ttf");
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+  }
+
+  body {
+    font-family: Questrial, sans-serif;
+  }
+</style>
+
+<Layout>
+    <div class="card">
+      <h2>About the Event</h2>
+      <p>
+        Reversim Summit 2024 (RS24) is a community driven event in Israel for
+        software developers, product managers, data scientists and everyone else
+        in the software industry. With an enthusiastic team of volunteers we've
+        been creating a content-first software conferences since 2013 and
+        successfully leading the market. Reversim Summit (RS) is not for profit
+        and its sole purpose is to enrich the community with content and
+        networking. We are grateful to have such an excellent top of the
+        industry team of volunteer moderators and event organizers.
+      </p>
+    </div>
+    <div class="card">
+      <h2>Web App Shortcut</h2>
+      <p>
+        Add our web app shortcut to your home screen. This will let you select
+        favorite sessions and see what is currently happening in the conference.
+        To install it scan the QR code below with your mobile phone. If you are
+        viewing the website from your phone, just click on the QR code image.
+        The website opened has a button allow you add itself to your home
+        screen. On iOS you will need to be opening the link in safari if you
+        want to add it to your home screen.
+      </p>
+    </div>
+</Layout>
+
+<style lang="scss">
+
+  .card {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-weight: 400;
+    margin-top: 24px;
+
+    h2,
+    p {
+      margin: 0;
+      padding: 0;
+    }
+
+    h2 {
+      font-size: 40px;
+    }
+
+    p {
+      margin-top: 10px;
+      font-size: 18px;
+      line-height: 29px;
+    }
+  }
+</style>
