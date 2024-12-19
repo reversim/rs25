@@ -89,5 +89,35 @@
     "instagram": "",
     "github": "https://github.com/OpherV",
     "website": "https://www.opherv.com"
+  },
+  {
+    "name": "Avraham Rosenzweig",
+    "title": "R&D Manager",
+    "company": "Wix",
+    "bio": "Managing the Contacts group at Wix, leading a team of engineers responsible for building powerful solutions used by millions worldwide. Passionate about team growth and product impact, combining technical expertise with a love for leadership—always with a smile.",
+    "linkedin": "https://www.linkedin.com/in/avrahamr/",
+    "twitter": "https://x.com/avrahamr",
+    "bluesky": "",
+    "facebook": "https://www.facebook.com/avrahamr",
+    "instagram": "",
+    "youtube": "",
+    "github": "",
+    "medium": "",
+    "website": ""
+  },
+  {
+    "name": "Benjamin Gruenbaum",
+    "title": "Infrastructure Developer",
+    "company": "Eon",
+    "bio": "Developer @ Eon, Node.js core team member and maintainer, speaker and open source and human lover",
+    "linkedin": "",
+    "twitter": "",
+    "bluesky": "",
+    "facebook": "https://www.facebook.com/benjamin.gruenbaum",
+    "instagram": "",
+    "youtube": "",
+    "github": "https://github.com/benjamingr",
+    "medium": "",
+    "website": ""
   }
 ]
