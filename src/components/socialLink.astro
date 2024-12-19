@@ -15,39 +15,39 @@ interface Props {
 }
 
 const { link, type } = Astro.props;
+const iconsSize = 16
 ---
-
 {
   link && (
     <a target="_blank" href={link}>
       {() => {
         switch (type) {
           case "linkedin":
-            return <Linkedin width={20} />;
+            return <Linkedin width={iconsSize} />;
 
           case "twitter":
-            return <Twitter width={24} />;
+            return <Twitter width={iconsSize} />;
 
           case "bluesky":
-            return <Bluesky width={16} />;
+            return <Bluesky width={iconsSize} />;
 
           case "facebook":
-            return <Facebook width={16} />;
+            return <Facebook width={iconsSize} />;
 
           case "github":
-            return <Github width={24} />;
+            return <Github width={iconsSize} />;
 
           case "instagram":
-            return <Instagram width={20} />;
+            return <Instagram width={iconsSize} />;
 
           case "website":
-            return <Link width={24} />;
+            return <Link width={iconsSize + 4} />;
 
           case "medium":
-            return <Medium width={24} />;
+            return <Medium width={iconsSize} />;
 
           case "youtube":
-            return <Youtube width={24} />;
+            return <Youtube width={iconsSize} />;
 
           default:
             return <>{type}</>;
