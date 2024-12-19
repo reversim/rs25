@@ -29,7 +29,7 @@ const { link, type } = Astro.props;
             return <Twitter width={24} />;
 
           case "bluesky":
-            return <Bluesky width={24} />;
+            return <Bluesky width={16} />;
 
           case "facebook":
             return <Facebook width={16} />;
@@ -38,7 +38,7 @@ const { link, type } = Astro.props;
             return <Github width={24} />;
 
           case "instagram":
-            return <Instagram width={24} />;
+            return <Instagram width={20} />;
 
           case "website":
             return <Link width={24} />;
@@ -69,7 +69,7 @@ const { link, type } = Astro.props;
     align-items: center;
 
     svg {
-      scale: 0.7;
+      // scale: 0.7;
       fill: #cddcf0;
     }
   }
