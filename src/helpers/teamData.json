@@ -22,7 +22,7 @@
     "bio": "Forward looking, making changes, believing that the best code she ever wrote is the code she deleted. After 20 years in various R&D roles Eloise realized the best way to scale up making an impact is by moving closer to the infrastructure, where changes in concepts, design patterns or tools can impact thousands of servers and improve the efficiency of hundreds of engineers. She believes that the path towards diversity is by education, and has mentored various different communities.",
     "linkedin": "https://www.linkedin.com/in/eloise-ann-friedman-741742121/",
     "twitter": ""
-  },  
+  },
   {
     "name": "Shai Yallin",
     "title": "Freelance Software Engineer",
@@ -76,5 +76,18 @@
     "bio": "😸",
     "linkedin": "https://www.linkedin.com/in/inbar-danieli/",
     "twitter": ""
+  },
+  {
+    "name": "Opher Vishnia",
+    "title": "Principal Engineer",
+    "company": "Hud",
+    "bio": "Developer, designer, speaker and a spark for creative magic",
+    "linkedin": "https://www.linkedin.com/in/opherv/",
+    "twitter": "https://x.com/opherv",
+    "bluesky": "https://bsky.app/profile/opherv.com",
+    "facebook": "https://www.facebook.com/opherv",
+    "instagram": "",
+    "github": "https://github.com/OpherV",
+    "website": "https://www.opherv.com"
   }
 ]
