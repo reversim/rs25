@@ -3,8 +3,10 @@ import type { GetStaticPaths } from "astro";
 import Layout from "../../layouts/Layout.astro";
 import { getTeamMembers } from "../../helpers/getTeam";
 import { Image } from "astro:assets";
-import Twitter from "../../assets/socials/x-twitter.svg";
-import Linkedin from "../../assets/socials/linkedin.svg";
+// import Twitter from "../../assets/socials/x-twitter.svg";
+// import Linkedin from "../../assets/socials/linkedin.svg";
+
+import SocialLink from "../../components/socialLink.astro";
 
 export const getStaticPaths = (async () => {
   const teamMembers = await getTeamMembers();
@@ -17,7 +19,31 @@ export const getStaticPaths = (async () => {
   }));
 }) satisfies GetStaticPaths;
 
-const { name, title, company, bio, linkedin, twitter, image } = Astro.props;
+const {
+  name,
+  title,
+  company,
+  bio,
+  image,
+  slug,
+  linkedin,
+  twitter,
+  bluesky,
+  facebook,
+  github,
+  instagram,
+  website,
+} = Astro.props;
+
+const socialList = {
+  linkedin,
+  twitter,
+  bluesky,
+  facebook,
+  github,
+  instagram,
+  website,
+};
 
 // Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
 // Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
@@ -27,21 +53,12 @@ const { name, title, company, bio, linkedin, twitter, image } = Astro.props;
   <div class="main-container">
     <div class="media-socials-container">
       <a class="back-button" href="/about">Back</a>
-      {image && <Image src={image} alt={name} width="250px" />}
+      {image && <Image src={image} alt={name} width="500px" />}
       <div class="links">
         {
-          linkedin && (
-            <a target="_blank" href={linkedin}>
-              <Linkedin width={20} />
-            </a>
-          )
-        }
-        {
-          twitter && (
-            <a target="_blank" href={twitter}>
-              <Twitter width={24} />
-            </a>
-          )
+          Object.entries(socialList).map(([social, link]) => {
+            return <SocialLink type={social} link={link} />;
+          })
         }
       </div>
     </div>
@@ -57,6 +74,7 @@ const { name, title, company, bio, linkedin, twitter, image } = Astro.props;
 <style lang="scss">
   .main-container {
     display: flex;
+    // flex-wrap: wrap;
     gap: 40px;
 
     .media-socials-container {
@@ -65,27 +83,15 @@ const { name, title, company, bio, linkedin, twitter, image } = Astro.props;
 
       img {
         border-radius: 50%;
+        width: 250px;
+        height: 250px;
+        object-fit: cover;
       }
 
       .links {
         margin-top: 6px;
         display: flex;
         gap: 8px;
-
-        a {
-          background-color: #000000;
-          border-radius: 50%;
-          aspect-ratio: 1;
-          width: 40px;
-
-          display: flex;
-          justify-content: center;
-          align-items: center;
-
-          svg {
-            fill: #cddcf0;
-          }
-        }
       }
 
       .back-button {

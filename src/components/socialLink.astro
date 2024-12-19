@@ -1,0 +1,34 @@
+---
+import Twitter from "../assets/socials/x-twitter.svg";
+import Linkedin from "../assets/socials/linkedin.svg";
+
+interface Props {
+  link?: string;
+  type: string;
+}
+
+const { link, type } = Astro.props;
+---
+{
+  link && (
+    <a target="_blank" href={link}>
+     {type}
+    </a>
+  )
+}
+<style lang="scss">
+    a {
+          // background-color: #000000;
+          // border-radius: 50%;
+          // aspect-ratio: 1;
+          // width: 40px;
+
+          display: flex;
+          justify-content: center;
+          align-items: center;
+
+          svg {
+            fill: #cddcf0;
+          }
+        }
+</style>
