@@ -30,6 +30,8 @@ const {
   github,
   instagram,
   website,
+  medium,
+  youtube
 } = Astro.props;
 
 const socialList = {
@@ -40,6 +42,8 @@ const socialList = {
   github,
   instagram,
   website,
+  medium,
+  youtube
 };
 
 // Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
@@ -71,7 +75,7 @@ const socialList = {
 <style lang="scss">
   .main-container {
     display: flex;
-    // flex-wrap: wrap;
+    flex-wrap: wrap;
     gap: 40px;
 
     .media-socials-container {
@@ -88,6 +92,7 @@ const socialList = {
       .links {
         margin-top: 6px;
         display: flex;
+        justify-content: center;
         gap: 8px;
       }
 
@@ -102,6 +107,8 @@ const socialList = {
 
     .info-container {
       font-size: 16px;
+      flex: 1;
+      min-width: 300px;
 
       .name {
         font-size: 28px;

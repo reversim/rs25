@@ -1,6 +1,13 @@
 ---
 import Twitter from "../assets/socials/x-twitter.svg";
 import Linkedin from "../assets/socials/linkedin.svg";
+import Bluesky from "../assets/socials/bluesky.svg";
+import Facebook from "../assets/socials/facebook.svg";
+import Github from "../assets/socials/github.svg";
+import Instagram from "../assets/socials/instagram.svg";
+import Link from "../assets/socials/link.svg";
+import Medium from "../assets/socials/medium.svg";
+import Youtube from "../assets/socials/youtube.svg";
 
 interface Props {
   link?: string;
@@ -9,26 +16,61 @@ interface Props {
 
 const { link, type } = Astro.props;
 ---
+
 {
   link && (
     <a target="_blank" href={link}>
-     {type}
+      {() => {
+        switch (type) {
+          case "linkedin":
+            return <Linkedin width={20} />;
+
+          case "twitter":
+            return <Twitter width={24} />;
+
+          case "bluesky":
+            return <Bluesky width={24} />;
+
+          case "facebook":
+            return <Facebook width={16} />;
+
+          case "github":
+            return <Github width={24} />;
+
+          case "instagram":
+            return <Instagram width={24} />;
+
+          case "website":
+            return <Link width={24} />;
+
+          case "medium":
+            return <Medium width={24} />;
+
+          case "youtube":
+            return <Youtube width={24} />;
+
+          default:
+            return <>{type}</>;
+        }
+      }}
     </a>
   )
 }
+
 <style lang="scss">
-    a {
-          // background-color: #000000;
-          // border-radius: 50%;
-          // aspect-ratio: 1;
-          // width: 40px;
+  a {
+    background-color: #000000;
+    border-radius: 50%;
+    aspect-ratio: 1;
+    width: 28px;
 
-          display: flex;
-          justify-content: center;
-          align-items: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
-          svg {
-            fill: #cddcf0;
-          }
-        }
+    svg {
+      scale: 0.7;
+      fill: #cddcf0;
+    }
+  }
 </style>
