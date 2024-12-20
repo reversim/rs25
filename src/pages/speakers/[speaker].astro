@@ -1,0 +1,43 @@
+---
+import type { GetStaticPaths } from "astro";
+import Layout from "../../layouts/Layout.astro";
+import { getTeamMembers } from "../../helpers/getTeam";
+import { Image } from "astro:assets";
+import SocialLink from "../../components/socialLink.astro";
+import { getSpeakers } from "../../helpers/getSpeakers";
+
+export const getStaticPaths = (async () => {
+  const speakers = await getSpeakers();
+
+  return speakers.map((speaker) => ({
+    params: {
+      speaker: speaker.slug,
+    },
+    props: { ...speaker },
+  }));
+}) satisfies GetStaticPaths;
+
+const {
+  firstName,
+  fullName,
+  id,
+  isTopSpeaker,
+  lastName,
+  profilePicture,
+  slug,
+  tagLine,
+  bio,
+  links,
+  sessions,
+} = Astro.props;
+---
+
+<Layout>
+  <div class="main-container">
+    <h2>{fullName}</h2>
+    <p>{tagLine}</p>
+    <p>{bio}</p>
+  </div>
+</Layout>
+
+<style lang="scss"></style>

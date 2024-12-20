@@ -1,0 +1,39 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import { getSpeakers } from "../../helpers/getSpeakers";
+import SpeakerCard from "../../components/speakerCard.astro";
+
+const speakers = await getSpeakers();
+---
+
+<Layout>
+  <h2>Our Speakers</h2>
+  <p class="description">
+    We are thrilled to unveil our distinguished speaker lineup for the upcoming
+    Reversim Summit 2024. These accomplished individuals will delve into a
+    diverse array of technology topics during the conference, including backend
+    and frontend development, cultural insights, management and career growth,
+    machine learning and AI, infrastructure and security, as well as
+    architecture and software craftsmanship. Get ready for an engaging
+    exploration of the latest trends and insights across the tech landscape!
+  </p>
+  <div class="speakers-container">
+    {
+      speakers.map((speaker) => {
+        return <SpeakerCard {...speaker} />;
+      })
+    }
+  </div>
+</Layout>
+
+<style lang="scss">
+  .speakers-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 20px 80px;
+  }
+
+  .description {
+    margin-bottom: 20px;
+  }
+</style>
