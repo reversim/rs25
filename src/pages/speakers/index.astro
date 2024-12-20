@@ -31,6 +31,11 @@ const speakers = await getSpeakers();
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
     gap: 20px 80px;
+
+    @media screen and (max-width: 576px) {
+      grid-template-columns: 1fr;
+      gap: 50px;
+    }
   }
 
   .description {

@@ -47,5 +47,15 @@ const { company, name, title, image, slug } = Astro.props;
       border: 4px solid #bccadd;
       object-fit: cover;
     }
+
+    @media screen and (max-width: 576px) {
+      min-height: auto;
+
+      .image {
+        width: 60%;
+        aspect-ratio: 1 / 1;
+        height: auto;
+      }
+    }
   }
 </style>

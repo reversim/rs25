@@ -23,7 +23,7 @@ const { socialList, name, image, title, company, bio } = Astro.props;
     </div>
   </div>
   <div class="info-container">
-    <h2 class="name">{name}</h2>
+    <h3 class="name">{name}</h3>
     <p class="title">{title}</p>
     {company && <p class="company">{company}</p>}
     <p class="bio">{bio}</p>
@@ -44,6 +44,11 @@ const { socialList, name, image, title, company, bio } = Astro.props;
     display: flex;
     flex-wrap: wrap;
     gap: 40px;
+
+    @media screen and (max-width: 576px) {
+      justify-content: center;
+      text-align: center;
+    }
 
     .media-socials-container {
       display: flex;
