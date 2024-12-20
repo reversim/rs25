@@ -9,11 +9,18 @@
   },
   {
     "name": "Ran Tavory",
-    "title": "Everything software, data, ML",
-    "company": "XPOZ",
-    "bio": "The voice @ reversim, ML, data and software dude",
+    "title": "Research @ TII",
+    "company": "TII",
+    "bio": "The voice @ reversim, ML, data, software",
     "linkedin": "https://www.linkedin.com/in/rantav/",
-    "twitter": "https://twitter.com/rantav"
+    "twitter": "https://twitter.com/rantav",
+    "bluesky": "",
+    "facebook": "https://www.facebook.com/rantav",
+    "instagram": "",
+    "youtube": "",
+    "github": "https://github.com/rantav",
+    "medium": "",
+    "website": "https://www.reversim.com/"
   },
   {
     "name": "Eloise Ann Friedman",
@@ -117,6 +124,21 @@
     "instagram": "",
     "youtube": "",
     "github": "https://github.com/benjamingr",
+    "medium": "",
+    "website": ""
+  },
+  {
+    "name": "Rachel Wities",
+    "title": "NLP Researcher",
+    "company": "Microsoft Health and Life Sciences",
+    "bio": "Rachel Wities is a Senior Data Scientist at Microsoft Healthcare and Life Sciences group, and a Co-Founder of MeDS - Medical Data Science Israel community.\n\nRachel is a public speaker addressing Healthcare NLP challenges, and believes that understanding doctors and their needs is the key to successfully implementing AI Healthcare algorithms.\n\nLoves her family, God and Oxford Comma jokes.",
+    "linkedin": "https://www.linkedin.com/in/rachel-wities/",
+    "twitter": "",
+    "bluesky": "",
+    "facebook": "https://www.facebook.com/rachel.wities",
+    "instagram": "",
+    "youtube": "",
+    "github": "",
     "medium": "",
     "website": ""
   }
