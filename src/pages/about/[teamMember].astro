@@ -54,7 +54,7 @@ const socialList = {
   <div class="main-container">
     <div class="media-socials-container">
       <a class="back-button" href="/about">Back</a>
-      {image && <Image src={image} alt={name} width="500px" />}
+      <Image src={image} alt={name} width="500" />
       <div class="links">
         {
           Object.entries(socialList).map(([social, link]) => {
