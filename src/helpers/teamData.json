@@ -78,11 +78,18 @@
   },
   {
     "name": "Inbar Danieli",
-    "title": "FromEnd Software",
+    "title": "FrontEnd Developer",
     "company": "Common Ninja",
-    "bio": "😸",
+    "bio": "Developer, CSS enthusiast, and cat lover.",
     "linkedin": "https://www.linkedin.com/in/inbar-danieli/",
-    "twitter": ""
+    "twitter": "",
+    "bluesky":"",
+    "facebook":"",
+    "github":"https://github.com/InbarDanieli",
+    "instagram":"",
+    "medium":"",
+    "website":"",
+    "youtube":""
   },
   {
     "name": "Opher Vishnia",
