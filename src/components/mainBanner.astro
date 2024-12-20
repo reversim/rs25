@@ -2,10 +2,12 @@
 import { Image } from "astro:assets";
 
 import reversim25Icon from "../assets/reversim-25-icon.png";
+import backgroundOverlay from "../assets/background-overlay.png";
 ---
 
 <div class="main-banner">
-  <div class="overlay"></div>
+  <Image class="overlay" height={500} alt="" src={backgroundOverlay} />
+
   <div id="container">
     <Image class="rv-icon" alt="" src={reversim25Icon} />
 
@@ -24,15 +26,12 @@ import reversim25Icon from "../assets/reversim-25-icon.png";
   }
 
   .overlay {
+    object-fit: cover;
     position: absolute;
     top: 0;
     left: 0;
-    height: 100%;
+    max-height: 100%;
     width: 100%;
-    z-index: 0;
-    background-image: url("../assets/background-overlay.png");
-    background-size: cover;
-    background-repeat: no-repeat;
   }
 
   #container {
