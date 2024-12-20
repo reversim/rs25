@@ -1,10 +1,10 @@
 ---
 import type { GetStaticPaths } from "astro";
-import Layout from "../../layouts/Layout.astro";
-import { getTeamMembers } from "../../helpers/getTeam";
-import { Image } from "astro:assets";
-import SocialLink from "../../components/socialLink.astro";
+import { getImage } from "astro:assets";
+import PersonInfo from "../../components/personInfo.astro";
 import { getSpeakers } from "../../helpers/getSpeakers";
+import { supportedSocials } from "../../helpers/supportedSocials";
+import Layout from "../../layouts/Layout.astro";
 
 export const getStaticPaths = (async () => {
   const speakers = await getSpeakers();
@@ -30,14 +30,32 @@ const {
   links,
   sessions,
 } = Astro.props;
+
+const socialLinks: Record<string, string> = {};
+
+links.map((link) => {
+  let finalLink = link.linkType.toLowerCase();
+
+  if (finalLink === "blog") {
+    finalLink = link.url.includes("medium")
+      ? supportedSocials.medium
+      : supportedSocials.website;
+  }
+
+  socialLinks[finalLink] = link.url;
+});
+
+const image = await getImage({ src: profilePicture, height: 500, width: 500 });
 ---
 
 <Layout>
-  <div class="main-container">
-    <h2>{fullName}</h2>
-    <p>{tagLine}</p>
-    <p>{bio}</p>
-  </div>
+  <PersonInfo
+    socialList={socialLinks}
+    name={fullName}
+    image={image.src}
+    title={tagLine}
+    bio={bio}
+  />
 </Layout>
 
 <style lang="scss"></style>

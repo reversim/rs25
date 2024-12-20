@@ -2,8 +2,7 @@
 import type { GetStaticPaths } from "astro";
 import Layout from "../../layouts/Layout.astro";
 import { getTeamMembers } from "../../helpers/getTeam";
-import { Image } from "astro:assets";
-import SocialLink from "../../components/socialLink.astro";
+import PersonInfo from "../../components/personInfo.astro";
 
 export const getStaticPaths = (async () => {
   const teamMembers = await getTeamMembers();
@@ -31,10 +30,10 @@ const {
   instagram,
   website,
   medium,
-  youtube
+  youtube,
 } = Astro.props;
 
-const socialList = {
+const socialList: Record<string, string | undefined> = {
   linkedin,
   twitter,
   bluesky,
@@ -43,84 +42,18 @@ const socialList = {
   instagram,
   website,
   medium,
-  youtube
+  youtube,
 };
 ---
 
 <Layout>
-  <div class="main-container">
-    <div class="media-socials-container">
-      <a class="back-button" href="/about">Back</a>
-      <Image src={image} alt={name} width="500" />
-      <div class="links">
-        {
-          Object.entries(socialList).map(([social, link]) => {
-            return <SocialLink type={social} link={link} />;
-          })
-        }
-      </div>
-    </div>
-    <div class="info-container">
-      <h2 class="name">{name}</h2>
-      <p class="title">{title}</p>
-      <p class="company">{company}</p>
-      <p class="bio">{bio}</p>
-    </div>
-  </div>
+  <PersonInfo
+    socialList={socialList}
+    bio={bio}
+    name={name}
+    image={image}
+    title={title}
+    company={company}
+  />
 </Layout>
 
-<style lang="scss">
-  .main-container {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 40px;
-
-    .media-socials-container {
-      display: flex;
-      flex-direction: column;
-
-      img {
-        border-radius: 50%;
-        width: 250px;
-        height: 250px;
-        object-fit: cover;
-      }
-
-      .links {
-        margin-top: 6px;
-        display: flex;
-        justify-content: center;
-        gap: 8px;
-      }
-
-      .back-button {
-        border-radius: 4px;
-        width: max-content;
-        background-color: #7ca4d6;
-        padding: 4px 8px;
-        color: white;
-      }
-    }
-
-    .info-container {
-      font-size: 16px;
-      flex: 1;
-      min-width: 300px;
-
-      .name {
-        font-size: 28px;
-        font-weight: 100;
-      }
-
-      .title {
-        margin: 2px 0 8px;
-      }
-      .company {
-        margin-bottom: 12px;
-      }
-      .bio {
-        font-size: 14px;
-      }
-    }
-  }
-</style>

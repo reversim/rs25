@@ -16,7 +16,7 @@ export interface teamMember {
   github?: string;
   medium?: string;
   website?: string;
-  image: Promise<any>;
+  image: any;
 }
 
 export async function getTeamMembers() {
