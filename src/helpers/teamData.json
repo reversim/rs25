@@ -24,11 +24,18 @@
   },
   {
     "name": "Eloise Ann Friedman",
-    "title": "Director, Cloud Platform",
+    "title": "Director of PlatformX, Cloud Platform",
     "company": "Outbrain",
-    "bio": "Forward looking, making changes, believing that the best code she ever wrote is the code she deleted. After 20 years in various R&D roles Eloise realized the best way to scale up making an impact is by moving closer to the infrastructure, where changes in concepts, design patterns or tools can impact thousands of servers and improve the efficiency of hundreds of engineers. She believes that the path towards diversity is by education, and has mentored various different communities.",
-    "linkedin": "https://www.linkedin.com/in/eloise-ann-friedman-741742121/",
-    "twitter": ""
+    "bio": "Started as a backend developer, became a group manager and Director, before deciding to move over to the DevOps and infrastructure side, where it is much easier to make an impact at scale.\nFamily, fun, running and ice cream complete the story",
+    "linkedin": "https://www.linkedin.com/in/eloise-ann-friedman-%F0%9F%87%AE%F0%9F%87%B1-741742121/",
+    "twitter": "",
+    "bluesky": "",
+    "facebook": "",
+    "instagram": "",
+    "youtube": "",
+    "github": "",
+    "medium": "",
+    "website": ""
   },
   {
     "name": "Shai Yallin",
@@ -47,11 +54,17 @@
     "name": "Erez Posner",
     "title": "3D Algorithms Team Lead",
     "company": "Intuitive Surgical",
-    "bio": "Signa sealing systems co-founder and algorithms team leader at intuitive Surgical, Erez Posner is a machine learning researcher with a track record of developing and deploying state-of-the-art techniques in the fields of Computer Graphics and Computer Vision. Erez's research is primarily focused on cutting-edge techniques for 3D reconstruction, SLAM, and AI-driven video synthesis. Erez holds a BSc and an MSc in Electrical Engineering from Afeka college and Ben Gurion University, respectively.",
+    "bio": "Signa sealing systems co-founder and algorithms team leader at Intuitive Surgical, Erez Posner is a machine learning researcher with a track record of developing and deploying state-of-the-art techniques in the fields of Computer Graphics and Computer Vision. Erez's research is primarily focused on cutting-edge techniques for 3D reconstruction, SLAM, and AI-driven video synthesis. Erez holds a BSc and an MSc in Electrical Engineering from Afeka College and Ben Gurion University, respectively.",
     "linkedin": "https://www.linkedin.com/in/erezposner/",
-    "twitter": "https://twitter.com/ErezPosner"
+    "twitter": "https://twitter.com/ErezPosner",
+    "bluesky": "",
+    "facebook": "",
+    "instagram": "",
+    "youtube": "",
+    "github": "",
+    "medium": "https://medium.com/@erezposner",
+    "website": ""
   },
-
   {
     "name": "Dafna Mordechai",
     "title": "Deep Learning Compiler Engineer",
@@ -83,13 +96,13 @@
     "bio": "Developer, CSS enthusiast, and cat lover.",
     "linkedin": "https://www.linkedin.com/in/inbar-danieli/",
     "twitter": "",
-    "bluesky":"",
-    "facebook":"",
-    "github":"https://github.com/InbarDanieli",
-    "instagram":"",
-    "medium":"",
-    "website":"",
-    "youtube":""
+    "bluesky": "",
+    "facebook": "",
+    "github": "https://github.com/InbarDanieli",
+    "instagram": "",
+    "medium": "",
+    "website": "",
+    "youtube": ""
   },
   {
     "name": "Opher Vishnia",
@@ -143,6 +156,21 @@
     "twitter": "",
     "bluesky": "",
     "facebook": "https://www.facebook.com/rachel.wities",
+    "instagram": "",
+    "youtube": "",
+    "github": "",
+    "medium": "",
+    "website": ""
+  },
+  {
+    "name": "Lital Hassine",
+    "title": "Software engineer",
+    "company": "Simply",
+    "bio": "Making things happen",
+    "linkedin": "https://www.linkedin.com/in/litalhassine/",
+    "twitter": "https://x.com/LitalHassine",
+    "bluesky": "",
+    "facebook": "",
     "instagram": "",
     "youtube": "",
     "github": "",
