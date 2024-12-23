@@ -39,7 +39,7 @@ function getTalkInfo(fullText: string): {
               <p class="talk-description">
                 {descriptionInfo.text}
                 {descriptionInfo.shouldLoadMore && (
-                  <a href={`talks/${slug(talk.title)}`} class="talk-link">
+                  <a href={`/talks/${slug(talk.title)}`} class="talk-link">
                     Read More
                   </a>
                 )}
