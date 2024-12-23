@@ -11,6 +11,10 @@ import reversim25Icon from "../assets/reversim-25-icon.png";
     </a>
     <div class="navbar-container">
       <a
+        class={`navbar-link ${Astro.url.pathname.startsWith("/talks") && "active"}`}
+        href="/talks">Talks</a
+      >
+      <a
         class={`navbar-link ${Astro.url.pathname.startsWith("/speakers") && "active"}`}
         href="/speakers">Speakers</a
       >

@@ -1,0 +1,106 @@
+---
+import type { GetStaticPaths } from "astro";
+import slug from "slug";
+import { getTalks } from "../../helpers/getTalks";
+import Layout from "../../layouts/Layout.astro";
+import dayjs from "dayjs";
+import BackButton from "../../components/backButton.astro";
+
+export const getStaticPaths = (async () => {
+  const talks = await getTalks();
+
+  return talks.rawTalksList.map((talk) => ({
+    params: {
+      talk: slug(talk.title),
+    },
+    props: { ...talk },
+  }));
+}) satisfies GetStaticPaths;
+
+const {
+  title,
+  description,
+  room,
+  speakers,
+  startsAt,
+  endsAt,
+  categories,
+  id,
+  isConfirmed,
+  isServiceSession,
+  questionAnswers,
+  recordingUrl,
+  roomId,
+  status,
+} = Astro.props;
+
+function getDaySuffix(day: number) {
+  if (day >= 11 && day <= 13) {
+    return "th";
+  }
+  switch (day % 10) {
+    case 1:
+      return "st";
+    case 2:
+      return "nd";
+    case 3:
+      return "rd";
+    default:
+      return "th";
+  }
+}
+
+function getTalkDate() {
+  const startAtDate = dayjs(startsAt);
+  const endAtDate = dayjs(endsAt);
+
+  // Format the output
+  const day = startAtDate.format("ddd"); // Short day name (e.g., Mon, Tue)
+  const startTime = startAtDate.format("H:mm"); // Hour and minute (e.g., 9:00)
+  const endTime = endAtDate.format("H:mm"); // Hour and minute (e.g., 9:30)
+  const month = startAtDate.format("MMM"); // Get abbreviated month (Mar, Jan, etc.)
+  const dayInMonth = startAtDate.date(); // Get the day of the month
+
+  return `${day}, ${month} ${dayInMonth}${getDaySuffix(dayInMonth)}, ${startTime} - ${endTime}`;
+}
+---
+<Layout>
+  <BackButton />
+  <h2>{title}</h2>
+  <p>{description}</p>
+
+  <div class="talk-information">
+    <p>Room {room}</p>
+    <p>{getTalkDate()}</p>
+  </div>
+
+  <h4>Speakers</h4>
+  {
+    speakers.map((speaker) => {
+      return (
+        <a href={`/speakers/${slug(speaker.name)}`} class="speaker-name">
+          {speaker.name}
+        </a>
+      );
+    })
+  }
+</Layout>
+
+<style lang="scss">
+  h2 {
+    text-align: start;
+    margin-top: 16px;
+  }
+
+  h4 {
+    margin: 32px 0 8px;
+  }
+
+  a:hover {
+    text-decoration: underline;
+  }
+
+  .talk-information {
+    margin-top: 30px;
+  }
+</style>

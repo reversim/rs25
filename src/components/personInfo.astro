@@ -2,6 +2,7 @@
 import { Image } from "astro:assets";
 import SocialLink from "./socialLink.astro";
 import type { teamMember } from "../helpers/getTeam";
+import BackButton from "./backButton.astro";
 
 interface Props extends Partial<teamMember> {
   socialList: Record<string, string | undefined>;
@@ -12,7 +13,7 @@ const { socialList, name, image, title, company, bio } = Astro.props;
 
 <div class="main-container">
   <div class="media-socials-container">
-    <button id="back-button" class="back-button">Back</button>
+    <BackButton />
     <Image src={image} alt={name || ""} width="500" height={"500"} />
     <div class="links">
       {
@@ -29,15 +30,6 @@ const { socialList, name, image, title, company, bio } = Astro.props;
     <p class="bio">{bio}</p>
   </div>
 </div>
-
-<script>
-  const button = document.querySelector("#back-button");
-  button?.addEventListener("click", () => {
-    console.log("back");
-
-    history.back();
-  });
-</script>
 
 <style lang="scss">
   .main-container {
@@ -66,15 +58,6 @@ const { socialList, name, image, title, company, bio } = Astro.props;
         display: flex;
         justify-content: center;
         gap: 8px;
-      }
-
-      .back-button {
-        border: none;
-        border-radius: 4px;
-        width: max-content;
-        background-color: #7ca4d6;
-        padding: 4px 8px;
-        color: white;
       }
     }
 

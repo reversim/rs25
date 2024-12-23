@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "astro": "^5.0.4",
+    "dayjs": "^1.11.13",
     "googleapis": "^144.0.0",
     "sass": "^1.83.0",
     "slug": "^10.0.0"

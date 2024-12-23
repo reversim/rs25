@@ -1,0 +1,82 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import { getTalks } from "../../helpers/getTalks";
+import slug from "slug";
+
+const talks = await getTalks();
+const talksList = talks.rawTalksList;
+
+function getTalkInfo(fullText: string): {
+  shouldLoadMore: boolean;
+  text: string;
+  shouldDisplay: boolean;
+} {
+  const maxLength = 150;
+
+  if (!fullText) {
+    return { shouldDisplay: false, shouldLoadMore: false, text: "" };
+  }
+
+  if (fullText?.length <= maxLength) {
+    return { shouldLoadMore: false, text: fullText, shouldDisplay: true };
+  }
+  const truncatedText = fullText?.slice(0, maxLength) + "...";
+  return { text: truncatedText, shouldLoadMore: true, shouldDisplay: true };
+}
+---
+
+<Layout>
+  <h2>Our Talks</h2>
+
+  <div class="talks-container">
+    {
+      talksList.map((talk) => {
+        const descriptionInfo = getTalkInfo(talk.description);
+        if (descriptionInfo.shouldDisplay) {
+          return (
+            <div class="card">
+              <h4>{talk.title}</h4>
+              <p class="talk-description">
+                {descriptionInfo.text}
+                {descriptionInfo.shouldLoadMore && (
+                  <a href={`talks/${slug(talk.title)}`} class="talk-link">
+                    Read More
+                  </a>
+                )}
+              </p>
+            </div>
+          );
+        }
+      })
+    }
+  </div>
+</Layout>
+
+<style lang="scss">
+  .card {
+    padding: 20px;
+    margin-top: 20px;
+    border: 2px solid var(--main-blue);
+    border-radius: 5px;
+
+    h4 {
+      font-size: 16px;
+    }
+
+    .talk-description {
+      margin-top: 8px;
+      font-size: 14px;
+
+      .talk-link {
+        color: rgb(88, 108, 142);
+        margin-left: 5px;
+        font-size: 0.9em;
+        cursor: pointer;
+
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+</style>

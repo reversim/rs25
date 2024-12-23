@@ -5,6 +5,7 @@ import PersonInfo from "../../components/personInfo.astro";
 import { getSpeakers } from "../../helpers/getSpeakers";
 import { supportedSocials } from "../../helpers/supportedSocials";
 import Layout from "../../layouts/Layout.astro";
+import slugify from "slug";
 
 export const getStaticPaths = (async () => {
   const speakers = await getSpeakers();
@@ -56,6 +57,29 @@ const image = await getImage({ src: profilePicture, height: 500, width: 500 });
     title={tagLine}
     bio={bio}
   />
+
+  <div class="talks-container">
+    <h3 class="talks-title">Talks:</h3>
+
+    {
+      sessions.map((talk) => {
+        return <a href={`/talks/${slugify(talk.name)}`} class="talk-name">{talk.name}</a>;
+      })
+    }
+  </div>
 </Layout>
 
-<style lang="scss"></style>
+<style lang="scss">
+  .talks-container {
+    margin-top: 60px;
+
+    .talk-name {
+      display: block;
+      padding-top: 8px;
+
+      &:hover{
+        text-decoration: underline;
+      }
+    }
+  }
+</style>
