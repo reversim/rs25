@@ -86,8 +86,8 @@
     "youtube": "",
     "github": "",
     "medium": "",
-    "website":""
-},
+    "website": ""
+  },
   {
     "name": "Einat Mahat",
     "title": "R&D Group Leader",
@@ -181,6 +181,51 @@
     "instagram": "",
     "youtube": "",
     "github": "",
+    "medium": "",
+    "website": ""
+  },
+  {
+    "name": "Rivka Dudi",
+    "title": "Sponsorship and Project Manager",
+    "company": "Gettogther",
+    "bio": "I'm a peoples person",
+    "linkedin": "https://www.linkedin.com/in/rivka-dudi/",
+    "twitter": "",
+    "bluesky": "",
+    "facebook": "",
+    "instagram": "https://www.instagram.com/rivkadudi/",
+    "youtube": "",
+    "github": "",
+    "medium": "",
+    "website": ""
+  },
+  {
+    "name": "Aielet Efrati",
+    "title": "Principal Algorithm Developer",
+    "company": "viz.ai",
+    "bio": "Algorithm Developer & MeDS community Co-Founder",
+    "linkedin": "https://www.linkedin.com/in/aielet-efrati-3ab00570/",
+    "twitter": "",
+    "bluesky": "",
+    "facebook": "",
+    "instagram": "",
+    "youtube": "",
+    "github": "",
+    "medium": "",
+    "website": ""
+  },
+  {
+    "name": "Adir Amsalem",
+    "title": "Member of the Technical Staff",
+    "company": "Decart",
+    "bio": "Software developer with 15+ years' experience in web development - frontend, backend, infrastructure and developer tools",
+    "linkedin": "https://www.linkedin.com/in/adiramsalem",
+    "twitter": "https://x.com/amsalemadir",
+    "bluesky": "",
+    "facebook": "",
+    "instagram": "",
+    "youtube": "",
+    "github": "https://github.com/adiramsalem",
     "medium": "",
     "website": ""
   }
