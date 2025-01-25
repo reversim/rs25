@@ -243,5 +243,16 @@
     "github": "",
     "medium": "",
     "website":""
+  },
+  {
+    "name": "Liad Yosef",
+    "title": "Principal Engineer",
+    "company": "Shopify",
+    "bio": "Frontend developer, software architect, tech speaker and an Analog Astronaut",
+    "linkedin": "https://www.linkedin.com/in/liadyosef/",
+    "twitter": "https://x.com/liadyosef",
+    "bluesky": "https://bsky.app/profile/liadyosef.com",
+    "facebook": "https://www.facebook.com/liad.yosef",
+    "github": "https://github.com/liady"
   }
 ]
