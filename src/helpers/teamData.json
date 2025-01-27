@@ -242,7 +242,7 @@
     "youtube": "",
     "github": "",
     "medium": "",
-    "website":""
+    "website": ""
   },
   {
     "name": "Liad Yosef",
@@ -254,5 +254,20 @@
     "bluesky": "https://bsky.app/profile/liadyosef.com",
     "facebook": "https://www.facebook.com/liad.yosef",
     "github": "https://github.com/liady"
+  },
+  {
+    "name": "Or Meiri",
+    "title": "Producer, UrbanStory  and Gettogether owner",
+    "company": "Gettogether",
+    "bio": "",
+    "linkedin": "https://www.linkedin.com/in/urbanstory/",
+    "twitter": "",
+    "bluesky": "",
+    "facebook": "https://www.facebook.com/omeiri/ ",
+    "instagram": "",
+    "youtube": "https://youtu.be/GizNWYnwirI?si=LvDqc5fGJzMTvfX9",
+    "github": "",
+    "medium": "",
+    "website": ""
   }
 ]
