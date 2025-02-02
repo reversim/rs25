@@ -15,7 +15,13 @@ import backgroundOverlay from "../assets/background-overlay.png";
       <p class="date">Coming Soon</p>
       <p class="location">Tel Aviv</p>
     </div>
-    <button>See you next year </button>
+    <a
+      class="header-btn"
+      target="_blank"
+      href="https://forms.gle/1g5241NGBTaXyAPp8"
+    >
+      <button> Become a Sponsor! </button>
+    </a>
   </div>
 </div>
 
@@ -86,7 +92,7 @@ import backgroundOverlay from "../assets/background-overlay.png";
       }
     }
   }
-  button {
+  .header-btn {
     border: none;
     width: max-content;
     align-self: center;
@@ -95,6 +101,14 @@ import backgroundOverlay from "../assets/background-overlay.png";
     border-radius: 30px;
 
     background-color: #cccccc;
-    color: white;
+    cursor: pointer;
+
+    button {
+      background: none;
+      border: none;
+      cursor: pointer;
+      font-size: 14px;
+      font-weight: bold;
+    }
   }
 </style>
