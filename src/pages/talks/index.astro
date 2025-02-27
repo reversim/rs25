@@ -35,7 +35,13 @@ function getTalkInfo(fullText: string): {
         if (descriptionInfo.shouldDisplay) {
           return (
             <div class="card">
-              <h4>{talk.title}</h4>
+              {!talk.isPlenumSession ? (
+                <a href={`/talks/${slug(talk.title)}`} class="talk-link">
+                  <h4>{talk.title}</h4>
+                </a>
+              ) : (
+                <h4>{talk.title}</h4>
+              )}
               <p class="talk-description">
                 {descriptionInfo.text}
                 {descriptionInfo.shouldLoadMore && (
@@ -55,8 +61,7 @@ function getTalkInfo(fullText: string): {
 <style lang="scss">
   .card {
     padding: 20px;
-    margin-top: 20px;
-    border: 2px solid var(--main-blue);
+    margin-top: 24px;
     border-radius: 5px;
 
     h4 {

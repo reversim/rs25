@@ -8,11 +8,12 @@ interface Props extends teamMember {}
 const { company, name, title, image, slug } = Astro.props;
 ---
 
-<a data-astro-prefetch href={`/about/${slug}`} class="card">
-  <Image class="image" alt={name} src={image} width="240" height="240" />
+<a data-astro-prefetch href={`/about/${slug}`} class="member">
+  <div class="image-container">
+    <Image class="image" alt={name} src={image} width="240" height="240" />
+  </div>
   <h3 class="name">{name}</h3>
-  <p class="title">{title}</p>
-  <p class="company">{company}</p>
+  <span class="title">{title}{" "}{company ? `@${company}` : ""}</span>
 </a>
 
 <style lang="scss">
@@ -22,30 +23,43 @@ const { company, name, title, image, slug } = Astro.props;
     text-align: center;
   }
 
-  .card {
+  .member {
     display: flex;
     flex-direction: column;
-    justify-content: start;
     align-items: center;
+    justify-content: flex-start;
     flex: 1;
-
-    min-height: 250px;
-
+    position: relative;
     color: black;
-
+    gap: 4px;
     &:hover {
       .image {
         border-color: #1f1747ca;
       }
     }
-    .image {
+    .image-container {
       width: 120px;
       height: 120px;
       transition: 0.3s;
-      border-radius: 50%;
       margin-bottom: 5px;
-      border: 4px solid #bccadd;
-      object-fit: cover;
+      position: relative;
+
+      .image {
+        width: 100%;
+        height: 100%;
+        border-radius: 16% 0 0 0;
+        object-fit: cover;
+      }
+    }
+
+    .name {
+      font-size: 12px;
+    }
+
+    .title {
+      font-size: 8px;
+      font-weight: 500;
+      text-align: center;
     }
 
     @media screen and (max-width: 576px) {

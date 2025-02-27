@@ -1,0 +1,93 @@
+---
+import { Image } from "astro:assets";
+import type { teamMember } from "../helpers/getTeam";
+import type { ImageFunction } from "astro:content";
+
+// future TODO - change type
+interface Props extends teamMember {}
+
+const { company, name, title, image, slug } = Astro.props;
+---
+
+<a data-astro-prefetch href={`/about/${slug}`} class="speaker">
+  <div class="image-container">
+    <Image class="image" alt={name} src={image} width="240" height="240" />
+  </div>
+  <h3 class="name">{name}</h3>
+  <p class="title">{title}</p>
+  <p class="company">{company}</p>
+</a>
+
+<style lang="scss">
+  h3,
+  p {
+    margin: 0;
+    text-align: center;
+  }
+
+  .speaker {
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+    flex: 1;
+    position: relative;
+
+    min-height: 250px;
+
+    color: black;
+
+    &:hover {
+      .image {
+        border-color: #1f1747ca;
+      }
+    }
+    .image-container {
+      width: 120px;
+      height: 120px;
+      transition: 0.3s;
+      margin-bottom: 5px;
+      position: relative;
+
+      .image {
+        width: 100%;
+        height: 100%;
+        border-radius: 16% 0 0 0;
+        object-fit: cover;
+      }
+
+      &::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        width: 50px; /* Adjust size */
+        height: 50px;
+        background-color: lightblue; /* Adjust color */
+        clip-path: polygon(
+          0% 0%,
+          0 0,
+          20% 20%,
+          20% 20%,
+          80% 20%,
+          80% 80%,
+          80% 80%,
+          100% 100%,
+          100% 100%,
+          100% 0%
+        );
+        transform: rotate(90deg) translate(2px, -2px);
+      }
+    }
+
+    @media screen and (max-width: 576px) {
+      min-height: auto;
+
+      .image {
+        width: 60%;
+        aspect-ratio: 1 / 1;
+        height: auto;
+      }
+    }
+  }
+</style>

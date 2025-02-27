@@ -2,7 +2,7 @@
 import type { GetStaticPaths } from "astro";
 import Layout from "../../layouts/Layout.astro";
 import { getTeamMembers } from "../../helpers/getTeam";
-import PersonInfo from "../../components/personInfo.astro";
+import TeamMemberPage from "../../components/teamMemberPage.astro";
 
 export const getStaticPaths = (async () => {
   const teamMembers = await getTeamMembers();
@@ -47,7 +47,7 @@ const socialList: Record<string, string | undefined> = {
 ---
 
 <Layout>
-  <PersonInfo
+  <TeamMemberPage
     socialList={socialList}
     bio={bio}
     name={name}

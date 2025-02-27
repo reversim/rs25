@@ -1,7 +1,7 @@
 ---
 import type { GetStaticPaths } from "astro";
 import { getImage } from "astro:assets";
-import PersonInfo from "../../components/personInfo.astro";
+import TeamMemberPage from "../../components/teamMemberPage.astro";
 import { getSpeakers } from "../../helpers/getSpeakers";
 import { supportedSocials } from "../../helpers/supportedSocials";
 import Layout from "../../layouts/Layout.astro";
@@ -50,7 +50,7 @@ const image = await getImage({ src: profilePicture, height: 500, width: 500 });
 ---
 
 <Layout>
-  <PersonInfo
+  <TeamMemberPage
     socialList={socialLinks}
     name={fullName}
     image={image.src}

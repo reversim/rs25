@@ -1,73 +1,203 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import "@splidejs/splide/css";
+import Title from "../components/title.astro";
+import Member from "../components/memberCard.astro";
+import Venue from "../components/venue.astro";
+
+import Image1 from "../assets/past-events/image-1.png";
+import Image2 from "../assets/past-events/image-2.png";
+import Image3 from "../assets/past-events/image-3.png";
+import Image4 from "../assets/past-events/image-4.png";
+import Image5 from "../assets/past-events/image-5.png";
+
+import { Image } from "astro:assets";
+
+import { getTeamMembers } from "../helpers/getTeam";
+
+const teamMembers = await getTeamMembers();
 ---
 
 <style is:global>
-  @font-face {
-    font-family: Questrial;
-    src: url("/fonts/Questrial-Regular.ttf");
-    font-weight: normal;
-    font-style: normal;
-    font-display: swap;
+  html {
+    scroll-behavior: smooth;
   }
 
   body {
-    font-family: Questrial, sans-serif;
+    height: auto;
+  }
+
+  * {
+    scroll-margin-top: 100px;
+  }
+  .presentation .splide__pagination__page {
+    width: 12px;
+    height: 12px;
+    background: #1e1e1e; /* Custom color */
+    border-radius: 50%;
+    opacity: 0.5;
+    transition:
+      transform 0.3s ease,
+      opacity 0.3s ease;
+  }
+
+  .splide__pagination__page.is-active {
+    background: #002366; /* Change color for active */
+    opacity: 1;
+    transform: scale(1.3);
+  }
+
+  .splide__arrows {
+    position: absolute;
+    width: 100%;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    justify-content: space-between;
+    pointer-events: none; /* Ensures they don't interfere with image clicks */
+  }
+  .splide__arrow {
+    background: none;
+    pointer-events: auto; /* Allows clicking */
+  }
+  .splide__arrow svg {
+    fill: var(--pink); /* Arrow color */
+    font-size: 26px;
+  }
+  .splide__arrow--prev {
+    left: -50px; /* Moves previous arrow outside */
+  }
+  .splide__arrow--next {
+    right: -50px; /* Moves next arrow outside */
+  }
+
+  body {
+    font-family: Montserrat, sans-serif;
   }
 </style>
 
 <Layout>
-    <div class="card">
-      <h2>About the Event</h2>
-      <p>
-        Reversim Summit 2025 (RS25) is a community driven event in Israel for
-        software developers, product managers, data scientists and everyone else
-        in the software industry. With an enthusiastic team of volunteers we've
-        been creating a content-first software conferences since 2013 and
-        successfully leading the market. Reversim Summit (RS) is not for profit
-        and its sole purpose is to enrich the community with content and
-        networking. We are grateful to have such an excellent top of the
-        industry team of volunteer moderators and event organizers.
-      </p>
+  <div class="card">
+    <Title style="color: black" title="Organizing Team" id="team" />
+
+    <div class="team-member-container">
+      {teamMembers.map((member) => <Member {...member} />)}
     </div>
-    <div class="card">
-      <h2>Web App Shortcut</h2>
-      <p>
-        Add our web app shortcut to your home screen. This will let you select
-        favorite sessions and see what is currently happening in the conference.
-        To install it scan the QR code below with your mobile phone. If you are
-        viewing the website from your phone, just click on the QR code image.
-        The website opened has a button allow you add itself to your home
-        screen. On iOS you will need to be opening the link in safari if you
-        want to add it to your home screen.
-      </p>
+  </div>
+
+  <!-- TODO - move to carousel component -->
+  <Title
+    title="Past Events"
+    style="color: black; margin: 100px 0 0"
+    id="past-events"
+  />
+  <div class="splide-container">
+    <div class="splide">
+      <div class="splide__track">
+        <ul class="splide__list">
+          <li class="splide__slide">
+            <iframe
+              id="yt-video"
+              width="100%"
+              height="100%"
+              src="https://www.youtube.com/embed/gbcaCFO65Bo?si=_c-V6WTmXCb1ktut"
+              title="YouTube video player"
+              frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              referrerpolicy="strict-origin-when-cross-origin"
+              allowfullscreen></iframe>
+          </li>
+          <li class="splide__slide">
+            <Image height={400} src={Image1} alt="Slide 2" />
+          </li>
+          <li class="splide__slide">
+            <Image height={400} src={Image2} alt="Slide 3" />
+          </li>
+          <li class="splide__slide">
+            <Image height={400} src={Image3} alt="Slide 4" />
+          </li>
+          <li class="splide__slide">
+            <Image height={400} src={Image4} alt="Slide 5" />
+          </li>
+          <li class="splide__slide">
+            <Image height={400} src={Image5} alt="Slide 6" />
+          </li>
+        </ul>
+      </div>
     </div>
+
+    <div class="card">
+      <Venue />
+    </div>
+  </div>
+
+  <script>
+    import Splide from "@splidejs/splide";
+
+    document.addEventListener("DOMContentLoaded", () => {
+      new Splide(".splide", {
+        type: "loop",
+        autoplay: true,
+        interval: 3000,
+        arrows: true,
+        pagination: true,
+        perPage: 2,
+        perMove: 2,
+        gap: "1rem",
+        rewind: true,
+        padding: { right: "20%" }, // Ensures the last item is half visible
+        breakpoints: {
+          768: {
+            arrows: false,
+            perPage: 1,
+            padding: { right: "0%" },
+          },
+        },
+      }).mount();
+    });
+  </script>
 </Layout>
 
 <style lang="scss">
+  .team-member-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 32px 10px;
+  }
 
-  .card {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    font-weight: 400;
-    margin-top: 24px;
+  .splide-container {
+    width: 100%;
+    padding-top: 60px;
+    padding-bottom: 100px;
+    margin: auto;
 
-    h2,
-    p {
-      margin: 0;
-      padding: 0;
+    .splide__list {
+      height: 250px;
     }
 
-    h2 {
-      font-size: 40px;
+    .splide {
+      position: relative;
+
+      &::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        right: -6px;
+        width: 20px; /* Adjust as needed */
+        height: 100%;
+        background: linear-gradient(
+          to left,
+          white 50%,
+          rgba(255, 255, 255, 0) 100%
+        );
+        pointer-events: none; /* Prevent interaction */
+      }
     }
 
-    p {
-      margin-top: 10px;
-      font-size: 18px;
-      line-height: 29px;
+    img {
+      height: 100%;
+      max-width: 100%;
+      object-fit: cover;
     }
   }
 </style>

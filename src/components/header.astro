@@ -1,4 +1,5 @@
 ---
+import HeaderLink from "./header-link.astro";
 import { Image } from "astro:assets";
 
 import reversim25Icon from "../assets/reversim-25-icon.png";
@@ -7,37 +8,25 @@ import reversim25Icon from "../assets/reversim-25-icon.png";
 <div class="header">
   <div class="inner-container">
     <a data-astro-prefetch href="/">
-      <Image class="rv-icon" alt="" src={reversim25Icon} />
+      <Image class="rv-icon" alt="Reversim 2025 Logo" src={reversim25Icon} />
     </a>
     <div class="navbar-container">
-      <!-- <a
-        class={`navbar-link ${Astro.url.pathname.startsWith("/talks") && "active"}`}
-        href="/talks">Talks</a
-      >
-      <a
-        class={`navbar-link ${Astro.url.pathname.startsWith("/speakers") && "active"}`}
-        href="/speakers">Speakers</a
-      >
-      <a
-        class={`navbar-link ${Astro.url.pathname.startsWith("/about") && "active"}`}
-        href="/about">Team</a
-      >
-      <a
-        class={`navbar-link ${Astro.url.pathname.startsWith("/coc") && "active"}`}
-        href="/coc">coC</a
-      > -->
-      <a
-        target="_blank"
-        style="color: white"
-        href="https://forms.gle/1g5241NGBTaXyAPp8">Become a Sponsor</a
-      >
+      <HeaderLink link="#about" label="About" iconColor="#7ebec8" />
+      <HeaderLink link="#sponsors" label="Sponsors" iconColor="var(--orange)" />
+      <HeaderLink link="#team" label="Team" iconColor="var(--green)" />
+      <HeaderLink
+        link="#past-events"
+        label="Past Events"
+        iconColor="var(--pink)"
+      />
+      <HeaderLink link="#venue" label="Venue" iconColor="#7ebec8"/>
     </div>
   </div>
 </div>
 
 <style lang="scss">
   .header {
-    background-color: var(--main-blue);
+    background-image: url("../assets/dot-grid.png");
     position: sticky;
     top: 0;
     left: 0;
@@ -57,16 +46,7 @@ import reversim25Icon from "../assets/reversim-25-icon.png";
 
     .navbar-container {
       display: flex;
-      gap: 30px;
-
-      .navbar-link {
-        color: white;
-
-        &:hover,
-        &.active {
-          color: var(--main-orange);
-        }
-      }
+      gap: 50px;
     }
   }
 
