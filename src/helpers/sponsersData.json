@@ -1,0 +1,28 @@
+[
+  {
+    "companyName": "teads",
+    "desorption": "",
+    "website": "",
+    "companyNameLogo": "",
+    "carouselImages": [""],
+    "technologyStack": [""],
+    "openPositions": [{ "position": "", "location": "", "positionLink": "" }],
+    "testimonials": [
+      {
+        "image": "",
+        "testimonialDescription": "",
+        "testimonialAuthor": "",
+        "position": ""
+      }
+    ],
+    "linkedin": "",
+    "bluesky": "",
+    "facebook": "",
+    "twitter": "",
+    "meetup": "",
+    "instagram": "",
+    "youtube": "",
+    "github": "",
+    "medium": ""
+  }
+]

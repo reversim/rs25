@@ -9,6 +9,7 @@
     "astro": "astro"
   },
   "dependencies": {
+    "@splidejs/splide": "^4.1.4",
     "astro": "^5.0.4",
     "dayjs": "^1.11.13",
     "googleapis": "^144.0.0",
