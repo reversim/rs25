@@ -24,8 +24,7 @@ const { title, titleColor, style, id } = Astro.props;
     position: relative;
     width: 46%;
     margin: 100px 0 60px;
-
-    font-size: 24px;
+    font-size: 32px;
 
     background-image: linear-gradient(
       to right,
@@ -47,6 +46,10 @@ const { title, titleColor, style, id } = Astro.props;
       right: 0;
 
       transform: translate(50%, calc(-50% - 1.5px));
+    }
+
+    @media screen and (max-width: 768px) {
+      width: 100%;
     }
   }
 </style>

@@ -3,7 +3,8 @@ import Title from "./title.astro";
 import Asterisk from "../assets/asterisk.svg";
 
 import rs24Image from "../assets/reversim24-image.png";
-import { getImage } from "astro:assets";
+import teadsLogo from "../assets/sponsors/teads/logo.png";
+import { getImage, Image } from "astro:assets";
 
 const optimizedRS24Image = await getImage({ src: rs24Image, width: 1920 });
 const optimizedRS24URL = `url(${optimizedRS24Image.src})`;
@@ -13,9 +14,11 @@ const optimizedRS24URL = `url(${optimizedRS24Image.src})`;
 ></script>
 <div class="main-banner">
   <div class="hero-container">
-    <h2 class="title green">REVERSIM</h2>
-    <h2 class="title orange">FALL</h2>
-    <h2 class="title blue">SUMMIT<p class="title pink"><Asterisk /></p></h2>
+    <div class="title-container">
+      <h2 class="title green">REVERSIM</h2>
+      <h2 class="title orange">FALL</h2>
+      <h2 class="title blue">SUMMIT<p class="title pink"><Asterisk /></p></h2>
+    </div>
     <a
       class="hero-btn"
       target="_blank"
@@ -39,6 +42,16 @@ const optimizedRS24URL = `url(${optimizedRS24Image.src})`;
         industry team of volunteer moderators and event organizers.
       </p>
       <Title style="margin: 20px 0 15px" title="Sponsors" id="sponsors" />
+      <!-- <a data-astro-prefetch href={`/sponsors/teads`} class="member"> -->
+      <Image
+        class="sponsor-logo teads"
+        src={teadsLogo}
+        width={400}
+        height={1000}
+        alt="Game Changer Sponsor"
+      />
+      <!-- </a> -->
+      <!-- <Title style="margin: 20px 0 15px" title="Sponsors" id="sponsors" /> -->
     </div>
   </div>
 </div>
@@ -52,47 +65,58 @@ const optimizedRS24URL = `url(${optimizedRS24Image.src})`;
       flex-direction: column;
       justify-content: center;
 
-      .title {
-        font-size: 60px;
+      .title-container {
+        font-size: 80px;
         font-weight: 700;
-        margin: 0;
-        line-height: 1;
+        .title {
+          width: max-content;
+          font-size: 1em;
+          font-weight: inherit;
+          margin: 0 auto;
+          line-height: 1;
 
-        &.green {
-          color: var(--green);
-          transform: translateX(-42px);
-        }
-        &.orange {
-          color: var(--orange);
-          transform: translateX(110px);
-        }
-        &.blue {
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          gap: 12px;
-          color: var(--blue);
-          transform: translateX(-106px);
-        }
-        &.pink {
-          width: 0.8em;
-          svg {
-            fill: var(--pink);
+          &.green {
+            color: var(--green);
+            transform: translateX(-0.7em);
           }
+          &.orange {
+            color: var(--orange);
+            transform: translateX(1.83em);
+          }
+          &.blue {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 12px;
+            color: var(--blue);
+            transform: translateX(-1.76em);
+          }
+          &.pink {
+            width: 0.8em;
+            svg {
+              fill: var(--pink);
+            }
+          }
+        }
+        @media (max-width: 992px) {
+          font-size: 60px;
+        }
+
+        @media (max-width: 768px) {
+          font-size: 36px;
         }
       }
     }
 
     .card-background {
       --border-height: 12px;
-
-      height: 600px;
+      height: max-content;
       width: 100%;
       background-color: #171c3e;
       clip-path: ellipse(133% 100% at 40% 100%);
 
       position: relative;
-      padding: 4em 10% 20px;
+      padding: 8% 10%;
       border-bottom: var(--border-height) solid #9e9e9e;
 
       &::after {
@@ -139,6 +163,7 @@ const optimizedRS24URL = `url(${optimizedRS24Image.src})`;
         top: 0;
         right: 0;
         opacity: 0.3;
+        z-index: -1;
       }
 
       .description-container {
@@ -147,13 +172,24 @@ const optimizedRS24URL = `url(${optimizedRS24Image.src})`;
 
         .event-description {
           color: white;
-          font-weight: 500;
-          font-size: 12px;
+          font-weight: 400;
+          font-size: 16px;
           max-width: 64%;
+
+          @media screen and (max-width: 768px) {
+            max-width: 95%;
+          }
         }
         .title-container {
           margin-top: 40px;
         }
+      }
+
+      .sponsor-logo {
+        margin: 12px 0;
+        object-fit: contain;
+        width: 200px;
+        height: auto;
       }
     }
   }

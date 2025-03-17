@@ -1,9 +1,63 @@
 ---
 import HeaderLink from "./header-link.astro";
 import { Image } from "astro:assets";
-
 import reversim25Icon from "../assets/reversim-25-icon.png";
 ---
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const toggleButton: any = document.querySelector(".menu-toggle");
+    const sidebar: any = document.querySelector(".sidebar-container");
+    const blurOverlay: any = document.querySelector(".blur-overlay");
+    const link: any = document.querySelectorAll(".header-link");
+
+    toggleButton.addEventListener("click", (event: any) => {
+      sidebar.classList.toggle("open");
+      blurOverlay.classList.toggle("open");
+      toggleButton.classList.toggle("open");
+      event.stopPropagation(); // Prevent immediate closing when clicking the button
+    });
+
+    document.addEventListener("click", (event) => {
+      if (
+        !sidebar.contains(event.target) &&
+        !toggleButton.contains(event.target)
+      ) {
+        sidebar.classList.remove("open");
+        blurOverlay.classList.remove("open");
+        toggleButton.classList.remove("open");
+      }
+    });
+
+    link.forEach((link: any) => {
+      link.addEventListener("click", (event: any) => {
+        sidebar.classList.remove("open");
+        blurOverlay.classList.remove("open");
+        toggleButton.classList.remove("open");
+      });
+    });
+  });
+</script>
+
+<div class="blur-overlay"></div>
+<div>
+  <div class="menu-toggle">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+  <div class="sidebar-container">
+    <HeaderLink link="#about" label="About" iconColor="#7ebec8" />
+    <HeaderLink link="#sponsors" label="Sponsors" iconColor="var(--orange)" />
+    <HeaderLink link="#team" label="Team" iconColor="var(--green)" />
+    <HeaderLink
+      link="#past-events"
+      label="Past Events"
+      iconColor="var(--pink)"
+    />
+    <HeaderLink link="#venue" label="Venue" iconColor="#7ebec8" />
+  </div>
+</div>
 
 <div class="header">
   <div class="inner-container">
@@ -19,7 +73,7 @@ import reversim25Icon from "../assets/reversim-25-icon.png";
         label="Past Events"
         iconColor="var(--pink)"
       />
-      <HeaderLink link="#venue" label="Venue" iconColor="#7ebec8"/>
+      <HeaderLink link="#venue" label="Venue" iconColor="#7ebec8" />
     </div>
   </div>
 </div>
@@ -38,15 +92,91 @@ import reversim25Icon from "../assets/reversim-25-icon.png";
   .inner-container {
     max-width: var(--max-container-width);
     margin: auto;
-
     padding: 8px 0;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    position: relative;
+  }
 
-    .navbar-container {
+  .menu-toggle {
+    display: none;
+    @media screen and (max-width: 992px) {
       display: flex;
-      gap: 50px;
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      z-index: 100000;
+    }
+
+    span {
+      display: block;
+      width: 30px;
+      height: 4px;
+      border-radius: 5px;
+      background: black;
+      transition: 0.3s;
+    }
+
+    &.open span:nth-child(1) {
+      transform: translateY(8px) rotate(45deg);
+      opacity: 0;
+    }
+
+    &.open span:nth-child(2) {
+      opacity: 0;
+    }
+
+    &.open span:nth-child(3) {
+      transform: translateY(-8px) rotate(-45deg);
+      opacity: 0;
+    }
+  }
+
+  .navbar-container {
+    display: flex;
+    gap: 50px;
+
+    @media screen and (max-width: 992px) {
+      display: none;
+    }
+  }
+
+  .sidebar-container {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    background-color: #ffffff;
+    position: fixed;
+    right: -100%;
+    top: 0px;
+    bottom: 0px;
+    width: 200px;
+    height: 100%;
+    padding: 36px 24px;
+    gap: 42px;
+    transition: right 0.3s ease-in-out;
+
+    &.open {
+      right: 0;
+      z-index: 999999;
+    }
+  }
+
+  .blur-overlay {
+    transition: 1s;
+    &.open {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 999999;
+      background: #0303032b;
+      backdrop-filter: blur(1px) saturate(100%);
     }
   }
 
