@@ -1,0 +1,67 @@
+---
+interface Props {
+  rotation: number;
+  top?: number;
+  right?: number;
+  bottom?: number;
+  left?: number;
+}
+
+const { rotation, bottom, left, right, top } = Astro.props;
+const rotationDeg = rotation + 270 + "deg";
+---
+
+<div class="frame">
+  <div class="screw"></div>
+</div>
+
+<style lang="scss" define:vars={{ rotationDeg, top, right, bottom, left }}>
+  .frame {
+    position: absolute;
+    top: var(--top);
+    left: var(--left);
+    bottom: var(--bottom);
+    right: var(--right);
+    width: 50px;
+    height: 50px;
+    background-color: #81b7c3;
+    clip-path: polygon(
+      0% 0%,
+      0 0,
+      20% 20%,
+      20% 20%,
+      80% 20%,
+      80% 80%,
+      80% 80%,
+      100% 100%,
+      100% 100%,
+      100% 0%
+    );
+    transform: rotate(var(--rotationDeg)) translate(4px, -4px);;
+
+    .screw{
+        position: relative;
+        margin-top: 2px;
+        margin-left: 12px;
+        height: 6px;
+        aspect-ratio: 1;
+        border-radius: 50%;
+        background-color: #81b7c3;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 1px -0.5px 1px rgb(0 0 0 / 80%);
+    
+        &::before {
+            content: "";
+            position: absolute;
+            display: block;
+            width: 0.5px;
+            height: inherit;
+            background-color: black;
+            transition: transform 0.3s;
+            transform: rotate(calc(var(--rotationDeg) + 30deg));
+        }
+    }
+  }
+</style>

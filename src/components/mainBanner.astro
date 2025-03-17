@@ -1,114 +1,265 @@
 ---
-import { Image } from "astro:assets";
+import Title from "./title.astro";
+import Asterisk from "../assets/asterisk.svg";
 
-import reversim25Icon from "../assets/reversim-25-icon.png";
-import backgroundOverlay from "../assets/background-overlay.png";
+import rs24Image from "../assets/reversim24-image.png";
+import teadsLogo from "../assets/sponsors/teads/logo.png";
+import { getImage, Image } from "astro:assets";
+
+const optimizedRS24Image = await getImage({ src: rs24Image, width: 1920 });
+const optimizedRS24URL = `url(${optimizedRS24Image.src})`;
 ---
 
+<script src="https://flackr.github.io/scroll-timeline/dist/scroll-timeline.js"
+></script>
 <div class="main-banner">
-  <Image class="overlay" height={500} alt="" src={backgroundOverlay} />
-
-  <div id="container">
-    <Image class="rv-icon" alt="" src={reversim25Icon} />
-
-    <div class="event-details">
-      <p class="date">Coming Soon</p>
-      <p class="location">Tel Aviv</p>
+  <div class="hero-container">
+    <div class="title-container">
+      <h2 class="title green">REVERSIM</h2>
+      <h2 class="title orange">FALL</h2>
+      <h2 class="title blue">SUMMIT<p class="title pink"><Asterisk /></p></h2>
     </div>
     <a
-      class="header-btn"
+      class="hero-btn"
       target="_blank"
       href="https://forms.gle/1g5241NGBTaXyAPp8"
     >
       <button> Become a Sponsor! </button>
+      <div class="wave"></div>
     </a>
+  </div>
+
+  <div class="sponsors card-background card">
+    <div class="description-container">
+      <p class="event-description" id="about">
+        Reversim Summit 2025 (RS25) is a community driven event in Israel for
+        software developers, product managers, data scientists and everyone else
+        in the software industry. With an enthusiastic team of volunteers we've
+        been creating a content-first software conferences since 2013 and
+        successfully leading the market. Reversim Summit (RS) is not for profit
+        and its sole purpose is to enrich the community with content and
+        networking. We are grateful to have such an excellent top of the
+        industry team of volunteer moderators and event organizers.
+      </p>
+      <Title style="margin: 20px 0 15px" title="Sponsors" id="sponsors" />
+      <!-- <a data-astro-prefetch href={`/sponsors/teads`} class="member"> -->
+      <Image
+        class="sponsor-logo teads"
+        src={teadsLogo}
+        width={400}
+        height={1000}
+        alt="Game Changer Sponsor"
+      />
+      <!-- </a> -->
+      <!-- <Title style="margin: 20px 0 15px" title="Sponsors" id="sponsors" /> -->
+    </div>
   </div>
 </div>
 
-<style lang="scss">
+<style lang="scss" define:vars={{ optimizedRS24URL }}>
   .main-banner {
-    position: relative;
-    padding: 20px 10%;
-  }
-
-  .overlay {
-    object-fit: cover;
-    position: absolute;
-    top: 0;
-    left: 0;
-    max-height: 100%;
-    width: 100%;
-  }
-
-  #container {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 15px 0;
-    max-width: var(--max-container-width);
-    margin: auto;
-    position: relative;
-    z-index: 1;
-  }
-
-  .rv-icon {
-    width: 100%;
-    height: 230px;
-    object-fit: contain;
-    grid-column: 1/4;
-  }
-
-  .event-details {
-    grid-column: 1/3;
-    display: flex;
-    height: 100px;
-
-    align-self: center;
-
-    background-color: rgba(232, 234, 237, 0.16);
-    border: 1px solid #74a6de;
-
-    .date,
-    .location {
-      color: #ffffff;
-      font-size: 20px;
-
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      margin: 0;
-      flex: 1;
-      height: 100%;
-    }
-    p + p {
+    .hero-container {
       position: relative;
+      padding: 40px 10% 100px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+
+      .title-container {
+        font-size: 80px;
+        font-weight: 700;
+        .title {
+          width: max-content;
+          font-size: 1em;
+          font-weight: inherit;
+          margin: 0 auto;
+          line-height: 1;
+
+          &.green {
+            color: var(--green);
+            transform: translateX(-0.7em);
+          }
+          &.orange {
+            color: var(--orange);
+            transform: translateX(1.83em);
+          }
+          &.blue {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 12px;
+            color: var(--blue);
+            transform: translateX(-1.76em);
+          }
+          &.pink {
+            width: 0.8em;
+            svg {
+              fill: var(--pink);
+            }
+          }
+        }
+        @media (max-width: 992px) {
+          font-size: 60px;
+        }
+
+        @media (max-width: 768px) {
+          font-size: 36px;
+        }
+      }
+    }
+
+    .card-background {
+      --border-height: 12px;
+      height: max-content;
+      width: 100%;
+      background-color: #171c3e;
+      clip-path: ellipse(133% 100% at 40% 100%);
+
+      position: relative;
+      padding: 8% 10%;
+      border-bottom: var(--border-height) solid #9e9e9e;
+
+      &::after {
+        content: "";
+        position: absolute;
+        width: 100%;
+        height: var(--border-height);
+
+        background-image: linear-gradient(
+          to right,
+          #e4e4e4 60%,
+          rgba(255, 255, 255, 0) 0%
+        );
+        top: calc(100% + var(--border-height) / 2);
+        right: 0;
+
+        background-size: 12px 2px;
+        background-repeat: repeat-x;
+
+        animation: scrollBackground linear both;
+        animation-timeline: scroll(block root);
+      }
+
+      @keyframes scrollBackground {
+        0% {
+          background-position: 0% 0%;
+        }
+        100% {
+          background-position: 12% 0%;
+        }
+      }
+
       &::before {
         content: "";
-        height: 100%;
-        width: 3px;
-        background-color: #74a6de;
+        filter: grayscale(1);
+        background: var(--optimizedRS24URL);
+        clip-path: ellipse(133% 100% at 40% 100%);
+
+        background-size: 128%;
+        background-position: center;
         position: absolute;
+        width: 100%;
+        height: 100%;
         top: 0;
-        left: 0;
+        right: 0;
+        opacity: 0.3;
+        z-index: -1;
+      }
+
+      .description-container {
+        max-width: var(--max-container-width);
+        margin: auto;
+
+        .event-description {
+          color: white;
+          font-weight: 400;
+          font-size: 16px;
+          max-width: 64%;
+
+          @media screen and (max-width: 768px) {
+            max-width: 95%;
+          }
+        }
+        .title-container {
+          margin-top: 40px;
+        }
+      }
+
+      .sponsor-logo {
+        margin: 12px 0;
+        object-fit: contain;
+        width: 200px;
+        height: auto;
       }
     }
   }
-  .header-btn {
+  .hero-btn {
+    position: relative;
     border: none;
-    width: max-content;
+    width: 286px;
     align-self: center;
     justify-self: center;
-    padding: 20px 30px;
-    border-radius: 30px;
+    border-radius: 50px;
+    margin-top: 60px;
 
-    background-color: #cccccc;
+    background-color: #bc659a;
     cursor: pointer;
+    box-shadow: 4px 4px 5px #aaaeaf;
+
+    .wave {
+      position: absolute;
+      background-color: #ba4e6c;
+      border-radius: 30px 30px 0;
+      width: 50%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      z-index: 1;
+
+      // TODO - improve wave
+      &::after {
+        content: "";
+        content: "";
+        position: absolute;
+        width: 17px;
+        height: 100%;
+        right: 0px;
+        top: 0px;
+        background-color: #bc659a;
+        border-radius: 0px 500%;
+        rotate: -2deg;
+      }
+      &::before {
+        content: "";
+        content: "";
+        position: absolute;
+        width: 17px;
+        height: 100%;
+        right: -5px;
+        top: 0px;
+        background-color: #bc659a;
+        border-radius: 0px 500%;
+        rotate: -2deg;
+      }
+    }
 
     button {
+      color: white;
       background: none;
       border: none;
       cursor: pointer;
-      font-size: 14px;
+      font-size: 18px;
+
       font-weight: bold;
+      padding: 10px 32px;
+      margin: auto;
+      display: block;
+
+      position: relative;
+      z-index: 2;
+
+      border-right: 3px solid white;
+      border-left: 3px solid white;
     }
   }
 </style>

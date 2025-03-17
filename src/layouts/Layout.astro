@@ -9,6 +9,12 @@ import MainBanner from "../components/mainBanner.astro";
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
     <meta name="generator" content={Astro.generator} />
     <title>Reversim 2025</title>
   </head>
@@ -27,10 +33,13 @@ import MainBanner from "../components/mainBanner.astro";
     --breakpoint-medium: 768px;
     --breakpoint-large: 992px;
     --breakpoint-x-large: 1200px;
-    
+
     --max-container-width: 1000px;
-    --main-blue: #1f1747;
-    --main-orange: #f27127;
+
+    --pink: #fd6a82;
+    --orange: #fd844c;
+    --green: #81c47a;
+    --blue: #506592;
   }
 
   html,
@@ -38,12 +47,13 @@ import MainBanner from "../components/mainBanner.astro";
     margin: 0;
     width: 100%;
     height: 100%;
-    font-family: Questrial, sans-serif;
+    font-family: Montserrat, sans-serif;
     font-weight: 100;
   }
 
   body {
-    background-color: #cddcf0;
+    background-image: url("../assets/dot-grid.png");
+
     position: relative;
   }
 
