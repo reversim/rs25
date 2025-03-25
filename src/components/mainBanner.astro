@@ -19,6 +19,9 @@ const optimizedRS24URL = `url(${optimizedRS24Image.src})`;
       <h2 class="title orange">FALL</h2>
       <h2 class="title blue">SUMMIT<p class="title pink"><Asterisk /></p></h2>
     </div>
+    <div class="event-date">
+      <p>October 27-28 2025</p>
+    </div>
     <a
       class="hero-btn"
       target="_blank"
@@ -98,12 +101,27 @@ const optimizedRS24URL = `url(${optimizedRS24Image.src})`;
             }
           }
         }
+
         @media (max-width: 992px) {
           font-size: 60px;
         }
 
         @media (max-width: 768px) {
           font-size: 36px;
+        }
+      }
+
+      .event-date {
+        margin-top: 40px;
+        font-weight: 600;
+        font-size: 32px;
+        p {
+          text-align: center;
+          text-shadow: 1px 1px 3px grey;
+        }
+
+        @media (max-width: 768px) {
+          font-size: 24px;
         }
       }
     }
