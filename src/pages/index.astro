@@ -128,6 +128,12 @@ const teamMembers = await getTeamMembers();
 
     <div class="card">
       <Venue />
+      <footer>
+        <div class="footer-content">
+          <a class="header-link" href={"/coc"}>Code of conduct </a>
+          <p>All rights reserved 2025</p>
+        </div>
+      </footer>
     </div>
   </div>
 
@@ -198,6 +204,25 @@ const teamMembers = await getTeamMembers();
       height: 100%;
       max-width: 100%;
       object-fit: cover;
+    }
+  }
+
+  footer {
+    position: absolute;
+    background-color: var(--orange);
+    bottom: 0;
+    right: 0;
+    width: 100%;
+    padding: 18px 0px;
+
+    .footer-content {
+      max-width: var(--max-container-width);
+
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin: auto;
+      color: white;
     }
   }
 </style>
