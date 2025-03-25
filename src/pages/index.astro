@@ -128,14 +128,14 @@ const teamMembers = await getTeamMembers();
 
     <div class="card">
       <Venue />
-      <footer>
-        <div class="footer-content">
-          <a class="header-link" href={"/coc"}>Code of conduct </a>
-          <p>All rights reserved 2025</p>
-        </div>
-      </footer>
     </div>
   </div>
+  <footer>
+    <div class="footer-content">
+      <a class="header-link" href={"/coc"}>Code of conduct </a>
+      <p>All rights reserved 2025</p>
+    </div>
+  </footer>
 
   <script>
     import Splide from "@splidejs/splide";
@@ -208,7 +208,6 @@ const teamMembers = await getTeamMembers();
   }
 
   footer {
-  display: none;
     position: absolute;
     background-color: var(--orange);
     bottom: 0;
