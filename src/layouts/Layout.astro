@@ -1,6 +1,11 @@
 ---
 import Header from "../components/header.astro";
-import MainBanner from "../components/mainBanner.astro";
+
+interface Props {
+  havePadding?: boolean;
+}
+
+const { havePadding = true } = Astro.props;
 ---
 
 <!doctype html>
@@ -20,8 +25,7 @@ import MainBanner from "../components/mainBanner.astro";
   </head>
   <body>
     <Header />
-    {Astro.url.pathname === "/" && <MainBanner />}
-    <div class="body-container">
+    <div class={`body-container ${havePadding ? "have-padding" : ""}`}>
       <slot class="layout-container" />
     </div>
   </body>
@@ -59,10 +63,13 @@ import MainBanner from "../components/mainBanner.astro";
 
   .body-container {
     /* position: relative; */
-    padding: 20px 10% 0;
-    max-width: var(--max-container-width);
     margin: auto;
     box-sizing: unset;
+  }
+
+  .have-padding {
+    max-width: var(--max-container-width);
+    padding: 20px 10% 0;
   }
 
   * {

@@ -1,0 +1,174 @@
+---
+import { Image } from "astro:assets";
+import Title from "./title.astro";
+
+import Image1 from "../assets/past-events/image-1.png";
+import Image2 from "../assets/past-events/image-2.png";
+import Image3 from "../assets/past-events/image-3.png";
+import Image4 from "../assets/past-events/image-4.png";
+import Image5 from "../assets/past-events/image-5.png";
+import pastEvent from "../assets/past-events/background.png";
+import "glightbox/dist/css/glightbox.css";
+---
+
+<Image
+  class="past-event-background"
+  height={400}
+  src={pastEvent}
+  alt="Slide 4"
+/>
+<div class="past-events-container">
+  <Title
+    title="Past Events"
+    style="color: black; margin: 100px 0 0"
+    id="past-events"
+  />
+  <div class="splide-container">
+    <div class="splide">
+      <div class="splide__track">
+        <ul class="splide__list">
+          <li class="splide__slide">
+            <a href={"https://www.youtube.com/embed/gbcaCFO65Bo?si=_c-V6WTmXCb1ktut"} class="glightbox" data-gallery="past-events">
+              <iframe
+                id="yt-video"
+                width="100%"
+                height="100%"
+                src="https://www.youtube.com/embed/gbcaCFO65Bo?si=_c-V6WTmXCb1ktut"
+                title="YouTube video player"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                referrerpolicy="strict-origin-when-cross-origin"
+                allowfullscreen></iframe>
+            </a>
+          </li>
+
+          <li class="splide__slide">
+            <a href={Image1.src} class="glightbox" data-gallery="past-events">
+              <Image height={400} src={Image1} alt="Slide 2" />
+            </a>
+          </li>
+          <li class="splide__slide">
+            <a href={Image2.src} class="glightbox" data-gallery="past-events">
+              <Image height={400} src={Image2} alt="Slide 3" />
+            </a>
+          </li>
+          <li class="splide__slide">
+            <a href={Image3.src} class="glightbox" data-gallery="past-events">
+              <Image height={400} src={Image3} alt="Slide 4" />
+            </a>
+            <li class="splide__slide">
+              <a href={Image4.src} class="glightbox" data-gallery="past-events">
+                <Image height={400} src={Image4} alt="Slide 5" />
+              </a>
+            </li>
+            <li class="splide__slide">
+              <a href={Image5.src} class="glightbox" data-gallery="past-events">
+                <Image height={400} src={Image5} alt="Slide 6" />
+              </a>
+            </li>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <script>
+      import GLightbox from "glightbox";
+      import Splide from "@splidejs/splide";
+
+      document.addEventListener("DOMContentLoaded", () => {
+        GLightbox({ selector: ".glightbox" });
+
+        new Splide(".splide", {
+          type: "loop",
+          autoplay: true,
+          interval: 3000,
+          arrows: true,
+          pagination: true,
+          perPage: 2,
+          perMove: 2,
+          gap: "1rem",
+          rewind: true,
+          padding: { right: "20%" }, // Ensures the last item is half visible
+          breakpoints: {
+            768: {
+              arrows: false,
+              perPage: 1,
+              padding: { right: "0%" },
+            },
+          },
+        }).mount();
+      });
+    </script>
+  </div>
+
+  <style lang="scss">
+    .past-event-background {
+      position: absolute;
+      width: 55%;
+      min-width: 300px;
+      max-width: 800px;
+      height: auto;
+      object-fit: contain;
+      opacity: 0.4;
+      filter: brightness(1.5);
+      right: -26%;
+      bottom: 0;
+      transform: translateY(25%);
+
+      @media screen and (max-width: 1280px) {
+        width: 45%;
+        right: -10%;
+        transform: translateY(10%);
+      }
+      @media screen and (max-width: 992px) {
+        top: 40%;
+        transform: translateY(0%);
+      }
+    }
+
+    .past-events-container {
+      max-width: var(--max-container-width);
+      margin: auto;
+      position: relative;
+
+      @media screen and (max-width: 1280px) {
+        padding: 20px 10% 0;
+      }
+
+      .splide-container {
+        width: 100%;
+        padding-top: 60px;
+        margin: auto;
+
+        .splide__list {
+          height: 250px;
+        }
+
+        .splide {
+          position: relative;
+
+          &::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            right: -6px;
+            width: 20px; /* Adjust as needed */
+            height: 100%;
+            background: linear-gradient(
+              to left,
+              white 50%,
+              rgba(255, 255, 255, 0) 100%
+            );
+            pointer-events: none; /* Prevent interaction */
+          }
+        }
+
+        img {
+          height: 100%;
+          max-width: 100%;
+          object-fit: cover;
+        }
+      }
+    }
+  </style>
+</div>

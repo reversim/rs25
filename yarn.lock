@@ -1248,6 +1248,11 @@ github-slugger@^2.0.0:
   resolved "https://registry.npmjs.org/github-slugger/-/github-slugger-2.0.0.tgz"
   integrity sha512-IaOQ9puYtjrkq7Y0Ygl9KDZnrf/aiUJYUpVf89y8kyaxbRG7Y1SrX/jaumrv81vc61+kiMempujsM3Yw7w5qcw==
 
+glightbox@^3.3.1:
+  version "3.3.1"
+  resolved "https://registry.yarnpkg.com/glightbox/-/glightbox-3.3.1.tgz#01d4c01394e437ac61792dc88fadca2e3f433eae"
+  integrity sha512-nXoKfJRnQTDaAFAw5799hjpfAAHx5aLvOLG0SIGudeMCwtHgO3P2/avNYapJ+SL4UEZxO2YNBPtq6pzMhSx42g==
+
 google-auth-library@^9.0.0, google-auth-library@^9.7.0:
   version "9.15.0"
   resolved "https://registry.npmjs.org/google-auth-library/-/google-auth-library-9.15.0.tgz"
