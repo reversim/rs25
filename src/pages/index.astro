@@ -22,10 +22,19 @@ const teamMembers = await getTeamMembers();
   * {
     scroll-margin-top: 100px;
   }
-  .presentation .splide__pagination__page {
-    width: 12px;
-    height: 12px;
-    background: #1e1e1e; /* Custom color */
+
+  .splide__pagination {
+    bottom: -3em;
+    width: max-content;
+    margin: auto;
+  }
+  .splide__pagination li {
+    display: flex;
+  }
+  .splide__pagination__page {
+    height: 10px;
+    width: 10px;
+    background: #1d2244; /* Custom color */
     border-radius: 50%;
     opacity: 0.5;
     transition:
@@ -34,9 +43,9 @@ const teamMembers = await getTeamMembers();
   }
 
   .splide__pagination__page.is-active {
-    background: #002366; /* Change color for active */
+    background: #7eb9bf; /* Change color for active */
     opacity: 1;
-    transform: scale(1.3);
+    transform: scale(1);
   }
 
   .splide__arrows {
@@ -93,8 +102,6 @@ const teamMembers = await getTeamMembers();
       <p>All rights reserved 2025</p>
     </div>
   </footer>
-
- 
 </Layout>
 
 <style lang="scss">
