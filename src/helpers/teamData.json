@@ -75,9 +75,9 @@
   },
   {
     "name": "Victor Trakhtenberg",
-    "title": "VP R&D at PayEm",
-    "company": "PayEm",
-    "bio": "I am a software engineering manager with vast experience leading people, products, and processes. Served as a VP of Engineering at Next Insurance, leading the Growth Engineering organization as well as VP of Technology, responsible for engineering excellence. Before this role, I led the development of Personalization Products at Taboola, following its acquisition of Commerce Sciences in which I served as a VP R&D. Co-founded the JavaIL community (www.meetup.com/JavaIL/). Co-organizer of the Reversim Summit 2016, moderator 2014, 2015, 2017, 2019 and 2024",
+    "title": "VP Engineering",
+    "company": "Guardz",
+    "bio": "I am a software engineering leader with extensive experience in guiding people, products, and processes. Passionate about technology, implementation, and deployment methodologies, I thrive on building products and teams that achieve business goals while fostering a strong organizational culture. Currently, I serve as VP Engineering at Guardz. Prior to this, I was a VP R&D at PayEm and VP Engineering at Next Insurance. Before that, I led the development of Personalization Products at Taboola, following its acquisition of Commerce Sciences, where I served as VP R&D.\n\nI also co-founded the JavaIL community (www.meetup.com/JavaIL/) and have been actively involved in the Reversim Summit. As a co-organizer of Reversim Summit 2016, I was responsible for conference content and moderated sessions in 2014, 2015, 2017, 2019, and 2024.",
     "linkedin": "https://www.linkedin.com/in/victortrakhtenberg/",
     "twitter": "",
     "bluesky": "",
@@ -98,7 +98,7 @@
   },
   {
     "name": "Inbar Danieli",
-    "title": "FrontEnd Developer",
+    "title": "Software Developer",
     "company": "Common Ninja",
     "bio": "Developer, CSS enthusiast, and cat lover.",
     "linkedin": "https://www.linkedin.com/in/inbar-danieli/",
@@ -201,8 +201,8 @@
   },
   {
     "name": "Aielet Efrati",
-    "title": "Principal Algorithm Developer",
-    "company": "viz.ai",
+    "title": "AI researcher",
+    "company": "Sheba Medical Center",
     "bio": "Algorithm Developer & MeDS community Co-Founder",
     "linkedin": "https://www.linkedin.com/in/aielet-efrati-3ab00570/",
     "twitter": "",
