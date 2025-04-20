@@ -24,16 +24,18 @@ const { havePadding = true } = Astro.props;
     <title>Reversim 2025</title>
 
     <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-PSS53H641T"
-    ></script>
-    <script>
-      (window as any).dataLayer = (window as any).dataLayer || [];
+    <script
+      type="text/partytown"
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-PSS53H641T"></script>
+    <script type="text/partytown">
+      window.dataLayer = window.dataLayer || [];
       function gtag() {
-        (window as any).dataLayer.push(arguments);
+        window.dataLayer.push(arguments);
       }
-      (gtag as any)("js", new Date());
+      gtag("js", new Date());
 
-      (gtag as any)("config", "G-PSS53H641T");
+      gtag("config", "G-PSS53H641T");
     </script>
   </head>
   <body>
