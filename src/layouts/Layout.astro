@@ -1,5 +1,6 @@
 ---
 import Header from "../components/header.astro";
+import STDImage from "../assets/std-image.png";
 
 interface Props {
   havePadding?: boolean;
@@ -14,7 +15,12 @@ const { havePadding = true } = Astro.props;
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" type="image/svg+xml" href="/favicon-dark-mode.svg" />
-    <link rel="icon" type="image/svg+xml" href="/favicon-light-mode.svg" media="(prefers-color-scheme: light)" />
+    <link
+      rel="icon"
+      type="image/svg+xml"
+      href="/favicon-light-mode.svg"
+      media="(prefers-color-scheme: light)"
+    />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -23,6 +29,12 @@ const { havePadding = true } = Astro.props;
     />
     <meta name="generator" content={Astro.generator} />
     <title>Reversim 2025</title>
+
+    <meta property="og:title" content="Reversim 2025" />
+    <meta property="og:description" content="Reversim 2025" />
+    <meta property="og:image" content={STDImage.src} />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://summit2025.reversim.com/" />
 
     <!-- Google tag (gtag.js) -->
     <script
