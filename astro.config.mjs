@@ -5,9 +5,7 @@ import partytown from "@astrojs/partytown";
 // https://astro.build/config
 export default defineConfig({
   prefetch: true,
-  experimental: {
-    svg: true,
-  },
+  site: "https://summit2025.reversim.com",
   integrations: [
     partytown({
       config: {
