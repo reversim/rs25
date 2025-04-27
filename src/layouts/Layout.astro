@@ -1,6 +1,7 @@
 ---
 import Header from "../components/header.astro";
 import STDImage from "../assets/std.png";
+import { Font } from "astro:assets";
 
 interface Props {
   havePadding?: boolean;
@@ -23,10 +24,7 @@ const { havePadding = true } = Astro.props;
     />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
-      rel="stylesheet"
-    />
+    <Font cssVariable="--font-montserrat" preload />
     <meta name="generator" content={Astro.generator} />
     <title>Reversim 2025</title>
 
@@ -85,7 +83,7 @@ const { havePadding = true } = Astro.props;
     margin: 0;
     width: 100%;
     height: 100%;
-    font-family: Montserrat, sans-serif;
+    font-family: var(--font-montserrat), sans-serif;
     font-weight: 100;
   }
 
