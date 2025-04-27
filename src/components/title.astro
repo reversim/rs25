@@ -9,13 +9,15 @@ interface Props {
 const { title, titleColor, style, id } = Astro.props;
 ---
 
-<h3
-  style=`color:${titleColor || "white"}; ${style}`
-  class="title-container"
-  id={id}
->
-  {title}
-</h3>
+<a href={`#${id}`}>
+  <h3
+    style={`color:${titleColor || "white"}; ${style}`}
+    class="title-container"
+    id={id}
+  >
+    {title}
+  </h3>
+</a>
 
 <style lang="scss">
   .title-container {
