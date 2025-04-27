@@ -142,6 +142,13 @@ const teamMembers = await getTeamMembers();
       align-items: center;
       margin: auto;
       color: white;
+
+      @media (max-width: 576px) {
+        flex-direction: column;
+        flex-wrap: wrap;
+        gap: 10px;
+        justify-content: center;
+      }
     }
   }
 </style>
