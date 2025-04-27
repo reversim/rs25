@@ -48,6 +48,11 @@ const { title, titleColor, style, id } = Astro.props;
 
     @media screen and (max-width: 768px) {
       width: 100%;
+
+      &::before {
+        width: 0.6em;
+        transform: translate(50%, calc(-50% - 3.5px));
+      }
     }
   }
 </style>
