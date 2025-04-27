@@ -1,7 +1,6 @@
 ---
 import HeaderLink from "./header-link.astro";
-import { Image } from "astro:assets";
-import reversim25Icon from "../assets/reversim-25-icon.svg";
+import Logo from "../assets/reversim-25-icon.svg";
 ---
 
 <script>
@@ -62,11 +61,15 @@ import reversim25Icon from "../assets/reversim-25-icon.svg";
 <div class="header">
   <div class="inner-container">
     <a data-astro-prefetch href="/">
-      <Image class="rv-icon" alt="Reversim 2025 Logo" src={reversim25Icon} />
+      <Logo class="rv-icon" fill="currentColor" />
     </a>
     <div class="navbar-container">
       <HeaderLink link="/#about" label="About" iconColor="#7ebec8" />
-      <HeaderLink link="/#sponsors" label="Sponsors" iconColor="var(--orange)" />
+      <HeaderLink
+        link="/#sponsors"
+        label="Sponsors"
+        iconColor="var(--orange)"
+      />
       <HeaderLink link="/#team" label="Team" iconColor="var(--green)" />
       <HeaderLink
         link="/#past-events"
