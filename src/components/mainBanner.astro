@@ -6,8 +6,16 @@ import rs24Image from "../assets/reversim24-image.png";
 import teadsLogo from "../assets/sponsors/teads/logo.png";
 import { getImage, Image } from "astro:assets";
 
-const optimizedRS24Image = await getImage({ src: rs24Image, width: 1920 });
-const optimizedRS24URL = `url(${optimizedRS24Image.src})`;
+const optimizedRS24ImageMobile = await getImage({
+  src: rs24Image,
+  width: 1280,
+});
+const optimizedRS24ImageDesktop = await getImage({
+  src: rs24Image,
+  width: 1920,
+});
+const optimizedRS24URLMobile = `url(${optimizedRS24ImageMobile.src})`;
+const optimizedRS24URLDesktop = `url(${optimizedRS24ImageDesktop.src})`;
 ---
 
 <script src="https://flackr.github.io/scroll-timeline/dist/scroll-timeline.js"
@@ -67,7 +75,10 @@ const optimizedRS24URL = `url(${optimizedRS24Image.src})`;
   </div>
 </div>
 
-<style lang="scss" define:vars={{ optimizedRS24URL }}>
+<style
+  lang="scss"
+  define:vars={{ optimizedRS24URLMobile, optimizedRS24URLDesktop }}
+>
   .main-banner {
     .hero-container {
       position: relative;
@@ -178,7 +189,7 @@ const optimizedRS24URL = `url(${optimizedRS24Image.src})`;
       &::before {
         content: "";
         filter: grayscale(1);
-        background: var(--optimizedRS24URL);
+        background-image: var(--optimizedRS24URLDesktop);
         clip-path: ellipse(133% 100% at 40% 100%);
 
         background-size: 128%;
@@ -206,6 +217,9 @@ const optimizedRS24URL = `url(${optimizedRS24Image.src})`;
           @media screen and (max-width: 768px) {
             max-width: 95%;
           }
+          @media screen and (max-width: 576px) {
+            padding-top: 24px;
+          }
         }
         .title-container {
           margin-top: 40px;
@@ -217,6 +231,14 @@ const optimizedRS24URL = `url(${optimizedRS24Image.src})`;
         object-fit: contain;
         width: 200px;
         height: auto;
+      }
+
+      @media (max-width: 768px) {
+        &::before {
+          background-image: var(--optimizedRS24URLMobile);
+          background-repeat: no-repeat;
+          background-size: cover;
+        }
       }
     }
   }
