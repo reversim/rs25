@@ -22,14 +22,24 @@ const optimizedRS24URL = `url(${optimizedRS24Image.src})`;
     <div class="event-date">
       <p>October 27-28, 2025</p>
     </div>
-    <a
-      class="hero-btn"
-      target="_blank"
-      href="https://forms.gle/1g5241NGBTaXyAPp8"
-    >
-      <button> Become a Sponsor! </button>
-      <div class="wave"></div>
-    </a>
+    <div class="hero-btn-container">
+      <a
+        class="hero-btn sponsor"
+        target="_blank"
+        href="https://forms.gle/1g5241NGBTaXyAPp8"
+      >
+        <button> Become a Sponsor! </button>
+        <div class="wave"></div>
+      </a>
+      <a
+        class="hero-btn speaker"
+        target="_blank"
+        href="https://sessionize.com/reversim-summit-2025/"
+      >
+        <button> Become a Speaker! </button>
+        <div class="wave"></div>
+      </a>
+    </div>
   </div>
 
   <div class="sponsors card-background card">
@@ -212,6 +222,13 @@ const optimizedRS24URL = `url(${optimizedRS24Image.src})`;
       }
     }
   }
+
+  .hero-btn-container {
+    display: flex;
+    justify-content: center;
+    gap: 60px;
+  }
+
   .hero-btn {
     position: relative;
     border: none;
@@ -224,6 +241,17 @@ const optimizedRS24URL = `url(${optimizedRS24Image.src})`;
     background-color: #bc659a;
     cursor: pointer;
     box-shadow: 4px 4px 5px #aaaeaf;
+
+    &.speaker {
+      background-color: var(--orange);
+      
+      .wave {
+        background-color: #f69b91;
+        &::after, &::before {
+          background-color: var(--orange);
+        }
+      }
+    }
 
     .wave {
       position: absolute;
