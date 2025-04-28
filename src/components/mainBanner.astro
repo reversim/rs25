@@ -14,8 +14,12 @@ const optimizedRS24ImageDesktop = await getImage({
   src: rs24Image,
   width: 1920,
 });
-const optimizedRS24URLMobile = `url(${optimizedRS24ImageMobile.src})`;
-const optimizedRS24URLDesktop = `url(${optimizedRS24ImageDesktop.src})`;
+
+const cssVars = `
+.card-background {
+    --optimizedRS24URLMobile: url(${optimizedRS24ImageMobile.src});
+    --optimizedRS24URLDesktop: url(${optimizedRS24ImageDesktop.src})
+    }`
 ---
 
 <script src="https://flackr.github.io/scroll-timeline/dist/scroll-timeline.js"
@@ -24,7 +28,7 @@ const optimizedRS24URLDesktop = `url(${optimizedRS24ImageDesktop.src})`;
   <div class="hero-container">
     <div class="title-container">
       <h2 class="title green">REVERSIM</h2>
-      <h2 class="title orange">FALL</h2>
+      <h2 class="title orange">AUTUMN</h2>
       <h2 class="title blue">SUMMIT<p class="title pink"><Asterisk /></p></h2>
     </div>
     <div class="event-date">
@@ -62,7 +66,7 @@ const optimizedRS24URLDesktop = `url(${optimizedRS24ImageDesktop.src})`;
         networking. We are grateful to have such an excellent top of the
         industry team of volunteer moderators and event organizers.
       </p>
-      <Title style="margin: 20px 0 15px" title="Sponsors" id="sponsors" />
+      <Title style="margin: 25px 0 30px" title="Sponsors" id="sponsors" />
       <!-- <a data-astro-prefetch href={`/sponsors/teads`} class="member"> -->
       <Image
         class="sponsor-logo teads"
@@ -73,12 +77,12 @@ const optimizedRS24URLDesktop = `url(${optimizedRS24ImageDesktop.src})`;
       />
     </div>
   </div>
+
 </div>
 
-<style
-  lang="scss"
-  define:vars={{ optimizedRS24URLMobile, optimizedRS24URLDesktop }}
->
+<style set:html={cssVars}></style>
+
+<style lang="scss">
   .main-banner {
     .hero-container {
       position: relative;
@@ -103,7 +107,7 @@ const optimizedRS24URLDesktop = `url(${optimizedRS24ImageDesktop.src})`;
           }
           &.orange {
             color: var(--orange);
-            transform: translateX(1.83em);
+            transform: translateX(1.71em);
           }
           &.blue {
             display: flex;
@@ -111,7 +115,7 @@ const optimizedRS24URLDesktop = `url(${optimizedRS24ImageDesktop.src})`;
             align-items: center;
             gap: 12px;
             color: var(--blue);
-            transform: translateX(-1.76em);
+            transform: translateX(-1.47em);
           }
           &.pink {
             width: 0.8em;
@@ -198,9 +202,9 @@ const optimizedRS24URLDesktop = `url(${optimizedRS24ImageDesktop.src})`;
         z-index: -1;
 
         background: linear-gradient(
-            30deg,
+            122deg,
             black 0%,
-            #00000099 30%,
+            rgba(0, 0, 0 ,0.8) 30%,
             transparent 100%
           ),
           var(--optimizedRS24URLDesktop);
@@ -255,11 +259,11 @@ const optimizedRS24URLDesktop = `url(${optimizedRS24ImageDesktop.src})`;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 60px;
+    gap: 40px;
     margin-top: 60px;
 
     @media (max-width: 768px) {
-      gap: 40px;
+      gap: 20px;
     }
   }
 
@@ -271,9 +275,22 @@ const optimizedRS24URLDesktop = `url(${optimizedRS24ImageDesktop.src})`;
     justify-self: center;
     border-radius: 50px;
 
-    background-color: #bc659a;
+    background-color: #e75a80;
     cursor: pointer;
     box-shadow: 4px 4px 5px #aaaeaf;
+    transition: all 0.15s ease-in;
+
+    .wave, .wave:before, .wave:after {
+      opacity: 1;
+      transition: all 0.15s ease-in;
+    }
+
+    &:hover {
+      filter: brightness(1.2);
+      .wave{
+        opacity: 0;
+      }
+    }
 
     &.speaker {
       background-color: var(--orange);
@@ -289,7 +306,7 @@ const optimizedRS24URLDesktop = `url(${optimizedRS24ImageDesktop.src})`;
 
     .wave {
       position: absolute;
-      background-color: #ba4e6c;
+      background-color: #d95579;
       border-radius: 30px 30px 0;
       width: 50%;
       height: 100%;
@@ -306,7 +323,7 @@ const optimizedRS24URLDesktop = `url(${optimizedRS24ImageDesktop.src})`;
         height: 100%;
         right: 0px;
         top: 0px;
-        background-color: #bc659a;
+        background-color: #e75a80;
         border-radius: 0px 500%;
         rotate: -2deg;
       }
@@ -318,7 +335,7 @@ const optimizedRS24URLDesktop = `url(${optimizedRS24ImageDesktop.src})`;
         height: 100%;
         right: -5px;
         top: 0px;
-        background-color: #bc659a;
+        background-color: #e75a80;
         border-radius: 0px 500%;
         rotate: -2deg;
       }
