@@ -189,7 +189,13 @@ const optimizedRS24URLDesktop = `url(${optimizedRS24ImageDesktop.src})`;
       &::before {
         content: "";
         filter: grayscale(1);
-        background-image: var(--optimizedRS24URLDesktop);
+        background: linear-gradient(
+            30deg,
+            black 0%,
+            #00000099 30%,
+            transparent 100%
+          ),
+          var(--optimizedRS24URLDesktop);
         clip-path: ellipse(133% 100% at 40% 100%);
 
         background-size: 128%;
@@ -271,7 +277,7 @@ const optimizedRS24URLDesktop = `url(${optimizedRS24ImageDesktop.src})`;
       background-color: var(--orange);
 
       .wave {
-        background-color: #FA744D;
+        background-color: #fa744d;
         &::after,
         &::before {
           background-color: var(--orange);
