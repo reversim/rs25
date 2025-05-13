@@ -22,17 +22,33 @@ const cssVars = `
     }`
 ---
 
-<script src="https://flackr.github.io/scroll-timeline/dist/scroll-timeline.js"
-></script>
+<script src="https://flackr.github.io/scroll-timeline/dist/scroll-timeline.js"></script>
+<script src="http://localhost:8080/reversim-machine.umd.js"></script>
+
+<script is:inline>
+  document.addEventListener('DOMContentLoaded', async () => {
+        ReversimMachine.init(document.querySelector("#machine"), {
+        debug: false
+      });
+    }
+    );
+
+</script>
+
 <div class="main-banner">
   <div class="hero-container">
-    <div class="title-container">
-      <h2 class="title green">REVERSIM</h2>
-      <h2 class="title orange">AUTUMN</h2>
-      <h2 class="title blue">SUMMIT<p class="title pink"><Asterisk /></p></h2>
-    </div>
-    <div class="event-date">
-      <p>October 27-28, 2025</p>
+    <div class="hero-content">
+      <div id="machine"></div>
+      <div class="right">
+        <div class="title-container">
+          <h2 class="title green">REVERSIM</h2>
+          <h2 class="title orange">AUTUMN</h2>
+          <h2 class="title blue">SUMMIT<p class="title pink"><Asterisk /></p></h2>
+        </div>
+        <div class="event-date">
+          <p>October 27-28, 2025</p>
+        </div>
+      </div>
     </div>
     <div class="hero-btn-container">
       <a
@@ -82,15 +98,37 @@ const cssVars = `
 
 <style set:html={cssVars}></style>
 
+<style is:global>
+.hero-content {
+    display: flex;
+    #machine {
+      position: relative;
+      top: -97px;
+      aspect-ratio: 1;
+      flex: 1;
+      max-width: 700px;
+    }
+    canvas {
+      width: 100%;
+      height: 100%;
+    }
+  }
+</style>
+
 <style lang="scss">
   .main-banner {
     .hero-container {
       position: relative;
-      padding: 40px 10% 100px;
+      padding: 40px 0 100px;
       display: flex;
       flex-direction: column;
       justify-content: center;
 
+      .right{
+        display: flex;
+        flex-direction: column;
+        padding-left: 100px;
+      }
       .title-container {
         font-size: 80px;
         font-weight: 700;
