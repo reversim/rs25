@@ -39,17 +39,11 @@ const {
   slug,
 } = Astro.props;
 
-const socialList: Record<string, string | undefined> = {
-  linkedin,
-  twitter,
-  bluesky,
-  facebook,
-  github,
-  instagram,
-  website,
-  medium,
-  youtube,
-};
+const carouselImagesPromise = await Promise.all(
+  carouselImages.map(async (image) => {
+    return await getImage({ src: image, width: 800, height: 600 });
+  })
+);
 ---
 
 <Layout havePadding={false}>
@@ -87,76 +81,36 @@ const socialList: Record<string, string | undefined> = {
             <div class="splide__track">
               <ul class="splide__list">
                 {
-                  carouselImages.map((image, index) => (
+                  carouselImagesPromise.map((image, index) => (
                     <li class="splide__slide">
-                      <a
-                        href={image as any}
-                        class="glightbox"
-                        data-gallery="past-events"
-                      >
-                        <Image
-                          height={400}
-                          src={image}
-                          alt={`${companyName} image ${index + 1}`}
-                        />
-                      </a>
+                      <Image
+                        width={800}
+                        height={600}
+                        src={image.src}
+                        alt={`${companyName} image ${index + 1}`}
+                      />
                     </li>
                   ))
                 }
               </ul>
             </div>
           </div>
-
-          <script>
-            import GLightbox from "glightbox";
-            import Splide from "@splidejs/splide";
-
-            document.addEventListener("DOMContentLoaded", () => {
-              GLightbox({
-                selector: ".glightbox",
-                draggable: true,
-              });
-
-              new Splide(".splide", {
-                type: "loop",
-                autoplay: true,
-                interval: 3000,
-                arrows: true,
-                pagination: true,
-                perPage: 2,
-                perMove: 2,
-                gap: "1rem",
-                rewind: true,
-                padding: { right: "20%" }, // Ensures the last item is half visible
-                breakpoints: {
-                  768: {
-                    arrows: false,
-                    perPage: 1,
-                    padding: { right: "0%" },
-                    perMove: 1,
-                  },
-                },
-              }).mount();
-            });
-          </script>
         </div>
 
         <div class="open-positions">
           <Title title="Open Positions" style="margin-top: 20px;" />
           <div class="positions-wrapper">
             {
-              openPositions.map(
-                (position) => (
-                  <a
-                    target="_blank"
-                    href={position.positionLink}
-                    class="position-card"
-                  >
-                    <h3>{position.position}</h3>
-                    <p>{position.location}</p>
-                  </a>
-                )
-              )
+              openPositions.map((position) => (
+                <a
+                  target="_blank"
+                  href={position.positionLink}
+                  class="position-card"
+                >
+                  <h3>{position.position}</h3>
+                  <p>{position.location}</p>
+                </a>
+              ))
             }
           </div>
         </div>
@@ -188,6 +142,33 @@ const socialList: Record<string, string | undefined> = {
     </div>
   </BackgroundMask>
 </Layout>
+
+<script>
+  import Splide from "@splidejs/splide";
+
+  document.addEventListener("DOMContentLoaded", () => {
+    new Splide(".splide", {
+      type: "loop",
+      autoplay: true,
+      interval: 3000,
+      arrows: true,
+      pagination: true,
+      perPage: 2,
+      perMove: 2,
+      gap: "1rem",
+      rewind: true,
+      padding: { right: "20%" }, // Ensures the last item is half visible
+      breakpoints: {
+        768: {
+          arrows: false,
+          perPage: 1,
+          padding: { right: "0%" },
+          perMove: 1,
+        },
+      },
+    }).mount();
+  });
+</script>
 
 <style lang="scss">
   .company-logo {
