@@ -42,7 +42,7 @@ export async function getSponsors() {
     });
 
     const carouselImages = sponsor.carouselImages.map((image) => {
-      return import(`../assets/sponsors/${sponsorSlug}/${image}`);
+      return import(`../assets/sponsors/${sponsorSlug}/${image}.png`);
     });
 
     return {
