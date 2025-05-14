@@ -3,7 +3,7 @@ import sponsorsData from "./sponsersData.json";
 
 export interface sponsorData {
   companyName: string;
-  desorption: string;
+  description: string;
   website: string;
   companyNameLogo: string;
   carouselImages: string[];
@@ -32,10 +32,25 @@ export async function getSponsors() {
   return sponsorsData.map((sponsor) => {
     const sponsorSlug = slug(sponsor.companyName);
 
+    const testimonials = sponsor.testimonials.map((testimonial) => {
+      return {
+        ...testimonial,
+        image: import(
+          `../assets/sponsors/${sponsorSlug}/${testimonial.image}.png`
+        ),
+      };
+    });
+
+    const carouselImages = sponsor.carouselImages.map((image) => {
+      return import(`../assets/sponsors/${sponsorSlug}/${image}`);
+    });
+
     return {
       ...sponsor,
       slug: sponsorSlug,
-      image: import(`../assets/sponsors/${sponsorSlug}/logo.png`),
+      companyNameLogo: import(`../assets/sponsors/${sponsorSlug}/logo.png`),
+      testimonials,
+      carouselImages,
     };
   });
 }

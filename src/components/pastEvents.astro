@@ -115,7 +115,7 @@ import "glightbox/dist/css/glightbox.css";
               arrows: false,
               perPage: 1,
               padding: { right: "0%" },
-              perMove: 1
+              perMove: 1,
             },
           },
         }).mount();
@@ -181,15 +181,15 @@ import "glightbox/dist/css/glightbox.css";
             content: "";
             position: absolute;
             top: 0;
-            right: -6px;
-            width: 20px; /* Adjust as needed */
+            right: 0px;
+            width: 60px; /* Adjust as needed */
             height: 100%;
             background: linear-gradient(
               to left,
-              white 50%,
+              rgba(255, 255, 255, 80%) 0%,
               rgba(255, 255, 255, 0) 100%
             );
-            pointer-events: none; /* Prevent interaction */
+            pointer-events: none; 
           }
         }
 

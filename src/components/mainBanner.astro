@@ -3,8 +3,8 @@ import Title from "./title.astro";
 import Asterisk from "../assets/asterisk.svg";
 
 import rs24Image from "../assets/reversim24-image.png";
-import teadsLogo from "../assets/sponsors/teads/logo.png";
 import { getImage, Image } from "astro:assets";
+import { getSponsors } from "../helpers/getSponsors";
 
 const optimizedRS24ImageMobile = await getImage({
   src: rs24Image,
@@ -15,11 +15,13 @@ const optimizedRS24ImageDesktop = await getImage({
   width: 1920,
 });
 
+const sponsors = await getSponsors();
+
 const cssVars = `
 .card-background {
     --optimizedRS24URLMobile: url(${optimizedRS24ImageMobile.src});
     --optimizedRS24URLDesktop: url(${optimizedRS24ImageDesktop.src})
-    }`
+    }`;
 ---
 
 <script src="https://flackr.github.io/scroll-timeline/dist/scroll-timeline.js"
@@ -68,16 +70,22 @@ const cssVars = `
       </p>
       <Title style="margin: 25px 0 30px" title="Sponsors" id="sponsors" />
       <!-- <a data-astro-prefetch href={`/sponsors/teads`} class="member"> -->
-      <Image
-        class="sponsor-logo teads"
-        src={teadsLogo}
-        width={400}
-        height={1000}
-        alt="Game Changer Sponsor"
-      />
+
+      {
+        sponsors.map((sponsor) => (
+          <a href={`/sponsors/${sponsor.slug}`}>
+            <Image
+              class={`sponsor-logo ${sponsor.slug}`}
+              src={sponsor.companyNameLogo}
+              width={400}
+              height={1000}
+              alt="Game Changer Sponsor"
+            />
+          </a>
+        ))
+      }
     </div>
   </div>
-
 </div>
 
 <style set:html={cssVars}></style>
@@ -204,7 +212,7 @@ const cssVars = `
         background: linear-gradient(
             122deg,
             black 0%,
-            rgba(0, 0, 0 ,0.8) 30%,
+            rgba(0, 0, 0, 0.8) 30%,
             transparent 100%
           ),
           var(--optimizedRS24URLDesktop);
@@ -280,14 +288,15 @@ const cssVars = `
     box-shadow: 4px 4px 5px #aaaeaf;
     transition: all 0.15s ease-in;
 
-    .wave, .wave:before, .wave:after {
+    .wave,
+    .wave:before,
+    .wave:after {
       opacity: 1;
       transition: all 0.15s ease-in;
     }
 
     &:hover {
-      filter: brightness(1.2);
-      .wave{
+      .wave {
         opacity: 0;
       }
     }

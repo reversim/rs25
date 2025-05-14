@@ -1,26 +1,48 @@
 [
   {
-    "companyName": "teads",
-    "desorption": "",
-    "website": "",
-    "companyNameLogo": "",
-    "carouselImages": [""],
-    "technologyStack": [""],
-    "openPositions": [{ "position": "", "location": "", "positionLink": "" }],
-    "testimonials": [
+    "companyName": "Gettogther",
+    "description": "Gettogther is a company that offers various services such as Personalized calendar for events, happy Hours and gifts, lectures and experiences, meetups, large events and conferences, hackathons, parties, offsite in Israel abroad, project management and business delegations.",
+    "website": "https://www.instagram.com/gettogether.israel",
+    "carouselImages": [
+      "DSC_2836.jpeg",
+      "DSC_2916.jpeg",
+      "IMG_0621.jpeg",
+      "IMG_0990.jpeg",
+      "IMG_1712.jpeg",
+      "image-1.jpeg",
+      "IMG_0882.jpeg",
+      "IMG_1708.jpeg",
+      "N_H00222.jpeg"
+    ],
+    "technologyStack": [
+      "wellbeing",
+      "employeewelfare",
+      "EmployeeExperience",
+      "hackathon",
+      "conventions",
+      "hr"
+    ],
+    "openPositions": [
       {
-        "image": "",
-        "testimonialDescription": "",
-        "testimonialAuthor": "",
-        "position": ""
+        "position": "Administrative Assistant",
+        "location": "Tel Aviv, Israel",
+        "positionLink": "https://www.linkedin.com/company/gettogetherisrael/"
       }
     ],
-    "linkedin": "",
+    "testimonials": [
+      {
+        "image": "rivka-dudi",
+        "testimonialDescription": "When I founded GetTogether, I envisioned creating more than just another production company.  What started as a simple idea has blossomed into something extraordinary. Our success stems from understanding that in today's digital world, people crave authentic human connection, and GetTogether bridges that gap by making it effortless to make events that align with your interests and values.",
+        "testimonialAuthor": "Rivka Dudi",
+        "position": "Founder & CEO"
+      }
+    ],
+    "linkedin": "https://www.linkedin.com/company/gettogetherisrael",
     "bluesky": "",
     "facebook": "",
     "twitter": "",
     "meetup": "",
-    "instagram": "",
+    "instagram": "https://www.instagram.com/gettogether.israel",
     "youtube": "",
     "github": "",
     "medium": ""

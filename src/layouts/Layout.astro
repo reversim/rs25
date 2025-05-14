@@ -89,7 +89,8 @@ const { havePadding = true } = Astro.props;
   }
 
   body {
-    background-image: url("../assets/dot-grid.png");
+    background-image: radial-gradient(#d1cdcd 1px, transparent 1px);
+    background-size: 23px 23px;
 
     position: relative;
   }
@@ -130,5 +131,74 @@ const { havePadding = true } = Astro.props;
   a {
     text-decoration: none;
     color: inherit;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    height: auto;
+  }
+
+  * {
+    scroll-margin-top: 100px;
+  }
+
+  .splide__pagination {
+    bottom: -3em;
+    width: max-content;
+    margin: auto;
+  }
+  .splide__pagination li {
+    display: flex;
+  }
+  .splide__pagination__page {
+    height: 10px;
+    width: 10px;
+    background: #1d2244; /* Custom color */
+    border-radius: 50%;
+    opacity: 0.5;
+    transition:
+      transform 0.3s ease,
+      opacity 0.3s ease;
+  }
+
+  .splide__pagination__page:not(.is-active) {
+    border: 1px dashed white;
+  }
+
+  .splide__pagination__page.is-active {
+    background: #7eb9bf; /* Change color for active */
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  .splide__arrows {
+    position: absolute;
+    width: 100%;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    justify-content: space-between;
+    pointer-events: none; /* Ensures they don't interfere with image clicks */
+  }
+  .splide__arrow {
+    background: none;
+    pointer-events: auto; /* Allows clicking */
+  }
+  .splide__arrow svg {
+    fill: var(--pink); /* Arrow color */
+    font-size: 26px;
+  }
+  .splide__arrow--prev {
+    left: -50px; /* Moves previous arrow outside */
+  }
+  .splide__arrow--next {
+    right: -50px; /* Moves next arrow outside */
+  }
+
+  body {
+    font-family: var(--font-montserrat), sans-serif;
   }
 </style>
