@@ -23,50 +23,53 @@ const cssVars = `
 ---
 
 <script src="https://flackr.github.io/scroll-timeline/dist/scroll-timeline.js"></script>
-<script src="http://localhost:8080/reversim-machine.umd.js"></script>
+<script src="http://localhost:8080/dist/reversim-machine.umd.js"></script>
 
 <script is:inline>
   document.addEventListener('DOMContentLoaded', async () => {
         ReversimMachine.init(document.querySelector("#machine"), {
-        debug: false
+        debug: false,
+        browserTargetBoundingBox: document.getElementById('machine-stage'),
+        frameTopLeft: {x: 0, y: 0},
+        frameBottomRight: {x: 1000, y: 1000}
       });
-    }
-    );
+    });
 
 </script>
 
+<div id="machine"></div>
 <div class="main-banner">
-  <div class="hero-container">
-    <div class="hero-content">
-      <div id="machine"></div>
-      <div class="right">
-        <div class="title-container">
-          <h2 class="title green">REVERSIM</h2>
-          <h2 class="title orange">AUTUMN</h2>
-          <h2 class="title blue">SUMMIT<p class="title pink"><Asterisk /></p></h2>
-        </div>
-        <div class="event-date">
-          <p>October 27-28, 2025</p>
-        </div>
+  <div class="machine-layout">
+    <div id="machine-stage"></div>
+    <div class="hero-container">
+      <div class="hero-content">
+          <div class="title-container">
+            <h2 class="title green">REVERSIM</h2>
+            <h2 class="title orange">AUTUMN</h2>
+            <h2 class="title blue">SUMMIT<p class="title pink"><Asterisk /></p></h2>
+          </div>
+          <div class="event-date">
+            <p>October 27-28, 2025</p>
+          </div>
       </div>
-    </div>
-    <div class="hero-btn-container">
-      <a
-        class="hero-btn speaker"
-        target="_blank"
-        href="https://sessionize.com/reversim-summit-2025/"
-      >
-        <button> Become a Speaker! </button>
-        <div class="wave"></div>
-      </a>
-      <a
-        class="hero-btn sponsor"
-        target="_blank"
-        href="https://forms.gle/1g5241NGBTaXyAPp8"
-      >
-        <button> Become a Sponsor! </button>
-        <div class="wave"></div>
-      </a>
+      <div class="hero-btn-container">
+        <a
+          class="hero-btn speaker"
+          target="_blank"
+          href="https://sessionize.com/reversim-summit-2025/"
+        >
+          <button> Become a Speaker! </button>
+          <div class="wave"></div>
+        </a>
+        <a
+          class="hero-btn sponsor"
+          target="_blank"
+          href="https://forms.gle/1g5241NGBTaXyAPp8"
+        >
+          <button> Become a Sponsor! </button>
+          <div class="wave"></div>
+        </a>
+      </div>
     </div>
   </div>
 
@@ -99,36 +102,40 @@ const cssVars = `
 <style set:html={cssVars}></style>
 
 <style is:global>
-.hero-content {
-    display: flex;
-    #machine {
-      position: relative;
-      top: -97px;
-      aspect-ratio: 1;
-      flex: 1;
-      max-width: 700px;
+#machine {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    aspect-ratio: 1.5;
+      canvas {
+        width: 100%;
+        height: 100%;
+      }
     }
-    canvas {
-      width: 100%;
-      height: 100%;
-    }
-  }
 </style>
 
 <style lang="scss">
   .main-banner {
+    .machine-layout{
+      display: flex;
+      margin: 0 12%;
+      #machine-stage{
+        flex: 1;
+        background: rgba(255,0,0,0.4);
+      }
+      .hero-container{
+        flex: 1
+      }
+
+    }
+
     .hero-container {
-      position: relative;
-      padding: 40px 0 100px;
       display: flex;
       flex-direction: column;
       justify-content: center;
+      pointer-events: none;
 
-      .right{
-        display: flex;
-        flex-direction: column;
-        padding-left: 100px;
-      }
       .title-container {
         font-size: 80px;
         font-weight: 700;
@@ -385,6 +392,7 @@ const cssVars = `
       border: none;
       cursor: pointer;
       font-size: 18px;
+      pointer-events: all;
 
       font-weight: bold;
       padding: 10px 32px;
