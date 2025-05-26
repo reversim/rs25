@@ -41,7 +41,7 @@ const {
 
 const carouselImagesPromise = await Promise.all(
   carouselImages.map(async (image) => {
-    return await getImage({ src: image, width: 800, height: 600 });
+    return await getImage({ src: image, width: 1200, height: 800 });
   })
 );
 ---
@@ -64,16 +64,18 @@ const carouselImagesPromise = await Promise.all(
             <p class="sponsor-description">{description}</p>
           </div>
 
-          <div class="tech-stack">
-            <h3 class="subtitle">Our Technology Stack</h3>
-            <div class="stack-items">
-              {
-                technologyStack.map((tech) => (
-                  <span class="stack-item">{tech}</span>
-                ))
-              }
-            </div>
-          </div>
+          {
+            technologyStack.length > 0 && (
+              <div class="tech-stack">
+                <h3 class="subtitle">Our Technology Stack</h3>
+                <div class="stack-items">
+                  {technologyStack.map((tech) => (
+                    <span class="stack-item">{tech}</span>
+                  ))}
+                </div>
+              </div>
+            )
+          }
         </div>
 
         <div class="splide-container">
@@ -97,47 +99,51 @@ const carouselImagesPromise = await Promise.all(
           </div>
         </div>
 
-        <div class="open-positions">
-          <Title title="Open Positions" style="margin-top: 20px;" />
-          <div class="positions-wrapper">
-            {
-              openPositions.map((position) => (
-                <a
-                  target="_blank"
-                  href={position.positionLink}
-                  class="position-card"
-                >
-                  <h3>{position.position}</h3>
-                  <p>{position.location}</p>
-                </a>
-              ))
-            }
-          </div>
-        </div>
+        {
+          openPositions.length > 0 && (
+            <div class="open-positions">
+              <Title title="Open Positions" style="margin-top: 20px;" />
+              <div class="positions-wrapper">
+                {openPositions.map((position) => (
+                  <a
+                    target="_blank"
+                    href={position.positionLink}
+                    class="position-card"
+                  >
+                    <h3>{position.position}</h3>
+                    <p>{position.location}</p>
+                  </a>
+                ))}
+              </div>
+            </div>
+          )
+        }
 
-        <div class="testimonials">
-          <Title title="Testimonials" style="margin-top: 60px;" />
-          <div class="testimonials-container">
-            {
-              testimonials.map((testimonial) => (
-                <div class="testimonial-card">
-                  <Image
-                    src={testimonial.image}
-                    alt={testimonial.testimonialAuthor}
-                    class="testimonial-image"
-                  />
-                  <div class="testimonial-content">
-                    <p>"{testimonial.testimonialDescription}"</p>
-                    <div class="author-info">
-                      <strong>{testimonial.testimonialAuthor}</strong>
-                      <span>{testimonial.position}</span>
+        {
+          testimonials.length > 0 && (
+            <div class="testimonials">
+              <Title title="Testimonials" style="margin-top: 60px;" />
+              <div class="testimonials-container">
+                {testimonials.map((testimonial) => (
+                  <div class="testimonial-card">
+                    <Image
+                      src={testimonial.image}
+                      alt={testimonial.testimonialAuthor}
+                      class="testimonial-image"
+                    />
+                    <div class="testimonial-content">
+                      <p>"{testimonial.testimonialDescription}"</p>
+                      <div class="author-info">
+                        <strong>{testimonial.testimonialAuthor}</strong>
+                        <span>{testimonial.position}</span>
+                      </div>
                     </div>
                   </div>
-                </div>
-              ))
-            }
-          </div>
-        </div>
+                ))}
+              </div>
+            </div>
+          )
+        }
       </div>
     </div>
   </BackgroundMask>
@@ -173,8 +179,9 @@ const carouselImagesPromise = await Promise.all(
 <style lang="scss">
   .company-logo {
     height: auto;
-    width: 50%;
+    width: 40%;
     object-fit: contain;
+    margin-bottom: 32px;
   }
 
   .positions-wrapper {

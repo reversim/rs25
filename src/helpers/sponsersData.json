@@ -1,5 +1,49 @@
 [
   {
+    "companyName": "teads",
+    "description": "Outbrain and Teads have merged to create an omnichannel outcomes platform for the open internet. The new company, operating under the name ‘Teads’, is embarking on a journey to elevate advertising outcomes.\n\nThe new Teads unites exceptional reach, an advanced omnichannel graph, data-driven creative, and predictive technology to drive meaningful outcomes from branding to performance.\nIt ensures value is driven by leveraging predictive AI technology to connect quality media, beautiful brand creative, and context-driven addressability and measurement.\n\nOne of the most scaled advertising platforms on the open internet, the new Teads is directly partnered with more than 10,000 publishers and 20,000 advertisers globally. For more information, visit https://thenewteads.com/.",
+    "website": "teads.com",
+    "carouselImages": ["teads-1", "teads-2", "teads-3", "teads-4", "teads-5"],
+    "technologyStack": [
+      "Java",
+      "Python",
+      "Scala",
+      "Spark",
+      "AWS",
+      "Node.JS",
+      "Typescript",
+      "Kubernetes"
+    ],
+    "openPositions": [
+      {
+        "position": "Data Analyst - Student Position",
+        "location": "Netanya",
+        "positionLink": "https://job-boards.eu.greenhouse.io/teads1/jobs/4563777101"
+      },
+      {
+        "position": "Senior Product Manager",
+        "location": "Netanya",
+        "positionLink": "https://boards.greenhouse.io/embed/job_app?token=6680797"
+      },
+      {
+        "position": "Senior Data Scientists",
+        "location": "Netanya",
+        "positionLink": "https://boards.greenhouse.io/embed/job_app?token=6701171&source=LinkedIn"
+      }
+    ],
+    "testimonials": [],
+    "linkedin": "https://www.linkedin.com/showcase/teadstechnology/about/?viewAsMember=true",
+    "bluesky": "",
+    "facebook": "",
+    "twitter": "",
+    "meetup": "",
+    "instagram": "",
+    "youtube": "https://www.youtube.com/channel/UCJLORR2uJglrKm-JlKV-rJA",
+    "github": "https://github.com/outbrain-inc",
+    "medium": "https://medium.com/outbrain-engineering"
+  },
+
+  {
     "companyName": "Gettogther",
     "description": "Gettogether is a company that offers various services such as personalized calendars for events, happy hours and gifts, lectures and experiences, meetups, large events and conferences, hackathons, parties, offsite in Israel abroad, project management and business delegations.",
     "website": "https://www.instagram.com/gettogether.israel",

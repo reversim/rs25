@@ -70,20 +70,21 @@ const cssVars = `
       </p>
       <Title style="margin: 25px 0 30px" title="Sponsors" id="sponsors" />
       <!-- <a data-astro-prefetch href={`/sponsors/teads`} class="member"> -->
-
-      {
-        sponsors.map((sponsor) => (
-          <a href={`/sponsors/${sponsor.slug}`}>
-            <Image
-              class={`sponsor-logo ${sponsor.slug}`}
-              src={sponsor.companyNameLogo}
-              width={400}
-              height={1000}
-              alt="Game Changer Sponsor"
-            />
-          </a>
-        ))
-      }
+      <div class="sponsors-container">
+        {
+          sponsors.map((sponsor) => (
+            <a href={`/sponsors/${sponsor.slug}`}>
+              <Image
+                class={`sponsor-logo ${sponsor.slug}`}
+                src={sponsor.companyNameLogo}
+                width={400}
+                height={1000}
+                alt={`Sponsor ${sponsor.companyName}`}
+              />
+            </a>
+          ))
+        }
+      </div>
     </div>
   </div>
 </div>
@@ -246,11 +247,18 @@ const cssVars = `
         }
       }
 
-      .sponsor-logo {
-        margin: 12px 0;
-        object-fit: contain;
-        width: 200px;
-        height: auto;
+      .sponsors-container {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+
+        .sponsor-logo {
+          margin: 12px 0;
+          object-fit: contain;
+          height: 60px;
+          max-width: 300px;
+          width: 180px;
+        }
       }
 
       @media (max-width: 768px) {
