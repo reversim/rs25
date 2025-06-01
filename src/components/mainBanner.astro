@@ -5,6 +5,7 @@ import Asterisk from "../assets/asterisk.svg";
 import rs24Image from "../assets/reversim24-image.png";
 import { getImage, Image } from "astro:assets";
 import { getSponsors } from "../helpers/getSponsors";
+import {backupdr} from "googleapis/build/src/apis/backupdr";
 
 const optimizedRS24ImageMobile = await getImage({
   src: rs24Image,
@@ -25,7 +26,8 @@ const cssVars = `
 ---
 
 <script src="https://flackr.github.io/scroll-timeline/dist/scroll-timeline.js"></script>
-<script src="http://localhost:8080/dist/reversim-machine.umd.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/reversim-machine@0.1.1/dist/reversim-machine.umd.js"></script>
+<!--<script src="http://localhost:8080/dist/reversim-machine.umd.js"></script>-->
 
 <script is:inline>
   document.addEventListener('DOMContentLoaded', async () => {
@@ -33,7 +35,13 @@ const cssVars = `
         debug: false,
         browserTargetBoundingBox: document.getElementById('machine-stage'),
         frameTopLeft: {x: 0, y: 0},
-        frameBottomRight: {x: 1000, y: 1000}
+        frameBottomRight: {x: 1000, y: 1000},
+        onAirMachineStart: () => {
+            const asterisk = document.querySelector('.asterisk');
+            if (asterisk) {
+                asterisk.classList.add('spinning');
+            }
+        },
       });
     });
 
@@ -48,7 +56,7 @@ const cssVars = `
           <div class="title-container">
             <h2 class="title green">REVERSIM</h2>
             <h2 class="title orange">AUTUMN</h2>
-            <h2 class="title blue">SUMMIT<p class="title pink"><Asterisk /></p></h2>
+            <h2 class="title blue">SUMMIT<p class="title pink"><Asterisk class="asterisk" /></p></h2>
           </div>
           <div class="event-date">
             <p>October 27-28, 2025</p>
@@ -128,13 +136,35 @@ const cssVars = `
   .main-banner {
     .machine-layout{
       display: flex;
-      margin: 0 12%;
+      align-items: center;
+      justify-content: center;
+      align-items: flex-start;
+      // margin: 0 12%;
+
+      @media screen and (max-width: 1300px) {
+        height: 600px;
+      }
+
+
       #machine-stage{
-        flex: 1;
-        background: rgba(255,0,0,0.4);
+        aspect-ratio: 1;
+        height: 600px;
+
+        @media screen and (max-width: 1300px) {
+          height: 500px;
+        }
       }
       .hero-container{
-        flex: 1
+        margin-left: 80px;
+        padding-top: 75px;
+      }
+
+      .asterisk.spinning {
+        animation: spin 6s linear infinite;
+        @keyframes spin {
+          from { transform: rotate(0deg);}
+          to {transform: rotate(360deg);}
+        }
       }
 
     }
