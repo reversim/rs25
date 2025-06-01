@@ -42,6 +42,10 @@ const teamMembers = await getTeamMembers();
       opacity 0.3s ease;
   }
 
+  .splide__pagination__page:not(.is-active) {
+    border: none;
+  }
+
   .splide__pagination__page.is-active {
     background: #7eb9bf; /* Change color for active */
     opacity: 1;
