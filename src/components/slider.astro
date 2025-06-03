@@ -1,0 +1,139 @@
+---
+import { getImage, Image } from "astro:assets";
+
+interface Video {
+  url: string;
+}
+
+interface Image {
+  src: string;
+  alt: string;
+}
+
+interface Props {
+  videos?: Video[];
+  images: Image[];
+  enablePopup?: boolean;
+}
+
+const { videos = [], images, enablePopup = false } = Astro.props as Props;
+---
+
+<div class="splide-container">
+  {
+    videos.map((video) => (
+      <a href={video.url} class="glightbox" data-gallery="past-events" />
+    ))
+  }
+  <div class="splide">
+    <div class="splide__track">
+      <ul class="splide__list">
+        {
+          videos.map((video) => (
+            <li class="splide__slide">
+              <iframe
+                loading="lazy"
+                id="yt-video"
+                width="100%"
+                height="100%"
+                src={video.url}
+                title="YouTube video player"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                referrerpolicy="strict-origin-when-cross-origin"
+                allowfullscreen
+              />
+            </li>
+          ))
+        }
+
+        {
+          images.map((image) => (
+            <li class="splide__slide">
+              <a href={image.src} class="glightbox" data-gallery="past-events">
+                <Image
+                  height={400}
+                  src={image.src}
+                  alt={image.alt}
+                  width={600}
+                />
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </div>
+
+  <script>
+    import GLightbox from "glightbox";
+    import Splide from "@splidejs/splide";
+
+    document.addEventListener("DOMContentLoaded", () => {
+      GLightbox({
+        selector: ".glightbox",
+        draggable: true,
+        width: "80%",
+        height: "80%",
+      });
+
+      new Splide(".splide", {
+        type: "loop",
+        autoplay: true,
+        interval: 3000,
+        arrows: true,
+        pagination: true,
+        perPage: 2,
+        perMove: 2,
+        gap: "1rem",
+        rewind: true,
+        padding: { right: "20%" }, // Ensures the last item is half visible
+        breakpoints: {
+          768: {
+            arrows: false,
+            perPage: 1,
+            padding: { right: "0%" },
+            perMove: 1,
+          },
+        },
+      }).mount();
+    });
+  </script>
+</div>
+
+<style lang="scss">
+  .splide-container {
+    width: 100%;
+    padding-top: 60px;
+    margin: auto;
+
+    .splide__list {
+      height: 250px;
+    }
+
+    .splide {
+      position: relative;
+
+      &::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        right: 0px;
+        width: 60px; /* Adjust as needed */
+        height: 100%;
+        background: linear-gradient(
+          to left,
+          rgba(255, 255, 255, 80%) 0%,
+          rgba(255, 255, 255, 0) 100%
+        );
+        pointer-events: none;
+      }
+    }
+
+    img {
+      height: 100%;
+      max-width: 100%;
+      object-fit: cover;
+    }
+  }
+</style>
