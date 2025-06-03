@@ -1,0 +1,73 @@
+---
+import Layout from "../../layouts/Layout.astro";
+---
+
+<Layout>
+  <h2>Attributions</h2>
+  <div class="attributions">
+    <section>
+      <h3>Open Source Libraries</h3>
+      <ul>
+        <li><a href="https://astro.build" target="_blank">Astro</a> - Web framework</li>
+        <li><a href="https://www.splidejs.com" target="_blank">Splide.js</a> - Carousel component</li>
+        <li><a href="https://github.com/flackr/scroll-timeline" target="_blank">Scroll Timeline Polyfill</a> - Scroll animations</li>
+      </ul>
+    </section>
+
+    <section>
+      <h3>Design Assets</h3>
+      <ul>
+        <li>Icons and graphics created by the Reversim team</li>
+        <li>Fonts: System fonts and web-safe alternatives</li>
+      </ul>
+    </section>
+
+    <section>
+      <h3>Special Thanks</h3>
+      <p>
+        We would like to thank all the contributors, speakers, sponsors, and volunteers 
+        who make Reversim Summit possible. Your dedication to the developer community
+        is what makes this event special.
+      </p>
+    </section>
+  </div>
+</Layout>
+
+<style lang="scss">
+  .attributions {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+
+    section {
+      margin-bottom: 40px;
+    }
+
+    h3 {
+      color: var(--pink);
+      margin-bottom: 16px;
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+
+      li {
+        margin-bottom: 8px;
+        
+        a {
+          color: var(--green);
+          text-decoration: none;
+          
+          &:hover {
+            text-decoration: underline;
+          }
+        }
+      }
+    }
+
+    p {
+      line-height: 1.6;
+    }
+  }
+</style>
