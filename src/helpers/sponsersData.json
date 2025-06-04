@@ -41,54 +41,5 @@
     "youtube": "https://www.youtube.com/channel/UCJLORR2uJglrKm-JlKV-rJA",
     "github": "https://github.com/outbrain-inc",
     "medium": "https://medium.com/outbrain-engineering"
-  },
-
-  {
-    "companyName": "Gettogther",
-    "description": "Gettogether is a company that offers various services such as personalized calendars for events, happy hours and gifts, lectures and experiences, meetups, large events and conferences, hackathons, parties, offsite in Israel abroad, project management and business delegations.",
-    "website": "https://www.instagram.com/gettogether.israel",
-    "carouselImages": [
-      "DSC_2836",
-      "DSC_2916",
-      "IMG_0621",
-      "IMG_0990",
-      "IMG_1712",
-      "image-1",
-      "IMG_0882",
-      "IMG_1708",
-      "N_H00222"
-    ],
-    "technologyStack": [
-      "wellbeing",
-      "employeewelfare",
-      "EmployeeExperience",
-      "hackathon",
-      "conventions",
-      "hr"
-    ],
-    "openPositions": [
-      {
-        "position": "Administrative Assistant",
-        "location": "Tel Aviv, Israel",
-        "positionLink": "https://www.linkedin.com/company/gettogetherisrael/"
-      }
-    ],
-    "testimonials": [
-      {
-        "image": "rivka-dudi",
-        "testimonialDescription": "When I founded GetTogether, I envisioned creating more than just another production company.  What started as a simple idea has blossomed into something extraordinary. Our success stems from understanding that in today's digital world, people crave authentic human connection, and GetTogether bridges that gap by making it effortless to make events that align with your interests and values.",
-        "testimonialAuthor": "Rivka Dudi",
-        "position": "Founder & CEO"
-      }
-    ],
-    "linkedin": "https://www.linkedin.com/company/gettogetherisrael",
-    "bluesky": "",
-    "facebook": "",
-    "twitter": "",
-    "meetup": "",
-    "instagram": "https://www.instagram.com/gettogether.israel",
-    "youtube": "",
-    "github": "",
-    "medium": ""
   }
 ]
