@@ -15,7 +15,8 @@ const optimizedRS24ImageDesktop = await getImage({
   width: 1920,
 });
 
-const sponsors = await getSponsors();
+const organizingSponsor = await getSponsors("organizing");
+const regularSponsors = await getSponsors("regular");
 
 const cssVars = `
 .card-background {
@@ -68,14 +69,18 @@ const cssVars = `
         networking. We are grateful to have such an excellent top of the
         industry team of volunteer moderators and event organizers.
       </p>
-      <Title style="margin: 25px 0 30px" title="Sponsors" id="sponsors" />
-      <!-- <a data-astro-prefetch href={`/sponsors/teads`} class="member"> -->
+
+      <Title
+        style="margin: 25px 0 24px"
+        title="Organizing Sponsor"
+        id="sponsors"
+      />
       <div class="sponsors-container">
         {
-          sponsors.map((sponsor) => (
+          organizingSponsor.map((sponsor) => (
             <a href={`/sponsors/${sponsor.slug}`}>
               <Image
-                class={`sponsor-logo ${sponsor.slug}`}
+                class={`organizer sponsor-logo ${sponsor.slug}`}
                 src={sponsor.companyNameLogo}
                 width={400}
                 height={1000}
@@ -85,6 +90,26 @@ const cssVars = `
           ))
         }
       </div>
+      {
+        regularSponsors.length && (
+          <>
+            <Title style="margin: 36px 0 18px" title="Sponsors" id="sponsors" />
+            <div class="sponsors-container">
+              {regularSponsors.map((sponsor) => (
+                <a href={`/sponsors/${sponsor.slug}`}>
+                  <Image
+                    class={`sponsor-logo ${sponsor.slug}`}
+                    src={sponsor.companyNameLogo}
+                    width={400}
+                    height={1000}
+                    alt={`Sponsor ${sponsor.companyName}`}
+                  />
+                </a>
+              ))}
+            </div>
+          </>
+        )
+      }
     </div>
   </div>
 </div>
@@ -258,6 +283,11 @@ const cssVars = `
           height: 60px;
           max-width: 300px;
           width: 180px;
+
+          &.organizer {
+            scale: 1.6;
+            transform-origin: left center;
+          }
         }
       }
 

@@ -2,6 +2,7 @@ import slug from "slug";
 import sponsorsData from "./sponsersData.json";
 
 export interface sponsorData {
+  sponsorTier: "organizing" | "regular";
   companyName: string;
   description: string;
   website: string;
@@ -28,11 +29,27 @@ export interface sponsorData {
   slug: string;
 }
 
-export async function getSponsors() {
-  return sponsorsData.map((sponsor) => {
+export async function getSponsors(
+  type: "organizing" | "regular" | "all" = "all"
+) {
+  let finalSponsors = sponsorsData;
+  if (type === "organizing") {
+    finalSponsors = sponsorsData.filter(
+      (sponsor) => sponsor.sponsorTier === "organizing"
+    );
+  }
+  if (type === "regular") {
+    finalSponsors = sponsorsData.filter(
+      (sponsor) => sponsor.sponsorTier === "regular"
+    );
+  }
+
+  return finalSponsors.map((sponsor) => {
     const sponsorSlug = slug(sponsor.companyName);
 
-    const testimonials = sponsor.testimonials.map((testimonial) => {
+    const testimonials = (
+      sponsor.testimonials as sponsorData["testimonials"]
+    ).map((testimonial) => {
       return {
         ...testimonial,
         image: import(
