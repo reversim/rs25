@@ -30,8 +30,12 @@ const cssVars = `
 <!--<script src="http://localhost:8080/dist/reversim-machine.umd.js"></script>-->
 
 <script is:inline>
-  document.addEventListener('DOMContentLoaded', async () => {
-        ReversimMachine.init(document.querySelector("#machine"), {
+  const minMachineWidth = 1000;
+  document.documentElement.style.setProperty('--minMachineWidth', `${minMachineWidth}px`);
+  let machineStarted = false;
+
+  function startMachine(){
+    ReversimMachine.init(document.querySelector("#machine"), {
         debug: false,
         browserTargetBoundingBox: document.getElementById('machine-stage'),
         frameTopLeft: {x: 0, y: 0},
@@ -40,10 +44,26 @@ const cssVars = `
             const asterisk = document.querySelector('.asterisk');
             if (asterisk) {
                 asterisk.classList.add('spinning');
-            }
-        },
-      });
-    });
+                }
+            },
+        });
+    machineStarted = true;
+  }
+
+  document.addEventListener('DOMContentLoaded', async () => {
+    if (window.innerWidth >= minMachineWidth) {
+      startMachine();
+    }
+  });
+
+  window.addEventListener('resize', () => {
+    if (machineStarted && window.innerWidth < minMachineWidth) {
+      ReversimMachine.destroy();
+      machineStarted = false;
+    } else if (!machineStarted && window.innerWidth >= minMachineWidth) {
+        startMachine();
+    }
+  });
 
 </script>
 
@@ -153,10 +173,20 @@ const cssVars = `
         @media screen and (max-width: 1300px) {
           height: 500px;
         }
+
+        @media screen and (max-width: 1000px) {
+          display: none;
+        }
+
       }
+
       .hero-container{
         margin-left: 80px;
         padding-top: 75px;
+
+        @media screen and (max-width: 1000px) {
+          margin-left: 0;
+        }
       }
 
       .asterisk.spinning {
