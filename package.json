@@ -9,8 +9,12 @@
     "astro": "astro"
   },
   "dependencies": {
-    "astro": "^5.0.4",
+    "@astrojs/partytown": "^2.1.4",
+    "@astrojs/sitemap": "^3.3.1",
+    "@splidejs/splide": "^4.1.4",
+    "astro": "5.7.5",
     "dayjs": "^1.11.13",
+    "glightbox": "^3.3.1",
     "googleapis": "^144.0.0",
     "sass": "^1.83.0",
     "slug": "^10.0.0"

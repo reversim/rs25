@@ -1,0 +1,302 @@
+---
+import "@splidejs/splide/css";
+import type { GetStaticPaths } from "astro";
+import { getImage, Image } from "astro:assets";
+import Layout from "../../layouts/Layout.astro";
+import slugify from "slug";
+import { getSponsors } from "../../helpers/getSponsors";
+import BackgroundMask from "../../components/sponsorsBackgroundMask.astro";
+import Title from "../../components/title.astro";
+import Slider from "../../components/slider.astro";
+
+export const getStaticPaths = (async () => {
+  const sponsors = await getSponsors();
+
+  return sponsors.map((sponsor) => ({
+    params: {
+      sponsor: sponsor.slug,
+    },
+    props: { ...sponsor },
+  }));
+}) satisfies GetStaticPaths;
+
+const {
+  companyName,
+  description,
+  website,
+  companyNameLogo,
+  carouselImages,
+  technologyStack,
+  openPositions,
+  testimonials,
+  linkedin,
+  twitter,
+  bluesky,
+  facebook,
+  github,
+  instagram,
+  medium,
+  youtube,
+  slug,
+} = Astro.props;
+
+const carouselImagesPromise = await Promise.all(
+  carouselImages.map(async (image) => {
+    return await getImage({ src: image, width: 1200, height: 800 });
+  })
+);
+---
+
+<Layout havePadding={false}>
+  <BackgroundMask bgImageHeight="500px">
+    <div class="sponsor-page">
+      <div class="company-info">
+        <Image
+          class="company-logo"
+          src={companyNameLogo}
+          alt={companyName}
+          height={500}
+          width={500}
+        />
+
+        <div class="sponsor-basic-info">
+          <div class="who-we-are">
+            <h3 class="subtitle">Who We Are</h3>
+            <p class="sponsor-description">{description}</p>
+          </div>
+
+          {
+            technologyStack.length > 0 && (
+              <div class="tech-stack">
+                <h3 class="subtitle">Our Technology Stack</h3>
+                <div class="stack-items">
+                  {technologyStack.map((tech) => (
+                    <span class="stack-item">{tech}</span>
+                  ))}
+                </div>
+              </div>
+            )
+          }
+        </div>
+
+        <Slider
+          images={carouselImagesPromise.map((image, index) => ({
+            src: image.src,
+            alt: `${companyName} image ${index + 1}`,
+          }))}
+        />
+
+        {
+          openPositions.length > 0 && (
+            <div class="open-positions">
+              <Title title="Open Positions" style="margin-top: 20px;" />
+              <div class="positions-wrapper">
+                {openPositions.map((position) => (
+                  <a
+                    target="_blank"
+                    href={position.positionLink}
+                    class="position-card"
+                  >
+                    <h3>{position.position}</h3>
+                    <p>{position.location}</p>
+                  </a>
+                ))}
+              </div>
+            </div>
+          )
+        }
+
+        {
+          testimonials.length > 0 && (
+            <div class="testimonials">
+              <Title title="Testimonials" style="margin-top: 60px;" />
+              <div class="testimonials-container">
+                {testimonials.map((testimonial) => (
+                  <div class="testimonial-card">
+                    <Image
+                      src={testimonial.image}
+                      alt={testimonial.testimonialAuthor}
+                      class="testimonial-image"
+                    />
+                    <div class="testimonial-content">
+                      <p>"{testimonial.testimonialDescription}"</p>
+                      <div class="author-info">
+                        <strong>{testimonial.testimonialAuthor}</strong>
+                        <span>{testimonial.position}</span>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )
+        }
+      </div>
+    </div>
+  </BackgroundMask>
+</Layout>
+
+<style lang="scss">
+  .company-logo {
+    height: auto;
+    width: 40%;
+    object-fit: contain;
+    margin-bottom: 32px;
+  }
+
+  .open-positions {
+    margin-top: 140px;
+  }
+
+  .positions-wrapper {
+    width: 60%;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+
+    .position-card {
+      width: calc(50% - 30px);
+      margin-bottom: 40px;
+
+      p {
+        font-weight: 600;
+        font-size: 14px;
+        margin-top: 12px;
+      }
+    }
+  }
+
+  .sponsor-basic-info {
+    width: 60%;
+    margin-bottom: 60px;
+
+    .stack-items {
+      display: flex;
+      flex-wrap: wrap;
+
+      .stack-item {
+        font-weight: 400;
+        font-size: 14px;
+        --gap: 6px;
+        margin-right: var(--gap);
+        position: relative;
+        display: flex;
+        &:not(:last-child)::after {
+          content: "•";
+          line-height: 100%;
+          font-size: 1.2rem;
+          margin-left: calc(var(--gap) * 2);
+        }
+      }
+    }
+  }
+
+  .sponsor-page {
+    color: #f3f3f3;
+  }
+
+  .who-we-are {
+    .subtitle {
+      margin-top: 0;
+    }
+  }
+
+  .subtitle {
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-top: 24px;
+  }
+
+  .sponsor-description {
+    white-space: pre-wrap;
+    font-weight: 400;
+    font-size: 14px;
+  }
+
+  .splide-container {
+    width: 100%;
+    padding-top: 60px;
+    padding-bottom: 100px;
+    margin: auto;
+
+    .splide__list {
+      height: 250px;
+
+      .splide__slide {
+        img {
+          width: 100%;
+        }
+      }
+    }
+
+    .splide {
+      position: relative;
+
+      &::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        right: 0px;
+        width: 60px; /* Adjust as needed */
+        height: 100%;
+        background: linear-gradient(
+          to left,
+          rgba(255, 255, 255, 80%) 0%,
+          rgba(255, 255, 255, 0) 100%
+        );
+        pointer-events: none;
+      }
+    }
+
+    img {
+      height: 100%;
+      max-width: 100%;
+      object-fit: cover;
+    }
+  }
+
+  .testimonials-container {
+    display: flex;
+    flex-direction: column;
+    gap: 60px;
+
+    .testimonial-card {
+      display: flex;
+      gap: 16px;
+
+      .testimonial-image {
+        border-radius: 24px 0 0 0;
+        height: 142px;
+        width: auto;
+      }
+
+      .testimonial-content {
+        font-size: 14px;
+        font-weight: 400;
+        .author-info {
+          margin-top: 40px;
+          display: flex;
+          flex-direction: column;
+          gap: 4px;
+        }
+      }
+    }
+  }
+
+  @media screen and (max-width: 768px) {
+    .sponsor-basic-info,
+    .positions-wrapper {
+      width: 100%;
+    }
+
+    .company-logo {
+      width: 100%;
+    }
+  }
+
+  @media screen and (max-width: 576px) {
+    .positions-wrapper .position-card {
+      width: 100%;
+    }
+  }
+</style>

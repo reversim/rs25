@@ -1,0 +1,85 @@
+---
+import { Image, getImage } from "astro:assets";
+import Title from "./title.astro";
+import Image1 from "../assets/past-events/image-1.png";
+import Image2 from "../assets/past-events/image-2.png";
+import Image3 from "../assets/past-events/image-3.png";
+import Image4 from "../assets/past-events/image-4.png";
+import Image5 from "../assets/past-events/image-5.png";
+import pastEvent from "../assets/past-events/background.png";
+import "glightbox/dist/css/glightbox.css";
+import Slider from "./slider.astro";
+
+const image1 = await getImage({ src: Image1 });
+const image2 = await getImage({ src: Image2 });
+const image3 = await getImage({ src: Image3 });
+const image4 = await getImage({ src: Image4 });
+const image5 = await getImage({ src: Image5 });
+---
+
+<Image
+  class="past-event-background"
+  height={400}
+  src={pastEvent}
+  alt="Slide 4"
+/>
+<div class="past-events-container">
+  <Title
+    title="Past Events"
+    style="color: black; margin: 100px 0 0"
+    id="past-events"
+  />
+
+  <Slider
+    videos={[
+      { url: "https://www.youtube.com/embed/gbcaCFO65Bo?si=_c-V6WTmXCb1ktut" },
+    ]}
+    images={[
+      { src: image1.src, alt: "image of the conference people" },
+      { src: image2.src, alt: "two people taking picture on the main stage" },
+      { src: image3.src, alt: "people sitting hearing a speaker" },
+      { src: image4.src, alt: "volunteers passing out shirts" },
+      { src: image5.src, alt: "close up of a bag" },
+    ]}
+  />
+
+  <style lang="scss">
+    .past-event-background {
+      position: absolute;
+      width: 55%;
+      min-width: 300px;
+      max-width: 800px;
+      height: auto;
+      object-fit: contain;
+      opacity: 0.4;
+      filter: brightness(1.5);
+      right: -26%;
+      bottom: 0;
+      transform: translateY(25%);
+
+      @media screen and (max-width: 1280px) {
+        width: 45%;
+        right: -10%;
+        transform: translateY(10%);
+      }
+      @media screen and (max-width: 992px) {
+        top: 40%;
+        transform: translateY(0%);
+      }
+
+      @media screen and (min-width: 1500px) {
+        display: none;
+      }
+    }
+
+    .past-events-container {
+      max-width: var(--breakpoint-x-large);
+      margin: auto;
+      position: relative;
+
+      @media screen and (max-width: 576px) {
+        padding: 20px 0% 0;
+      }
+    }
+  </style>
+</div>

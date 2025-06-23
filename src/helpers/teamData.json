@@ -2,14 +2,14 @@
   {
     "name": "Ori Lahav",
     "title": "GM Israel",
-    "company": "Outbrain",
-    "bio": "Lot's of Bio but right now. Co-founder of Outbrain and Reversim podcast. Outbrain GM Israel",
+    "company": "Teads",
+    "bio": "Lot's of Bio but right now. Co-founder of Outbrain (Teads) and Reversim podcast. Teads GM Israel",
     "linkedin": "https://www.linkedin.com/in/ori-lahav-74945b2/",
     "twitter": ""
   },
   {
     "name": "Ran Tavory",
-    "title": "Research @ TII",
+    "title": "Research",
     "company": "TII",
     "bio": "The voice @ reversim, ML, data, software",
     "linkedin": "https://www.linkedin.com/in/rantav/",
@@ -25,7 +25,7 @@
   {
     "name": "Eloise Ann Friedman",
     "title": "Director of PlatformX",
-    "company": "Outbrain",
+    "company": "Teads",
     "bio": "Started as a backend developer, became a group manager and Director, before deciding to move over to the DevOps and infrastructure side, where it is much easier to make an impact at scale.\nFamily, fun, running and ice cream complete the story",
     "linkedin": "https://www.linkedin.com/in/eloise-ann-friedman-%F0%9F%87%AE%F0%9F%87%B1-741742121/",
     "twitter": "",
@@ -67,17 +67,17 @@
   },
   {
     "name": "Dafna Mordechai",
-    "title": "Deep Learning Compiler Engineer",
-    "company": "",
-    "bio": "Dafna is a Deep Learning Compiler Engineer with extensive experience in designing, implementing, and testing software systems across various architectures, ranging from microcontrollers to high-performance computing systems. She is passionate about technology and enjoys sharing her knowledge with others through mentoring, giving talks and workshops, tech-blogging, and volunteering in tech communities and initiatives aimed at promoting diversity within the industry.",
+    "title": "Deep Learning Compiler Team Leader",
+    "company": "Intel",
+    "bio": "Dafna is a Deep Learning Compiler Team Leader with extensive experience in designing, implementing, and testing software systems across various architectures, ranging from microcontrollers to high-performance computing systems. She is passionate about technology and enjoys sharing her knowledge with others through mentoring, giving talks and workshops, tech-blogging, and volunteering in tech communities and initiatives aimed at promoting diversity within the industry.",
     "linkedin": "https://www.linkedin.com/in/dafna-mordechai/",
     "twitter": "https://twitter.com/dafna_mordechai"
   },
   {
     "name": "Victor Trakhtenberg",
-    "title": "VP R&D at PayEm",
-    "company": "PayEm",
-    "bio": "I am a software engineering manager with vast experience leading people, products, and processes. Served as a VP of Engineering at Next Insurance, leading the Growth Engineering organization as well as VP of Technology, responsible for engineering excellence. Before this role, I led the development of Personalization Products at Taboola, following its acquisition of Commerce Sciences in which I served as a VP R&D. Co-founded the JavaIL community (www.meetup.com/JavaIL/). Co-organizer of the Reversim Summit 2016, moderator 2014, 2015, 2017, 2019 and 2024",
+    "title": "VP Engineering",
+    "company": "Guardz",
+    "bio": "I am a software engineering leader with extensive experience in guiding people, products, and processes. Passionate about technology, implementation, and deployment methodologies, I thrive on building products and teams that achieve business goals while fostering a strong organizational culture. Currently, I serve as VP Engineering at Guardz. Prior to this, I was a VP R&D at PayEm and VP Engineering at Next Insurance. Before that, I led the development of Personalization Products at Taboola, following its acquisition of Commerce Sciences, where I served as VP R&D.\n\nI also co-founded the JavaIL community (www.meetup.com/JavaIL/) and have been actively involved in the Reversim Summit. As a co-organizer of Reversim Summit 2016, I was responsible for conference content and moderated sessions in 2014, 2015, 2017, 2019, and 2024.",
     "linkedin": "https://www.linkedin.com/in/victortrakhtenberg/",
     "twitter": "",
     "bluesky": "",
@@ -98,7 +98,7 @@
   },
   {
     "name": "Inbar Danieli",
-    "title": "FrontEnd Developer",
+    "title": "Software Developer",
     "company": "Common Ninja",
     "bio": "Developer, CSS enthusiast, and cat lover.",
     "linkedin": "https://www.linkedin.com/in/inbar-danieli/",
@@ -156,8 +156,8 @@
   },
   {
     "name": "Rachel Wities",
-    "title": "NLP Researcher",
-    "company": "Microsoft Health and Life Sciences",
+    "title": "NLP lead, AI and Innovation Center",
+    "company": "Sheba Hospital",
     "bio": "Rachel Wities is a Senior Data Scientist at Microsoft Healthcare and Life Sciences group, and a Co-Founder of MeDS - Medical Data Science Israel community.\n\nRachel is a public speaker addressing Healthcare NLP challenges, and believes that understanding doctors and their needs is the key to successfully implementing AI Healthcare algorithms.\n\nLoves her family, God and Oxford Comma jokes.",
     "linkedin": "https://www.linkedin.com/in/rachel-wities/",
     "twitter": "",
@@ -201,8 +201,8 @@
   },
   {
     "name": "Aielet Efrati",
-    "title": "Principal Algorithm Developer",
-    "company": "viz.ai",
+    "title": "AI researcher",
+    "company": "Sheba Medical Center",
     "bio": "Algorithm Developer & MeDS community Co-Founder",
     "linkedin": "https://www.linkedin.com/in/aielet-efrati-3ab00570/",
     "twitter": "",

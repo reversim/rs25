@@ -1,0 +1,60 @@
+---
+interface Props {
+  label: string;
+  link: string;
+  iconColor: string;
+  iconDegree?: number;
+}
+
+const { label, iconColor, link } = Astro.props;
+
+let iconDegree = Astro.props.iconDegree;
+
+if (!iconDegree) {
+  iconDegree = Math.random() * 360;
+}
+
+const iconDegreeStr = `${iconDegree}deg`;
+---
+
+<a class="header-link" href={link}>
+  <div class="screw"></div>
+  {label}
+</a>
+
+<style define:vars={{ iconColor, iconDegreeStr }} lang="scss">
+  .header-link {
+    width: fit-content;
+    font-weight: 400;
+    position: relative;
+    display: flex;
+    align-items: center;
+    &:hover {
+      --modifiedDegree: calc(var(--iconDegreeStr) - 180deg);
+    }
+  }
+
+  .screw {
+    position: relative;
+    margin-right: 4px;
+    height: 16px;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    background-color: var(--iconColor);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &::before {
+      content: "";
+      position: absolute;
+      display: block;
+      width: 1px;
+      height: 12px;
+      background-color: black;
+      transition: transform 0.3s;
+      transform: rotate(var(--modifiedDegree, var(--iconDegreeStr, 0deg)));
+      border-radius: 4px;
+    }
+  }
+</style>
