@@ -42,5 +42,106 @@
     "youtube": "https://www.youtube.com/channel/UCJLORR2uJglrKm-JlKV-rJA",
     "github": "https://github.com/outbrain-inc",
     "medium": "https://medium.com/outbrain-engineering"
+  },
+
+  {
+    "sponsorTier": "game-changers",
+    "companyName": "Tenable",
+    "description": "Tenable is a global leader in Cyber Exposure Management, helping organizations proactively identify and prioritize critical vulnerabilities and risks across their entire attack surface – from IT and cloud to critical infrastructure. Tenable’s holistic platform reduces business risks, protects sensitive information and systems, and maintains business continuity and operational security.\n\nWe provide powerful, data-driven insights that allow security teams to act with precision and speed, comply with regulations, and protect their environments. Our platform, Tenable One, is evolving into a strategic tool for risk management and decision-makers in complex enterprise settings.\n\nTenable is publicly traded on Nasdaq (TENB) and employs over 1,800 people globally, including over 200 employees in Israel.\nOur local R&D center in Tel Aviv plays a central role in shaping the company’s core technologies, while our culture fosters innovation, collaboration, and a shared drive to grow and excel continuously. Join the best people in the industry and build your future with us!",
+    "website": "https://www.tenable.com/ ",
+    "carouselImages": [
+      "tenable-1",
+      "tenable-2",
+      "tenable-3",
+      "tenable-4",
+      "tenable-5",
+      "tenable-6",
+      "tenable-7",
+      "tenable-8",
+      "tenable-9"
+    ],
+    "technologyStack": [
+      "C#",
+      "Golang",
+      ".NET core",
+      "Kotlin",
+      "Python",
+      "React.js",
+      "AWS",
+      "K8S",
+      "Docker",
+      "Playwright"
+    ],
+    "openPositions": [
+      {
+        "position": "Software Engineer",
+        "location": "Tel Aviv",
+        "positionLink": "https://www.tenable.com/careers/search?location=Israel+-+Office+-+Tel+Aviv"
+      },
+      {
+        "position": "Senior Software Engineers",
+        "location": "Tel Aviv",
+        "positionLink": "https://www.tenable.com/careers/search?location=Israel+-+Office+-+Tel+Aviv"
+      },
+      {
+        "position": "Frontend Tech Lead",
+        "location": "Tel Aviv",
+        "positionLink": "https://www.tenable.com/careers/search?location=Israel+-+Office+-+Tel+Aviv"
+      },
+      {
+        "position": "Senior Product Manager",
+        "location": "Tel Aviv",
+        "positionLink": "https://www.tenable.com/careers/search?location=Israel+-+Office+-+Tel+Aviv"
+      },
+      {
+        "position": "Security Researcher",
+        "location": "Tel Aviv",
+        "positionLink": "https://www.tenable.com/careers/search?location=Israel+-+Office+-+Tel+Aviv"
+      },
+      {
+        "position": "Engineering Manager",
+        "location": "Tel Aviv",
+        "positionLink": "https://www.tenable.com/careers/search?location=Israel+-+Office+-+Tel+Aviv"
+      },
+      {
+        "position": "Senior Director",
+        "location": "Tel Aviv",
+        "positionLink": "https://www.tenable.com/careers/search?location=Israel+-+Office+-+Tel+Aviv"
+      },
+      {
+        "position": "Product Management",
+        "location": "Tel Aviv",
+        "positionLink": "https://www.tenable.com/careers/search?location=Israel+-+Office+-+Tel+Aviv"
+      }
+    ],
+    "testimonials": [
+      {
+        "position": "Director, Engineering",
+        "testimonialAuthor": "Shani Dar",
+        "testimonialDescription": "We solve complex challenges at scale, with room for innovation and bottom-up initiatives.\nThe culture is open and collaborative, with talented, driven people, and a strong balance between fast delivery and time for learning and growth.",
+        "image": "shani-dar"
+      },
+      {
+        "position": "Director, Engineering",
+        "testimonialAuthor": "Yarden Carmi",
+        "testimonialDescription": "Working at Tenable Israel is a unique experience - a place where top talent, cutting-edge technology, and a dynamic culture come together to stay ahead of the ever-evolving threat landscape. We tackle some of the toughest cybersecurity challenges, driving innovation and making a real impact.",
+        "image": "yarden-carmi"
+      },
+      {
+        "position": "Director, Engineering",
+        "testimonialAuthor": "Elad Eisenberg",
+        "testimonialDescription": "The part of my role at Tenable that I enjoy most is brainstorming- discussing with others to find the best solution to a product challenge and learning from my teammates. We work on interesting problems, the work is very diverse, we have the freedom to choose what we want to focus on, and there's room for new initiatives.",
+        "image": "elad-eisenberg"
+      }
+    ],
+    "linkedin": "https://www.linkedin.com/company/tenableinc/posts/?feedView=all",
+    "bluesky": "",
+    "facebook": "https://www.facebook.com/Tenable.Inc/",
+    "twitter": "https://x.com/TenableSecurity?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor",
+    "meetup": "",
+    "instagram": "https://www.instagram.com/tenableisrael/?hl=en",
+    "youtube": "https://www.youtube.com/channel/UCFN4JeizPlme7E-uhrgnWXw",
+    "github": "https://github.com/tenable",
+    "medium": "https://medium.com/tenable-techblog"
   }
 ]

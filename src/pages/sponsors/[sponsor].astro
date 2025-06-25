@@ -8,6 +8,7 @@ import { getSponsors } from "../../helpers/getSponsors";
 import BackgroundMask from "../../components/sponsorsBackgroundMask.astro";
 import Title from "../../components/title.astro";
 import Slider from "../../components/slider.astro";
+import "glightbox/dist/css/glightbox.css";
 
 export const getStaticPaths = (async () => {
   const sponsors = await getSponsors();
@@ -79,12 +80,16 @@ const carouselImagesPromise = await Promise.all(
           }
         </div>
 
-        <Slider
-          images={carouselImagesPromise.map((image, index) => ({
-            src: image.src,
-            alt: `${companyName} image ${index + 1}`,
-          }))}
-        />
+        {
+          carouselImagesPromise.length > 0 && (
+            <Slider
+              images={carouselImagesPromise.map((image, index) => ({
+                src: image.src,
+                alt: `${companyName} image ${index + 1}`,
+              }))}
+            />
+          )
+        }
 
         {
           openPositions.length > 0 && (
@@ -138,6 +143,7 @@ const carouselImagesPromise = await Promise.all(
 
 <style lang="scss">
   .company-logo {
+    filter: brightness(0) invert(1);
     height: auto;
     width: 40%;
     object-fit: contain;
@@ -267,7 +273,9 @@ const carouselImagesPromise = await Promise.all(
       .testimonial-image {
         border-radius: 24px 0 0 0;
         height: 142px;
-        width: auto;
+        width: 100px;
+        object-fit: cover;
+        object-position: center;
       }
 
       .testimonial-content {
@@ -290,6 +298,7 @@ const carouselImagesPromise = await Promise.all(
     }
 
     .company-logo {
+      filter: brightness(0) invert(1);
       width: 100%;
     }
   }

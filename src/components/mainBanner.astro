@@ -16,7 +16,9 @@ const optimizedRS24ImageDesktop = await getImage({
 });
 
 const organizingSponsor = await getSponsors("organizing");
-const regularSponsors = await getSponsors("regular");
+const communitySponsors = await getSponsors("community");
+const gameChangersSponsors = await getSponsors("game-changers");
+const sponsors = [...gameChangersSponsors, ...communitySponsors];
 
 const cssVars = `
 .card-background {
@@ -91,11 +93,11 @@ const cssVars = `
         }
       </div>
       {
-        regularSponsors.length && (
+        sponsors.length && (
           <>
             <Title style="margin: 36px 0 18px" title="Sponsors" id="sponsors" />
             <div class="sponsors-container">
-              {regularSponsors.map((sponsor) => (
+              {sponsors.map((sponsor) => (
                 <a href={`/sponsors/${sponsor.slug}`}>
                   <Image
                     class={`sponsor-logo ${sponsor.slug}`}
@@ -278,14 +280,15 @@ const cssVars = `
         gap: 20px;
 
         .sponsor-logo {
+          filter: brightness(0) invert(1);
           margin: 12px 0;
           object-fit: contain;
-          height: 60px;
+          height: 48px;
           max-width: 300px;
-          width: 180px;
+          width: auto;
 
           &.organizer {
-            scale: 1.6;
+            scale: 1.5;
             transform-origin: left center;
           }
         }

@@ -2,7 +2,7 @@ import slug from "slug";
 import sponsorsData from "./sponsersData.json";
 
 export interface sponsorData {
-  sponsorTier: "organizing" | "regular";
+  sponsorTier: "organizing" | "game-changers" | "community";
   companyName: string;
   description: string;
   website: string;
@@ -29,18 +29,21 @@ export interface sponsorData {
   slug: string;
 }
 
-export async function getSponsors(
-  type: "organizing" | "regular" | "all" = "all"
-) {
+export async function getSponsors(type?: sponsorData["sponsorTier"]) {
   let finalSponsors = sponsorsData;
   if (type === "organizing") {
     finalSponsors = sponsorsData.filter(
       (sponsor) => sponsor.sponsorTier === "organizing"
     );
   }
-  if (type === "regular") {
+  if (type === "community") {
     finalSponsors = sponsorsData.filter(
-      (sponsor) => sponsor.sponsorTier === "regular"
+      (sponsor) => sponsor.sponsorTier === "community"
+    );
+  }
+  if (type === "game-changers") {
+    finalSponsors = sponsorsData.filter(
+      (sponsor) => sponsor.sponsorTier === "game-changers"
     );
   }
 
@@ -58,7 +61,7 @@ export async function getSponsors(
       };
     });
 
-    const carouselImages = sponsor.carouselImages.map((image) => {
+    const carouselImages = sponsor.carouselImages?.map((image) => {
       return import(`../assets/sponsors/${sponsorSlug}/${image}.png`);
     });
 
