@@ -118,11 +118,8 @@ const cssVars = `
         industry team of volunteer moderators and event organizers.
       </p>
 
-      <Title
-        style="margin: 25px 0 24px"
-        title="Organizing Sponsor"
-        id="sponsors"
-      />
+
+      <div class="sponsorCategoryTitle">Organizing Sponsor</div>
       <div class="sponsors-container">
         {
           organizingSponsor.map((sponsor) => (
@@ -141,11 +138,7 @@ const cssVars = `
       {
         gameChangersSponsors.length && (
           <>
-            <Title
-              style="margin: 36px 0 18px"
-              title="Game Changers Sponsors"
-              id="sponsors"
-            />
+            <div class="sponsorCategoryTitle">Game Changers Sponsors</div>
             <div class="sponsors-container">
               {gameChangersSponsors.map((sponsor) => (
                 <a href={`/sponsors/${sponsor.slug}`}>
@@ -407,7 +400,7 @@ const cssVars = `
         .event-description {
           color: white;
           font-weight: 400;
-          font-size: 16px;
+          font-size: 12px;
           max-width: 64%;
           line-height: 1.5rem;
 
@@ -423,6 +416,12 @@ const cssVars = `
         }
       }
 
+      .sponsorCategoryTitle {
+        margin: 40px 0 16px 0;
+        color: #b3b4c3;
+        font-weight: 500;
+      }
+
       .sponsors-container {
         display: flex;
         flex-wrap: wrap;
@@ -431,15 +430,13 @@ const cssVars = `
 
         .sponsor-logo {
           filter: brightness(0) invert(1);
-          margin: 12px 0;
           object-fit: contain;
           height: 48px;
           max-width: 300px;
           width: auto;
 
           &.organizer {
-            scale: 1.5;
-            transform-origin: left center;
+            height: 65px;
           }
 
           &.wix {
