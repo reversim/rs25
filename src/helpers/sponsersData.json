@@ -1,5 +1,6 @@
 [
   {
+    "sponsorTier": "organizing",
     "companyName": "teads",
     "description": "Outbrain and Teads have merged to create an omnichannel outcomes platform for the open internet. The new company, operating under the name ‘Teads’, is embarking on a journey to elevate advertising outcomes.\n\nThe new Teads unites exceptional reach, an advanced omnichannel graph, data-driven creative, and predictive technology to drive meaningful outcomes from branding to performance.\nIt ensures value is driven by leveraging predictive AI technology to connect quality media, beautiful brand creative, and context-driven addressability and measurement.\n\nOne of the most scaled advertising platforms on the open internet, the new Teads is directly partnered with more than 10,000 publishers and 20,000 advertisers globally. For more information, visit https://thenewteads.com/.",
     "website": "teads.com",
@@ -44,49 +45,255 @@
   },
 
   {
-    "companyName": "Gettogther",
-    "description": "Gettogether is a company that offers various services such as personalized calendars for events, happy hours and gifts, lectures and experiences, meetups, large events and conferences, hackathons, parties, offsite in Israel abroad, project management and business delegations.",
-    "website": "https://www.instagram.com/gettogether.israel",
+    "sponsorTier": "game-changers",
+    "companyName": "Tenable",
+    "description": "Tenable is a global leader in Cyber Exposure Management, helping organizations proactively identify and prioritize critical vulnerabilities and risks across their entire attack surface – from IT and cloud to critical infrastructure. Tenable’s holistic platform reduces business risks, protects sensitive information and systems, and maintains business continuity and operational security.\n\nWe provide powerful, data-driven insights that allow security teams to act with precision and speed, comply with regulations, and protect their environments. Our platform, Tenable One, is evolving into a strategic tool for risk management and decision-makers in complex enterprise settings.\n\nTenable is publicly traded on Nasdaq (TENB) and employs over 1,800 people globally, including over 200 employees in Israel.\nOur local R&D center in Tel Aviv plays a central role in shaping the company’s core technologies, while our culture fosters innovation, collaboration, and a shared drive to grow and excel continuously. Join the best people in the industry and build your future with us!",
+    "website": "https://www.tenable.com/ ",
     "carouselImages": [
-      "DSC_2836",
-      "DSC_2916",
-      "IMG_0621",
-      "IMG_0990",
-      "IMG_1712",
-      "image-1",
-      "IMG_0882",
-      "IMG_1708",
-      "N_H00222"
+      "tenable-1",
+      "tenable-2",
+      "tenable-3",
+      "tenable-4",
+      "tenable-5",
+      "tenable-6",
+      "tenable-7",
+      "tenable-8",
+      "tenable-9"
     ],
     "technologyStack": [
-      "wellbeing",
-      "employeewelfare",
-      "EmployeeExperience",
-      "hackathon",
-      "conventions",
-      "hr"
+      "C#",
+      "Golang",
+      ".NET core",
+      "Kotlin",
+      "Python",
+      "React.js",
+      "AWS",
+      "K8S",
+      "Docker",
+      "Playwright"
     ],
     "openPositions": [
       {
-        "position": "Administrative Assistant",
-        "location": "Tel Aviv, Israel",
-        "positionLink": "https://www.linkedin.com/company/gettogetherisrael/"
+        "position": "Software Engineer",
+        "location": "Tel Aviv",
+        "positionLink": "https://www.tenable.com/careers/search?location=Israel+-+Office+-+Tel+Aviv"
+      },
+      {
+        "position": "Senior Software Engineers",
+        "location": "Tel Aviv",
+        "positionLink": "https://www.tenable.com/careers/search?location=Israel+-+Office+-+Tel+Aviv"
+      },
+      {
+        "position": "Frontend Tech Lead",
+        "location": "Tel Aviv",
+        "positionLink": "https://www.tenable.com/careers/search?location=Israel+-+Office+-+Tel+Aviv"
+      },
+      {
+        "position": "Senior Product Manager",
+        "location": "Tel Aviv",
+        "positionLink": "https://www.tenable.com/careers/search?location=Israel+-+Office+-+Tel+Aviv"
+      },
+      {
+        "position": "Security Researcher",
+        "location": "Tel Aviv",
+        "positionLink": "https://www.tenable.com/careers/search?location=Israel+-+Office+-+Tel+Aviv"
+      },
+      {
+        "position": "Engineering Manager",
+        "location": "Tel Aviv",
+        "positionLink": "https://www.tenable.com/careers/search?location=Israel+-+Office+-+Tel+Aviv"
+      },
+      {
+        "position": "Senior Director",
+        "location": "Tel Aviv",
+        "positionLink": "https://www.tenable.com/careers/search?location=Israel+-+Office+-+Tel+Aviv"
+      },
+      {
+        "position": "Product Management",
+        "location": "Tel Aviv",
+        "positionLink": "https://www.tenable.com/careers/search?location=Israel+-+Office+-+Tel+Aviv"
       }
     ],
     "testimonials": [
       {
-        "image": "rivka-dudi",
-        "testimonialDescription": "When I founded GetTogether, I envisioned creating more than just another production company.  What started as a simple idea has blossomed into something extraordinary. Our success stems from understanding that in today's digital world, people crave authentic human connection, and GetTogether bridges that gap by making it effortless to make events that align with your interests and values.",
-        "testimonialAuthor": "Rivka Dudi",
-        "position": "Founder & CEO"
+        "position": "Director, Engineering",
+        "testimonialAuthor": "Shani Dar",
+        "testimonialDescription": "We solve complex challenges at scale, with room for innovation and bottom-up initiatives.\nThe culture is open and collaborative, with talented, driven people, and a strong balance between fast delivery and time for learning and growth.",
+        "image": "shani-dar"
+      },
+      {
+        "position": "Director, Engineering",
+        "testimonialAuthor": "Yarden Carmi",
+        "testimonialDescription": "Working at Tenable Israel is a unique experience - a place where top talent, cutting-edge technology, and a dynamic culture come together to stay ahead of the ever-evolving threat landscape. We tackle some of the toughest cybersecurity challenges, driving innovation and making a real impact.",
+        "image": "yarden-carmi"
+      },
+      {
+        "position": "Director, Engineering",
+        "testimonialAuthor": "Elad Eisenberg",
+        "testimonialDescription": "The part of my role at Tenable that I enjoy most is brainstorming- discussing with others to find the best solution to a product challenge and learning from my teammates. We work on interesting problems, the work is very diverse, we have the freedom to choose what we want to focus on, and there's room for new initiatives.",
+        "image": "elad-eisenberg"
       }
     ],
-    "linkedin": "https://www.linkedin.com/company/gettogetherisrael",
+    "linkedin": "https://www.linkedin.com/company/tenableinc/posts/?feedView=all",
     "bluesky": "",
-    "facebook": "",
-    "twitter": "",
+    "facebook": "https://www.facebook.com/Tenable.Inc/",
+    "twitter": "https://x.com/TenableSecurity?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor",
     "meetup": "",
-    "instagram": "https://www.instagram.com/gettogether.israel",
+    "instagram": "https://www.instagram.com/tenableisrael/?hl=en",
+    "youtube": "https://www.youtube.com/channel/UCFN4JeizPlme7E-uhrgnWXw",
+    "github": "https://github.com/tenable",
+    "medium": "https://medium.com/tenable-techblog"
+  },
+
+  {
+    "sponsorTier": "game-changers",
+    "companyName": "Wix",
+    "website": "https://www.wix.engineering/",
+    "description": "Wix is the place for limitless creation and online success. Founded in 2006, our platform now serves 280M+ users across 190 countries worldwide.\n\nWe strive to stay ahead of the curve, always evolve, and provide efficient and innovative tools to help our users succeed at every stage of their journey. Wix is the all-in-one web creation platform with a full suite of tools to build, manage, and grow an online presence.\n\nWe even entered the AI game back in 2016 with the launch of Wix ADI, the first AI website builder that creates custom websites faster than we ever thought possible.\n\nAnd the best part? We’re just getting started.",
+    "carouselImages": [
+      "wix-1",
+      "wix-2",
+      "wix-3",
+      "wix-4",
+      "wix-5",
+      "wix-6",
+      "wix-7"
+    ],
+    "linkedin": "https://www.linkedin.com/showcase/wix-engineering/",
+    "facebook": "https://www.facebook.com/WixEngineering",
+    "twitter": "https://x.com/WixEng",
+    "meetup": "https://www.meetup.com/at-wix/",
+    "youtube": "https://www.youtube.com/@Wix-Engineering",
+    "github": "https://github.com/wix",
+    "medium": "https://medium.com/wix-engineering",
+    "technologyStack": [
+      "AI",
+      "GenAI",
+      "Platform Engineering",
+      "React",
+      "TypeScript",
+      "Bazel",
+      "Kafka",
+      "Java",
+      "Engineering Guilds",
+      "Data Engineering",
+      "DevEx",
+      "SQL",
+      "JavaScript",
+      "Scaling",
+      "Resilience",
+      "ReactNative",
+      "Engineering Culture."
+    ],
+    "openPositions": [
+      {
+        "position": "FED Infrastructure Team Lead",
+        "location": "Tel Aviv",
+        "positionLink": "https://careers.wix.com/position/REF12W-744000065463205"
+      },
+      {
+        "position": "Software Engineer - AI Infra",
+        "location": "Tel Aviv",
+        "positionLink": "https://careers.wix.com/position/REF10B-744000066653020"
+      },
+      {
+        "position": "Senior Backend Engineer - Bazel team",
+        "location": "Tel Aviv",
+        "positionLink": "https://careers.wix.com/position/REF6W-743999992311875"
+      },
+      {
+        "position": "Backend Engineer",
+        "location": "Tel Aviv",
+        "positionLink": "https://careers.wix.com/position/REF6W-743999994525096"
+      },
+      {
+        "position": "Senior Backend Engineer - eCommerce",
+        "location": "Tel Aviv",
+        "positionLink": "https://careers.wix.com/position/REF6W-744000033553965"
+      }
+    ],
+    "testimonials": [
+      {
+        "position": "Senior Backend Engineer",
+        "testimonialAuthor": "Neria Yashar",
+        "testimonialDescription": "Engineering at Wix means working at real scale - millions of users, constant traffic, and big challenges. We’re using AI and modern tech to move faster, build smarter, and improve user experiences behind the scenes.\n\nIt’s the kind of work that keeps me curious and always learning.",
+        "image": "neria-yashar"
+      },
+      {
+        "testimonialAuthor": "Evelyn Moadi",
+        "image": "evelyn-moadi",
+        "testimonialDescription": "Wix was the ideal place to transition from an engineer to an R&D team lead. It allows me to stay hands-on and technical while making a real product impact at scale.\n\nAt the same time, I'm growing as a leader by helping my team thrive - both individually and collectively - blending engineering excellence with meaningful team development.",
+        "position": "FED R&D Team Lead"
+      },
+      {
+        "testimonialAuthor": "Natan Silnitsky",
+        "image": "natan-silnitsky",
+        "testimonialDescription": "At Wix, building resilient and scalable systems is not just a goal - it’s our reality. As tech lead for Backend Infra, I’m amazed at how we’ve architected an event-driven platform with over 4,000 microservices (and counting).\n\nEvery day brings new technical frontiers, and our collaborative culture empowers us to innovate at scale while keeping reliability front and center. Seeing our infrastructure fuel the creativity and growth of millions of users makes every challenge worthwhile.",
+        "position": "Backend Infra Tech Lead"
+      }
+    ]
+  },
+
+  {
+    "sponsorTier": "community",
+    "companyName": "Start.io",
+    "description": "Start.io is a sell-side omnichannel advertising platform powered by real-time mobile audiences. We deliver hundreds of millions of ads per day across thousands of global leading apps. Our platform uses AI to deliver more efficient, effective and precise digital advertising campaigns.\n\nOur direct integration with thousands of mobile publishers gives us access to more than 50 billion first-party data signals per day across the globe. Marketers use these anonymized signals to understand and predict consumer behavior, identify new opportunities and fuel business growth.\n\nStart.io was launched in 2010 by cofounders Gil Dudkiewicz and Ran Avidan, and today has offices in New York, Tel Aviv, Beijing, the U.K., Ukraine, Poland, and India.",
+    "website": "https://www.start.io/",
+    "carouselImages": [],
+    "technologyStack": [
+      "TypeScript",
+      "Python",
+      "Kafka",
+      "PyTorch",
+      "AWS",
+      "GCP",
+      "K8S",
+      "Engineering Guild"
+    ],
+    "openPositions": [
+      {
+        "position": "Partnerships Manager",
+        "location": "Israel",
+        "positionLink": "https://www.start.io/career/co/clients/0D.556/partnerships-manager/all/"
+      },
+      {
+        "position": "DevOps Engineer",
+        "location": "Israel",
+        "positionLink": "https://www.start.io/career/co/rd/29.75C/devops-engineer/all/"
+      },
+      {
+        "position": "Product Manager",
+        "location": "Israel",
+        "positionLink": "https://www.start.io/career/co/product/3C.753/product-manager/all/"
+      },
+      {
+        "position": "AdOps Specialist",
+        "location": "India",
+        "positionLink": "https://www.start.io/career/co/operations/79.55D/ad-operations-specialist/all/"
+      },
+      {
+        "position": "Business Analyst",
+        "location": "India",
+        "positionLink": ""
+      },
+      {
+        "position": "Product Manager",
+        "location": "Poland",
+        "positionLink": "https://www.start.io/career/co/product/8E.759/product-manager/all/"
+      },
+      {
+        "position": "DevOps Engineer",
+        "location": "Poland",
+        "positionLink": "https://www.start.io/career/co/rd/2D.050/devops-engineer/all/"
+      }
+    ],
+    "testimonials": [],
+    "linkedin": "https://www.linkedin.com/company/2484520",
+    "bluesky": "",
+    "facebook": "https://www.facebook.com/StartApp/",
+    "twitter": "https://x.com/Start_io_",
+    "meetup": "",
+    "instagram": "https://www.instagram.com/start.io_official/",
     "youtube": "",
     "github": "",
     "medium": ""

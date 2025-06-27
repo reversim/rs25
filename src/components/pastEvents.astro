@@ -1,7 +1,6 @@
 ---
-import { Image } from "astro:assets";
+import { Image, getImage } from "astro:assets";
 import Title from "./title.astro";
-
 import Image1 from "../assets/past-events/image-1.png";
 import Image2 from "../assets/past-events/image-2.png";
 import Image3 from "../assets/past-events/image-3.png";
@@ -9,6 +8,13 @@ import Image4 from "../assets/past-events/image-4.png";
 import Image5 from "../assets/past-events/image-5.png";
 import pastEvent from "../assets/past-events/background.png";
 import "glightbox/dist/css/glightbox.css";
+import Slider from "./slider.astro";
+
+const image1 = await getImage({ src: Image1 });
+const image2 = await getImage({ src: Image2 });
+const image3 = await getImage({ src: Image3 });
+const image4 = await getImage({ src: Image4 });
+const image5 = await getImage({ src: Image5 });
 ---
 
 <Image
@@ -23,105 +29,19 @@ import "glightbox/dist/css/glightbox.css";
     style="color: black; margin: 100px 0 0"
     id="past-events"
   />
-  <div class="splide-container">
-    <a
-      href="https://www.youtube.com/embed/gbcaCFO65Bo?si=_c-V6WTmXCb1ktut"
-      class="glightbox"
-      data-gallery="past-events"></a>
-    <div class="splide">
-      <div class="splide__track">
-        <ul class="splide__list">
-          <li class="splide__slide">
-            <iframe
-              loading="lazy"
-              id="yt-video"
-              width="100%"
-              height="100%"
-              src="https://www.youtube.com/embed/gbcaCFO65Bo?si=_c-V6WTmXCb1ktut"
-              title="YouTube video player"
-              frameborder="0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-              referrerpolicy="strict-origin-when-cross-origin"
-              allowfullscreen></iframe>
-          </li>
-          <li class="splide__slide">
-            <a href={Image1.src} class="glightbox" data-gallery="past-events">
-              <Image
-                height={400}
-                src={Image1}
-                alt="image of the conference people"
-              />
-            </a>
-          </li>
-          <li class="splide__slide">
-            <a href={Image2.src} class="glightbox" data-gallery="past-events">
-              <Image
-                height={400}
-                src={Image2}
-                alt="two people taking picture on the main stage"
-              />
-            </a>
-          </li>
-          <li class="splide__slide">
-            <a href={Image3.src} class="glightbox" data-gallery="past-events">
-              <Image
-                height={400}
-                src={Image3}
-                alt="people sitting hearing a speaker"
-              />
-            </a>
-            <li class="splide__slide">
-              <a href={Image4.src} class="glightbox" data-gallery="past-events">
-                <Image
-                  height={400}
-                  src={Image4}
-                  alt="volunteers passing out shirts"
-                />
-              </a>
-            </li>
-            <li class="splide__slide">
-              <a href={Image5.src} class="glightbox" data-gallery="past-events">
-                <Image height={400} src={Image5} alt="close up of a bag" />
-              </a>
-            </li>
-          </li>
-        </ul>
-      </div>
-    </div>
 
-    <script>
-      import GLightbox from "glightbox";
-      import Splide from "@splidejs/splide";
-
-      document.addEventListener("DOMContentLoaded", () => {
-        GLightbox({
-          selector: ".glightbox",
-          draggable: true,
-        });
-
-        new Splide(".splide", {
-          type: "loop",
-          autoplay: true,
-          interval: 3000,
-          arrows: true,
-          pagination: true,
-          perPage: 2,
-          perMove: 2,
-          gap: "1rem",
-          rewind: true,
-          padding: { right: "20%" }, // Ensures the last item is half visible
-          breakpoints: {
-            768: {
-              arrows: false,
-              perPage: 1,
-              padding: { right: "0%" },
-              perMove: 1,
-            },
-          },
-        }).mount();
-      });
-    </script>
-  </div>
+  <Slider
+    videos={[
+      { url: "https://www.youtube.com/embed/gbcaCFO65Bo?si=_c-V6WTmXCb1ktut" },
+    ]}
+    images={[
+      { src: image1.src, alt: "image of the conference people" },
+      { src: image2.src, alt: "two people taking picture on the main stage" },
+      { src: image3.src, alt: "people sitting hearing a speaker" },
+      { src: image4.src, alt: "volunteers passing out shirts" },
+      { src: image5.src, alt: "close up of a bag" },
+    ]}
+  />
 
   <style lang="scss">
     .past-event-background {
@@ -153,51 +73,12 @@ import "glightbox/dist/css/glightbox.css";
     }
 
     .past-events-container {
-      max-width: var(--max-container-width);
+      max-width: var(--breakpoint-x-large);
       margin: auto;
       position: relative;
 
-      @media screen and (max-width: 1280px) {
-        padding: 20px 10% 0;
-      }
-
       @media screen and (max-width: 576px) {
         padding: 20px 0% 0;
-      }
-
-      .splide-container {
-        width: 100%;
-        padding-top: 60px;
-        margin: auto;
-
-        .splide__list {
-          height: 250px;
-        }
-
-        .splide {
-          position: relative;
-
-          &::after {
-            content: "";
-            position: absolute;
-            top: 0;
-            right: 0px;
-            width: 60px; /* Adjust as needed */
-            height: 100%;
-            background: linear-gradient(
-              to left,
-              rgba(255, 255, 255, 80%) 0%,
-              rgba(255, 255, 255, 0) 100%
-            );
-            pointer-events: none; 
-          }
-        }
-
-        img {
-          height: 100%;
-          max-width: 100%;
-          object-fit: cover;
-        }
       }
     }
   </style>

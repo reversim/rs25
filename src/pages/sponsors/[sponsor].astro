@@ -7,6 +7,8 @@ import slugify from "slug";
 import { getSponsors } from "../../helpers/getSponsors";
 import BackgroundMask from "../../components/sponsorsBackgroundMask.astro";
 import Title from "../../components/title.astro";
+import Slider from "../../components/slider.astro";
+import "glightbox/dist/css/glightbox.css";
 
 export const getStaticPaths = (async () => {
   const sponsors = await getSponsors();
@@ -78,26 +80,16 @@ const carouselImagesPromise = await Promise.all(
           }
         </div>
 
-        <div class="splide-container">
-          <div class="splide">
-            <div class="splide__track">
-              <ul class="splide__list">
-                {
-                  carouselImagesPromise.map((image, index) => (
-                    <li class="splide__slide">
-                      <Image
-                        width={800}
-                        height={600}
-                        src={image.src}
-                        alt={`${companyName} image ${index + 1}`}
-                      />
-                    </li>
-                  ))
-                }
-              </ul>
-            </div>
-          </div>
-        </div>
+        {
+          carouselImagesPromise.length > 0 && (
+            <Slider
+              images={carouselImagesPromise.map((image, index) => ({
+                src: image.src,
+                alt: `${companyName} image ${index + 1}`,
+              }))}
+            />
+          )
+        }
 
         {
           openPositions.length > 0 && (
@@ -149,39 +141,17 @@ const carouselImagesPromise = await Promise.all(
   </BackgroundMask>
 </Layout>
 
-<script>
-  import Splide from "@splidejs/splide";
-
-  document.addEventListener("DOMContentLoaded", () => {
-    new Splide(".splide", {
-      type: "loop",
-      autoplay: true,
-      interval: 3000,
-      arrows: true,
-      pagination: true,
-      perPage: 2,
-      perMove: 2,
-      gap: "1rem",
-      rewind: true,
-      padding: { right: "20%" }, // Ensures the last item is half visible
-      breakpoints: {
-        768: {
-          arrows: false,
-          perPage: 1,
-          padding: { right: "0%" },
-          perMove: 1,
-        },
-      },
-    }).mount();
-  });
-</script>
-
 <style lang="scss">
   .company-logo {
+    filter: brightness(0) invert(1);
     height: auto;
     width: 40%;
     object-fit: contain;
     margin-bottom: 32px;
+  }
+
+  .open-positions {
+    margin-top: 140px;
   }
 
   .positions-wrapper {
@@ -303,7 +273,9 @@ const carouselImagesPromise = await Promise.all(
       .testimonial-image {
         border-radius: 24px 0 0 0;
         height: 142px;
-        width: auto;
+        width: 100px;
+        object-fit: cover;
+        object-position: center;
       }
 
       .testimonial-content {
@@ -326,6 +298,7 @@ const carouselImagesPromise = await Promise.all(
     }
 
     .company-logo {
+      filter: brightness(0) invert(1);
       width: 100%;
     }
   }

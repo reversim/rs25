@@ -2,6 +2,7 @@ import slug from "slug";
 import sponsorsData from "./sponsersData.json";
 
 export interface sponsorData {
+  sponsorTier: "organizing" | "game-changers" | "community";
   companyName: string;
   description: string;
   website: string;
@@ -28,11 +29,30 @@ export interface sponsorData {
   slug: string;
 }
 
-export async function getSponsors() {
-  return sponsorsData.map((sponsor) => {
+export async function getSponsors(type?: sponsorData["sponsorTier"]) {
+  let finalSponsors = sponsorsData;
+  if (type === "organizing") {
+    finalSponsors = sponsorsData.filter(
+      (sponsor) => sponsor.sponsorTier === "organizing"
+    );
+  }
+  if (type === "community") {
+    finalSponsors = sponsorsData.filter(
+      (sponsor) => sponsor.sponsorTier === "community"
+    );
+  }
+  if (type === "game-changers") {
+    finalSponsors = sponsorsData.filter(
+      (sponsor) => sponsor.sponsorTier === "game-changers"
+    );
+  }
+
+  return finalSponsors.map((sponsor) => {
     const sponsorSlug = slug(sponsor.companyName);
 
-    const testimonials = sponsor.testimonials.map((testimonial) => {
+    const testimonials = (
+      sponsor.testimonials as sponsorData["testimonials"]
+    ).map((testimonial) => {
       return {
         ...testimonial,
         image: import(
@@ -41,7 +61,7 @@ export async function getSponsors() {
       };
     });
 
-    const carouselImages = sponsor.carouselImages.map((image) => {
+    const carouselImages = sponsor.carouselImages?.map((image) => {
       return import(`../assets/sponsors/${sponsorSlug}/${image}.png`);
     });
 
