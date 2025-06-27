@@ -5,6 +5,7 @@ import Asterisk from "../assets/asterisk.svg";
 import rs24Image from "../assets/reversim24-image.png";
 import { getImage, Image } from "astro:assets";
 import { getSponsors } from "../helpers/getSponsors";
+import {backupdr} from "googleapis/build/src/apis/backupdr";
 
 const optimizedRS24ImageMobile = await getImage({
   src: rs24Image,
@@ -26,35 +27,81 @@ const cssVars = `
     }`;
 ---
 
-<script src="https://flackr.github.io/scroll-timeline/dist/scroll-timeline.js"
-></script>
+<script src="https://flackr.github.io/scroll-timeline/dist/scroll-timeline.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/reversim-machine/dist/reversim-machine.umd.js"></script>
+<!--<script src="http://localhost:8080/dist/reversim-machine.umd.js"></script>-->
+
+<script is:inline>
+  const minMachineWidth = 1000;
+  document.documentElement.style.setProperty('--minMachineWidth', `${minMachineWidth}px`);
+  let machineStarted = false;
+
+  function startMachine(){
+    ReversimMachine.init(document.querySelector("#machine"), {
+        debug: false,
+        browserTargetBoundingBox: document.getElementById('machine-stage'),
+        frameTopLeft: {x: 0, y: 0},
+        frameBottomRight: {x: 1000, y: 1000},
+        onAirMachineStart: () => {
+            const asterisk = document.querySelector('.asteriskContainer');
+            if (asterisk) {
+                asterisk.classList.add('spinning');
+                }
+            },
+        });
+    machineStarted = true;
+  }
+
+  document.addEventListener('DOMContentLoaded', async () => {
+    if (window.innerWidth >= minMachineWidth) {
+      startMachine();
+    }
+  });
+
+  window.addEventListener('resize', () => {
+    if (machineStarted && window.innerWidth < minMachineWidth) {
+      ReversimMachine.destroy();
+      machineStarted = false;
+    } else if (!machineStarted && window.innerWidth >= minMachineWidth) {
+        startMachine();
+    }
+  });
+
+</script>
+
+<div id="machine"></div>
 <div class="main-banner">
-  <div class="hero-container">
-    <div class="title-container">
-      <h2 class="title green">REVERSIM</h2>
-      <h2 class="title orange">AUTUMN</h2>
-      <h2 class="title blue">SUMMIT<p class="title pink"><Asterisk /></p></h2>
-    </div>
-    <div class="event-date">
-      <p>October 27-28, 2025</p>
-    </div>
-    <div class="hero-btn-container">
-      <a
-        class="hero-btn speaker"
-        target="_blank"
-        href="https://sessionize.com/reversim-summit-2025/"
-      >
-        <button> Become a Speaker! </button>
-        <div class="wave"></div>
-      </a>
-      <a
-        class="hero-btn sponsor"
-        target="_blank"
-        href="https://forms.gle/QKgb1uESmPQxAVA39"
-      >
-        <button> Become a Sponsor! </button>
-        <div class="wave"></div>
-      </a>
+  <div class="machine-layout">
+    <div id="machine-stage"></div>
+    <div class="hero-container">
+      <div class="hero-content">
+          <div class="title-container">
+            <h2 class="title green">REVERSIM</h2>
+            <h2 class="title orange">AUTUMN</h2>
+            <h2 class="title blue">SUMMIT<p class="title pink asteriskContainer"> <Asterisk class="asterisk" /> <Asterisk class="asterisk" /></p></h2>
+          </div>
+          <div class="event-date">
+            <p>October 27-28, 2025</p>
+          </div>
+      </div>
+      <div class="hero-btn-container">
+        <a
+          class="hero-btn speaker"
+          target="_blank"
+          href="https://sessionize.com/reversim-summit-2025/"
+        >
+          <button> Become a Speaker! </button>
+          <div class="wave"></div>
+        </a>
+        <a
+          class="hero-btn sponsor"
+          target="_blank"
+          href="https://forms.gle/QKgb1uESmPQxAVA39"
+        >
+          <button> Become a Sponsor! </button>
+          <div class="wave"></div>
+        </a>
+      </div>
     </div>
   </div>
 
@@ -71,11 +118,8 @@ const cssVars = `
         industry team of volunteer moderators and event organizers.
       </p>
 
-      <Title
-        style="margin: 25px 0 24px"
-        title="Organizing Sponsor"
-        id="sponsors"
-      />
+
+      <div class="sponsorCategoryTitle">Organizing Sponsor</div>
       <div class="sponsors-container">
         {
           organizingSponsor.map((sponsor) => (
@@ -94,11 +138,7 @@ const cssVars = `
       {
         gameChangersSponsors.length && (
           <>
-            <Title
-              style="margin: 36px 0 18px"
-              title="Game Changers Sponsors"
-              id="sponsors"
-            />
+            <div class="sponsorCategoryTitle">Game Changers Sponsors</div>
             <div class="sponsors-container">
               {gameChangersSponsors.map((sponsor) => (
                 <a href={`/sponsors/${sponsor.slug}`}>
@@ -141,14 +181,73 @@ const cssVars = `
 
 <style set:html={cssVars}></style>
 
+<style is:global>
+#machine {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    aspect-ratio: 1.5;
+      canvas {
+        width: 100%;
+        height: 100%;
+      }
+    }
+</style>
+
 <style lang="scss">
   .main-banner {
+    .machine-layout{
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      align-items: flex-start;
+      view-timeline: --sponsorsReveal block;
+      // margin: 0 12%;
+
+      @media screen and (max-width: 1300px) {
+        height: 600px;
+      }
+
+
+      #machine-stage{
+        aspect-ratio: 1;
+        height: 600px;
+
+        @media screen and (max-width: 1300px) {
+          height: 500px;
+        }
+
+        @media screen and (max-width: 1000px) {
+          display: none;
+        }
+
+      }
+
+      .hero-container{
+        margin-left: 80px;
+        padding-top: 75px;
+
+        @media screen and (max-width: 1000px) {
+          margin-left: 0;
+        }
+      }
+
+      .asteriskContainer.spinning {
+        animation: spin 6s linear infinite;
+        @keyframes spin {
+          from { transform: rotate(0deg);}
+          to {transform: rotate(360deg);}
+        }
+      }
+
+    }
+
     .hero-container {
-      position: relative;
-      padding: 40px 10% 100px;
       display: flex;
       flex-direction: column;
       justify-content: center;
+      pointer-events: none;
 
       .title-container {
         font-size: 80px;
@@ -159,15 +258,20 @@ const cssVars = `
           font-weight: inherit;
           margin: 0 auto;
           line-height: 1;
+          --textShadow: #c1c1c182;
 
           &.green {
             color: var(--green);
             transform: translateX(-0.7em);
+            text-shadow: -6px -4px 0px var(--textShadow);
           }
+
           &.orange {
             color: var(--orange);
             transform: translateX(1.71em);
+            text-shadow: -6px 4px 0px  var(--textShadow);;
           }
+
           &.blue {
             display: flex;
             justify-content: center;
@@ -175,12 +279,28 @@ const cssVars = `
             gap: 12px;
             color: var(--blue);
             transform: translateX(-1.47em);
-          }
+            text-shadow: -4px -6px 0px var(--textShadow);
+         }
+
           &.pink {
+            position: relative;
             width: 0.8em;
+            aspect-ratio: 1;
             svg {
+              position: absolute;
+              top: 0;
+              left: 0;
+              width: 100%;
+              height: 100%;
               fill: var(--pink);
             }
+
+            svg:nth-child(2) {
+                left: -6px;
+                top: -4px;
+                fill:  var(--textShadow);
+                z-index: -1
+              }
           }
         }
 
@@ -199,7 +319,6 @@ const cssVars = `
         font-size: 32px;
         p {
           text-align: center;
-          text-shadow: 1px 1px 3px grey;
         }
 
         @media (max-width: 768px) {
@@ -281,7 +400,7 @@ const cssVars = `
         .event-description {
           color: white;
           font-weight: 400;
-          font-size: 16px;
+          font-size: 12px;
           max-width: 64%;
           line-height: 1.5rem;
 
@@ -297,6 +416,12 @@ const cssVars = `
         }
       }
 
+      .sponsorCategoryTitle {
+        margin: 40px 0 16px 0;
+        color: #b3b4c3;
+        font-weight: 500;
+      }
+
       .sponsors-container {
         display: flex;
         flex-wrap: wrap;
@@ -305,15 +430,13 @@ const cssVars = `
 
         .sponsor-logo {
           filter: brightness(0) invert(1);
-          margin: 12px 0;
           object-fit: contain;
           height: 48px;
           max-width: 300px;
           width: auto;
 
           &.organizer {
-            scale: 1.5;
-            transform-origin: left center;
+            height: 65px;
           }
 
           &.wix {
@@ -354,7 +477,7 @@ const cssVars = `
 
     background-color: #e75a80;
     cursor: pointer;
-    box-shadow: 4px 4px 5px #aaaeaf;
+    box-shadow: 4px 4px 0px #c1c1c182;
     transition: all 0.15s ease-in;
 
     .wave,
@@ -425,6 +548,7 @@ const cssVars = `
       border: none;
       cursor: pointer;
       font-size: 18px;
+      pointer-events: all;
 
       font-weight: bold;
       padding: 10px 32px;
