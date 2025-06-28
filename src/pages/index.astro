@@ -103,12 +103,16 @@ const teamMembers = await getTeamMembers();
   <footer>
     <div class="footer-content">
       <a class="header-link" href={"/coc"}>Code of conduct</a>
-      <a class="header-link attributions" href={"/attributions"}>Attributions</a>
+      <a class="header-link attributions" href={"/attributions"}>Attributions</a
+      >
       <p>All rights reserved Reversim 2025</p>
     </div>
     <p class="site-credits">
-      Implementation by <a href="https://www.linkedin.com/in/inbar-danieli/">Inbar Danieli</a> &  <a href="https://opherv.com">Opher Vishnia</a> /
-      Design by <a href="https://opherv.com">Opher Vishnia</a>
+      Implementation by <a href="https://www.linkedin.com/in/inbar-danieli/"
+        >Inbar Danieli</a
+      > & <a href="https://opherv.com">Opher Vishnia</a> / Design by <a
+        href="https://opherv.com">Opher Vishnia</a
+      >
     </p>
   </footer>
 </Layout>
@@ -166,6 +170,10 @@ const teamMembers = await getTeamMembers();
         flex-wrap: wrap;
         gap: 10px;
         justify-content: center;
+
+        .attributions {
+          margin: 0;
+        }
       }
     }
 
@@ -182,6 +190,10 @@ const teamMembers = await getTeamMembers();
 
       a {
         text-decoration: underline;
+      }
+
+      @media (max-width: 576px) {
+        text-align: center;
       }
     }
   }
