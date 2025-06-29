@@ -5,7 +5,6 @@ import Asterisk from "../assets/asterisk.svg";
 import rs24Image from "../assets/reversim24-image.png";
 import { getImage, Image } from "astro:assets";
 import { getSponsors } from "../helpers/getSponsors";
-import {backupdr} from "googleapis/build/src/apis/backupdr";
 
 const optimizedRS24ImageMobile = await getImage({
   src: rs24Image,
@@ -27,46 +26,50 @@ const cssVars = `
     }`;
 ---
 
-<script src="https://flackr.github.io/scroll-timeline/dist/scroll-timeline.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/reversim-machine/dist/reversim-machine.umd.js"></script>
+<script src="https://flackr.github.io/scroll-timeline/dist/scroll-timeline.js"
+></script>
+<script
+  src="https://cdn.jsdelivr.net/npm/reversim-machine/dist/reversim-machine.umd.js"
+></script>
 <!--<script src="http://localhost:8080/dist/reversim-machine.umd.js"></script>-->
-
 <script is:inline>
   const minMachineWidth = 1000;
-  document.documentElement.style.setProperty('--minMachineWidth', `${minMachineWidth}px`);
+  document.documentElement.style.setProperty(
+    "--minMachineWidth",
+    `${minMachineWidth}px`
+  );
   let machineStarted = false;
 
-  function startMachine(){
+  function startMachine() {
     ReversimMachine.init(document.querySelector("#machine"), {
-        debug: false,
-        browserTargetBoundingBox: document.getElementById('machine-stage'),
-        frameTopLeft: {x: 0, y: 0},
-        frameBottomRight: {x: 1000, y: 1000},
-        onAirMachineStart: () => {
-            const asterisk = document.querySelector('.asteriskContainer');
-            if (asterisk) {
-                asterisk.classList.add('spinning');
-                }
-            },
-        });
+      debug: false,
+      browserTargetBoundingBox: document.getElementById("machine-stage"),
+      frameTopLeft: { x: 0, y: 0 },
+      frameBottomRight: { x: 1000, y: 1000 },
+      onAirMachineStart: () => {
+        const asterisk = document.querySelector(".asteriskContainer");
+        if (asterisk) {
+          asterisk.classList.add("spinning");
+        }
+      },
+    });
     machineStarted = true;
   }
 
-  document.addEventListener('DOMContentLoaded', async () => {
+  document.addEventListener("DOMContentLoaded", async () => {
     if (window.innerWidth >= minMachineWidth) {
       startMachine();
     }
   });
 
-  window.addEventListener('resize', () => {
+  window.addEventListener("resize", () => {
     if (machineStarted && window.innerWidth < minMachineWidth) {
       ReversimMachine.destroy();
       machineStarted = false;
     } else if (!machineStarted && window.innerWidth >= minMachineWidth) {
-        startMachine();
+      startMachine();
     }
   });
-
 </script>
 
 <div id="machine"></div>
@@ -75,14 +78,19 @@ const cssVars = `
     <div id="machine-stage"></div>
     <div class="hero-container">
       <div class="hero-content">
-          <div class="title-container">
-            <h2 class="title green">REVERSIM</h2>
-            <h2 class="title orange">AUTUMN</h2>
-            <h2 class="title blue">SUMMIT<p class="title pink asteriskContainer"> <Asterisk class="asterisk" /> <Asterisk class="asterisk" /></p></h2>
-          </div>
-          <div class="event-date">
-            <p>October 27-28, 2025</p>
-          </div>
+        <div class="title-container">
+          <h2 class="title green">REVERSIM</h2>
+          <h2 class="title orange">AUTUMN</h2>
+          <h2 class="title blue">
+            SUMMIT<p class="title pink asteriskContainer">
+              <Asterisk class="asterisk" />
+              <Asterisk class="asterisk" />
+            </p>
+          </h2>
+        </div>
+        <div class="event-date">
+          <p>October 27-28, 2025</p>
+        </div>
       </div>
       <div class="hero-btn-container">
         <a
@@ -118,8 +126,12 @@ const cssVars = `
         industry team of volunteer moderators and event organizers.
       </p>
 
-
-      <div class="sponsorCategoryTitle">Organizing Sponsor</div>
+      <Title
+        type="sponsor-large"
+        style="margin: 25px 0 24px"
+        title="Organizing Sponsor"
+        id="sponsors"
+      />
       <div class="sponsors-container">
         {
           organizingSponsor.map((sponsor) => (
@@ -138,7 +150,12 @@ const cssVars = `
       {
         gameChangersSponsors.length && (
           <>
-            <div class="sponsorCategoryTitle">Game Changers Sponsors</div>
+            <Title
+              type="sponsor-medium"
+              style="margin: 36px 0 18px"
+              title="Game Changers Sponsors"
+              id="sponsors"
+            />
             <div class="sponsors-container">
               {gameChangersSponsors.map((sponsor) => (
                 <a href={`/sponsors/${sponsor.slug}`}>
@@ -182,22 +199,22 @@ const cssVars = `
 <style set:html={cssVars}></style>
 
 <style is:global>
-#machine {
+  #machine {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     aspect-ratio: 1.5;
-      canvas {
-        width: 100%;
-        height: 100%;
-      }
+    canvas {
+      width: 100%;
+      height: 100%;
     }
+  }
 </style>
 
 <style lang="scss">
   .main-banner {
-    .machine-layout{
+    .machine-layout {
       display: flex;
       align-items: center;
       justify-content: center;
@@ -209,8 +226,7 @@ const cssVars = `
         height: 600px;
       }
 
-
-      #machine-stage{
+      #machine-stage {
         aspect-ratio: 1;
         height: 600px;
 
@@ -221,10 +237,9 @@ const cssVars = `
         @media screen and (max-width: 1000px) {
           display: none;
         }
-
       }
 
-      .hero-container{
+      .hero-container {
         margin-left: 80px;
         padding-top: 75px;
 
@@ -236,11 +251,14 @@ const cssVars = `
       .asteriskContainer.spinning {
         animation: spin 6s linear infinite;
         @keyframes spin {
-          from { transform: rotate(0deg);}
-          to {transform: rotate(360deg);}
+          from {
+            transform: rotate(0deg);
+          }
+          to {
+            transform: rotate(360deg);
+          }
         }
       }
-
     }
 
     .hero-container {
@@ -269,7 +287,7 @@ const cssVars = `
           &.orange {
             color: var(--orange);
             transform: translateX(1.71em);
-            text-shadow: -6px 4px 0px  var(--textShadow);;
+            text-shadow: -6px 4px 0px var(--textShadow);
           }
 
           &.blue {
@@ -280,7 +298,7 @@ const cssVars = `
             color: var(--blue);
             transform: translateX(-1.47em);
             text-shadow: -4px -6px 0px var(--textShadow);
-         }
+          }
 
           &.pink {
             position: relative;
@@ -296,11 +314,11 @@ const cssVars = `
             }
 
             svg:nth-child(2) {
-                left: -6px;
-                top: -4px;
-                fill:  var(--textShadow);
-                z-index: -1
-              }
+              left: -6px;
+              top: -4px;
+              fill: var(--textShadow);
+              z-index: -1;
+            }
           }
         }
 
@@ -400,7 +418,7 @@ const cssVars = `
         .event-description {
           color: white;
           font-weight: 400;
-          font-size: 12px;
+          font-size: 16px;
           max-width: 64%;
           line-height: 1.5rem;
 
@@ -414,12 +432,6 @@ const cssVars = `
         .title-container {
           margin-top: 40px;
         }
-      }
-
-      .sponsorCategoryTitle {
-        margin: 40px 0 16px 0;
-        color: #b3b4c3;
-        font-weight: 500;
       }
 
       .sponsors-container {

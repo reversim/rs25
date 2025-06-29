@@ -3,16 +3,17 @@ interface Props {
   title: string;
   titleColor?: string;
   style?: string;
+  type?: "sponsor-large" | "sponsor-medium" | "default";
   id?: string;
 }
 
-const { title, titleColor, style, id } = Astro.props;
+const { title, titleColor, style, id, type = "default" } = Astro.props;
 ---
 
-<a href={id ? `#${id}` : undefined}>
+<a class="title-container" href={id ? `#${id}` : undefined}>
   <h3
     style={`color:${titleColor || "white"}; ${style}`}
-    class="title-container"
+    class={`title-text ${type}`}
     id={id}
   >
     {title}
@@ -21,40 +22,69 @@ const { title, titleColor, style, id } = Astro.props;
 
 <style lang="scss">
   .title-container {
-    position: relative;
-    width: 46%;
-    margin: 100px 0 60px;
     font-size: 32px;
 
-    background-image: linear-gradient(
-      to right,
-      #8faad6 60%,
-      rgba(255, 255, 255, 0) 0%
-    );
-    background-position: left 0 bottom 2px;
-    background-size: 20px 3px;
-    background-repeat: repeat-x;
+    .title-text {
+      position: relative;
+      width: 46%;
+      margin: 100px 0 60px;
 
-    &::before {
-      content: "";
-      position: absolute;
-      width: 0.7em;
-      aspect-ratio: 1;
-      border-radius: 50%;
-      background-color: #8faad6;
-      top: 100%;
-      right: 0;
+      background-image: linear-gradient(
+        to right,
+        #8faad6 60%,
+        rgba(255, 255, 255, 0) 0%
+      );
+      background-position: left 0 bottom 2px;
+      background-size: 20px 3px;
+      background-repeat: repeat-x;
 
-      transform: translate(50%, calc(-50% - 1.5px));
+      &::before {
+        content: "";
+        position: absolute;
+        width: 0.7em;
+        aspect-ratio: 1;
+        border-radius: 50%;
+        background-color: #8faad6;
+        top: 100%;
+        right: 0;
+
+        transform: translate(50%, calc(-50% - 1.5px));
+      }
+
+      &.sponsor-large,
+      &.sponsor-medium {
+        margin: 40px 0 16px 0;
+        color: #b3b4c3;
+        font-weight: 600;
+      }
+      &.sponsor-medium {
+        font-size: 0.9em;
+      }
+    }
+
+    @media screen and (max-width: 1100px) {
+      .title-text {
+        &.sponsor-medium {
+          font-size: 0.8em;
+        }
+      }
+    }
+
+    @media screen and (max-width: 992px) {
+      .title-text {
+        font-size: 0.9em;
+      }
     }
 
     @media screen and (max-width: 768px) {
-      width: 100%;
       font-size: 24px;
+      .title-text {
+        width: 100%;
 
-      &::before {
-        width: 0.6em;
-        transform: translate(50%, calc(-50% - 3.5px));
+        &::before {
+          width: 0.6em;
+          transform: translate(50%, calc(-50% - 3.5px));
+        }
       }
     }
   }
