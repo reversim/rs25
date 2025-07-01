@@ -451,9 +451,16 @@ const cssVars = `
             height: 65px;
           }
 
-          &.wix {
+          &.wix,
+          &.starkware 
+          {
             transform: translateY(6px);
           }
+        }
+
+        @media (max-width: 768px) {
+          flex-direction: column;
+          gap: 12px;
         }
       }
 

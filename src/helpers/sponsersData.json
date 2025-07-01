@@ -183,7 +183,7 @@
       "Scaling",
       "Resilience",
       "ReactNative",
-      "Engineering Culture."
+      "Engineering Culture"
     ],
     "openPositions": [
       {
@@ -297,5 +297,67 @@
     "youtube": "",
     "github": "",
     "medium": ""
+  },
+  {
+    "sponsorTier": "game-changers",
+    "companyName": "StarkWare",
+    "website": "https://starkware.co/",
+    "description": "StarkWare is a technology company building faster, cheaper, and more secure ways to run applications on blockchains. Founded in 2018, it uses advanced math and cryptography—called STARK proofs—to help systems handle more users and data without sacrificing security.\nStarkWare’s main product is Starknet, a network that runs on top of Ethereum and makes it easier for developers to build scalable apps. The company is also working on bringing similar capabilities to Bitcoin, making it possible to build smart, efficient applications that use Bitcoin in new ways.\n\nStarkWare is led by Prof. Eli Ben-Sasson, co-founder and CEO, a computer science professor from the Technion with past research roles at Princeton’s IAS, Harvard, and MIT.",
+    "carouselImages": [
+      "starkware-1",
+      "starkware-2",
+      "starkware-3",
+      "starkware-4",
+      "starkware-5",
+      "starkware-6",
+      "starkware-7",
+      "starkware-8",
+      "starkware-9"
+    ],
+    "linkedin": "https://www.linkedin.com/company/27137803/admin/dashboard/",
+    "twitter": "https://x.com/Starknet",
+    "youtube": "https://www.youtube.com/channel/UCnDWguR8mE2oDBsjhQkgbvg",
+    "github": "https://github.com/keep-starknet-strange/awesome-starknet",
+    "technologyStack": [
+      [
+        "GCP",
+        "Kubernetes",
+        "Grafana",
+        "Argocd",
+        "CDK8s",
+        "Node.js",
+        "React",
+        "Mongo",
+        "Rust",
+        "Aerospike",
+        "Cryptographic Proofs",
+        "Consensus Protocols",
+        "Peer to Peer networking",
+        "Cairo VM",
+        "Cryptographic Algorithms",
+        "Blockchain Contracts"
+      ]
+    ],
+    "openPositions": [],
+    "testimonials": [
+      {
+        "position": "Infra Group Lead",
+        "testimonialAuthor": "Roei Engel",
+        "testimonialDescription": "StarkWare is a rare mix of super-intelligent people who love solving problems and working together. It's fun, interesting, and challenging to come here, meet people, and exchange ideas. There are no limits, and every good idea gets a chance.",
+        "image": "roei-engel"
+      },
+      {
+        "testimonialAuthor": "Noa Oved",
+        "image": "noa-oved",
+        "testimonialDescription": "I’m passionate about exploring and understanding algorithms, and I’m equally dedicated to supporting the team around me. With a Bachelor's degree in Computer Science and Mathematics from the Technion and a Master's degree in Computer Science, Mathematics, and Cryptography from the Weizmann Institute, I aspired throughout my studies to be part of a cognitively challenging work environment. Luckily, the nature of the work here is exactly that.",
+        "position": "Team Lead"
+      },
+      {
+        "testimonialAuthor": "Kineret Segal",
+        "image": "kineret-segal",
+        "testimonialDescription": "I hold a Bachelor's degree in Mathematics and Psychology from the Hebrew University and a Master's degree in Computer Science from Tel Aviv University. Today, as a development group lead, my responsibilities range from guiding the team both professionally and personally to managing projects across various teams. The work is quite diverse, encompassing system engineering, working on a production system that must handle high loads, and mathematical research on the next algorithm.\nSeeing the company grow from the very beginning – all the product changes, how people develop, and the relationships within the team – that creates real commitment. Plus, I really feel like I have an impact here. I have the power to drive things forward.",
+        "position": "Proving Group Lead"
+      }
+    ]
   }
 ]
