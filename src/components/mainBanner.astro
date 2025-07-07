@@ -446,11 +446,24 @@ const cssVars = `
           &.starkware {
             transform: translateY(6px);
           }
+
+          &.workday {
+            height: 64px;
+            transform: translateY(-4px);
+          }
         }
 
         @media (max-width: 768px) {
           flex-direction: column;
           gap: 18px;
+
+          .sponsor-logo {
+            &.wix,
+            &.starkware,
+            &.workday {
+              transform: translateY(0px);
+            }
+          }
         }
       }
 
