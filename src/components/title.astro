@@ -53,12 +53,15 @@ const { title, titleColor, style, id, type = "default" } = Astro.props;
 
       &.sponsor-large,
       &.sponsor-medium {
+        font-size: 0.7em;
+        background: none;
         margin: 40px 0 16px 0;
         color: #b3b4c3;
-        font-weight: 600;
-      }
-      &.sponsor-medium {
-        font-size: 0.9em;
+        font-weight: 500;
+
+        &::before {
+          display: none;
+        }
       }
     }
 
