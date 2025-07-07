@@ -269,5 +269,20 @@
     "github": "",
     "medium": "",
     "website": ""
+  },
+  {
+    "name": "Yulia Stolin",
+    "title": "AI (ML) Platform Manager",
+    "company": "Teads",
+    "bio": "I have over 20 years of hands-on experience in software architecture, specializing in building high-volume, scalable, high-performance distributed data systems and services. I lead the AI Platform at Teads ( ex Outbrain), which unifies research tooling and machine learning infrastructure to support online learning, real-time inference, deep learning model development, and end-to-end data science pipelines. My expertise spans MLOps, Big Data, NoSQL technologies, and Distributed Scalable Software Architecture. Outside of work, I enjoy traveling with my family, playing tennis, and swimming.",
+    "linkedin": "https://www.linkedin.com/in/yuliastolin/",
+    "twitter": "",
+    "bluesky": "",
+    "facebook": "https://www.facebook.com/sjulia.st",
+    "instagram": "",
+    "youtube": "",
+    "github": "",
+    "medium": "",
+    "website":""
   }
 ]
