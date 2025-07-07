@@ -369,5 +369,82 @@
         "position": "Proving Group Lead"
       }
     ]
+  },
+
+  {
+    "sponsorTier": "game-changers",
+    "companyName": "Workday",
+    "website": "https://www.workday.com/",
+    "description": "Workday is a leading provider of enterprise cloud applications for finance and human resources. Founded in 2005, Workday helps organizations manage critical business functions — such as payroll, talent management, financial planning, and workforce analytics — all through a single, cloud-based platform. Workday serves a wide range of customers, from mid-sized businesses to Fortune 500 companies, offering scalable and innovative solutions that support growth and drive success.\n\nIn 2024, Workday acquired HiredScore, a leading provider of AI-driven talent orchestration solutions. This acquisition enhanced Workday’s recruiting capabilities with advanced automation and insights to enable inclusive, efficient, and compliant hiring.\n\nWorkday’s office in Israel is the former HiredScore office, where we continue to develop cutting-edge AI-powered recruiting solutions as part of the global Workday team.",
+    "carouselImages": [
+      "workday-1",
+      "workday-2",
+      "workday-3",
+      "workday-4",
+      "workday-5"
+    ],
+    "linkedin": "https://www.linkedin.com/company/workday/posts/?feedView=all",
+    "twitter": "https://x.com/Workday?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor",
+    "youtube": "https://www.youtube.com/user/workdayvideo",
+    "github": "",
+    "facebook": "",
+    "instagram": "",
+    "medium": "",
+    "meetup": "https://www.meetup.com/workdayil/?recSource=chapter-search&recId=57334886-b31b-4f86-badb-be712e632a8f&searchId=5b717fe9-f453-44a0-b444-0a98e88918a6&eventOrigin=find_page",
+    "technologyStack": [
+      "Python",
+      "Celery",
+      "RabbitMQ",
+      "MongoDB",
+      "AWS",
+      "ElasticSearch",
+      "PostgreSQL",
+      "JS/TS",
+      "React",
+      "GraphQL",
+      "Grafana",
+      "Groundcover",
+      "OpenTelemetry",
+      "ArgoCD",
+      "ArgoWFs"
+    ],
+    "openPositions": [
+      {
+        "position": "Software Development Engineering Team Lead",
+        "location": "Tel Aviv",
+        "positionLink": "https://workday.wd5.myworkdayjobs.com/Workday/job/Israel-Tel-Aviv/Software-Development-Engineering-Team-Lead_JR-0095264"
+      },
+      {
+        "position": "Manager, Technical Support Delivery",
+        "location": "Tel Aviv",
+        "positionLink": "https://workday.wd5.myworkdayjobs.com/Workday/job/Israel-Tel-Aviv/Manager--Technical-Support-Delivery_JR-0093151"
+      },
+      {
+        "position": "Team Lead Delivery Engineering",
+        "location": "Tel Aviv",
+        "positionLink": "https://workday.wd5.myworkdayjobs.com/Workday/job/Israel-Tel-Aviv/Manager--Software-Development-Engineering_JR-0095956"
+      },
+      {
+        "position": "Senior Technical Consultant - Cross – HiredScore",
+        "location": "Tel Aviv",
+        "positionLink": "https://workday.wd5.myworkdayjobs.com/Workday/job/Israel-Tel-Aviv/Senior-Technical-Project-Manager---Cross-Group---HiredScore_JR-0098119"
+      },
+      {
+        "position": "Automation Engineer – HiredScore",
+        "location": "Tel Aviv",
+        "positionLink": "https://workday.wd5.myworkdayjobs.com/Workday/job/Israel-Tel-Aviv/Automation-Engineer_JR-0097469"
+      },
+      {
+        "position": "Manager, Integrations & Technical Solutions – Hiredscore",
+        "location": "Tel Aviv",
+        "positionLink": "https://workday.wd5.myworkdayjobs.com/Workday/job/Israel-Tel-Aviv/Manager--Integrations---Technical-Solutions----Hiredscore_JR-0097284"
+      },
+      {
+        "position": "Technical Project Manager – Hiredscore",
+        "location": "Tel Aviv",
+        "positionLink": "https://workday.wd5.myworkdayjobs.com/Workday/job/Israel-Tel-Aviv/Technical-Project-Manager_JR-0094713"
+      }
+    ],
+    "testimonials": []
   }
 ]
