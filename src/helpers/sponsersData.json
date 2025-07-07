@@ -369,5 +369,54 @@
         "position": "Proving Group Lead"
       }
     ]
+  },
+
+  {
+    "sponsorTier": "game-changers",
+    "companyName": "Plus500",
+    "website": "https://www.plus500.com",
+    "description": "Plus500 is a world-leading online trading platform for millions of users worldwide, trading ~3bn$ per year across 50+ countries, placing millions of trades a month.\n\nThe next generation of investors is younger and more diverse than ever before, and finance is becoming part of their culture, participating in the trading markets, which is one of the greatest wealth creators of the last century.\n\nIt is our mission to disrupt the trade markets by building digital technologies that make trading around the world accessible and more efficient for all.\n\nWe are at a super growth stage, building new products alongside pushing the edges of existing ones, and are hiring talented R&D engineers and leaders across multiple disciplines and roles.\n\nIf you are passionate about crafting beautiful things at the internet scale, check out our careers page. We'll be happy to challenge you to your limits and shape the world of trading together.",
+    "carouselImages": [],
+    "linkedin": "https://www.linkedin.com/company/plus500-official-page",
+    "twitter": "https://twitter.com/plus500",
+    "youtube": "https://www.youtube.com/@Plus500Site",
+    "github": "",
+    "facebook": "https://www.facebook.com/Plus500Careers/",
+    "instagram": "https://www.instagram.com/plus500/",
+    "technologyStack": [
+      "C#",
+      "Swift",
+      "Kotlin",
+      "Postgres/Mssql",
+      "RabbitMQ",
+      "GCP"
+    ],
+    "openPositions": [
+      {
+        "position": "Senior iOS Developer",
+        "location": "Haifa / Tel Aviv",
+        "positionLink": "https://careers.plus500.com/?pid=4D.55D"
+      }
+    ],
+    "testimonials": [
+      {
+        "position": "Customer Engagement Team Lead",
+        "testimonialAuthor": "Gal Barak",
+        "image": "gal-barak",
+        "testimonialDescription": "At Plus500, you're surrounded by talented people who are always willing to share knowledge and help you grow. It’s a place where complex engineering challenges meet constant learning, and where you're trusted to make a difference."
+      },
+      {
+        "testimonialAuthor": "Lee Benyamin",
+        "image": "lee-benyamin",
+        "testimonialDescription": "Plus500 gives me the chance to solve problems that actually matter, surrounded by engineers who push each other to do better work. The environment is supportive and collaborative, making it easy to learn and grow.",
+        "position": "Backend Software Engineer"
+      },
+      {
+        "testimonialAuthor": "Dvir Segal",
+        "image": "dvir-segal",
+        "testimonialDescription": "For me, working at Plus500 means learning something new every day, whether it's by tackling complex software problems or by collaborating with skilled colleagues, in a place that values both technical excellence and its people.",
+        "position": "Staff Backend Software Engineer"
+      }
+    ]
   }
 ]
