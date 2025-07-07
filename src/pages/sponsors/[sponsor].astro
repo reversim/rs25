@@ -3,11 +3,11 @@ import "@splidejs/splide/css";
 import type { GetStaticPaths } from "astro";
 import { getImage, Image } from "astro:assets";
 import Layout from "../../layouts/Layout.astro";
-import slugify from "slug";
 import { getSponsors } from "../../helpers/getSponsors";
 import BackgroundMask from "../../components/sponsorsBackgroundMask.astro";
 import Title from "../../components/title.astro";
 import Slider from "../../components/slider.astro";
+import "glightbox/dist/css/glightbox.css";
 
 export const getStaticPaths = (async () => {
   const sponsors = await getSponsors();
@@ -40,6 +40,8 @@ const {
   slug,
 } = Astro.props;
 
+const haveOpenPositions = openPositions.length > 0;
+
 const carouselImagesPromise = await Promise.all(
   carouselImages.map(async (image) => {
     return await getImage({ src: image, width: 1200, height: 800 });
@@ -50,7 +52,9 @@ const carouselImagesPromise = await Promise.all(
 <Layout havePadding={false}>
   <BackgroundMask bgImageHeight="500px">
     <div class="sponsor-page">
-      <div class="company-info">
+      <div
+        class={`company-info ${!haveOpenPositions ? "no-open-positions" : ""}`}
+      >
         <Image
           class="company-logo"
           src={companyNameLogo}
@@ -79,15 +83,19 @@ const carouselImagesPromise = await Promise.all(
           }
         </div>
 
-        <Slider
-          images={carouselImagesPromise.map((image, index) => ({
-            src: image.src,
-            alt: `${companyName} image ${index + 1}`,
-          }))}
-        />
+        {
+          carouselImagesPromise.length > 0 && (
+            <Slider
+              images={carouselImagesPromise.map((image, index) => ({
+                src: image.src,
+                alt: `${companyName} image ${index + 1}`,
+              }))}
+            />
+          )
+        }
 
         {
-          openPositions.length > 0 && (
+          haveOpenPositions && (
             <div class="open-positions">
               <Title title="Open Positions" style="margin-top: 20px;" />
               <div class="positions-wrapper">
@@ -119,7 +127,9 @@ const carouselImagesPromise = await Promise.all(
                       class="testimonial-image"
                     />
                     <div class="testimonial-content">
-                      <p>"{testimonial.testimonialDescription}"</p>
+                      <p class="testimonial-description">
+                        {`"${testimonial.testimonialDescription}"`}
+                      </p>
                       <div class="author-info">
                         <strong>{testimonial.testimonialAuthor}</strong>
                         <span>{testimonial.position}</span>
@@ -138,6 +148,7 @@ const carouselImagesPromise = await Promise.all(
 
 <style lang="scss">
   .company-logo {
+    filter: brightness(0) invert(1);
     height: auto;
     width: 40%;
     object-fit: contain;
@@ -193,6 +204,14 @@ const carouselImagesPromise = await Promise.all(
 
   .sponsor-page {
     color: #f3f3f3;
+
+    .company-info {
+      &.no-open-positions {
+        .testimonials {
+          margin-top: 140px;
+        }
+      }
+    }
   }
 
   .who-we-are {
@@ -267,14 +286,24 @@ const carouselImagesPromise = await Promise.all(
       .testimonial-image {
         border-radius: 24px 0 0 0;
         height: 142px;
-        width: auto;
+        width: 100px;
+        object-fit: cover;
+        object-position: center;
       }
 
       .testimonial-content {
         font-size: 14px;
         font-weight: 400;
+        display: flex;
+        flex-direction: column;
+        padding: 4px 0;
+
+        .testimonial-description {
+          white-space: pre-wrap;
+        }
+
         .author-info {
-          margin-top: 40px;
+          margin-top: 24px;
           display: flex;
           flex-direction: column;
           gap: 4px;
@@ -290,6 +319,7 @@ const carouselImagesPromise = await Promise.all(
     }
 
     .company-logo {
+      filter: brightness(0) invert(1);
       width: 100%;
     }
   }
