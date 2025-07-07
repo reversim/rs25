@@ -192,11 +192,6 @@
         "positionLink": "https://careers.wix.com/position/REF12W-744000065463205"
       },
       {
-        "position": "Software Engineer - AI Infra",
-        "location": "Tel Aviv",
-        "positionLink": "https://careers.wix.com/position/REF10B-744000066653020"
-      },
-      {
         "position": "Senior Backend Engineer - Bazel team",
         "location": "Tel Aviv",
         "positionLink": "https://careers.wix.com/position/REF6W-743999992311875"
@@ -207,9 +202,24 @@
         "positionLink": "https://careers.wix.com/position/REF6W-743999994525096"
       },
       {
+        "position": "Server Developer - Wix Services",
+        "location": "Be'er Sheva",
+        "positionLink": "https://careers.wix.com/position/REF341V-744000060518286"
+      },
+      {
+        "position": "Mobile Developer - Team Lead",
+        "location": "Tel Aviv",
+        "positionLink": "https://careers.wix.com/position/oracle-2307f4d3-cd58-508c-8347-1f88bcdb60a3-T1740061551-744000049428145"
+      },
+      {
         "position": "Senior Backend Engineer - eCommerce",
         "location": "Tel Aviv",
-        "positionLink": "https://careers.wix.com/position/REF6W-744000033553965"
+        "positionLink": "https://careers.wix.com/position/oracle-5310fa0a-a0bd-5e3e-9cf1-499703dab48a-T1742461849-744000050295805"
+      },
+      {
+        "position": "Senior Software Engineer - Viewer",
+        "location": "Tel Aviv",
+        "positionLink": "https://careers.wix.com/position/oracle-337d2186-ccf4-5611-9303-a3f3c4f22357-T1742373653-744000055979935"
       }
     ],
     "testimonials": [
