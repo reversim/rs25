@@ -232,7 +232,7 @@ const cssVars = `
       }
 
       .hero-container {
-        margin-left: 80px;
+        margin-left: 143px;
         padding-top: 75px;
 
         @media screen and (max-width: 1000px) {
@@ -278,8 +278,12 @@ const cssVars = `
 
           &.orange {
             color: var(--orange);
-            transform: translateX(1.71em);
+            transform: translateX(0.3em);
             text-shadow: -6px 4px 0px var(--textShadow);
+
+            @media screen and (min-width: 1200px) {
+              transform: translateX(1.71em);
+            }
           }
 
           &.blue {
@@ -288,8 +292,12 @@ const cssVars = `
             align-items: center;
             gap: 12px;
             color: var(--blue);
-            transform: translateX(-1.47em);
+            transform: translateX(-1em);
             text-shadow: -4px -6px 0px var(--textShadow);
+
+            @media screen and (min-width: 1200px) {
+              transform: translateX(-1.47em);
+            }
           }
 
           &.pink {
