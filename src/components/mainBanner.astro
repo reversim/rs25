@@ -1,7 +1,6 @@
 ---
 import Title from "./title.astro";
 import Asterisk from "../assets/asterisk.svg";
-
 import rs24Image from "../assets/reversim24-image.png";
 import { getImage, Image } from "astro:assets";
 import { getSponsors } from "../helpers/getSponsors";
@@ -439,12 +438,16 @@ const cssVars = `
         flex-wrap: wrap;
         gap: 24px 32px;
 
+        a:has(.sponsor-logo) {
+          display: flex;
+        }
         .sponsor-logo {
           filter: brightness(0) invert(1);
           object-fit: contain;
           height: 48px;
           max-width: 300px;
           width: auto;
+          align-self: center;
 
           &.organizer {
             height: 65px;
