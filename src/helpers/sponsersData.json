@@ -493,5 +493,59 @@
       }
     ],
     "testimonials": []
+  },
+
+  {
+    "sponsorTier": "game-changers",
+    "companyName": "Cyera",
+    "website": "https://www.cyera.com/",
+    "description": "Cyera is the fastest-growing data security company in the $24 billion data security market. Its AI-powered platform gives organizations a complete view of where their data lives, how it’s used, and how to keep it safe, so they can reduce risk and unlock the full value of their data, wherever it is. Backed by top-tier investors including Accel, Coatue, and Sequoia, Cyera’s unified data security platform helps businesses discover, secure, and leverage their most valuable asset- data, and eliminate blind spots, cut alert noise, and protect sensitive information across the cloud, SaaS, databases, AI ecosystems, and on-premise environments. Recent innovations like Cyera’s Omni DLP extend this platform with adaptive, AI-native data loss protection, bringing real-time intelligence and contextual understanding to how data moves and is used across the enterprise.",
+    "carouselImages": [],
+    "linkedin": "https://www.linkedin.com/company/cyera/",
+    "twitter": "https://x.com/cyera_io",
+    "youtube": "https://www.youtube.com/@CyeraSecurity",
+    "github": "",
+    "facebook": "",
+    "instagram": "https://www.instagram.com/cyeralife/?hl=en",
+    "medium": "",
+    "meetup": "",
+    "technologyStack": [
+      "Typescript",
+      "NodeJS",
+      "Python",
+      "Kafka",
+      "Aws",
+      "Gcp",
+      "Azure",
+      "Snowflake",
+      "Databricks",
+      "Redis",
+      "Amazon Redshift",
+      "CLickhouse",
+      "MongoDB",
+      "BigQuery",
+      "Postgres",
+      "S3",
+      "Promethues",
+      "OpenTelemetry",
+      "Helm",
+      "Flux",
+      "K8S"
+    ],
+    "openPositions": [],
+    "testimonials": [
+      {
+        "position": "Product Manager",
+        "testimonialAuthor": "Gal Pollak",
+        "image": "gal-pollak",
+        "testimonialDescription": "Knowing that I'm building a product that helps companies secure their most sensitive data gives my work real meaning. There’s a strong sense of purpose here, and it fuels both our pace and our pride in what we’re building."
+      },
+      {
+        "position": "Senior Software Engineer",
+        "testimonialDescription": "Joining Cyera was a no-brainer. Exceptional talent, continuous innovation, and endless growth opportunities. Being part of a unicorn pioneering DSPM means constantly learning and stepping beyond comfort zones. It's exciting, rewarding, and genuinely inspiring.",
+        "testimonialAuthor": "Maxim Ribakov",
+        "image": "maxim-ribakov"
+      }
+    ]
   }
 ]
