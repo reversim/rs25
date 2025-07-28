@@ -12,14 +12,15 @@ import Youtube from "../assets/socials/youtube.svg";
 interface Props {
   link?: string;
   type: string;
+  variant?: "sponsor-page" | "team-member-page";
 }
 
-const { link, type } = Astro.props;
-const iconsSize = 16
+const { link, type, variant } = Astro.props;
+const iconsSize = variant === "sponsor-page" ? 24 : 16;
 ---
 {
   link && (
-    <a target="_blank" href={link}>
+    <a class={`${variant} ${type}`} target="_blank" href={link}>
       {() => {
         switch (type) {
           case "linkedin":
@@ -71,6 +72,20 @@ const iconsSize = 16
     svg {
       // scale: 0.7;
       fill: #cddcf0;
+    }
+
+    &.sponsor-page {
+      background: none;
+
+      svg {
+        transition: 0.3s;
+      }
+
+      &:hover {
+        svg {
+          fill: white;
+        }
+      }
     }
   }
 </style>

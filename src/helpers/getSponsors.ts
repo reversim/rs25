@@ -27,6 +27,7 @@ export interface sponsorData {
   medium: string;
   image: any;
   slug: string;
+  openJobsLink?: string
 }
 
 export async function getSponsors(type?: sponsorData["sponsorTier"]) {

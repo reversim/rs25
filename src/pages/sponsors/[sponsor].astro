@@ -8,16 +8,19 @@ import BackgroundMask from "../../components/sponsorsBackgroundMask.astro";
 import Title from "../../components/title.astro";
 import Slider from "../../components/slider.astro";
 import "glightbox/dist/css/glightbox.css";
+import SocialLink from "../../components/socialLink.astro";
 
 export const getStaticPaths = (async () => {
   const sponsors = await getSponsors();
 
-  return sponsors.map((sponsor) => ({
-    params: {
-      sponsor: sponsor.slug,
-    },
-    props: { ...sponsor },
-  }));
+  return sponsors
+    .map((sponsor) => ({
+      params: {
+        sponsor: sponsor.slug,
+      },
+      props: { ...sponsor },
+    }))
+    .filter((sponsor) => sponsor.props.sponsorTier !== "community");
 }) satisfies GetStaticPaths;
 
 const {
@@ -42,6 +45,17 @@ const {
 
 const haveOpenPositions = openPositions.length > 0;
 
+const socialList = {
+  website,
+  linkedin,
+  twitter,
+  bluesky,
+  facebook,
+  github,
+  instagram,
+  medium,
+  youtube,
+};
 const carouselImagesPromise = await Promise.all(
   carouselImages.map(async (image) => {
     return await getImage({ src: image, width: 1200, height: 800 });
@@ -62,6 +76,20 @@ const carouselImagesPromise = await Promise.all(
           height={500}
           width={500}
         />
+
+        <div class="social-links">
+          {
+            Object.entries(socialList).map(([social, link]) => {
+              return (
+                <SocialLink
+                  variant="sponsor-page"
+                  type={social}
+                  link={link || ""}
+                />
+              );
+            })
+          }
+        </div>
 
         <div class="sponsor-basic-info">
           <div class="who-we-are">
@@ -175,6 +203,13 @@ const carouselImagesPromise = await Promise.all(
         margin-top: 12px;
       }
     }
+  }
+
+  .social-links {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 24px;
   }
 
   .sponsor-basic-info {
