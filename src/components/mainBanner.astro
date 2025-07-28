@@ -1,5 +1,6 @@
 ---
 import Title from "./title.astro";
+import SponsorDialog from "./sponsorDialog.astro";
 import Asterisk from "../assets/asterisk.svg";
 import rs24Image from "../assets/reversim24-image.png";
 import { getImage, Image } from "astro:assets";
@@ -68,6 +69,41 @@ const cssVars = `
     } else if (!machineStarted && window.innerWidth >= minMachineWidth) {
       startMachine();
     }
+  });
+
+  // Dialog functionality for community sponsors
+  document.addEventListener("DOMContentLoaded", () => {
+    // Add click handlers for clickable sponsor images
+    document.querySelectorAll(".clickable-sponsor").forEach((sponsorImg) => {
+      sponsorImg.addEventListener("click", (e) => {
+        e.preventDefault();
+        const sponsorSlug = e.target.closest(".sponsor-item").dataset.sponsor;
+        const dialog = document.getElementById(`sponsor-dialog-${sponsorSlug}`);
+        if (dialog) {
+          dialog.showModal();
+        }
+      });
+    });
+
+    // Add click handlers for close dialog buttons
+    document.querySelectorAll(".close-dialog").forEach((closeBtn) => {
+      closeBtn.addEventListener("click", (e) => {
+        const sponsorSlug = e.target.closest(".close-dialog").dataset.sponsor;
+        const dialog = document.getElementById(`sponsor-dialog-${sponsorSlug}`);
+        if (dialog) {
+          dialog.close();
+        }
+      });
+    });
+
+    // Close dialog when clicking outside the content
+    document.querySelectorAll(".sponsor-dialog").forEach((dialog) => {
+      dialog.addEventListener("click", (e) => {
+        if (e.target === dialog) {
+          dialog.close();
+        }
+      });
+    });
   });
 </script>
 
@@ -163,28 +199,36 @@ const cssVars = `
           </>
         )
       }
-      <!-- {
-        communitySponsors.length && (
+      {
+        communitySponsors?.length && (
           <>
-            <Title style="margin: 36px 0 18px" title="Community Sponsors" id="sponsors" />
-            <div class="sponsors-container">
+            <Title
+              type="sponsor-medium"
+              style="margin: 42px 0 18px"
+              title="Community Sponsors"
+              id="sponsors"
+            />
+            <div class="community sponsors-container">
               {communitySponsors.map((sponsor) => (
-                <a href={`/sponsors/${sponsor.slug}`}>
+                <div class="sponsor-item" data-sponsor={sponsor.slug}>
                   <Image
-                    class={`sponsor-logo ${sponsor.slug}`}
+                    class={`sponsor-logo ${sponsor.slug} clickable-sponsor`}
                     src={sponsor.companyNameLogo}
                     width={400}
                     height={1000}
                     alt={`Sponsor ${sponsor.companyName}`}
                   />
-                </a>
+                </div>
               ))}
             </div>
           </>
         )
-      } -->
+      }
     </div>
   </div>
+
+  <!-- Dialog elements for community sponsors -->
+  {communitySponsors?.map((sponsor) => <SponsorDialog sponsor={sponsor} />)}
 </div>
 
 <style set:html={cssVars}></style>
@@ -438,6 +482,20 @@ const cssVars = `
         flex-wrap: wrap;
         gap: 24px 32px;
 
+        &.community {
+          gap: 12px 18px;
+
+          .sponsor-item {
+            display: flex;
+            align-items: center;
+          }
+
+          .sponsor-logo {
+            height: 32px;
+            cursor: pointer;
+          }
+        }
+
         a:has(.sponsor-logo) {
           display: flex;
         }
@@ -448,6 +506,11 @@ const cssVars = `
           max-width: 300px;
           width: auto;
           align-self: center;
+          transition: scale 0.2s ease;
+
+          &:hover {
+            scale: 1.05;
+          }
 
           &.organizer {
             height: 65px;
@@ -467,6 +530,12 @@ const cssVars = `
         @media (max-width: 768px) {
           flex-direction: column;
           gap: 18px;
+
+          &.community {
+            flex-direction: row;
+            row-gap: 18px;
+            column-gap: 24px;
+          }
 
           .sponsor-logo {
             &.wix,

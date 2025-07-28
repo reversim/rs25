@@ -1,0 +1,160 @@
+---
+import { Image } from "astro:assets";
+
+export interface Props {
+  sponsor: {
+    slug: string;
+    companyName: string;
+    description: string;
+    website?: string;
+    companyNameLogo: any;
+    openJobsLink?: string;
+  };
+}
+
+const { sponsor } = Astro.props;
+---
+
+<dialog id={`sponsor-dialog-${sponsor.slug}`} class="sponsor-dialog">
+  <div class="dialog-content">
+    <div class="dialog-header">
+      <Image
+        class="dialog-logo"
+        src={sponsor.companyNameLogo}
+        width={300}
+        height={500}
+        alt={`${sponsor.companyName} logo`}
+      />
+      <button class="close-dialog" data-sponsor={sponsor.slug}>
+        <svg
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M18 6L6 18"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+          <path
+            d="M6 6L18 18"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+        </svg>
+      </button>
+    </div>
+    <div class="dialog-body">
+      <h3>{sponsor.companyName}</h3>
+      <p class="sponsor-description">{sponsor.description}</p>
+      {sponsor.website && (
+        <a
+          href={sponsor.openJobsLink}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="sponsor-website"
+        >
+          JOB OPPORTUNITIES →
+        </a>
+      )}
+    </div>
+  </div>
+</dialog>
+
+<style lang="scss">
+  .sponsor-dialog {
+    border: none;
+    border-radius: 12px;
+    padding: 0;
+    background: transparent;
+    max-width: 500px;
+    width: 90vw;
+    backdrop-filter: blur(4px);
+
+    &::backdrop {
+      background-color: rgba(0, 0, 0, 0.5);
+    }
+
+    .dialog-content {
+      background: #171c3e;
+      border-radius: 12px;
+      overflow: hidden;
+      color: white;
+    }
+
+    .dialog-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 24px 16px;
+      background: rgba(255, 255, 255, 0.1);
+
+      .dialog-logo {
+        filter: brightness(0) invert(1);
+        height: 40px;
+        width: auto;
+        object-fit: contain;
+      }
+
+      .close-dialog {
+        background: none;
+        border: none;
+        color: white;
+        cursor: pointer;
+        padding: 8px;
+        border-radius: 6px;
+        transition: background-color 0.2s ease;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        &:hover {
+          background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        svg {
+          width: 20px;
+          height: 20px;
+        }
+      }
+    }
+
+    .dialog-body {
+      padding: 24px;
+
+      h3 {
+        margin: 0 0 16px 0;
+        font-size: 24px;
+        font-weight: 700;
+        color: var(--green);
+      }
+
+      .sponsor-description {
+        font-size: 16px;
+        line-height: 1.5;
+        margin: 0 0 20px 0;
+        color: rgba(255, 255, 255, 0.9);
+        white-space: pre-wrap;
+        line-height: 110%;
+      }
+
+      .sponsor-website {
+        display: inline-block;
+        color: var(--orange);
+        text-decoration: none;
+        font-weight: 600;
+        transition: color 0.2s ease;
+
+        &:hover {
+          color: var(--pink);
+        }
+      }
+    }
+  }
+</style> 
