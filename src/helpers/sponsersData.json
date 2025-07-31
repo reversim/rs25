@@ -376,7 +376,6 @@
     "companyName": "Plus500",
     "website": "https://www.plus500.com",
     "description": "Plus500 is a world-leading online trading platform for millions of users worldwide, trading ~3bn$ per year across 50+ countries, placing millions of trades a month.\n\nThe next generation of investors is younger and more diverse than ever before, and finance is becoming part of their culture, participating in the trading markets, which is one of the greatest wealth creators of the last century.\n\nIt is our mission to disrupt the trade markets by building digital technologies that make trading around the world accessible and more efficient for all.\n\nWe are at a super growth stage, building new products alongside pushing the edges of existing ones, and are hiring talented R&D engineers and leaders across multiple disciplines and roles.\n\nIf you are passionate about crafting beautiful things at the internet scale, check out our careers page. We'll be happy to challenge you to your limits and shape the world of trading together.",
-    "carouselImages": [],
     "linkedin": "https://www.linkedin.com/company/plus500-official-page",
     "twitter": "https://twitter.com/plus500",
     "youtube": "https://www.youtube.com/@Plus500Site",
@@ -390,6 +389,16 @@
       "Postgres/Mssql",
       "RabbitMQ",
       "GCP"
+    ],
+    "carouselImages": [
+      "plus500-1",
+      "plus500-2",
+      "plus500-3",
+      "plus500-4",
+      "plus500-5",
+      "plus500-6",
+      "plus500-7",
+      "plus500-8"
     ],
     "openPositions": [
       {
