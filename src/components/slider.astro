@@ -1,18 +1,18 @@
 ---
-import { getImage, Image } from "astro:assets";
+import {getImage, Image } from 'astro:assets';
 
 interface Video {
   url: string;
 }
 
-interface Image {
+interface ICarouselImage {
   src: string;
   alt: string;
 }
 
 interface Props {
   videos?: Video[];
-  images: Image[];
+  images: ICarouselImage[];
   enablePopup?: boolean;
 }
 
