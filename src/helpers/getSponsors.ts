@@ -27,24 +27,7 @@ export interface sponsorData {
   medium: string;
   image: any;
   slug: string;
-  openJobsLink?: string;
-}
-
-// Helper function to try importing an image with different extensions
-async function tryImportImage(basePath: string): Promise<any> {
-  const extensions = ["png", "jpg", "jpeg"];
-
-  for (const ext of extensions) {
-    try {
-      const imagePath = `${basePath}.${ext}`;
-      return await import(imagePath);
-    } catch (error) {
-      // Continue to next extension
-    }
-  }
-
-  // If no extension works, fall back to png (original behavior)
-  return import(`${basePath}.png`);
+  openJobsLink?: string
 }
 
 export async function getSponsors(type?: sponsorData["sponsorTier"]) {
@@ -74,20 +57,20 @@ export async function getSponsors(type?: sponsorData["sponsorTier"]) {
     ).map((testimonial) => {
       return {
         ...testimonial,
-        image: tryImportImage(  
-          `../assets/sponsors/${sponsorSlug}/${testimonial.image}`
+        image: import(
+          `../assets/sponsors/${sponsorSlug}/${testimonial.image}.png`
         ),
       };
     });
 
     const carouselImages = sponsor.carouselImages?.map((image) => {
-      return tryImportImage(`../assets/sponsors/${sponsorSlug}/${image}`);
+      return import(`../assets/sponsors/${sponsorSlug}/${image}.png`);
     });
 
     return {
       ...sponsor,
       slug: sponsorSlug,
-      companyNameLogo: tryImportImage(`../assets/sponsors/${sponsorSlug}/logo`),
+      companyNameLogo: import(`../assets/sponsors/${sponsorSlug}/logo.png`),
       testimonials,
       carouselImages,
     };
