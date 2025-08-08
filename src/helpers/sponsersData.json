@@ -1,603 +1,680 @@
-[
-  {
-    "sponsorTier": "organizing",
-    "companyName": "teads",
-    "description": "Outbrain and Teads have merged to create an omnichannel outcomes platform for the open internet. The new company, operating under the name ‘Teads’, is embarking on a journey to elevate advertising outcomes.\n\nThe new Teads unites exceptional reach, an advanced omnichannel graph, data-driven creative, and predictive technology to drive meaningful outcomes from branding to performance.\nIt ensures value is driven by leveraging predictive AI technology to connect quality media, beautiful brand creative, and context-driven addressability and measurement.\n\nOne of the most scaled advertising platforms on the open internet, the new Teads is directly partnered with more than 10,000 publishers and 20,000 advertisers globally. For more information, visit https://thenewteads.com/.",
-    "website": "teads.com",
-    "carouselImages": ["teads-1", "teads-2", "teads-3", "teads-4", "teads-5"],
-    "technologyStack": [
-      "Java",
-      "Python",
-      "Scala",
-      "Spark",
-      "AWS",
-      "Node.JS",
-      "Typescript",
-      "Kubernetes"
-    ],
-    "openPositions": [
-      {
-        "position": "Data Analyst - Student Position",
-        "location": "Netanya",
-        "positionLink": "https://job-boards.eu.greenhouse.io/teads1/jobs/4563777101"
-      },
-      {
-        "position": "Senior Product Manager",
-        "location": "Netanya",
-        "positionLink": "https://boards.greenhouse.io/embed/job_app?token=6680797"
-      },
-      {
-        "position": "Senior Data Scientists",
-        "location": "Netanya",
-        "positionLink": "https://boards.greenhouse.io/embed/job_app?token=6701171&source=LinkedIn"
-      }
-    ],
-    "testimonials": [],
-    "linkedin": "https://www.linkedin.com/showcase/teadstechnology/about/?viewAsMember=true",
-    "bluesky": "",
-    "facebook": "",
-    "twitter": "",
-    "meetup": "",
-    "instagram": "",
-    "youtube": "https://www.youtube.com/channel/UCJLORR2uJglrKm-JlKV-rJA",
-    "github": "https://github.com/outbrain-inc",
-    "medium": "https://medium.com/outbrain-engineering"
-  },
+{
+  "$schema": "./sponsorsData.scheme.json",
+  "sponsors": [
+    {
+      "sponsorTier": "organizing",
+      "companyName": "teads",
+      "description": "Outbrain and Teads have merged to create an omnichannel outcomes platform for the open internet. The new company, operating under the name ‘Teads’, is embarking on a journey to elevate advertising outcomes.\n\nThe new Teads unites exceptional reach, an advanced omnichannel graph, data-driven creative, and predictive technology to drive meaningful outcomes from branding to performance.\nIt ensures value is driven by leveraging predictive AI technology to connect quality media, beautiful brand creative, and context-driven addressability and measurement.\n\nOne of the most scaled advertising platforms on the open internet, the new Teads is directly partnered with more than 10,000 publishers and 20,000 advertisers globally. For more information, visit https://thenewteads.com/.",
+      "website": "teads.com",
+      "carouselImages": ["teads-1", "teads-2", "teads-3", "teads-4", "teads-5"],
+      "technologyStack": [
+        "Java",
+        "Python",
+        "Scala",
+        "Spark",
+        "AWS",
+        "Node.JS",
+        "Typescript",
+        "Kubernetes"
+      ],
+      "openPositions": [
+        {
+          "position": "Data Analyst - Student Position",
+          "location": "Netanya",
+          "positionLink": "https://job-boards.eu.greenhouse.io/teads1/jobs/4563777101"
+        },
+        {
+          "position": "Senior Product Manager",
+          "location": "Netanya",
+          "positionLink": "https://boards.greenhouse.io/embed/job_app?token=6680797"
+        },
+        {
+          "position": "Senior Data Scientists",
+          "location": "Netanya",
+          "positionLink": "https://boards.greenhouse.io/embed/job_app?token=6701171&source=LinkedIn"
+        }
+      ],
+      "testimonials": [],
+      "linkedin": "https://www.linkedin.com/showcase/teadstechnology/about/?viewAsMember=true",
+      "bluesky": "",
+      "facebook": "",
+      "twitter": "",
+      "meetup": "",
+      "instagram": "",
+      "youtube": "https://www.youtube.com/channel/UCJLORR2uJglrKm-JlKV-rJA",
+      "github": "https://github.com/outbrain-inc",
+      "medium": "https://medium.com/outbrain-engineering"
+    },
 
-  {
-    "sponsorTier": "game-changers",
-    "companyName": "Tenable",
-    "description": "Tenable is a global leader in Cyber Exposure Management, helping organizations proactively identify and prioritize critical vulnerabilities and risks across their entire attack surface – from IT and cloud to critical infrastructure. Tenable’s holistic platform reduces business risks, protects sensitive information and systems, and maintains business continuity and operational security.\n\nWe provide powerful, data-driven insights that allow security teams to act with precision and speed, comply with regulations, and protect their environments. Our platform, Tenable One, is evolving into a strategic tool for risk management and decision-makers in complex enterprise settings.\n\nTenable is publicly traded on Nasdaq (TENB) and employs over 1,800 people globally, including over 200 employees in Israel.\nOur local R&D center in Tel Aviv plays a central role in shaping the company’s core technologies, while our culture fosters innovation, collaboration, and a shared drive to grow and excel continuously. Join the best people in the industry and build your future with us!",
-    "website": "https://www.tenable.com/ ",
-    "carouselImages": [
-      "tenable-1",
-      "tenable-2",
-      "tenable-3",
-      "tenable-4",
-      "tenable-5",
-      "tenable-6",
-      "tenable-7",
-      "tenable-8",
-      "tenable-9"
-    ],
-    "technologyStack": [
-      "C#",
-      "Golang",
-      ".NET core",
-      "Kotlin",
-      "Python",
-      "React.js",
-      "AWS",
-      "K8S",
-      "Docker",
-      "Playwright"
-    ],
-    "openPositions": [
-      {
-        "position": "Software Engineer",
-        "location": "Tel Aviv",
-        "positionLink": "https://www.tenable.com/careers/search?location=Israel+-+Office+-+Tel+Aviv"
-      },
-      {
-        "position": "Senior Software Engineers",
-        "location": "Tel Aviv",
-        "positionLink": "https://www.tenable.com/careers/search?location=Israel+-+Office+-+Tel+Aviv"
-      },
-      {
-        "position": "Frontend Tech Lead",
-        "location": "Tel Aviv",
-        "positionLink": "https://www.tenable.com/careers/search?location=Israel+-+Office+-+Tel+Aviv"
-      },
-      {
-        "position": "Senior Product Manager",
-        "location": "Tel Aviv",
-        "positionLink": "https://www.tenable.com/careers/search?location=Israel+-+Office+-+Tel+Aviv"
-      },
-      {
-        "position": "Security Researcher",
-        "location": "Tel Aviv",
-        "positionLink": "https://www.tenable.com/careers/search?location=Israel+-+Office+-+Tel+Aviv"
-      },
-      {
-        "position": "Engineering Manager",
-        "location": "Tel Aviv",
-        "positionLink": "https://www.tenable.com/careers/search?location=Israel+-+Office+-+Tel+Aviv"
-      },
-      {
-        "position": "Senior Director",
-        "location": "Tel Aviv",
-        "positionLink": "https://www.tenable.com/careers/search?location=Israel+-+Office+-+Tel+Aviv"
-      },
-      {
-        "position": "Product Management",
-        "location": "Tel Aviv",
-        "positionLink": "https://www.tenable.com/careers/search?location=Israel+-+Office+-+Tel+Aviv"
-      }
-    ],
-    "testimonials": [
-      {
-        "position": "Director, Engineering",
-        "testimonialAuthor": "Shani Dar",
-        "testimonialDescription": "We solve complex challenges at scale, with room for innovation and bottom-up initiatives.\nThe culture is open and collaborative, with talented, driven people, and a strong balance between fast delivery and time for learning and growth.",
-        "image": "shani-dar"
-      },
-      {
-        "position": "Director, Engineering",
-        "testimonialAuthor": "Yarden Carmi",
-        "testimonialDescription": "Working at Tenable Israel is a unique experience - a place where top talent, cutting-edge technology, and a dynamic culture come together to stay ahead of the ever-evolving threat landscape. We tackle some of the toughest cybersecurity challenges, driving innovation and making a real impact.",
-        "image": "yarden-carmi"
-      },
-      {
-        "position": "Director, Engineering",
-        "testimonialAuthor": "Elad Eisenberg",
-        "testimonialDescription": "The part of my role at Tenable that I enjoy most is brainstorming- discussing with others to find the best solution to a product challenge and learning from my teammates. We work on interesting problems, the work is very diverse, we have the freedom to choose what we want to focus on, and there's room for new initiatives.",
-        "image": "elad-eisenberg"
-      }
-    ],
-    "linkedin": "https://www.linkedin.com/company/tenableinc/posts/?feedView=all",
-    "bluesky": "",
-    "facebook": "https://www.facebook.com/Tenable.Inc/",
-    "twitter": "https://x.com/TenableSecurity?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor",
-    "meetup": "",
-    "instagram": "https://www.instagram.com/tenableisrael/?hl=en",
-    "youtube": "https://www.youtube.com/channel/UCFN4JeizPlme7E-uhrgnWXw",
-    "github": "https://github.com/tenable",
-    "medium": "https://medium.com/tenable-techblog"
-  },
+    {
+      "sponsorTier": "game-changers",
+      "companyName": "Tenable",
+      "description": "Tenable is a global leader in Cyber Exposure Management, helping organizations proactively identify and prioritize critical vulnerabilities and risks across their entire attack surface – from IT and cloud to critical infrastructure. Tenable’s holistic platform reduces business risks, protects sensitive information and systems, and maintains business continuity and operational security.\n\nWe provide powerful, data-driven insights that allow security teams to act with precision and speed, comply with regulations, and protect their environments. Our platform, Tenable One, is evolving into a strategic tool for risk management and decision-makers in complex enterprise settings.\n\nTenable is publicly traded on Nasdaq (TENB) and employs over 1,800 people globally, including over 200 employees in Israel.\nOur local R&D center in Tel Aviv plays a central role in shaping the company’s core technologies, while our culture fosters innovation, collaboration, and a shared drive to grow and excel continuously. Join the best people in the industry and build your future with us!",
+      "website": "https://www.tenable.com/ ",
+      "carouselImages": [
+        "tenable-1",
+        "tenable-2",
+        "tenable-3",
+        "tenable-4",
+        "tenable-5",
+        "tenable-6",
+        "tenable-7",
+        "tenable-8",
+        "tenable-9"
+      ],
+      "technologyStack": [
+        "C#",
+        "Golang",
+        ".NET core",
+        "Kotlin",
+        "Python",
+        "React.js",
+        "AWS",
+        "K8S",
+        "Docker",
+        "Playwright"
+      ],
+      "openPositions": [
+        {
+          "position": "Software Engineer",
+          "location": "Tel Aviv",
+          "positionLink": "https://www.tenable.com/careers/search?location=Israel+-+Office+-+Tel+Aviv"
+        },
+        {
+          "position": "Senior Software Engineers",
+          "location": "Tel Aviv",
+          "positionLink": "https://www.tenable.com/careers/search?location=Israel+-+Office+-+Tel+Aviv"
+        },
+        {
+          "position": "Frontend Tech Lead",
+          "location": "Tel Aviv",
+          "positionLink": "https://www.tenable.com/careers/search?location=Israel+-+Office+-+Tel+Aviv"
+        },
+        {
+          "position": "Senior Product Manager",
+          "location": "Tel Aviv",
+          "positionLink": "https://www.tenable.com/careers/search?location=Israel+-+Office+-+Tel+Aviv"
+        },
+        {
+          "position": "Security Researcher",
+          "location": "Tel Aviv",
+          "positionLink": "https://www.tenable.com/careers/search?location=Israel+-+Office+-+Tel+Aviv"
+        },
+        {
+          "position": "Engineering Manager",
+          "location": "Tel Aviv",
+          "positionLink": "https://www.tenable.com/careers/search?location=Israel+-+Office+-+Tel+Aviv"
+        },
+        {
+          "position": "Senior Director",
+          "location": "Tel Aviv",
+          "positionLink": "https://www.tenable.com/careers/search?location=Israel+-+Office+-+Tel+Aviv"
+        },
+        {
+          "position": "Product Management",
+          "location": "Tel Aviv",
+          "positionLink": "https://www.tenable.com/careers/search?location=Israel+-+Office+-+Tel+Aviv"
+        }
+      ],
+      "testimonials": [
+        {
+          "position": "Director, Engineering",
+          "testimonialAuthor": "Shani Dar",
+          "testimonialDescription": "We solve complex challenges at scale, with room for innovation and bottom-up initiatives.\nThe culture is open and collaborative, with talented, driven people, and a strong balance between fast delivery and time for learning and growth.",
+          "image": "shani-dar"
+        },
+        {
+          "position": "Director, Engineering",
+          "testimonialAuthor": "Yarden Carmi",
+          "testimonialDescription": "Working at Tenable Israel is a unique experience - a place where top talent, cutting-edge technology, and a dynamic culture come together to stay ahead of the ever-evolving threat landscape. We tackle some of the toughest cybersecurity challenges, driving innovation and making a real impact.",
+          "image": "yarden-carmi"
+        },
+        {
+          "position": "Director, Engineering",
+          "testimonialAuthor": "Elad Eisenberg",
+          "testimonialDescription": "The part of my role at Tenable that I enjoy most is brainstorming- discussing with others to find the best solution to a product challenge and learning from my teammates. We work on interesting problems, the work is very diverse, we have the freedom to choose what we want to focus on, and there's room for new initiatives.",
+          "image": "elad-eisenberg"
+        }
+      ],
+      "linkedin": "https://www.linkedin.com/company/tenableinc/posts/?feedView=all",
+      "bluesky": "",
+      "facebook": "https://www.facebook.com/Tenable.Inc/",
+      "twitter": "https://x.com/TenableSecurity?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor",
+      "meetup": "",
+      "instagram": "https://www.instagram.com/tenableisrael/?hl=en",
+      "youtube": "https://www.youtube.com/channel/UCFN4JeizPlme7E-uhrgnWXw",
+      "github": "https://github.com/tenable",
+      "medium": "https://medium.com/tenable-techblog"
+    },
 
-  {
-    "sponsorTier": "game-changers",
-    "companyName": "Wix",
-    "website": "https://www.wix.engineering/",
-    "description": "Wix is the place for limitless creation and online success. Founded in 2006, our platform now serves 280M+ users across 190 countries worldwide.\n\nWe strive to stay ahead of the curve, always evolve, and provide efficient and innovative tools to help our users succeed at every stage of their journey. Wix is the all-in-one web creation platform with a full suite of tools to build, manage, and grow an online presence.\n\nWe even entered the AI game back in 2016 with the launch of Wix ADI, the first AI website builder that creates custom websites faster than we ever thought possible.\n\nAnd the best part? We’re just getting started.",
-    "carouselImages": [
-      "wix-1",
-      "wix-2",
-      "wix-3",
-      "wix-4",
-      "wix-5",
-      "wix-6",
-      "wix-7"
-    ],
-    "linkedin": "https://www.linkedin.com/showcase/wix-engineering/",
-    "facebook": "https://www.facebook.com/WixEngineering",
-    "twitter": "https://x.com/WixEng",
-    "meetup": "https://www.meetup.com/at-wix/",
-    "youtube": "https://www.youtube.com/@Wix-Engineering",
-    "github": "https://github.com/wix",
-    "medium": "https://medium.com/wix-engineering",
-    "technologyStack": [
-      "AI",
-      "GenAI",
-      "Platform Engineering",
-      "React",
-      "TypeScript",
-      "Bazel",
-      "Kafka",
-      "Java",
-      "Engineering Guilds",
-      "Data Engineering",
-      "DevEx",
-      "SQL",
-      "JavaScript",
-      "Scaling",
-      "Resilience",
-      "ReactNative",
-      "Engineering Culture"
-    ],
-    "openPositions": [
-      {
-        "position": "FED Infrastructure Team Lead",
-        "location": "Tel Aviv",
-        "positionLink": "https://careers.wix.com/position/REF12W-744000065463205"
-      },
-      {
-        "position": "Senior Backend Engineer - Bazel team",
-        "location": "Tel Aviv",
-        "positionLink": "https://careers.wix.com/position/REF6W-743999992311875"
-      },
-      {
-        "position": "Backend Engineer",
-        "location": "Tel Aviv",
-        "positionLink": "https://careers.wix.com/position/REF6W-743999994525096"
-      },
-      {
-        "position": "Server Developer - Wix Services",
-        "location": "Be'er Sheva",
-        "positionLink": "https://careers.wix.com/position/REF341V-744000060518286"
-      },
-      {
-        "position": "Mobile Developer - Team Lead",
-        "location": "Tel Aviv",
-        "positionLink": "https://careers.wix.com/position/oracle-2307f4d3-cd58-508c-8347-1f88bcdb60a3-T1740061551-744000049428145"
-      },
-      {
-        "position": "Senior Backend Engineer - eCommerce",
-        "location": "Tel Aviv",
-        "positionLink": "https://careers.wix.com/position/oracle-5310fa0a-a0bd-5e3e-9cf1-499703dab48a-T1742461849-744000050295805"
-      },
-      {
-        "position": "Senior Software Engineer - Viewer",
-        "location": "Tel Aviv",
-        "positionLink": "https://careers.wix.com/position/oracle-337d2186-ccf4-5611-9303-a3f3c4f22357-T1742373653-744000055979935"
-      }
-    ],
-    "testimonials": [
-      {
-        "position": "Senior Backend Engineer",
-        "testimonialAuthor": "Neria Yashar",
-        "testimonialDescription": "Engineering at Wix means working at real scale - millions of users, constant traffic, and big challenges. We’re using AI and modern tech to move faster, build smarter, and improve user experiences behind the scenes.\n\nIt’s the kind of work that keeps me curious and always learning.",
-        "image": "neria-yashar"
-      },
-      {
-        "testimonialAuthor": "Evelyn Moadi",
-        "image": "evelyn-moadi",
-        "testimonialDescription": "Wix was the ideal place to transition from an engineer to an R&D team lead. It allows me to stay hands-on and technical while making a real product impact at scale.\n\nAt the same time, I'm growing as a leader by helping my team thrive - both individually and collectively - blending engineering excellence with meaningful team development.",
-        "position": "FED R&D Team Lead"
-      },
-      {
-        "testimonialAuthor": "Natan Silnitsky",
-        "image": "natan-silnitsky",
-        "testimonialDescription": "At Wix, building resilient and scalable systems is not just a goal - it’s our reality. As tech lead for Backend Infra, I’m amazed at how we’ve architected an event-driven platform with over 4,000 microservices (and counting).\n\nEvery day brings new technical frontiers, and our collaborative culture empowers us to innovate at scale while keeping reliability front and center. Seeing our infrastructure fuel the creativity and growth of millions of users makes every challenge worthwhile.",
-        "position": "Backend Infra Tech Lead"
-      }
-    ]
-  },
-
-  {
-    "sponsorTier": "community",
-    "openJobsLink": "https://www.start.io/join-us/",
-    "companyName": "Start.io",
-    "description": "Start.io is a sell-side omnichannel advertising platform powered by real-time mobile audiences. We deliver hundreds of millions of ads per day across thousands of global leading apps. Our platform uses AI to deliver more efficient, effective and precise digital advertising campaigns.\n\nOur direct integration with thousands of mobile publishers gives us access to more than 50 billion first-party data signals per day across the globe. Marketers use these anonymized signals to understand and predict consumer behavior, identify new opportunities and fuel business growth.\n\nStart.io was launched in 2010 by cofounders Gil Dudkiewicz and Ran Avidan, and today has offices in New York, Tel Aviv, Beijing, the U.K., Ukraine, Poland, and India.",
-    "website": "https://www.start.io/",
-    "carouselImages": [],
-    "technologyStack": [
-      "TypeScript",
-      "Python",
-      "Kafka",
-      "PyTorch",
-      "AWS",
-      "GCP",
-      "K8S",
-      "Engineering Guild"
-    ],
-    "openPositions": [
-      {
-        "position": "Partnerships Manager",
-        "location": "Israel",
-        "positionLink": "https://www.start.io/career/co/clients/0D.556/partnerships-manager/all/"
-      },
-      {
-        "position": "DevOps Engineer",
-        "location": "Israel",
-        "positionLink": "https://www.start.io/career/co/rd/29.75C/devops-engineer/all/"
-      },
-      {
-        "position": "Product Manager",
-        "location": "Israel",
-        "positionLink": "https://www.start.io/career/co/product/3C.753/product-manager/all/"
-      },
-      {
-        "position": "AdOps Specialist",
-        "location": "India",
-        "positionLink": "https://www.start.io/career/co/operations/79.55D/ad-operations-specialist/all/"
-      },
-      {
-        "position": "Business Analyst",
-        "location": "India",
-        "positionLink": ""
-      },
-      {
-        "position": "Product Manager",
-        "location": "Poland",
-        "positionLink": "https://www.start.io/career/co/product/8E.759/product-manager/all/"
-      },
-      {
-        "position": "DevOps Engineer",
-        "location": "Poland",
-        "positionLink": "https://www.start.io/career/co/rd/2D.050/devops-engineer/all/"
-      }
-    ],
-    "testimonials": [],
-    "linkedin": "https://www.linkedin.com/company/2484520",
-    "bluesky": "",
-    "facebook": "https://www.facebook.com/StartApp/",
-    "twitter": "https://x.com/Start_io_",
-    "meetup": "",
-    "instagram": "https://www.instagram.com/start.io_official/",
-    "youtube": "",
-    "github": "",
-    "medium": ""
-  },
-  {
-    "sponsorTier": "game-changers",
-    "companyName": "StarkWare",
-    "website": "https://starkware.co/",
-    "description": "StarkWare is a technology company building faster, cheaper, and more secure ways to run applications on blockchains. Founded in 2018, it uses advanced math and cryptography—called STARK proofs—to help systems handle more users and data without sacrificing security.\nStarkWare’s main product is Starknet, a network that runs on top of Ethereum and makes it easier for developers to build scalable apps. The company is also working on bringing similar capabilities to Bitcoin, making it possible to build smart, efficient applications that use Bitcoin in new ways.\n\nStarkWare is led by Prof. Eli Ben-Sasson, co-founder and CEO, a computer science professor from the Technion with past research roles at Princeton’s IAS, Harvard, and MIT.",
-    "carouselImages": [
-      "starkware-1",
-      "starkware-2",
-      "starkware-3",
-      "starkware-4",
-      "starkware-5",
-      "starkware-6",
-      "starkware-7",
-      "starkware-8",
-      "starkware-9"
-    ],
-    "linkedin": "https://www.linkedin.com/company/27137803/admin/dashboard/",
-    "twitter": "https://x.com/Starknet",
-    "youtube": "https://www.youtube.com/channel/UCnDWguR8mE2oDBsjhQkgbvg",
-    "github": "https://github.com/keep-starknet-strange/awesome-starknet",
-    "technologyStack": [
-      [
-        "GCP",
-        "Kubernetes",
-        "Grafana",
-        "Argocd",
-        "CDK8s",
-        "Node.js",
+    {
+      "sponsorTier": "game-changers",
+      "companyName": "Wix",
+      "website": "https://www.wix.engineering/",
+      "description": "Wix is the place for limitless creation and online success. Founded in 2006, our platform now serves 280M+ users across 190 countries worldwide.\n\nWe strive to stay ahead of the curve, always evolve, and provide efficient and innovative tools to help our users succeed at every stage of their journey. Wix is the all-in-one web creation platform with a full suite of tools to build, manage, and grow an online presence.\n\nWe even entered the AI game back in 2016 with the launch of Wix ADI, the first AI website builder that creates custom websites faster than we ever thought possible.\n\nAnd the best part? We’re just getting started.",
+      "carouselImages": [
+        "wix-1",
+        "wix-2",
+        "wix-3",
+        "wix-4",
+        "wix-5",
+        "wix-6",
+        "wix-7"
+      ],
+      "linkedin": "https://www.linkedin.com/showcase/wix-engineering/",
+      "facebook": "https://www.facebook.com/WixEngineering",
+      "twitter": "https://x.com/WixEng",
+      "meetup": "https://www.meetup.com/at-wix/",
+      "youtube": "https://www.youtube.com/@Wix-Engineering",
+      "github": "https://github.com/wix",
+      "medium": "https://medium.com/wix-engineering",
+      "technologyStack": [
+        "AI",
+        "GenAI",
+        "Platform Engineering",
         "React",
-        "Mongo",
-        "Rust",
-        "Aerospike",
-        "Cryptographic Proofs",
-        "Consensus Protocols",
-        "Peer to Peer networking",
-        "Cairo VM",
-        "Cryptographic Algorithms",
-        "Blockchain Contracts"
+        "TypeScript",
+        "Bazel",
+        "Kafka",
+        "Java",
+        "Engineering Guilds",
+        "Data Engineering",
+        "DevEx",
+        "SQL",
+        "JavaScript",
+        "Scaling",
+        "Resilience",
+        "ReactNative",
+        "Engineering Culture"
+      ],
+      "openPositions": [
+        {
+          "position": "FED Infrastructure Team Lead",
+          "location": "Tel Aviv",
+          "positionLink": "https://careers.wix.com/position/REF12W-744000065463205"
+        },
+        {
+          "position": "Senior Backend Engineer - Bazel team",
+          "location": "Tel Aviv",
+          "positionLink": "https://careers.wix.com/position/REF6W-743999992311875"
+        },
+        {
+          "position": "Backend Engineer",
+          "location": "Tel Aviv",
+          "positionLink": "https://careers.wix.com/position/REF6W-743999994525096"
+        },
+        {
+          "position": "Server Developer - Wix Services",
+          "location": "Be'er Sheva",
+          "positionLink": "https://careers.wix.com/position/REF341V-744000060518286"
+        },
+        {
+          "position": "Mobile Developer - Team Lead",
+          "location": "Tel Aviv",
+          "positionLink": "https://careers.wix.com/position/oracle-2307f4d3-cd58-508c-8347-1f88bcdb60a3-T1740061551-744000049428145"
+        },
+        {
+          "position": "Senior Backend Engineer - eCommerce",
+          "location": "Tel Aviv",
+          "positionLink": "https://careers.wix.com/position/oracle-5310fa0a-a0bd-5e3e-9cf1-499703dab48a-T1742461849-744000050295805"
+        },
+        {
+          "position": "Senior Software Engineer - Viewer",
+          "location": "Tel Aviv",
+          "positionLink": "https://careers.wix.com/position/oracle-337d2186-ccf4-5611-9303-a3f3c4f22357-T1742373653-744000055979935"
+        }
+      ],
+      "testimonials": [
+        {
+          "position": "Senior Backend Engineer",
+          "testimonialAuthor": "Neria Yashar",
+          "testimonialDescription": "Engineering at Wix means working at real scale - millions of users, constant traffic, and big challenges. We’re using AI and modern tech to move faster, build smarter, and improve user experiences behind the scenes.\n\nIt’s the kind of work that keeps me curious and always learning.",
+          "image": "neria-yashar"
+        },
+        {
+          "testimonialAuthor": "Evelyn Moadi",
+          "image": "evelyn-moadi",
+          "testimonialDescription": "Wix was the ideal place to transition from an engineer to an R&D team lead. It allows me to stay hands-on and technical while making a real product impact at scale.\n\nAt the same time, I'm growing as a leader by helping my team thrive - both individually and collectively - blending engineering excellence with meaningful team development.",
+          "position": "FED R&D Team Lead"
+        },
+        {
+          "testimonialAuthor": "Natan Silnitsky",
+          "image": "natan-silnitsky",
+          "testimonialDescription": "At Wix, building resilient and scalable systems is not just a goal - it’s our reality. As tech lead for Backend Infra, I’m amazed at how we’ve architected an event-driven platform with over 4,000 microservices (and counting).\n\nEvery day brings new technical frontiers, and our collaborative culture empowers us to innovate at scale while keeping reliability front and center. Seeing our infrastructure fuel the creativity and growth of millions of users makes every challenge worthwhile.",
+          "position": "Backend Infra Tech Lead"
+        }
       ]
-    ],
-    "openPositions": [],
-    "testimonials": [
-      {
-        "position": "Infra Group Lead",
-        "testimonialAuthor": "Roei Engel",
-        "testimonialDescription": "StarkWare is a rare mix of super-intelligent people who love solving problems and working together. It's fun, interesting, and challenging to come here, meet people, and exchange ideas. There are no limits, and every good idea gets a chance.",
-        "image": "roei-engel"
-      },
-      {
-        "testimonialAuthor": "Noa Oved",
-        "image": "noa-oved",
-        "testimonialDescription": "I’m passionate about exploring and understanding algorithms, and I’m equally dedicated to supporting the team around me. With a Bachelor's degree in Computer Science and Mathematics from the Technion and a Master's degree in Computer Science, Mathematics, and Cryptography from the Weizmann Institute, I aspired throughout my studies to be part of a cognitively challenging work environment. Luckily, the nature of the work here is exactly that.",
-        "position": "Team Lead"
-      },
-      {
-        "testimonialAuthor": "Kineret Segal",
-        "image": "kineret-segal",
-        "testimonialDescription": "I hold a Bachelor's degree in Mathematics and Psychology from the Hebrew University and a Master's degree in Computer Science from Tel Aviv University. Today, as a development group lead, my responsibilities range from guiding the team both professionally and personally to managing projects across various teams. The work is quite diverse, encompassing system engineering, working on a production system that must handle high loads, and mathematical research on the next algorithm.\nSeeing the company grow from the very beginning – all the product changes, how people develop, and the relationships within the team – that creates real commitment. Plus, I really feel like I have an impact here. I have the power to drive things forward.",
-        "position": "Proving Group Lead"
-      }
-    ]
-  },
-  {
-    "sponsorTier": "game-changers",
-    "companyName": "Plus500",
-    "website": "https://www.plus500.com",
-    "description": "Plus500 is a world-leading online trading platform for millions of users worldwide, trading ~3bn$ per year across 50+ countries, placing millions of trades a month.\n\nThe next generation of investors is younger and more diverse than ever before, and finance is becoming part of their culture, participating in the trading markets, which is one of the greatest wealth creators of the last century.\n\nIt is our mission to disrupt the trade markets by building digital technologies that make trading around the world accessible and more efficient for all.\n\nWe are at a super growth stage, building new products alongside pushing the edges of existing ones, and are hiring talented R&D engineers and leaders across multiple disciplines and roles.\n\nIf you are passionate about crafting beautiful things at the internet scale, check out our careers page. We'll be happy to challenge you to your limits and shape the world of trading together.",
-    "linkedin": "https://www.linkedin.com/company/plus500-official-page",
-    "twitter": "https://twitter.com/plus500",
-    "youtube": "https://www.youtube.com/@Plus500Site",
-    "github": "",
-    "facebook": "https://www.facebook.com/Plus500Careers/",
-    "instagram": "https://www.instagram.com/plus500/",
-    "technologyStack": [
-      "C#",
-      "Swift",
-      "Kotlin",
-      "Postgres/Mssql",
-      "RabbitMQ",
-      "GCP"
-    ],
-    "carouselImages": [
-      "plus500-1",
-      "plus500-2",
-      "plus500-3",
-      "plus500-4",
-      "plus500-5",
-      "plus500-6",
-      "plus500-7",
-      "plus500-8"
-    ],
-    "openPositions": [
-      {
-        "position": "Senior iOS Developer",
-        "location": "Haifa / Tel Aviv",
-        "positionLink": "https://careers.plus500.com/?pid=4D.55D"
-      }
-    ],
-    "testimonials": [
-      {
-        "position": "Customer Engagement Team Lead",
-        "testimonialAuthor": "Gal Barak",
-        "image": "gal-barak",
-        "testimonialDescription": "At Plus500, you're surrounded by talented people who are always willing to share knowledge and help you grow. It’s a place where complex engineering challenges meet constant learning, and where you're trusted to make a difference."
-      },
-      {
-        "testimonialAuthor": "Lee Benyamin",
-        "image": "lee-benyamin",
-        "testimonialDescription": "Plus500 gives me the chance to solve problems that actually matter, surrounded by engineers who push each other to do better work. The environment is supportive and collaborative, making it easy to learn and grow.",
-        "position": "Backend Software Engineer"
-      },
-      {
-        "testimonialAuthor": "Dvir Segal",
-        "image": "dvir-segal",
-        "testimonialDescription": "For me, working at Plus500 means learning something new every day, whether it's by tackling complex software problems or by collaborating with skilled colleagues, in a place that values both technical excellence and its people.",
-        "position": "Staff Backend Software Engineer"
-      }
-    ]
-  },
-  {
-    "sponsorTier": "game-changers",
-    "companyName": "Workday",
-    "website": "https://www.workday.com/",
-    "description": "Workday is a leading provider of enterprise cloud applications for finance and human resources. Founded in 2005, Workday helps organizations manage critical business functions — such as payroll, talent management, financial planning, and workforce analytics — all through a single, cloud-based platform. Workday serves a wide range of customers, from mid-sized businesses to Fortune 500 companies, offering scalable and innovative solutions that support growth and drive success.\n\nIn 2024, Workday acquired HiredScore, a leading provider of AI-driven talent orchestration solutions. This acquisition enhanced Workday’s recruiting capabilities with advanced automation and insights to enable inclusive, efficient, and compliant hiring.\n\nWorkday’s office in Israel is the former HiredScore office, where we continue to develop cutting-edge AI-powered recruiting solutions as part of the global Workday team.",
-    "carouselImages": [
-      "workday-1",
-      "workday-2",
-      "workday-3",
-      "workday-4",
-      "workday-5"
-    ],
-    "linkedin": "https://www.linkedin.com/company/workday/posts/?feedView=all",
-    "twitter": "https://x.com/Workday?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor",
-    "youtube": "https://www.youtube.com/user/workdayvideo",
-    "github": "",
-    "facebook": "",
-    "instagram": "",
-    "medium": "",
-    "meetup": "https://www.meetup.com/workdayil/?recSource=chapter-search&recId=57334886-b31b-4f86-badb-be712e632a8f&searchId=5b717fe9-f453-44a0-b444-0a98e88918a6&eventOrigin=find_page",
-    "technologyStack": [
-      "Python",
-      "Celery",
-      "RabbitMQ",
-      "MongoDB",
-      "AWS",
-      "ElasticSearch",
-      "PostgreSQL",
-      "JS/TS",
-      "React",
-      "GraphQL",
-      "Grafana",
-      "Groundcover",
-      "OpenTelemetry",
-      "ArgoCD",
-      "ArgoWFs"
-    ],
-    "openPositions": [
-      {
-        "position": "Software Development Engineering Team Lead",
-        "location": "Tel Aviv",
-        "positionLink": "https://workday.wd5.myworkdayjobs.com/Workday/job/Israel-Tel-Aviv/Software-Development-Engineering-Team-Lead_JR-0095264"
-      },
-      {
-        "position": "Manager, Technical Support Delivery",
-        "location": "Tel Aviv",
-        "positionLink": "https://workday.wd5.myworkdayjobs.com/Workday/job/Israel-Tel-Aviv/Manager--Technical-Support-Delivery_JR-0093151"
-      },
-      {
-        "position": "Team Lead Delivery Engineering",
-        "location": "Tel Aviv",
-        "positionLink": "https://workday.wd5.myworkdayjobs.com/Workday/job/Israel-Tel-Aviv/Manager--Software-Development-Engineering_JR-0095956"
-      },
-      {
-        "position": "Senior Technical Consultant - Cross – HiredScore",
-        "location": "Tel Aviv",
-        "positionLink": "https://workday.wd5.myworkdayjobs.com/Workday/job/Israel-Tel-Aviv/Senior-Technical-Project-Manager---Cross-Group---HiredScore_JR-0098119"
-      },
-      {
-        "position": "Automation Engineer – HiredScore",
-        "location": "Tel Aviv",
-        "positionLink": "https://workday.wd5.myworkdayjobs.com/Workday/job/Israel-Tel-Aviv/Automation-Engineer_JR-0097469"
-      },
-      {
-        "position": "Manager, Integrations & Technical Solutions – Hiredscore",
-        "location": "Tel Aviv",
-        "positionLink": "https://workday.wd5.myworkdayjobs.com/Workday/job/Israel-Tel-Aviv/Manager--Integrations---Technical-Solutions----Hiredscore_JR-0097284"
-      },
-      {
-        "position": "Technical Project Manager – Hiredscore",
-        "location": "Tel Aviv",
-        "positionLink": "https://workday.wd5.myworkdayjobs.com/Workday/job/Israel-Tel-Aviv/Technical-Project-Manager_JR-0094713"
-      }
-    ],
-    "testimonials": []
-  },
+    },
 
-  {
-    "sponsorTier": "game-changers",
-    "companyName": "Cyera",
-    "website": "https://www.cyera.com/",
-    "description": "Cyera is the fastest-growing data security company in the $24 billion data security market. Its AI-powered platform gives organizations a complete view of where their data lives, how it’s used, and how to keep it safe, so they can reduce risk and unlock the full value of their data, wherever it is. Backed by top-tier investors including Accel, Coatue, and Sequoia, Cyera’s unified data security platform helps businesses discover, secure, and leverage their most valuable asset- data, and eliminate blind spots, cut alert noise, and protect sensitive information across the cloud, SaaS, databases, AI ecosystems, and on-premise environments. Recent innovations like Cyera’s Omni DLP extend this platform with adaptive, AI-native data loss protection, bringing real-time intelligence and contextual understanding to how data moves and is used across the enterprise.",
-    "carouselImages": [],
-    "linkedin": "https://www.linkedin.com/company/cyera/",
-    "twitter": "https://x.com/cyera_io",
-    "youtube": "https://www.youtube.com/@CyeraSecurity",
-    "github": "",
-    "facebook": "",
-    "instagram": "https://www.instagram.com/cyeralife/?hl=en",
-    "medium": "",
-    "meetup": "",
-    "technologyStack": [
-      "Typescript",
-      "NodeJS",
-      "Python",
-      "Kafka",
-      "Aws",
-      "Gcp",
-      "Azure",
-      "Snowflake",
-      "Databricks",
-      "Redis",
-      "Amazon Redshift",
-      "CLickhouse",
-      "MongoDB",
-      "BigQuery",
-      "Postgres",
-      "S3",
-      "Promethues",
-      "OpenTelemetry",
-      "Helm",
-      "Flux",
-      "K8S"
-    ],
-    "openPositions": [],
-    "testimonials": [
-      {
-        "position": "Product Manager",
-        "testimonialAuthor": "Gal Pollak",
-        "image": "gal-pollak",
-        "testimonialDescription": "Knowing that I'm building a product that helps companies secure their most sensitive data gives my work real meaning. There’s a strong sense of purpose here, and it fuels both our pace and our pride in what we’re building."
-      },
-      {
-        "position": "Senior Software Engineer",
-        "testimonialDescription": "Joining Cyera was a no-brainer. Exceptional talent, continuous innovation, and endless growth opportunities. Being part of a unicorn pioneering DSPM means constantly learning and stepping beyond comfort zones. It's exciting, rewarding, and genuinely inspiring.",
-        "testimonialAuthor": "Maxim Ribakov",
-        "image": "maxim-ribakov"
-      }
-    ]
-  },
-  {
-    "sponsorTier": "community",
-    "openJobsLink": "https://www.fullpath.com/careers/",
-    "companyName": "Fullpath",
-    "description": "Fullpath was founded in 2014 by three friends who came together to build a Customer Data Platform (CDP) and an AI-driven marketing automation platform (MAP) that now serve thousands of North American car dealerships, including some of the most savvy and forward leading auto-retailers in the United States.\n\nFullpath is driven by a passion for the impact that small, medium, and family-owned businesses have on local communities and economies. This has guided our mission since 2017 when our team wrote the company’s first piece of dealer-focused software. We’re still at it every day since and are gratefully learning from our customers and partners as we go.",
-    "website": "https://www.fullpath.com/",
-    "carouselImages": [],
-    "linkedin": "https://www.linkedin.com/company/fullpathcdxp/",
-    "twitter": "",
-    "youtube": "https://www.youtube.com/@fullpathcdxp",
-    "github": "",
-    "facebook": "https://www.facebook.com/fullpathcdxp",
-    "instagram": "https://www.instagram.com/fullpathcdxp/",
-    "medium": "",
-    "meetup": "",
-    "technologyStack": [
-      "AWS",
-      "Angular",
-      "MySQL",
-      "PHP",
-      "Laravel",
-      "Docker",
-      "k8s",
-      "CI/CD. GCP",
-      "vue.js",
-      "angular.js",
-      "react",
-      "Redis",
-      "RabbitMQ",
-      "Clickhouse",
-      "Redshift",
-      "Aurora",
-      "Python",
-      "node.js",
-      "terraform",
-      "helm",
-      "lambda",
-      "monolith + microservices"
-    ],
-    "openPositions": [],
-    "testimonials": []
-  }
-]
+    {
+      "sponsorTier": "community",
+      "openJobsLink": "https://www.start.io/join-us/",
+      "companyName": "Start.io",
+      "description": "Start.io is a sell-side omnichannel advertising platform powered by real-time mobile audiences. We deliver hundreds of millions of ads per day across thousands of global leading apps. Our platform uses AI to deliver more efficient, effective and precise digital advertising campaigns.\n\nOur direct integration with thousands of mobile publishers gives us access to more than 50 billion first-party data signals per day across the globe. Marketers use these anonymized signals to understand and predict consumer behavior, identify new opportunities and fuel business growth.\n\nStart.io was launched in 2010 by cofounders Gil Dudkiewicz and Ran Avidan, and today has offices in New York, Tel Aviv, Beijing, the U.K., Ukraine, Poland, and India.",
+      "website": "https://www.start.io/",
+      "carouselImages": [],
+      "technologyStack": [
+        "TypeScript",
+        "Python",
+        "Kafka",
+        "PyTorch",
+        "AWS",
+        "GCP",
+        "K8S",
+        "Engineering Guild"
+      ],
+      "openPositions": [
+        {
+          "position": "Partnerships Manager",
+          "location": "Israel",
+          "positionLink": "https://www.start.io/career/co/clients/0D.556/partnerships-manager/all/"
+        },
+        {
+          "position": "DevOps Engineer",
+          "location": "Israel",
+          "positionLink": "https://www.start.io/career/co/rd/29.75C/devops-engineer/all/"
+        },
+        {
+          "position": "Product Manager",
+          "location": "Israel",
+          "positionLink": "https://www.start.io/career/co/product/3C.753/product-manager/all/"
+        },
+        {
+          "position": "AdOps Specialist",
+          "location": "India",
+          "positionLink": "https://www.start.io/career/co/operations/79.55D/ad-operations-specialist/all/"
+        },
+        {
+          "position": "Business Analyst",
+          "location": "India",
+          "positionLink": ""
+        },
+        {
+          "position": "Product Manager",
+          "location": "Poland",
+          "positionLink": "https://www.start.io/career/co/product/8E.759/product-manager/all/"
+        },
+        {
+          "position": "DevOps Engineer",
+          "location": "Poland",
+          "positionLink": "https://www.start.io/career/co/rd/2D.050/devops-engineer/all/"
+        }
+      ],
+      "testimonials": [],
+      "linkedin": "https://www.linkedin.com/company/2484520",
+      "bluesky": "",
+      "facebook": "https://www.facebook.com/StartApp/",
+      "twitter": "https://x.com/Start_io_",
+      "meetup": "",
+      "instagram": "https://www.instagram.com/start.io_official/",
+      "youtube": "",
+      "github": "",
+      "medium": ""
+    },
+    {
+      "sponsorTier": "game-changers",
+      "companyName": "StarkWare",
+      "website": "https://starkware.co/",
+      "description": "StarkWare is a technology company building faster, cheaper, and more secure ways to run applications on blockchains. Founded in 2018, it uses advanced math and cryptography—called STARK proofs—to help systems handle more users and data without sacrificing security.\nStarkWare’s main product is Starknet, a network that runs on top of Ethereum and makes it easier for developers to build scalable apps. The company is also working on bringing similar capabilities to Bitcoin, making it possible to build smart, efficient applications that use Bitcoin in new ways.\n\nStarkWare is led by Prof. Eli Ben-Sasson, co-founder and CEO, a computer science professor from the Technion with past research roles at Princeton’s IAS, Harvard, and MIT.",
+      "carouselImages": [
+        "starkware-1",
+        "starkware-2",
+        "starkware-3",
+        "starkware-4",
+        "starkware-5",
+        "starkware-6",
+        "starkware-7",
+        "starkware-8",
+        "starkware-9"
+      ],
+      "linkedin": "https://www.linkedin.com/company/27137803/admin/dashboard/",
+      "twitter": "https://x.com/Starknet",
+      "youtube": "https://www.youtube.com/channel/UCnDWguR8mE2oDBsjhQkgbvg",
+      "github": "https://github.com/keep-starknet-strange/awesome-starknet",
+      "technologyStack":
+        [
+          "GCP",
+          "Kubernetes",
+          "Grafana",
+          "Argocd",
+          "CDK8s",
+          "Node.js",
+          "React",
+          "Mongo",
+          "Rust",
+          "Aerospike",
+          "Cryptographic Proofs",
+          "Consensus Protocols",
+          "Peer to Peer networking",
+          "Cairo VM",
+          "Cryptographic Algorithms",
+          "Blockchain Contracts"
+      ],
+      "openPositions": [],
+      "testimonials": [
+        {
+          "position": "Infra Group Lead",
+          "testimonialAuthor": "Roei Engel",
+          "testimonialDescription": "StarkWare is a rare mix of super-intelligent people who love solving problems and working together. It's fun, interesting, and challenging to come here, meet people, and exchange ideas. There are no limits, and every good idea gets a chance.",
+          "image": "roei-engel"
+        },
+        {
+          "testimonialAuthor": "Noa Oved",
+          "image": "noa-oved",
+          "testimonialDescription": "I’m passionate about exploring and understanding algorithms, and I’m equally dedicated to supporting the team around me. With a Bachelor's degree in Computer Science and Mathematics from the Technion and a Master's degree in Computer Science, Mathematics, and Cryptography from the Weizmann Institute, I aspired throughout my studies to be part of a cognitively challenging work environment. Luckily, the nature of the work here is exactly that.",
+          "position": "Team Lead"
+        },
+        {
+          "testimonialAuthor": "Kineret Segal",
+          "image": "kineret-segal",
+          "testimonialDescription": "I hold a Bachelor's degree in Mathematics and Psychology from the Hebrew University and a Master's degree in Computer Science from Tel Aviv University. Today, as a development group lead, my responsibilities range from guiding the team both professionally and personally to managing projects across various teams. The work is quite diverse, encompassing system engineering, working on a production system that must handle high loads, and mathematical research on the next algorithm.\nSeeing the company grow from the very beginning – all the product changes, how people develop, and the relationships within the team – that creates real commitment. Plus, I really feel like I have an impact here. I have the power to drive things forward.",
+          "position": "Proving Group Lead"
+        }
+      ]
+    },
+    {
+      "sponsorTier": "game-changers",
+      "companyName": "Plus500",
+      "website": "https://www.plus500.com",
+      "description": "Plus500 is a world-leading online trading platform for millions of users worldwide, trading ~3bn$ per year across 50+ countries, placing millions of trades a month.\n\nThe next generation of investors is younger and more diverse than ever before, and finance is becoming part of their culture, participating in the trading markets, which is one of the greatest wealth creators of the last century.\n\nIt is our mission to disrupt the trade markets by building digital technologies that make trading around the world accessible and more efficient for all.\n\nWe are at a super growth stage, building new products alongside pushing the edges of existing ones, and are hiring talented R&D engineers and leaders across multiple disciplines and roles.\n\nIf you are passionate about crafting beautiful things at the internet scale, check out our careers page. We'll be happy to challenge you to your limits and shape the world of trading together.",
+      "linkedin": "https://www.linkedin.com/company/plus500-official-page",
+      "twitter": "https://twitter.com/plus500",
+      "youtube": "https://www.youtube.com/@Plus500Site",
+      "github": "",
+      "facebook": "https://www.facebook.com/Plus500Careers/",
+      "instagram": "https://www.instagram.com/plus500/",
+      "technologyStack": [
+        "C#",
+        "Swift",
+        "Kotlin",
+        "Postgres/Mssql",
+        "RabbitMQ",
+        "GCP"
+      ],
+      "carouselImages": [
+        "plus500-1",
+        "plus500-2",
+        "plus500-3",
+        "plus500-4",
+        "plus500-5",
+        "plus500-6",
+        "plus500-7",
+        "plus500-8"
+      ],
+      "openPositions": [
+        {
+          "position": "Senior iOS Developer",
+          "location": "Haifa / Tel Aviv",
+          "positionLink": "https://careers.plus500.com/?pid=4D.55D"
+        }
+      ],
+      "testimonials": [
+        {
+          "position": "Customer Engagement Team Lead",
+          "testimonialAuthor": "Gal Barak",
+          "image": "gal-barak",
+          "testimonialDescription": "At Plus500, you're surrounded by talented people who are always willing to share knowledge and help you grow. It’s a place where complex engineering challenges meet constant learning, and where you're trusted to make a difference."
+        },
+        {
+          "testimonialAuthor": "Lee Benyamin",
+          "image": "lee-benyamin",
+          "testimonialDescription": "Plus500 gives me the chance to solve problems that actually matter, surrounded by engineers who push each other to do better work. The environment is supportive and collaborative, making it easy to learn and grow.",
+          "position": "Backend Software Engineer"
+        },
+        {
+          "testimonialAuthor": "Dvir Segal",
+          "image": "dvir-segal",
+          "testimonialDescription": "For me, working at Plus500 means learning something new every day, whether it's by tackling complex software problems or by collaborating with skilled colleagues, in a place that values both technical excellence and its people.",
+          "position": "Staff Backend Software Engineer"
+        }
+      ]
+    },
+    {
+      "sponsorTier": "game-changers",
+      "companyName": "Workday",
+      "website": "https://www.workday.com/",
+      "description": "Workday is a leading provider of enterprise cloud applications for finance and human resources. Founded in 2005, Workday helps organizations manage critical business functions — such as payroll, talent management, financial planning, and workforce analytics — all through a single, cloud-based platform. Workday serves a wide range of customers, from mid-sized businesses to Fortune 500 companies, offering scalable and innovative solutions that support growth and drive success.\n\nIn 2024, Workday acquired HiredScore, a leading provider of AI-driven talent orchestration solutions. This acquisition enhanced Workday’s recruiting capabilities with advanced automation and insights to enable inclusive, efficient, and compliant hiring.\n\nWorkday’s office in Israel is the former HiredScore office, where we continue to develop cutting-edge AI-powered recruiting solutions as part of the global Workday team.",
+      "carouselImages": [
+        "workday-1",
+        "workday-2",
+        "workday-3",
+        "workday-4",
+        "workday-5"
+      ],
+      "linkedin": "https://www.linkedin.com/company/workday/posts/?feedView=all",
+      "twitter": "https://x.com/Workday?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor",
+      "youtube": "https://www.youtube.com/user/workdayvideo",
+      "github": "",
+      "facebook": "",
+      "instagram": "",
+      "medium": "",
+      "meetup": "https://www.meetup.com/workdayil/?recSource=chapter-search&recId=57334886-b31b-4f86-badb-be712e632a8f&searchId=5b717fe9-f453-44a0-b444-0a98e88918a6&eventOrigin=find_page",
+      "technologyStack": [
+        "Python",
+        "Celery",
+        "RabbitMQ",
+        "MongoDB",
+        "AWS",
+        "ElasticSearch",
+        "PostgreSQL",
+        "JS/TS",
+        "React",
+        "GraphQL",
+        "Grafana",
+        "Groundcover",
+        "OpenTelemetry",
+        "ArgoCD",
+        "ArgoWFs"
+      ],
+      "openPositions": [
+        {
+          "position": "Software Development Engineering Team Lead",
+          "location": "Tel Aviv",
+          "positionLink": "https://workday.wd5.myworkdayjobs.com/Workday/job/Israel-Tel-Aviv/Software-Development-Engineering-Team-Lead_JR-0095264"
+        },
+        {
+          "position": "Manager, Technical Support Delivery",
+          "location": "Tel Aviv",
+          "positionLink": "https://workday.wd5.myworkdayjobs.com/Workday/job/Israel-Tel-Aviv/Manager--Technical-Support-Delivery_JR-0093151"
+        },
+        {
+          "position": "Team Lead Delivery Engineering",
+          "location": "Tel Aviv",
+          "positionLink": "https://workday.wd5.myworkdayjobs.com/Workday/job/Israel-Tel-Aviv/Manager--Software-Development-Engineering_JR-0095956"
+        },
+        {
+          "position": "Senior Technical Consultant - Cross – HiredScore",
+          "location": "Tel Aviv",
+          "positionLink": "https://workday.wd5.myworkdayjobs.com/Workday/job/Israel-Tel-Aviv/Senior-Technical-Project-Manager---Cross-Group---HiredScore_JR-0098119"
+        },
+        {
+          "position": "Automation Engineer – HiredScore",
+          "location": "Tel Aviv",
+          "positionLink": "https://workday.wd5.myworkdayjobs.com/Workday/job/Israel-Tel-Aviv/Automation-Engineer_JR-0097469"
+        },
+        {
+          "position": "Manager, Integrations & Technical Solutions – Hiredscore",
+          "location": "Tel Aviv",
+          "positionLink": "https://workday.wd5.myworkdayjobs.com/Workday/job/Israel-Tel-Aviv/Manager--Integrations---Technical-Solutions----Hiredscore_JR-0097284"
+        },
+        {
+          "position": "Technical Project Manager – Hiredscore",
+          "location": "Tel Aviv",
+          "positionLink": "https://workday.wd5.myworkdayjobs.com/Workday/job/Israel-Tel-Aviv/Technical-Project-Manager_JR-0094713"
+        }
+      ],
+      "testimonials": []
+    },
+
+    {
+      "sponsorTier": "game-changers",
+      "companyName": "Cyera",
+      "website": "https://www.cyera.com/",
+      "description": "Cyera is the fastest-growing data security company in the $24 billion data security market. Its AI-powered platform gives organizations a complete view of where their data lives, how it’s used, and how to keep it safe, so they can reduce risk and unlock the full value of their data, wherever it is. Backed by top-tier investors including Accel, Coatue, and Sequoia, Cyera’s unified data security platform helps businesses discover, secure, and leverage their most valuable asset- data, and eliminate blind spots, cut alert noise, and protect sensitive information across the cloud, SaaS, databases, AI ecosystems, and on-premise environments. Recent innovations like Cyera’s Omni DLP extend this platform with adaptive, AI-native data loss protection, bringing real-time intelligence and contextual understanding to how data moves and is used across the enterprise.",
+      "carouselImages": [],
+      "linkedin": "https://www.linkedin.com/company/cyera/",
+      "twitter": "https://x.com/cyera_io",
+      "youtube": "https://www.youtube.com/@CyeraSecurity",
+      "github": "",
+      "facebook": "",
+      "instagram": "https://www.instagram.com/cyeralife/?hl=en",
+      "medium": "",
+      "meetup": "",
+      "technologyStack": [
+        "Typescript",
+        "NodeJS",
+        "Python",
+        "Kafka",
+        "Aws",
+        "Gcp",
+        "Azure",
+        "Snowflake",
+        "Databricks",
+        "Redis",
+        "Amazon Redshift",
+        "CLickhouse",
+        "MongoDB",
+        "BigQuery",
+        "Postgres",
+        "S3",
+        "Promethues",
+        "OpenTelemetry",
+        "Helm",
+        "Flux",
+        "K8S"
+      ],
+      "openPositions": [],
+      "testimonials": [
+        {
+          "position": "Product Manager",
+          "testimonialAuthor": "Gal Pollak",
+          "image": "gal-pollak",
+          "testimonialDescription": "Knowing that I'm building a product that helps companies secure their most sensitive data gives my work real meaning. There’s a strong sense of purpose here, and it fuels both our pace and our pride in what we’re building."
+        },
+        {
+          "position": "Senior Software Engineer",
+          "testimonialDescription": "Joining Cyera was a no-brainer. Exceptional talent, continuous innovation, and endless growth opportunities. Being part of a unicorn pioneering DSPM means constantly learning and stepping beyond comfort zones. It's exciting, rewarding, and genuinely inspiring.",
+          "testimonialAuthor": "Maxim Ribakov",
+          "image": "maxim-ribakov"
+        }
+      ]
+    },
+    {
+      "sponsorTier": "community",
+      "openJobsLink": "https://www.fullpath.com/careers/",
+      "companyName": "Fullpath",
+      "description": "Fullpath was founded in 2014 by three friends who came together to build a Customer Data Platform (CDP) and an AI-driven marketing automation platform (MAP) that now serve thousands of North American car dealerships, including some of the most savvy and forward leading auto-retailers in the United States.\n\nFullpath is driven by a passion for the impact that small, medium, and family-owned businesses have on local communities and economies. This has guided our mission since 2017 when our team wrote the company’s first piece of dealer-focused software. We’re still at it every day since and are gratefully learning from our customers and partners as we go.",
+      "website": "https://www.fullpath.com/",
+      "carouselImages": [],
+      "linkedin": "https://www.linkedin.com/company/fullpathcdxp/",
+      "twitter": "",
+      "youtube": "https://www.youtube.com/@fullpathcdxp",
+      "github": "",
+      "facebook": "https://www.facebook.com/fullpathcdxp",
+      "instagram": "https://www.instagram.com/fullpathcdxp/",
+      "medium": "",
+      "meetup": "",
+      "technologyStack": [
+        "AWS",
+        "Angular",
+        "MySQL",
+        "PHP",
+        "Laravel",
+        "Docker",
+        "k8s",
+        "CI/CD. GCP",
+        "vue.js",
+        "angular.js",
+        "react",
+        "Redis",
+        "RabbitMQ",
+        "Clickhouse",
+        "Redshift",
+        "Aurora",
+        "Python",
+        "node.js",
+        "terraform",
+        "helm",
+        "lambda",
+        "monolith + microservices"
+      ],
+      "openPositions": [],
+      "testimonials": []
+    },
+    {
+      "sponsorTier": "game-changers",
+      "companyName": "Melio",
+      "website": "https://meliopayments.com/",
+      "description": "is a leading B2B payments platform that helps small and medium-sized businesses in the U.S. manage their accounts payable and receivable with ease. By streamlining bill payments, invoicing, and cash flow management, Melio empowers businesses to pay and get paid faster — all from a simple, centralized dashboard. The platform integrates seamlessly with accounting software like QuickBooks and Xero and supports multiple payment methods including ACH, cards, and checks.\nin June, Melio agreed to be acquired by Xero, a global small business platform. By combining Xero’s powerful cloud accounting platform with Melio’s bill payments platform, Melio is unlocking even more value for businesses, advisors who support them, and partners. With offices in New York and Tel Aviv, Melio continues to drive innovation at the intersection of fintech and operational simplicity.",
+      "carouselImages": [
+        "melio-1",
+        "melio-2",
+        "melio-3",
+        "melio-4",
+        "melio-5",
+        "melio-6",
+        "melio-7",
+        "melio-8",
+        "melio-9"
+      ],
+      "linkedin": "https://www.linkedin.com/company/meliopayments/",
+      "twitter": "",
+      "youtube": "",
+      "github": "",
+      "facebook": "",
+      "instagram": "https://www.instagram.com/melio_life/?hl=en",
+      "medium": "https://medium.com/meliopayments",
+      "meetup": "https://lu.ma/melio?k=c&period=past",
+      "technologyStack": [
+        "TypeScript",
+        "Python",
+        "Kafka",
+        "PyTorch",
+        "AWS",
+        "GCP",
+        "K8S",
+        "Engineering Guild"
+      ],
+      "openPositions": [
+        {
+          "position": "Data Engineer Tech Lead",
+          "location": "Tel Aviv",
+          "positionLink": "https://careers.meliopayments.com/"
+        },
+        {
+          "position": "Director of Engineering",
+          "location": "Tel Aviv",
+          "positionLink": "https://careers.meliopayments.com/"
+        },
+        {
+          "position": "Engineering Manager, Risk",
+          "location": "Tel Aviv",
+          "positionLink": "https://careers.meliopayments.com/"
+        },
+        {
+          "position": "Senior Backend Engineer",
+          "location": "Tel Aviv",
+          "positionLink": "https://careers.meliopayments.com/"
+        },
+        {
+          "position": "Senior Backend Engineer, Platform Engineering",
+          "location": "Tel Aviv",
+          "positionLink": "https://careers.meliopayments.com/"
+        },
+        {
+          "position": "Senior Full Stack Engineer",
+          "location": "Tel Aviv",
+          "positionLink": "https://careers.meliopayments.com/"
+        }
+      ],
+      "testimonials": [
+        {
+          "position": "Staff Engineer",
+          "testimonialAuthor": "Yotam Bloom",
+          "image": "yotam-bloom",
+          "testimonialDescription": "Working at Melio for the past 4 years, building multiple products from the ground up, and making a big impact has been a fulfilling experience. Melio has enabled me to grow in ways that no other company has. Seeing the engineering group grow from 20 to over 200 was a unique and challenging opportunity. I have felt valued and supported at every step of my journey at Melio, and I believe this has significantly impacted my personal and professional growth."
+        }
+      ]
+    }
+  ]
+}

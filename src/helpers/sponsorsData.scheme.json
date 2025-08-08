@@ -1,0 +1,98 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "sponsorsRoot",
+  "type": "object",
+  "properties": {
+    "$schema": { "type": "string" },
+    "sponsors": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "sponsorTier": {
+            "type": "string",
+            "enum": ["organizing", "game-changers", "community"]
+          },
+          "companyName": { "type": "string" },
+          "description": { "type": "string" },
+          "website": { "type": "string", "format": "uri" },
+          "companyNameLogo": { "type": "string", "required": false },
+          "carouselImages": {
+            "type": "array",
+            "items": { "type": "string" }
+          },
+          "technologyStack": {
+            "type": "array",
+            "items": { "type": "string" }
+          },
+          "openPositions": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "position": { "type": "string" },
+                "location": { "type": "string" },
+                "positionLink": { "type": "string", "format": "uri" }
+              },
+              "required": ["position", "location", "positionLink"],
+              "additionalProperties": false
+            }
+          },
+          "testimonials": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "image": { "type": "string" },
+                "testimonialDescription": { "type": "string" },
+                "testimonialAuthor": { "type": "string" },
+                "position": { "type": "string" }
+              },
+              "required": [
+                "image",
+                "testimonialDescription",
+                "testimonialAuthor",
+                "position"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "linkedin": { "type": "string", "format": "uri" },
+          "bluesky": { "type": "string", "format": "uri" },
+          "facebook": { "type": "string", "format": "uri" },
+          "twitter": { "type": "string", "format": "uri" },
+          "meetup": { "type": "string", "format": "uri" },
+          "instagram": { "type": "string", "format": "uri" },
+          "youtube": { "type": "string", "format": "uri" },
+          "github": { "type": "string", "format": "uri" },
+          "medium": { "type": "string", "format": "uri" },
+          "image": {},
+          "slug": { "type": "string" },
+          "openJobsLink": { "type": "string", "format": "uri" }
+        },
+        "required": [
+          "sponsorTier",
+          "companyName",
+          "description",
+          "website",
+          "carouselImages",
+          "technologyStack",
+          "openPositions",
+          "testimonials",
+          "linkedin",
+          "bluesky",
+          "facebook",
+          "twitter",
+          "meetup",
+          "instagram",
+          "youtube",
+          "github",
+          "medium"
+        ],
+        "additionalProperties": false
+      }
+    }
+  },
+  "required": ["sponsors"],
+  "additionalProperties": false
+}
