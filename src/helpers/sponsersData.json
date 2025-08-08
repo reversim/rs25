@@ -331,24 +331,23 @@
       "twitter": "https://x.com/Starknet",
       "youtube": "https://www.youtube.com/channel/UCnDWguR8mE2oDBsjhQkgbvg",
       "github": "https://github.com/keep-starknet-strange/awesome-starknet",
-      "technologyStack":
-        [
-          "GCP",
-          "Kubernetes",
-          "Grafana",
-          "Argocd",
-          "CDK8s",
-          "Node.js",
-          "React",
-          "Mongo",
-          "Rust",
-          "Aerospike",
-          "Cryptographic Proofs",
-          "Consensus Protocols",
-          "Peer to Peer networking",
-          "Cairo VM",
-          "Cryptographic Algorithms",
-          "Blockchain Contracts"
+      "technologyStack": [
+        "GCP",
+        "Kubernetes",
+        "Grafana",
+        "Argocd",
+        "CDK8s",
+        "Node.js",
+        "React",
+        "Mongo",
+        "Rust",
+        "Aerospike",
+        "Cryptographic Proofs",
+        "Consensus Protocols",
+        "Peer to Peer networking",
+        "Cairo VM",
+        "Cryptographic Algorithms",
+        "Blockchain Contracts"
       ],
       "openPositions": [],
       "testimonials": [
@@ -675,6 +674,49 @@
           "testimonialDescription": "Working at Melio for the past 4 years, building multiple products from the ground up, and making a big impact has been a fulfilling experience. Melio has enabled me to grow in ways that no other company has. Seeing the engineering group grow from 20 to over 200 was a unique and challenging opportunity. I have felt valued and supported at every step of my journey at Melio, and I believe this has significantly impacted my personal and professional growth."
         }
       ]
+    },
+    {
+      "sponsorTier": "game-changers",
+      "companyName": "HiBob",
+      "website": "https://www.hibob.com/",
+      "description": "HiBob’s mission is to transform the world of work through Bob, its intuitive, centralized HR platform. Designed for today’s dynamic organizations, Bob simplifies complex global HR processes with automation, flexibility, and real-time people analytics.\n\nWhether teams work in-office, remotely, or globally, Bob keeps them connected and productive. With customizable workflows, task automation, and advanced reporting, it empowers HR teams to streamline operations, enhance decision-making, and create meaningful employee experiences. Bob also supports localized experiences—languages, currencies, holiday calendars, and compliance—without needing professional services.\n\nWith over 5,000 customers and 1 million users worldwide, Bob is recognized as a leading HR platform that helps companies build culture, manage complexity, and drive business success.",
+      "carouselImages": [],
+      "linkedin": "https://www.linkedin.com/company/hibob/posts/?feedView=all",
+      "twitter": "",
+      "youtube": "",
+      "github": "",
+      "facebook": "https://www.facebook.com/HiBobHR",
+      "instagram": "https://www.instagram.com/hibobhr?utm_source=ig_web_button_share_sheet&igsh=emlhYndkYm9wcDdp",
+      "medium": "",
+      "meetup": "",
+      "bluesky": "",
+      "technologyStack": [
+        "Scala",
+        "Kotlin",
+        "Angular",
+        "AWS",
+        "CI CD",
+        "SaaS Platform",
+        "HRIS"
+      ],
+      "openPositions": [
+        {
+          "position": "Backend Engineer",
+          "location": "Israel",
+          "positionLink": "https://hibob-fa0ad69d0cb34a.careers.hibob.com/jobs/884e3aba-cc74-4c74-a2b5-8a4739a244b5"
+        },
+        {
+          "position": "Frontend Engineer",
+          "location": "Israel",
+          "positionLink": "https://hibob-fa0ad69d0cb34a.careers.hibob.com/jobs/ef49bb89-0d73-4e35-8efc-7cabeeb0c896"
+        },
+        {
+          "positionLink": "https://hibob-fa0ad69d0cb34a.careers.hibob.com/jobs/d42637df-11f7-40ea-8a60-5fed9898d86d",
+          "location": "Israel",
+          "position": "Staff Data Engineer"
+        }
+      ],
+      "testimonials": []
     }
   ]
 }
