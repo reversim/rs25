@@ -61,8 +61,14 @@ const backgroundImageURL = `url(${optimizedImage.src})`;
           #171c3e 100%
         ),
         var(--backgroundImageURL);
-      clip-path: ellipse(133% 100% at 40% 100%);
-      background-size: 100%;
+      mask-image: linear-gradient(to bottom, #ffffff 50% 0, transparent 100%);
+      -webkit-mask-image: linear-gradient(
+        to bottom,
+        #ffffff 50% 0,
+        transparent 100%
+      );
+      background-repeat: no-repeat;
+      background-size: cover;
       background-position: center;
       position: absolute;
       width: 100%;
