@@ -786,6 +786,52 @@
         }
       ],
       "openJobsLink": ""
+    },
+    {
+      "sponsorTier": "game-changers",
+      "companyName": "WSC Sports",
+      "website": "https://wsc-sports.com/",
+      "description": "WSC Sports, the pioneer in AI-powered sports content technology, empowers their clients worldwide to connect with their fans through AI-tailored sports content experiences. WSC Sports’ platform automates the creation, management, and distribution of content, enabling sports rights holders to expand reach, grow fan bases, and unlock revenue opportunities across digital platforms.",
+      "carouselImages": [
+        "wsc-sports-1",
+        "wsc-sports-2",
+        "wsc-sports-3",
+        "wsc-sports-4",
+        "wsc-sports-5",
+        "wsc-sports-6",
+        "wsc-sports-7"
+      ],
+      "linkedin": "https://www.linkedin.com/company/wsc-sports-technologies/",
+      "twitter": "",
+      "youtube": "",
+      "github": "",
+      "facebook": "",
+      "instagram": "https://www.instagram.com/wsc_sports/",
+      "medium": "",
+      "meetup": "",
+      "technologyStack": [
+        "C# / .NET",
+        "Python",
+        "JavaScript",
+        "TypeScript",
+        "React",
+        "microservices architecture",
+        "SQL",
+        "ElasticSearch",
+        "Azure",
+        "AI/NLP/Computer Vision/ML",
+        "LLM"
+      ],
+      "openPositions": [
+        { "location": "Israel", "position": "Frontend Developer", "positionLink": "https://wsc-sports.com/career/frontend-developer/" },
+        { "location": "Israel", "position": "NLP Algorithm Developer", "positionLink": "https://wsc-sports.com/career/nlp-algorithm-developer/" },
+        { "location": "Israel", "position": "Senior GenAI/NLP Algorithm Developer", "positionLink": "https://wsc-sports.com/career/senior-genai-nlp-algorithm-developer/" },
+        { "location": "Israel", "position": "Backend Developer", "positionLink": "https://wsc-sports.com/career/backend-developer/" },
+        { "location": "Israel", "position": "Fullstack Team Lead", "positionLink": "https://wsc-sports.com/career/rd-team-lead/" },
+        { "location": "Israel", "position": "Generative AI Builder", "positionLink": "https://wsc-sports.com/career/generative-ai-evangelist/" }
+      ],
+      "testimonials": [],
+      "openJobsLink": ""
     }
   ]
 }
