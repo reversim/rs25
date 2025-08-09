@@ -717,6 +717,75 @@
         }
       ],
       "testimonials": []
+    },
+    {
+      "sponsorTier": "game-changers",
+      "companyName": "TITAN",
+      "website": "https://titandxp.com/",
+      "description": "Titan is the leading no-code platform for Salesforce, and we’re growing fast. With thousands of global customers and a product that delivers real value, we’re solving real-world challenges at scale using the latest in AI, Agentforce, and automation. Our platform helps companies in every industry build dynamic digital experiences directly in Salesforce without writing a single line of code.\n\nFrom document generation to e-signatures, surveys to portals, and web apps to single-page applications, Titan empowers teams to design, launch, and manage any business interaction - internally or externally - directly on Salesforce. Everything stays real-time, secure, and fully compliant.\n\nOur R&D team has grown exponentially in the past two years, and this is set to continue in the years ahead. We work with technologies like React, Node.js, JavaScript, Redis, AWS and more - plus our own internal frameworks for no-code builder logic, scalable workflows, and Agentforce-compatible AI. Every engineer here has a seat at the table, a real impact on the product, and an exciting growth path. It’s fast-paced, collaborative, and never boring.",
+      "carouselImages": [],
+      "linkedin": "https://www.linkedin.com/company/formtitan/posts/?feedView=all",
+      "twitter": "https://x.com/TitanDXP",
+      "youtube": "https://www.youtube.com/@titan_dxp",
+      "github": "",
+      "facebook": "https://www.facebook.com/people/Titan-DXP/61564155398699/",
+      "instagram": "https://www.instagram.com/titandxp/",
+      "medium": "",
+      "meetup": "",
+      "technologyStack": ["React.js", "Node.js", "AWS", "GenAI"],
+      "openPositions": [
+        {
+          "location": "Israel",
+          "position": "Senior Software Engineer",
+          "positionLink": "https://titandxp.com/careers-position/full-stack-developer/?team[]=rd"
+        },
+        {
+          "location": "Israel",
+          "position": "Senior Solution Engineer",
+          "positionLink": "https://titandxp.com/careers-position/solutions-architect-3/?team[]=service-support"
+        },
+        {
+          "location": "Israel",
+          "position": "Customer Success Manager",
+          "positionLink": "https://titandxp.com/careers-position/customer-success-manager/?team[]=customer-success"
+        },
+        {
+          "location": "Israel",
+          "position": "Product Designer",
+          "positionLink": "https://titandxp.com/careers-position/product-ux-ui/?team[]=design"
+        },
+        {
+          "location": "Israel",
+          "position": "Application Specialist",
+          "positionLink": "https://titandxp.com/careers-position/technical-support-tier-1-2/?team[]=service-support"
+        },
+        {
+          "location": "Israel",
+          "position": "Product Manager",
+          "positionLink": "https://titandxp.com/careers-position/senior-product-manager/?team[]=product"
+        }
+      ],
+      "testimonials": [
+        {
+          "image": "eli-yaronovsky",
+          "position": "Senior Full Stack Engineer",
+          "testimonialAuthor": "Eli Yaronovsky",
+          "testimonialDescription": "When I joined Titan, I quickly saw how supportive and collaborative the team is. There is always someone ready to help or share ideas, and every day feels rewarding to solve real challenges and see your work make it into production."
+        },
+        {
+          "image": "limor-mekaiten",
+          "position": "Full Stack Team Leader",
+          "testimonialAuthor": "Limor Mekaiten",
+          "testimonialDescription": "״Titan is full of smart, grounded people who care about building something that helps customers. I get to shape how we work, simplify complex problems, and contribute to a product that makes a difference."
+        },
+        {
+          "image": "ortal-avidor",
+          "position": "Senior Full Stack Engineer",
+          "testimonialAuthor": "Ortal Avidor",
+          "testimonialDescription": "As a full-stack developer at Titan, I work across UX and performance, always looking for ways to improve the product. It’s a place where learning, sharing ideas, and growing together is just part of how we work"
+        }
+      ],
+      "openJobsLink": ""
     }
   ]
 }
