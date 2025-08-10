@@ -159,7 +159,7 @@ const cssVars = `
         title="Organizing Sponsor"
         id="sponsors"
       />
-      <div class="sponsors-container">
+      <div class="sponsors-container organizer">
         {
           organizingSponsor.map((sponsor) => (
             <a
@@ -186,7 +186,7 @@ const cssVars = `
               title="Game Changers Sponsors"
               id="sponsors"
             />
-            <div class="sponsors-container">
+            <div class="sponsors-container game-changers">
               {gameChangersSponsors.map((sponsor) => (
                 <a
                   class={`${sponsor.slug} logo-container`}
@@ -486,7 +486,8 @@ const cssVars = `
       .sponsors-container {
         display: flex;
         flex-wrap: wrap;
-        gap: 24px 32px;
+        align-items: center;
+        gap: 48px 32px;
 
         &.community {
           gap: 12px 18px;
@@ -506,27 +507,16 @@ const cssVars = `
           display: flex;
           height: 48px;
 
-          &.wix,
-          &.starkware {
-            transform: translateY(6px);
-          }
           &.plus500 {
-            transform: translateY(20px);
-            height: 42px;
+            height: 44px;
+            transform: translateY(-7px);
           }
           &.workday {
-            height: 82px;
-            transform: translateY(-12px);
+            height: 86px;
+            transform: translateY(-20px);
           }
           &.cyera {
             height: 40px;
-            transform: translateY(32px);
-          }
-          &.melio {
-            transform: translateY(27px);
-          }
-          &.hibob {
-            transform: translateY(28px);
           }
           &.titan {
             height: 40px;
@@ -555,7 +545,12 @@ const cssVars = `
 
         @media (max-width: 768px) {
           flex-direction: column;
+          align-items: start;
           gap: 18px;
+
+          &.game-changers {
+            transform: translateX(-18px);
+          }
 
           &.community {
             flex-direction: row;
@@ -563,11 +558,20 @@ const cssVars = `
             column-gap: 24px;
           }
 
-          .sponsor-logo {
+          .logo-container {
+            transform: translateY(0px) !important;
+
+            &.tenable,
+            &.plus500,
+            &.workday,
+            &.cyera,
+            &.melio,
+            &.hibob,
+            &.titan,
+            &.wsc-sports,
             &.wix,
-            &.starkware,
-            &.workday {
-              transform: translateY(0px);
+            &.starkware {
+              scale: 0.8;
             }
           }
         }
