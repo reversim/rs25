@@ -162,7 +162,10 @@ const cssVars = `
       <div class="sponsors-container">
         {
           organizingSponsor.map((sponsor) => (
-            <a href={`/sponsors/${sponsor.slug}`}>
+            <a
+              class={`${sponsor.slug} logo-container`}
+              href={`/sponsors/${sponsor.slug}`}
+            >
               <Image
                 class={`organizer sponsor-logo ${sponsor.slug}`}
                 src={sponsor.companyNameLogo}
@@ -185,9 +188,12 @@ const cssVars = `
             />
             <div class="sponsors-container">
               {gameChangersSponsors.map((sponsor) => (
-                <a href={`/sponsors/${sponsor.slug}`}>
+                <a
+                  class={`${sponsor.slug} logo-container`}
+                  href={`/sponsors/${sponsor.slug}`}
+                >
                   <Image
-                    class={`sponsor-logo ${sponsor.slug}`}
+                    class={`sponsor-logo`}
                     src={sponsor.companyNameLogo}
                     width={400}
                     height={1000}
@@ -496,15 +502,45 @@ const cssVars = `
           }
         }
 
-        a:has(.sponsor-logo) {
+        .logo-container {
           display: flex;
+          height: 48px;
+
+          &.wix,
+          &.starkware {
+            transform: translateY(6px);
+          }
+          &.plus500 {
+            transform: translateY(20px);
+            height: 42px;
+          }
+          &.workday {
+            height: 82px;
+            transform: translateY(-12px);
+          }
+          &.cyera {
+            height: 40px;
+            transform: translateY(32px);
+          }
+          &.melio {
+            transform: translateY(27px);
+          }
+          &.hibob {
+            transform: translateY(28px);
+          }
+          &.titan {
+            height: 40px;
+          }
+          &.wsc-sports {
+            height: 39px;
+          }
         }
         .sponsor-logo {
           filter: brightness(0) invert(1);
           object-fit: contain;
-          height: 48px;
-          max-width: 300px;
+          height: 100%;
           width: auto;
+          max-width: 300px;
           align-self: center;
           transition: scale 0.2s ease;
 
@@ -514,16 +550,6 @@ const cssVars = `
 
           &.organizer {
             height: 65px;
-          }
-
-          &.wix,
-          &.starkware {
-            transform: translateY(6px);
-          }
-
-          &.workday {
-            height: 64px;
-            transform: translateY(-4px);
           }
         }
 
