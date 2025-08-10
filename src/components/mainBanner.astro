@@ -159,10 +159,13 @@ const cssVars = `
         title="Organizing Sponsor"
         id="sponsors"
       />
-      <div class="sponsors-container">
+      <div class="sponsors-container organizer">
         {
           organizingSponsor.map((sponsor) => (
-            <a href={`/sponsors/${sponsor.slug}`}>
+            <a
+              class={`${sponsor.slug} logo-container`}
+              href={`/sponsors/${sponsor.slug}`}
+            >
               <Image
                 class={`organizer sponsor-logo ${sponsor.slug}`}
                 src={sponsor.companyNameLogo}
@@ -183,11 +186,14 @@ const cssVars = `
               title="Game Changers Sponsors"
               id="sponsors"
             />
-            <div class="sponsors-container">
+            <div class="sponsors-container game-changers">
               {gameChangersSponsors.map((sponsor) => (
-                <a href={`/sponsors/${sponsor.slug}`}>
+                <a
+                  class={`${sponsor.slug} logo-container`}
+                  href={`/sponsors/${sponsor.slug}`}
+                >
                   <Image
-                    class={`sponsor-logo ${sponsor.slug}`}
+                    class={`sponsor-logo`}
                     src={sponsor.companyNameLogo}
                     width={400}
                     height={1000}
@@ -480,7 +486,8 @@ const cssVars = `
       .sponsors-container {
         display: flex;
         flex-wrap: wrap;
-        gap: 24px 32px;
+        align-items: center;
+        gap: 48px 32px;
 
         &.community {
           gap: 12px 18px;
@@ -496,15 +503,34 @@ const cssVars = `
           }
         }
 
-        a:has(.sponsor-logo) {
+        .logo-container {
           display: flex;
+          height: 48px;
+
+          &.plus500 {
+            height: 44px;
+            transform: translateY(-7px);
+          }
+          &.workday {
+            height: 86px;
+            transform: translateY(-20px);
+          }
+          &.cyera {
+            height: 40px;
+          }
+          &.titan {
+            height: 40px;
+          }
+          &.wsc-sports {
+            height: 39px;
+          }
         }
         .sponsor-logo {
           filter: brightness(0) invert(1);
           object-fit: contain;
-          height: 48px;
-          max-width: 300px;
+          height: 100%;
           width: auto;
+          max-width: 300px;
           align-self: center;
           transition: scale 0.2s ease;
 
@@ -515,21 +541,16 @@ const cssVars = `
           &.organizer {
             height: 65px;
           }
-
-          &.wix,
-          &.starkware {
-            transform: translateY(6px);
-          }
-
-          &.workday {
-            height: 64px;
-            transform: translateY(-4px);
-          }
         }
 
         @media (max-width: 768px) {
           flex-direction: column;
+          align-items: start;
           gap: 18px;
+
+          &.game-changers {
+            transform: translateX(-18px);
+          }
 
           &.community {
             flex-direction: row;
@@ -537,11 +558,20 @@ const cssVars = `
             column-gap: 24px;
           }
 
-          .sponsor-logo {
+          .logo-container {
+            transform: translateY(0px) !important;
+
+            &.tenable,
+            &.plus500,
+            &.workday,
+            &.cyera,
+            &.melio,
+            &.hibob,
+            &.titan,
+            &.wsc-sports,
             &.wix,
-            &.starkware,
-            &.workday {
-              transform: translateY(0px);
+            &.starkware {
+              scale: 0.8;
             }
           }
         }
