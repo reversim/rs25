@@ -848,12 +848,113 @@
         "LLM"
       ],
       "openPositions": [
-        { "location": "Israel", "position": "Frontend Developer", "positionLink": "https://wsc-sports.com/career/frontend-developer/" },
-        { "location": "Israel", "position": "NLP Algorithm Developer", "positionLink": "https://wsc-sports.com/career/nlp-algorithm-developer/" },
-        { "location": "Israel", "position": "Senior GenAI/NLP Algorithm Developer", "positionLink": "https://wsc-sports.com/career/senior-genai-nlp-algorithm-developer/" },
-        { "location": "Israel", "position": "Backend Developer", "positionLink": "https://wsc-sports.com/career/backend-developer/" },
-        { "location": "Israel", "position": "Fullstack Team Lead", "positionLink": "https://wsc-sports.com/career/rd-team-lead/" },
-        { "location": "Israel", "position": "Generative AI Builder", "positionLink": "https://wsc-sports.com/career/generative-ai-evangelist/" }
+        {
+          "location": "Israel",
+          "position": "Frontend Developer",
+          "positionLink": "https://wsc-sports.com/career/frontend-developer/"
+        },
+        {
+          "location": "Israel",
+          "position": "NLP Algorithm Developer",
+          "positionLink": "https://wsc-sports.com/career/nlp-algorithm-developer/"
+        },
+        {
+          "location": "Israel",
+          "position": "Senior GenAI/NLP Algorithm Developer",
+          "positionLink": "https://wsc-sports.com/career/senior-genai-nlp-algorithm-developer/"
+        },
+        {
+          "location": "Israel",
+          "position": "Backend Developer",
+          "positionLink": "https://wsc-sports.com/career/backend-developer/"
+        },
+        {
+          "location": "Israel",
+          "position": "Fullstack Team Lead",
+          "positionLink": "https://wsc-sports.com/career/rd-team-lead/"
+        },
+        {
+          "location": "Israel",
+          "position": "Generative AI Builder",
+          "positionLink": "https://wsc-sports.com/career/generative-ai-evangelist/"
+        }
+      ],
+      "testimonials": [],
+      "openJobsLink": ""
+    },
+    {
+      "sponsorTier": "game-changers",
+      "companyName": "Lightricks",
+      "website": "https://careers.lightricks.com/",
+      "description": "Lightricks, an AI-first company, is revolutionizing how visual content is created. With a mission to bridge the gap between imagination and creation, Lightricks is dedicated to bringing cutting-edge technology to the creative and business spaces.\n\nOur AI photo and video generation models, such as LTXV, power our apps and platforms including Facetune, Photoleap, Videoleap, and LTX Studio, allow creators and brands to leverage the latest research breakthroughs, offering endless control over their creative potential. Our influencer marketing platform, Popular Pays, provides creators the ability to monetize their work and offers brands opportunities to scale their content through tailored creator partnerships.\n\nFounded in 2013, Lightricks is backed by prominent investors including Goldman Sachs Growth Equity, Insight Partners, Viola Ventures, ClalTech, Greycroft, Hanaco Venture Capital, Altshuler Shaham Investment Holdings, Harel-Hertz Investment, Qumra Capital House, Migdal Insurance and Financial Holdings, Shavit Capital, and Stonebridge Partners who share our enduring commitment to driving the future of content creation.",
+      "carouselImages": [
+        "lightricks-1",
+        "lightricks-2",
+        "lightricks-3",
+        "lightricks-4",
+        "lightricks-5",
+        "lightricks-6"
+      ],
+      "linkedin": "https://www.linkedin.com/company/2887786/admin/feed/posts/",
+      "twitter": "https://twitter.com/Lightricks?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor",
+      "youtube": "https://www.youtube.com/channel/UCKWhLS9QMr1oNthZL1fZB4A",
+      "github": "https://github.com/Lightricks",
+      "facebook": "https://www.facebook.com/Lightricks/",
+      "instagram": "https://www.instagram.com/lightricks_life/?next=%2Fp%2FBx0N51RFHoN%2F&hl=fr",
+      "medium": "https://medium.com/@lightricks-tech",
+      "meetup": "https://www.meetup.com/home/?suggested=true&source=EVENTS",
+      "technologyStack": [
+        "iOS",
+        "Swift",
+        "ML",
+        "AI",
+        "AppleMetal",
+        "AWS",
+        "GCP",
+        "Kotlin",
+        "Python",
+        "Java",
+        "Scala",
+        "Go",
+        "Kubernetes",
+        "LLM"
+      ],
+      "openPositions": [
+        {
+          "position": "Senior DevOps Engineer",
+          "location": "Jerusalem",
+          "positionLink": "https://careers.lightricks.com/position?gh_jid=7465038002&senior%20devops%20engineer_&office=jerusalem&team=tech&gh_src="
+        },
+        {
+          "position": "Engineering Manager, Data Platform",
+          "location": "Jerusalem",
+          "positionLink": "https://careers.lightricks.com/position?gh_jid=7528312002&engineering%20manager,%20data%20platform_&office=jerusalem&team=tech&gh_src="
+        },
+        {
+          "position": "Senior Data Platform Engineer",
+          "location": "Jerusalem",
+          "positionLink": "https://careers.lightricks.com/position?gh_jid=7790599002&senior%20data%20platform%20engineer_&office=jerusalem&team=tech&gh_src="
+        },
+        {
+          "position": "Engineering Manager - Marketing Platforms",
+          "location": "Jerusalem",
+          "positionLink": "https://careers.lightricks.com/position?gh_jid=8029644002&engineering%20manager%20-%20marketing%20platforms_&office=jerusalem&team=tech&gh_src="
+        },
+        {
+          "position": "Senior Software Engineer - iOS Infrastructure",
+          "location": "Jerusalem",
+          "positionLink": "https://careers.lightricks.com/position?gh_jid=8014210002&senior%20software%20engineer%20-%20ios%20infrastructure_&office=jerusalem&team=tech&gh_src="
+        },
+        {
+          "position": "Senior Frontend / Full Stack Developer - LTX Studio",
+          "location": "Jerusalem",
+          "positionLink": "https://careers.lightricks.com/position?gh_jid=7497959002&senior%20frontend%20/%20full%20stack%20developer%20-%20ltx%20studio_&office=jerusalem&team=tech&gh_src="
+        },
+        {
+          "position": "Senior Backend Engineer - ML Platform",
+          "location": "Jerusalem",
+          "positionLink": "https://careers.lightricks.com/position?gh_jid=7925018002&senior%20backend%20engineer%20-%20ml%20platform_&office=jerusalem&team=tech&gh_src="
+        }
       ],
       "testimonials": [],
       "openJobsLink": ""
