@@ -958,6 +958,76 @@
       ],
       "testimonials": [],
       "openJobsLink": ""
+    },
+    {
+      "sponsorTier": "game-changers",
+      "companyName": "Elementor",
+      "website": "https://elementor.com/",
+      "description": "Elementor is the ultimate platform for web creators.\nIt’s a multi-product platform used by millions around the world, built by exceptional people who combine open-source thinking and real passion to shape the future of web creation.\n\nWe’re real people (AI-empowered, human-led) building a real product that gives real value to web creators.\n\nOur vision is to empower web creators - developers, designers, and marketers- with the ability to create their futures one pixel at a time. We provide our users with everything they need to become successful.\n\nSince we launched in Israel in 2016, we have expanded to more than 160 countries, with more than 18M websites powered by Elementor. More than 12.5% of all websites around the world are built using Elementor!",
+      "carouselImages": [
+        "elementor-1",
+        "elementor-2",
+        "elementor-3",
+        "elementor-4",
+        "elementor-5",
+        "elementor-6",
+        "elementor-7",
+        "elementor-8"
+      ],
+      "linkedin": "https://www.linkedin.com/company/elementor/?viewAsMember=true",
+      "twitter": "https://x.com/elemntor",
+      "youtube": "https://www.instagram.com/elementor/",
+      "github": "https://github.com/elementor/elementor",
+      "facebook": "https://www.facebook.com/ElementorIL",
+      "instagram": "https://www.instagram.com/elementor.life/",
+      "medium": "https://medium.com/elementor-engineers",
+      "meetup": "",
+      "technologyStack": [
+        "TypeScript",
+        "GCP",
+        "NodeJS",
+        "NestJS",
+        "React",
+        "Next",
+        "MongoDB",
+        "Docker",
+        "Kubernetes",
+        "CI/CD pipelines"
+      ],
+      "openPositions": [
+        {
+          "position": "Senior Full-Stack Developer- Payments",
+          "location": "Ramat-Gan",
+          "positionLink": "https://elementor.careers/explore/co/rd/7F.85B/senior-full-stack-developer-payments/all/"
+        },
+        {
+          "position": "Senior Full Stack Developer - New Growth Engine",
+          "location": "Ramat-Gan",
+          "positionLink": "https://elementor.careers/explore/co/rd/77.A5B/senior-full-stack-developer-new-growth-engine/all/"
+        },
+        {
+          "position": "Senior Full-Stack Developer- Domains",
+          "location": "Ramat-Gan",
+          "positionLink": "https://elementor.careers/explore/co/rd/B9.855/senior-full-stack-developer-domains/all/"
+        },
+        {
+          "position": "Senior DevOps Engineer",
+          "location": "Ramat-Gan",
+          "positionLink": "https://elementor.careers/explore/co/rd/64.95A/senior-devops-engineer/all/"
+        },
+        {
+          "position": "Engineering Manager Payment",
+          "location": "Ramat-Gan",
+          "positionLink": "https://elementor.careers/explore/co/rd/B9.559/engineering-manager-payment/all/"
+        },
+        {
+          "position": "Director of Engineering - Growth Engines",
+          "location": "Ramat-Gan",
+          "positionLink": "https://elementor.careers/explore/co/rd/9B.844/director-of-engineering-growth-engines/all/"
+        }
+      ],
+      "testimonials": [],
+      "openJobsLink": ""
     }
   ]
 }
