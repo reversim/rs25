@@ -1,0 +1,100 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import { getAgendaDays, buildDayGrid } from "../../helpers/getAgenda";
+import type { AgendaDay } from "../../helpers/getAgenda";
+
+export async function getStaticPaths() {
+  const days = await getAgendaDays();
+  return days.map(d => ({ params: { day: d.slug } }));
+}
+
+const { day } = Astro.params;
+const days = await getAgendaDays();
+const current: AgendaDay | undefined = days.find(d => d.slug === day);
+
+if (!current) {
+  return Astro.redirect('/agenda');
+}
+
+const grid = buildDayGrid(current);
+const roomCount = current.rooms.length;
+---
+<Layout havePadding={false}>
+  <div class="agenda-wrapper" style={`--room-count:${roomCount};`}>
+    <div class="agenda-header">
+      <h1>{current.label}</h1>
+      <nav class="days-nav" aria-label="Agenda days navigation">
+        {days.map(d => (
+          <a class={`day-link ${d.slug === current.slug ? 'active' : ''}`} href={`/agenda/${d.slug}`}>{d.label}</a>
+        ))}
+      </nav>
+    </div>
+
+    <div class="agenda-grid" role="table" aria-label={`Agenda for ${current.label}`}>
+      <div class="rooms-row" role="row">
+        <div class="time-col head" role="columnheader">Time</div>
+        {current.rooms.map(r => (
+          <div class="room head" role="columnheader">{r.name}</div>
+        ))}
+      </div>
+      {grid.map(slot => (
+        <div class="slot-row" role="row">
+          <div class="time-col" role="cell">
+            <div>{new Date(slot.startsAt).toLocaleTimeString([], {hour:'2-digit', minute:'2-digit'})}</div>
+            <div class="time-end">{new Date(slot.endsAt).toLocaleTimeString([], {hour:'2-digit', minute:'2-digit'})}</div>
+          </div>
+          {slot.cells.map(cell => cell.hidden ? null : (
+            <div class={`session ${cell.session ? '' : 'empty'}`} role="cell" style={cell.span && cell.span>1 ? `grid-column: span ${cell.span};` : ''}>
+              {cell.session && (
+                <div class="session-inner">
+                  <div class="session-time-mobile">{new Date(slot.startsAt).toLocaleTimeString([], {hour:'2-digit', minute:'2-digit'})} – {new Date(slot.endsAt).toLocaleTimeString([], {hour:'2-digit', minute:'2-digit'})}</div>
+                  <h3 class="title">{cell.session.title}</h3>
+                  {cell.session.speakers?.length ? <p class="speakers">{cell.session.speakers.map(s=>s.name).join(', ')}</p> : null}
+                  {cell.session.isServiceSession ? <p class="service-tag">Break</p> : null}
+                  {cell.session.isPlenumSession ? <p class="plenum-tag">Plenum</p> : null}
+                </div>
+              )}
+            </div>
+          ))}
+        </div>
+      ))}
+    </div>
+  </div>
+</Layout>
+
+<style>
+  .agenda-wrapper { max-width: 1400px; margin:auto; padding: 20px 4%; }
+  .agenda-header { display:flex; flex-direction:column; gap:20px; align-items:center; }
+  .agenda-header h1 { margin:10px 0 0; font-weight:300; font-size:40px; }
+  .days-nav { display:flex; flex-wrap:wrap; gap:10px; justify-content:center; }
+  .day-link { padding:8px 18px; background:#fff; border:1px solid var(--pink); color:var(--pink); border-radius:30px; font-size:14px; font-weight:500; transition:.2s; }
+  .day-link.active { background: var(--pink); color:#fff; }
+  .day-link:hover { background: var(--orange); border-color: var(--orange); color:#fff; }
+
+  .agenda-grid { display:grid; gap:2px; margin-top:30px; }
+  .rooms-row { display:grid; grid-template-columns: 140px repeat(var(--room-count), 1fr); position:sticky; top:0; z-index:10; background:var(--pink); color:#fff; }
+  .rooms-row .room, .rooms-row .time-col { padding:10px; font-weight:600; font-size:14px; }
+
+  .slot-row { display:grid; grid-template-columns: 140px repeat(var(--room-count), 1fr); }
+  .time-col { background:#fff; border:1px solid #ddd; font-size:12px; padding:8px; display:flex; flex-direction:column; gap:4px; }
+  .time-end { opacity:0.6; font-size:11px; }
+  .session { background:#fff; border:1px solid #ddd; padding:0; position:relative; display:flex; }
+  .session.empty { background:#f7f7f7; }
+  .session-inner { padding:10px 12px; display:flex; flex-direction:column; gap:6px; width:100%; }
+  .session .title { font-size:14px; line-height:1.3; margin:0; font-weight:600; }
+  .session .speakers { font-size:12px; opacity:0.85; margin:0; }
+  .service-tag, .plenum-tag { margin:0; font-size:10px; text-transform:uppercase; letter-spacing:0.5px; font-weight:600; }
+  .service-tag { color: var(--orange); }
+  .plenum-tag { color: var(--blue); }
+
+  @media (max-width: 900px) {
+    .rooms-row { display:none; }
+    .slot-row { display:flex; flex-direction:column; border:1px solid #ddd; margin-bottom:14px; border-radius:8px; overflow:hidden; }
+    .time-col { flex-direction:row; justify-content:space-between; background: var(--pink); color:#fff; border:none; font-size:14px; }
+    .session { border:none; border-top:1px solid #eee; }
+    .session-inner { padding:14px 16px; }
+    .session-time-mobile { font-size:12px; text-transform:uppercase; letter-spacing:1px; opacity:0.7; }
+    .session .title { font-size:16px; }
+    .session .speakers { font-size:13px; }
+  }
+</style>

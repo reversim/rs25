@@ -1,0 +1,17 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import { getAgendaDays } from "../../helpers/getAgenda";
+
+const days = await getAgendaDays();
+if (days.length) {
+  return Astro.redirect(`/agenda/${days[0].slug}`);
+}
+---
+<Layout>
+  <h1 style="text-align:center; margin:40px 0 10px; font-weight:300;">Agenda</h1>
+  <p style="text-align:center; margin:0 0 40px;">Agenda will be published soon.</p>
+</Layout>
+
+<style>
+  /* minimal placeholder styling */
+</style>
