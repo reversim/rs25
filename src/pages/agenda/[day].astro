@@ -1,7 +1,8 @@
 ---
 import Layout from "../../layouts/Layout.astro";
-import { getAgendaDays, buildDayGrid } from "../../helpers/getAgenda";
+import { getAgendaDays, buildDayGrid, getTrackName } from "../../helpers/getAgenda";
 import type { AgendaDay } from "../../helpers/getAgenda";
+import { getSpeakers } from "../../helpers/getSpeakers";
 
 export async function getStaticPaths() {
   const days = await getAgendaDays();
@@ -14,6 +15,13 @@ const current: AgendaDay | undefined = days.find(d => d.slug === day);
 
 if (!current) {
   return Astro.redirect('/agenda');
+}
+
+// Build speaker slug map by full name (case-insensitive)
+const allSpeakers = await getSpeakers();
+const nameToSlug = new Map(allSpeakers.map(s => [s.fullName.toLowerCase().trim(), s.slug]));
+function speakerSlugFor(name: string) {
+  return nameToSlug.get(name.toLowerCase().trim()) || name.toLowerCase().replace(/\s+/g,'-');
 }
 
 const grid = buildDayGrid(current);
@@ -38,20 +46,28 @@ const roomCount = current.rooms.length;
         ))}
       </div>
       {grid.map(slot => (
-        <div class="slot-row" role="row">
+        <div class={`slot-row ${slot.shortRow ? 'short' : ''}`} role="row">
           <div class="time-col" role="cell">
             <div>{new Date(slot.startsAt).toLocaleTimeString([], {hour:'2-digit', minute:'2-digit'})}</div>
             <div class="time-end">{new Date(slot.endsAt).toLocaleTimeString([], {hour:'2-digit', minute:'2-digit'})}</div>
           </div>
           {slot.cells.map(cell => cell.hidden ? null : (
-            <div class={`session ${cell.session ? '' : 'empty'}`} role="cell" style={cell.span && cell.span>1 ? `grid-column: span ${cell.span};` : ''}>
+            <div class={`session ${cell.session ? '' : 'empty'} ${cell.session?.isPlenumSession ? 'plenum' : ''} ${cell.session && /(coffee\s*&\s*pastries(?:\s*break)?|lunch(?:\s*break)?)/i.test(cell.session.title) ? 'food-break' : ''}`} role="cell" style={cell.span && cell.span>1 ? `grid-column: span ${cell.span};` : ''} data-title={cell.session?.title}>
               {cell.session && (
                 <div class="session-inner">
                   <div class="session-time-mobile">{new Date(slot.startsAt).toLocaleTimeString([], {hour:'2-digit', minute:'2-digit'})} – {new Date(slot.endsAt).toLocaleTimeString([], {hour:'2-digit', minute:'2-digit'})}</div>
                   <h3 class="title">{cell.session.title}</h3>
-                  {cell.session.speakers?.length ? <p class="speakers">{cell.session.speakers.map(s=>s.name).join(', ')}</p> : null}
+                  {cell.session.speakers?.length ? (
+                    <p class="speakers">
+                      {cell.session.speakers.map((s, i) => (
+                        <>
+                          <a href={`/speakers/${speakerSlugFor(s.name)}`}>{s.name}</a>{i < cell.session.speakers.length - 1 ? ', ' : ''}
+                        </>
+                      ))}
+                    </p>
+                  ) : null}
                   {cell.session.isServiceSession ? <p class="service-tag">Break</p> : null}
-                  {cell.session.isPlenumSession ? <p class="plenum-tag">Plenum</p> : null}
+                  {getTrackName(cell.session) ? <p class="track-tag">{getTrackName(cell.session)}</p> : null}
                 </div>
               )}
             </div>
@@ -83,9 +99,22 @@ const roomCount = current.rooms.length;
   .session-inner { padding:10px 12px; display:flex; flex-direction:column; gap:6px; width:100%; }
   .session .title { font-size:14px; line-height:1.3; margin:0; font-weight:600; }
   .session .speakers { font-size:12px; opacity:0.85; margin:0; }
-  .service-tag, .plenum-tag { margin:0; font-size:10px; text-transform:uppercase; letter-spacing:0.5px; font-weight:600; }
-  .service-tag { color: var(--orange); }
-  .plenum-tag { color: var(--blue); }
+  .session .speakers a { color: inherit; text-decoration: underline; }
+  .session .speakers a:hover { text-decoration: none; }
+  .service-tag, .track-tag { margin:0; font-size:10px; text-transform:uppercase; letter-spacing:0.5px; font-weight:600; }
+  .track-tag { color: var(--pink); margin-top:auto; align-self:flex-start; }
+  .session.plenum .track-tag { color:#fff; }
+  .session.plenum .title { font-size:16px; }
+  .session.food-break { background: linear-gradient(135deg, var(--orange), var(--pink)); border-color: var(--orange); color:#fff; box-shadow:0 0 0 2px #fff inset; }
+  .session.food-break .title { font-size:15px; }
+  .session.food-break .service-tag, .session.food-break .track-tag { color:#fff; }
+
+  .slot-row.short .time-col { padding:4px 6px; font-size:11px; }
+  .slot-row.short .session-inner { padding:4px 6px; gap:4px; }
+  .slot-row.short .session .title { font-size:12px; }
+  .slot-row.short .session .speakers { font-size:10px; }
+  .slot-row.short .session { border-width:1px; }
+  .slot-row.short .session.plenum .title { font-size:14px; }
 
   @media (max-width: 900px) {
     .rooms-row { display:none; }
@@ -96,5 +125,9 @@ const roomCount = current.rooms.length;
     .session-time-mobile { font-size:12px; text-transform:uppercase; letter-spacing:1px; opacity:0.7; }
     .session .title { font-size:16px; }
     .session .speakers { font-size:13px; }
+    .slot-row.short { margin-bottom:8px; }
+    .slot-row.short .session-inner { padding:10px 14px; }
+    .slot-row.short .session .title { font-size:14px; }
+    .slot-row.short .session .speakers { font-size:12px; }
   }
 </style>

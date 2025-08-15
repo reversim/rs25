@@ -60,17 +60,21 @@ export async function getAgendaDays(): Promise<AgendaDay[]> {
   if (!res.ok) throw new Error("Failed fetching agenda");
   const raw: RawGridDay[] = await res.json();
 
-  // normalize & sort rooms alphabetically (or by provided sort if exists)
+  // stable desired order by room id (Main Hall, Room 2, Room 3, Dining Hall, Entrance)
+  const ROOM_ORDER = [59470, 59471, 59472, 70835, 70834];
+  const orderIndex = new Map(ROOM_ORDER.map((id, i) => [id, i] as const));
+
   const days: AgendaDay[] = raw.map((day) => ({
     ...day,
-    rooms: [...day.rooms].sort(
-      (a, b) => (a.sort ?? 0) - (b.sort ?? 0) || a.name.localeCompare(b.name)
-    ),
+    rooms: [...day.rooms].sort((a, b) => {
+      const ai = orderIndex.has(a.id) ? orderIndex.get(a.id)! : ROOM_ORDER.length + a.id;
+      const bi = orderIndex.has(b.id) ? orderIndex.get(b.id)! : ROOM_ORDER.length + b.id;
+      return ai - bi;
+    }),
     slug: dateSlug(day.date),
     label: formatDayLabel(day.date),
   }));
 
-  // Sort days chronologically
   days.sort((a, b) => a.slug.localeCompare(b.slug));
   return days;
 }
@@ -84,14 +88,18 @@ export function buildDayGrid(day: AgendaDay) {
 
   return starts.map((startAt) => {
     const rowSessions = rooms.map((room) => room.sessions.find((s) => s.startsAt === startAt));
-    // Determine row end as the maximum end among sessions starting now
     const ends = rowSessions.filter(Boolean).map((s) => new Date(s!.endsAt).getTime());
     const rowEnd = ends.length ? new Date(Math.max(...ends)).toISOString() : startAt;
 
-    // Build cells with potential merging of identical session IDs across adjacent rooms
     interface Cell { key: string; session?: AgendaSession; span?: number; hidden?: boolean; }
-    const cells: Cell[] = rowSessions.map((s, idx) => ({ key: `${startAt}-${rooms[idx].id}`, session: s }));
+    const cells: Cell[] = rowSessions.map((s, idx) => {
+      if (s && !s.lengthMinutes) {
+        s.lengthMinutes = (new Date(s.endsAt).getTime() - new Date(s.startsAt).getTime()) / 60000;
+      }
+      return { key: `${startAt}-${rooms[idx].id}`, session: s };
+    });
 
+    // Merge identical adjacent sessions
     for (let i = 0; i < cells.length; i++) {
       const s = cells[i].session;
       if (!s) continue;
@@ -105,10 +113,38 @@ export function buildDayGrid(day: AgendaDay) {
       cells[i].span = span;
     }
 
+    // If any session is marked plenum, make it span all rooms
+    const plenumCellIndex = cells.findIndex(c => c.session?.isPlenumSession);
+    if (plenumCellIndex !== -1) {
+      const plenumSession = cells[plenumCellIndex].session!;
+      cells.forEach((c, idx) => {
+        if (idx === 0) {
+          c.session = plenumSession;
+          c.span = rooms.length;
+          c.hidden = false;
+        } else {
+          c.session = undefined;
+          c.hidden = true;
+        }
+      });
+    }
+
+    const shortRow = cells.filter(c => c.session).length > 0 && cells.filter(c => c.session).every(c => (c.session!.lengthMinutes ?? 999) <= 5);
+
     return {
       startsAt: startAt,
       endsAt: rowEnd,
       cells,
+      shortRow,
     };
   });
+}
+
+export function getTrackName(session: AgendaSession): string | undefined {
+  const trackCategory = (session as any).categories?.find((c: any) => c.name === 'Track');
+  const item = trackCategory?.categoryItems?.[0];
+  if (!item) return undefined;
+  const raw = item.name;
+  if (raw === 'AI Apps' || raw === 'AI Infra') return 'AI';
+  return raw;
 }
