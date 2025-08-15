@@ -17,6 +17,9 @@ export interface AgendaSession {
   categories?: any[];
   // computed
   lengthMinutes?: number;
+  isLightningGroup?: boolean; // synthetic grouping
+  lightningChildren?: AgendaSession[]; // original 5-min sessions
+  isLightning?: boolean; // mark real lightning session (ignite)
 }
 
 export interface AgendaRoom {
@@ -82,62 +85,97 @@ export async function getAgendaDays(): Promise<AgendaDay[]> {
 // Build grid rows based on distinct session start times across all rooms
 export function buildDayGrid(day: AgendaDay) {
   const rooms = day.rooms;
+
+  // Preprocess: compute length & mark lightning (Ignites track <=6min) and neutralize plenum flag
+  for (const room of rooms) {
+    for (const s of room.sessions) {
+      if (!s.lengthMinutes) s.lengthMinutes = (new Date(s.endsAt).getTime() - new Date(s.startsAt).getTime()) / 60000;
+      const trackCat = (s as any).categories?.find((c: any) => c.name === 'Track');
+      const tItem = trackCat?.categoryItems?.[0];
+      let tName = tItem?.name;
+      if (tName === 'AI Apps' || tName === 'AI Infra') tName = 'AI';
+      if (tName === 'Ignites' && (s.lengthMinutes ?? 999) <= 6) {
+        s.isLightning = true;
+        if (s.isPlenumSession) s.isPlenumSession = false; // prevent spanning so we can group
+      }
+    }
+  }
+
   const startsSet = new Set<string>();
   rooms.forEach((r) => r.sessions.forEach((s) => startsSet.add(s.startsAt)));
   const starts = Array.from(startsSet).sort();
 
-  return starts.map((startAt) => {
-    const rowSessions = rooms.map((room) => room.sessions.find((s) => s.startsAt === startAt));
+  const isLightningSession = (s: AgendaSession) => !!s?.isLightning;
+
+  const rows = starts.map((startAt) => {
+    const rowSessions = rooms.map((room) => room.sessions.find((sess) => sess.startsAt === startAt));
     const ends = rowSessions.filter(Boolean).map((s) => new Date(s!.endsAt).getTime());
     const rowEnd = ends.length ? new Date(Math.max(...ends)).toISOString() : startAt;
 
     interface Cell { key: string; session?: AgendaSession; span?: number; hidden?: boolean; }
-    const cells: Cell[] = rowSessions.map((s, idx) => {
-      if (s && !s.lengthMinutes) {
-        s.lengthMinutes = (new Date(s.endsAt).getTime() - new Date(s.startsAt).getTime()) / 60000;
-      }
-      return { key: `${startAt}-${rooms[idx].id}`, session: s };
-    });
+    const cells: Cell[] = rowSessions.map((s, idx) => ({ key: `${startAt}-${rooms[idx].id}`, session: s }));
 
-    // Merge identical adjacent sessions
+    // merge identical adjacent sessions
     for (let i = 0; i < cells.length; i++) {
       const s = cells[i].session;
       if (!s) continue;
       let span = 1;
       for (let j = i + 1; j < cells.length; j++) {
         if (cells[j].session && cells[j].session!.id === s.id) {
-          span++;
-          cells[j].hidden = true;
+          span++; cells[j].hidden = true;
         } else break;
       }
       cells[i].span = span;
     }
 
-    // If any session is marked plenum, make it span all rooms
-    const plenumCellIndex = cells.findIndex(c => c.session?.isPlenumSession);
-    if (plenumCellIndex !== -1) {
-      const plenumSession = cells[plenumCellIndex].session!;
-      cells.forEach((c, idx) => {
-        if (idx === 0) {
-          c.session = plenumSession;
-          c.span = rooms.length;
-          c.hidden = false;
-        } else {
-          c.session = undefined;
-          c.hidden = true;
-        }
+    // plenum spanning (after neutralizing ignites above)
+    const plenumIdx = cells.findIndex(c => c.session?.isPlenumSession);
+    if (plenumIdx !== -1) {
+      const plenum = cells[plenumIdx].session!;
+      cells.forEach((c, i) => {
+        if (i === 0) { c.session = plenum; c.span = rooms.length; c.hidden = false; }
+        else { c.session = undefined; c.hidden = true; }
       });
     }
 
-    const shortRow = cells.filter(c => c.session).length > 0 && cells.filter(c => c.session).every(c => (c.session!.lengthMinutes ?? 999) <= 5);
+    const present = cells.filter(c => c.session);
+    const shortRow = present.length > 0 && present.every(c => isLightningSession(c.session!) && !c.session!.isServiceSession && !c.session!.isPlenumSession);
 
-    return {
-      startsAt: startAt,
-      endsAt: rowEnd,
-      cells,
-      shortRow,
-    };
+    return { startsAt: startAt, endsAt: rowEnd, cells, shortRow };
   });
+
+  // find first consecutive block of lightning rows (>=2 rows) to group
+  const lightningIndices = rows.map((r,i)=> r.shortRow ? i : -1).filter(i=> i>=0);
+  if (lightningIndices.length) {
+    let startBlock = lightningIndices[0];
+    let endBlock = startBlock;
+    for (let i = 1; i < lightningIndices.length; i++) {
+      if (lightningIndices[i] === endBlock + 1) endBlock = lightningIndices[i]; else break;
+    }
+    const blockLength = endBlock - startBlock + 1;
+    if (blockLength >= 2) {
+      const blockRows = rows.slice(startBlock, endBlock + 1);
+      const lightningSessions: AgendaSession[] = [];
+      blockRows.forEach(r => r.cells.forEach(c => { if (c.session) lightningSessions.push(c.session); }));
+      lightningSessions.sort((a,b)=> new Date(a.startsAt).getTime() - new Date(b.startsAt).getTime());
+      const synthetic: AgendaSession = {
+        id: `lightning-${day.slug}`,
+        title: 'Lightning Sessions',
+        startsAt: blockRows[0].startsAt,
+        endsAt: blockRows[blockRows.length-1].endsAt,
+        speakers: [],
+        lengthMinutes: (new Date(blockRows[blockRows.length-1].endsAt).getTime() - new Date(blockRows[0].startsAt).getTime())/60000,
+        isLightningGroup: true,
+        lightningChildren: lightningSessions,
+      };
+      const lightningRow = { startsAt: blockRows[0].startsAt, endsAt: blockRows[blockRows.length-1].endsAt, cells: [{ key: `lightning-${day.slug}`, session: synthetic, span: rooms.length }], shortRow: false };
+      const newRows = rows.filter((_,i)=> i < startBlock || i > endBlock);
+      newRows.splice(startBlock, 0, lightningRow);
+      return newRows;
+    }
+  }
+
+  return rows;
 }
 
 export function getTrackName(session: AgendaSession): string | undefined {

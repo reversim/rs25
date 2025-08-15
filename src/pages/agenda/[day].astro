@@ -3,6 +3,7 @@ import Layout from "../../layouts/Layout.astro";
 import { getAgendaDays, buildDayGrid, getTrackName } from "../../helpers/getAgenda";
 import type { AgendaDay } from "../../helpers/getAgenda";
 import { getSpeakers } from "../../helpers/getSpeakers";
+import slug from 'slug';
 
 export async function getStaticPaths() {
   const days = await getAgendaDays();
@@ -52,22 +53,49 @@ const roomCount = current.rooms.length;
             <div class="time-end">{new Date(slot.endsAt).toLocaleTimeString([], {hour:'2-digit', minute:'2-digit'})}</div>
           </div>
           {slot.cells.map(cell => cell.hidden ? null : (
-            <div class={`session ${cell.session ? '' : 'empty'} ${cell.session?.isPlenumSession ? 'plenum' : ''} ${cell.session && /(coffee\s*&\s*pastries(?:\s*break)?|lunch(?:\s*break)?)/i.test(cell.session.title) ? 'food-break' : ''}`} role="cell" style={cell.span && cell.span>1 ? `grid-column: span ${cell.span};` : ''} data-title={cell.session?.title}>
+            <div class={`session ${cell.session ? '' : 'empty'} ${cell.session?.isPlenumSession ? 'plenum' : ''} ${cell.session && /(coffee\s*&\s*pastries(?:\s*break)?|lunch(?:\s*break)?)/i.test(cell.session.title) ? 'food-break' : ''} ${cell.session?.isLightningGroup ? 'lightning-group' : ''}`} role="cell" style={cell.span && cell.span>1 ? `grid-column: span ${cell.span};` : ''} data-title={cell.session?.title}>
               {cell.session && (
                 <div class="session-inner">
-                  <div class="session-time-mobile">{new Date(slot.startsAt).toLocaleTimeString([], {hour:'2-digit', minute:'2-digit'})} – {new Date(slot.endsAt).toLocaleTimeString([], {hour:'2-digit', minute:'2-digit'})}</div>
-                  <h3 class="title">{cell.session.title}</h3>
-                  {cell.session.speakers?.length ? (
-                    <p class="speakers">
-                      {cell.session.speakers.map((s, i) => (
-                        <>
-                          <a href={`/speakers/${speakerSlugFor(s.name)}`}>{s.name}</a>{i < cell.session.speakers.length - 1 ? ', ' : ''}
-                        </>
-                      ))}
-                    </p>
-                  ) : null}
-                  {cell.session.isServiceSession ? <p class="service-tag">Break</p> : null}
-                  {getTrackName(cell.session) ? <p class="track-tag">{getTrackName(cell.session)}</p> : null}
+                  {!cell.session.isLightningGroup && (
+                    <div class="session-time-mobile">{new Date(slot.startsAt).toLocaleTimeString([], {hour:'2-digit', minute:'2-digit'})} – {new Date(slot.endsAt).toLocaleTimeString([], {hour:'2-digit', minute:'2-digit'})}</div>
+                  )}
+                  {cell.session.isLightningGroup ? (
+                    <>
+                      <h3 class="title">{cell.session.title}</h3>
+                      <ul class="lightning-list">
+                        {cell.session.lightningChildren?.map(child => (
+                          <li>
+                            <span class="lt-title">{child.isServiceSession ? child.title : <a href={`/talks/${slug(child.title)}`}>{child.title}</a>}</span>
+                            {child.speakers?.length ? (
+                              <span class="lt-speakers">
+                                {' '}
+                                {child.speakers.map((s,i) => (
+                                  <>
+                                    <a href={`/speakers/${speakerSlugFor(s.name)}`}>{s.name}</a>{i < child.speakers.length - 1 ? ', ' : ''}
+                                  </>
+                                ))}
+                              </span>
+                            ) : null}
+                          </li>
+                        ))}
+                      </ul>
+                    </>
+                  ) : (
+                    <>
+                      <h3 class="title"><a href={`/talks/${slug(cell.session.title)}`}>{cell.session.title}</a></h3>
+                      {cell.session.speakers?.length ? (
+                        <p class="speakers">
+                          {cell.session.speakers.map((s, i) => (
+                            <>
+                              <a href={`/speakers/${speakerSlugFor(s.name)}`}>{s.name}</a>{i < cell.session.speakers.length - 1 ? ', ' : ''}
+                            </>
+                          ))}
+                        </p>
+                      ) : null}
+                      {cell.session.isServiceSession ? <p class="service-tag">Break</p> : null}
+                      {getTrackName(cell.session) ? <p class="track-tag">{getTrackName(cell.session)}</p> : null}
+                    </>
+                  )}
                 </div>
               )}
             </div>
@@ -109,6 +137,15 @@ const roomCount = current.rooms.length;
   .session.food-break .title { font-size:15px; }
   .session.food-break .service-tag, .session.food-break .track-tag { color:#fff; }
 
+  .session.lightning-group { background:var(--pink); color:#fff; border-color:var(--pink); }
+  .session.lightning-group .title { font-size:15px; letter-spacing:0.5px; text-transform:uppercase; }
+  .lightning-list { list-style:none; margin:6px 0 0; padding:0; display:grid; gap:4px; }
+  .lightning-list li { display:flex; flex-wrap:wrap; gap:4px; font-size:12px; background:rgba(255,255,255,0.12); padding:6px 8px; border-radius:4px; }
+  .lightning-list .lt-title { font-weight:600; }
+  .lightning-list a { color:#fff; text-decoration:underline; }
+  .lightning-list a:hover { text-decoration:none; }
+  .session.lightning-group .track-tag, .session.lightning-group .service-tag { display:none; }
+
   .slot-row.short .time-col { padding:4px 6px; font-size:11px; }
   .slot-row.short .session-inner { padding:4px 6px; gap:4px; }
   .slot-row.short .session .title { font-size:12px; }
@@ -130,4 +167,6 @@ const roomCount = current.rooms.length;
     .slot-row.short .session .title { font-size:14px; }
     .slot-row.short .session .speakers { font-size:12px; }
   }
+  .session .title a, .lightning-list .lt-title a { color: inherit; text-decoration:none; }
+  .session .title a:hover, .lightning-list .lt-title a:hover { text-decoration:underline; }
 </style>
