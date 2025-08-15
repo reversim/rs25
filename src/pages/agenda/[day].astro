@@ -18,15 +18,17 @@ if (!current) {
   return Astro.redirect('/agenda');
 }
 
-// Build speaker slug map by full name (case-insensitive)
 const allSpeakers = await getSpeakers();
 const nameToSlug = new Map(allSpeakers.map(s => [s.fullName.toLowerCase().trim(), s.slug]));
 function speakerSlugFor(name: string) {
   return nameToSlug.get(name.toLowerCase().trim()) || name.toLowerCase().replace(/\s+/g,'-');
 }
 
+// Build full grid, but hide specific rooms from render & adjust spans
+const hiddenRoomNames = new Set(['Dining Hall']);
+const visibleRooms = current.rooms.filter(r => !hiddenRoomNames.has(r.name));
 const grid = buildDayGrid(current);
-const roomCount = current.rooms.length;
+const roomCount = visibleRooms.length;
 ---
 <Layout havePadding={false}>
   <div class="agenda-wrapper" style={`--room-count:${roomCount};`}>
@@ -42,7 +44,7 @@ const roomCount = current.rooms.length;
     <div class="agenda-grid" role="table" aria-label={`Agenda for ${current.label}`}>
       <div class="rooms-row" role="row">
         <div class="time-col head" role="columnheader">Time</div>
-        {current.rooms.map(r => (
+        {visibleRooms.map(r => (
           <div class="room head" role="columnheader">{r.name}</div>
         ))}
       </div>
@@ -52,54 +54,66 @@ const roomCount = current.rooms.length;
             <div>{new Date(slot.startsAt).toLocaleTimeString([], {hour:'2-digit', minute:'2-digit'})}</div>
             <div class="time-end">{new Date(slot.endsAt).toLocaleTimeString([], {hour:'2-digit', minute:'2-digit'})}</div>
           </div>
-          {slot.cells.map(cell => cell.hidden ? null : (
-            <div class={`session ${cell.session ? '' : 'empty'} ${cell.session?.isPlenumSession ? 'plenum' : ''} ${cell.session && /(coffee\s*&\s*pastries(?:\s*break)?|lunch(?:\s*break)?)/i.test(cell.session.title) ? 'food-break' : ''} ${cell.session?.isLightningGroup ? 'lightning-group' : ''}`} role="cell" style={cell.span && cell.span>1 ? `grid-column: span ${cell.span};` : ''} data-title={cell.session?.title}>
-              {cell.session && (
-                <div class="session-inner">
-                  {!cell.session.isLightningGroup && (
-                    <div class="session-time-mobile">{new Date(slot.startsAt).toLocaleTimeString([], {hour:'2-digit', minute:'2-digit'})} – {new Date(slot.endsAt).toLocaleTimeString([], {hour:'2-digit', minute:'2-digit'})}</div>
-                  )}
-                  {cell.session.isLightningGroup ? (
-                    <>
-                      <h3 class="title">{cell.session.title}</h3>
-                      <ul class="lightning-list">
-                        {cell.session.lightningChildren?.map(child => (
-                          <li>
-                            <span class="lt-title">{child.isServiceSession ? child.title : <a href={`/talks/${slug(child.title)}`}>{child.title}</a>}</span>
-                            {child.speakers?.length ? (
-                              <span class="lt-speakers">
-                                {' '}
-                                {child.speakers.map((s,i) => (
-                                  <>
-                                    <a href={`/speakers/${speakerSlugFor(s.name)}`}>{s.name}</a>{i < child.speakers.length - 1 ? ', ' : ''}
-                                  </>
-                                ))}
-                              </span>
-                            ) : null}
-                          </li>
-                        ))}
-                      </ul>
-                    </>
-                  ) : (
-                    <>
-                      <h3 class="title"><a href={`/talks/${slug(cell.session.title)}`}>{cell.session.title}</a></h3>
-                      {cell.session.speakers?.length ? (
-                        <p class="speakers">
-                          {cell.session.speakers.map((s, i) => (
-                            <>
-                              <a href={`/speakers/${speakerSlugFor(s.name)}`}>{s.name}</a>{i < cell.session.speakers.length - 1 ? ', ' : ''}
-                            </>
+          {slot.cells.map((cell, idx) => {
+            const room = current.rooms[idx];
+            if (!room || hiddenRoomNames.has(room.name) || cell.hidden) return null;
+            // adjust span subtracting hidden rooms inside span range
+            let span = cell.span || 1;
+            if (span > 1) {
+              const covered = current.rooms.slice(idx, idx + span);
+              const hiddenInside = covered.filter(r => hiddenRoomNames.has(r.name)).length;
+              span -= hiddenInside;
+              if (span < 1) return null;
+            }
+            return (
+              <div class={`session ${cell.session ? '' : 'empty'} ${cell.session?.isPlenumSession ? 'plenum' : ''} ${cell.session && /(coffee\s*&\s*pastries(?:\s*break)?|lunch(?:\s*break)?)/i.test(cell.session.title) ? 'food-break' : ''} ${cell.session?.isLightningGroup ? 'lightning-group' : ''}`} role="cell" style={span>1 ? `grid-column: span ${span};` : ''} data-title={cell.session?.title}>
+                {cell.session && (
+                  <div class="session-inner">
+                    {!cell.session.isLightningGroup && (
+                      <div class="session-time-mobile">{new Date(slot.startsAt).toLocaleTimeString([], {hour:'2-digit', minute:'2-digit'})} – {new Date(slot.endsAt).toLocaleTimeString([], {hour:'2-digit', minute:'2-digit'})}</div>
+                    )}
+                    {cell.session.isLightningGroup ? (
+                      <>
+                        <h3 class="title">{cell.session.title}</h3>
+                        <ul class="lightning-list">
+                          {cell.session.lightningChildren?.map(child => (
+                            <li>
+                              <span class="lt-title">{child.isServiceSession ? child.title : <a href={`/talks/${slug(child.title)}`}>{child.title}</a>}</span>
+                              {child.speakers?.length ? (
+                                <span class="lt-speakers">
+                                  {' '}
+                                  {child.speakers.map((s,i) => (
+                                    <>
+                                      <a href={`/speakers/${speakerSlugFor(s.name)}`}>{s.name}</a>{i < child.speakers.length - 1 ? ', ' : ''}
+                                    </>
+                                  ))}
+                                </span>
+                              ) : null}
+                            </li>
                           ))}
-                        </p>
-                      ) : null}
-                      {cell.session.isServiceSession ? <p class="service-tag">Break</p> : null}
-                      {getTrackName(cell.session) ? <p class="track-tag">{getTrackName(cell.session)}</p> : null}
-                    </>
-                  )}
-                </div>
-              )}
-            </div>
-          ))}
+                        </ul>
+                      </>
+                    ) : (
+                      <>
+                        <h3 class="title"><a href={`/talks/${slug(cell.session.title)}`}>{cell.session.title}</a></h3>
+                        {cell.session.speakers?.length ? (
+                          <p class="speakers">
+                            {cell.session.speakers.map((s, i) => (
+                              <>
+                                <a href={`/speakers/${speakerSlugFor(s.name)}`}>{s.name}</a>{i < cell.session.speakers.length - 1 ? ', ' : ''}
+                              </>
+                            ))}
+                          </p>
+                        ) : null}
+                        {cell.session.isServiceSession ? <p class="service-tag">Break</p> : null}
+                        {getTrackName(cell.session) ? <p class="track-tag">{getTrackName(cell.session)}</p> : null}
+                      </>
+                    )}
+                  </div>
+                )}
+              </div>
+            );
+          })}
         </div>
       ))}
     </div>
