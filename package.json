@@ -16,6 +16,8 @@
     "dayjs": "^1.11.13",
     "glightbox": "^3.3.1",
     "googleapis": "^144.0.0",
+    "prettier": "^3.6.2",
+    "prettier-plugin-astro": "^0.14.1",
     "sass": "^1.83.0",
     "slug": "^10.0.0"
   },

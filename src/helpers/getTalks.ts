@@ -41,7 +41,7 @@ export interface talks {
 
 export async function getTalks() {
   const result = await fetch(
-    "https://sessionize.com/api/v2/qjyi27ms/view/Sessions"
+    "https://sessionize.com/api/v2/fan6lxrk/view/Sessions"
   );
 
   const rawTalksList: talk[] = [];

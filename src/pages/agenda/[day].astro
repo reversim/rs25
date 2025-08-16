@@ -1,0 +1,2221 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import {
+  getAgendaDays,
+  buildDayGrid,
+  type AgendaDay,
+  type AgendaSession,
+  getTrackName,
+} from "../../helpers/getAgenda";
+import {
+  getTalkCategoryColor,
+  getTalkUrl,
+  createTalkUrl,
+  createSlug,
+} from "../../helpers/agendaHelpers";
+import { createSpeakerUrl } from "../../helpers/agendaHelpers";
+
+// Get the day parameter from the URL
+const { day } = Astro.params;
+
+// Get agenda data from Sessionize
+const rawAgendaDays = await getAgendaDays();
+export async function getStaticPaths() {
+  const agendaDays = await getAgendaDays();
+  return agendaDays.map((day) => ({
+    params: { day: day.slug },
+  }));
+}
+
+// Process agenda data with grid structure
+const agendaDays = rawAgendaDays.map((day) => ({
+  ...day,
+  grid: buildDayGrid(day),
+}));
+
+// Find the requested day or default to first day
+let currentDay;
+let currentDayIndex = 0;
+
+if (day) {
+  // Look for day by slug (yyyy-mm-dd format)
+  const dayIndex = agendaDays.findIndex((d) => d.slug === day);
+  if (dayIndex !== -1) {
+    currentDay = agendaDays[dayIndex];
+    currentDayIndex = dayIndex;
+  } else {
+    // Invalid day, redirect to first day
+    return Astro.redirect(`/agenda/${agendaDays[0].slug}`);
+  }
+} else {
+  // No day specified, use first day
+  currentDay = agendaDays[0];
+  currentDayIndex = 0;
+}
+
+// Extract all sessions for filtering (from current day only)
+const allSessions: AgendaSession[] = [];
+currentDay.rooms.forEach((room) => {
+  room.sessions.forEach((session) => {
+    allSessions.push(session);
+  });
+});
+
+// Define the visible room names and their order for the 3-column layout
+const desiredRooms = ["Main hall", "Room 2", "Room 3"];
+// Extract unique rooms and categories for filters
+const uniqueRooms = [
+  ...new Set(currentDay.rooms.map((room) => room.name)),
+].sort();
+const uniqueCategories = [
+  ...new Set(
+    allSessions.flatMap((session) => {
+      const track = getTrackName(session);
+      return track ? [track] : [];
+    }),
+  ),
+].sort();
+---
+
+<Layout havePadding={false}>
+  <div class="agenda-container">
+    <div class="agenda-header">
+      <h2>Conference Agenda</h2>
+      <!-- TODO - add scroll to now button -->
+      <!-- <div class="header-actions">
+        <button id="scroll-to-now" class="current-time-btn">
+          What's there now?
+        </button>
+      </div> -->
+    </div>
+
+    <!-- Liked talks section (initially hidden) -->
+    <div id="liked-section" class="liked-section" style="display: none;">
+      <div id="liked-talks" class="liked-talks-container"></div>
+    </div>
+
+    <!-- Day switcher -->
+    <div class="day-switcher">
+      {
+        agendaDays.map((day, dayIndex) => (
+          <a
+            href={`/agenda/${day.slug}`}
+            class={`day-switch-btn ${dayIndex === currentDayIndex ? "active" : ""}`}
+          >
+            {day.label}
+          </a>
+        ))
+      }
+    </div>
+
+    <!-- TODO Filter Toggle Button -->
+    <!-- <div class="filter-toggle-container">
+      <button class="filter-toggle-btn" onclick="toggleFilters()">
+        <span class="filter-icon">🔍</span>
+        Filters
+        <span class="filter-arrow">▼</span>
+      </button>
+    </div> -->
+
+    <!-- Filter Section -->
+    <div class="filter-section" id="filter-section" style="display: none;">
+      <div class="filter-grid">
+        <div class="filter-column">
+          <h4>Theme</h4>
+          <div class="filter-options" id="theme-filters">
+            {
+              uniqueCategories.map((category) => (
+                <label class="filter-checkbox">
+                  <input
+                    type="checkbox"
+                    value={category}
+                    onchange="applyFilters()"
+                  />
+                  <span class="checkmark" />
+                  {category}
+                </label>
+              ))
+            }
+          </div>
+        </div>
+
+        <div class="filter-column">
+          <h4>Rooms</h4>
+          <div class="filter-options" id="room-filters">
+            {
+              uniqueRooms.map((room) => (
+                <label class="filter-checkbox">
+                  <input
+                    type="checkbox"
+                    value={room}
+                    onchange="applyFilters()"
+                  />
+                  <span class="checkmark" />
+                  {room}
+                </label>
+              ))
+            }
+          </div>
+        </div>
+      </div>
+
+      <div class="filter-footer">
+        <button class="reset-filters-btn" onclick="clearAllFilters()"
+          >Reset</button
+        >
+      </div>
+    </div>
+
+    <!-- Desktop Grid-based Schedule View -->
+    <div class="agenda-grid-container desktop-only">
+      <div class="day-schedule active">
+        <div class="schedule-header">{currentDay.label}</div>
+        <div class="grid-wrapper">
+          <div
+            class="agenda-grid"
+            role="grid"
+            aria-label={`Agenda for ${currentDay.label}`}
+          >
+            <!-- Grid Header -->
+            <div class="grid-header">
+              <div class="time-column-header">Time</div>
+              {
+                desiredRooms.map((roomName) => (
+                  <div class="room-column-header">{roomName}</div>
+                ))
+              }
+            </div>
+
+            <!-- Grid Body -->
+            <div class="grid-body">
+              {
+                currentDay.grid.map((row, rowIndex) => {
+                  // Check if this row has a full-width session
+                  const fullWidthSession = row.cells.find(
+                    (cell) =>
+                      cell.session &&
+                      !cell.hidden &&
+                      (cell.session.isServiceSession ||
+                        cell.session.isPlenumSession ||
+                        (cell.span && cell.span >= desiredRooms.length)),
+                  );
+
+                  if (fullWidthSession && fullWidthSession.session) {
+                    const session = fullWidthSession.session;
+
+                    const duration = Math.round(
+                      (new Date(session.endsAt).getTime() -
+                        new Date(session.startsAt).getTime()) /
+                        (1000 * 60),
+                    );
+
+                    return (
+                      <div
+                        class="time-slot-row full-width-row"
+                        id={`time-slot-${currentDay.slug}-${rowIndex}`}
+                      >
+                        <div class="time-column">
+                          <div class="time-display">
+                            <div class="start-time">
+                              {new Date(row.startsAt).toLocaleTimeString(
+                                "en-US",
+                                {
+                                  hour12: false,
+                                  hour: "2-digit",
+                                  minute: "2-digit",
+                                },
+                              )}
+                            </div>
+                            <div class="end-time">
+                              {new Date(row.endsAt).toLocaleTimeString(
+                                "en-US",
+                                {
+                                  hour12: false,
+                                  hour: "2-digit",
+                                  minute: "2-digit",
+                                },
+                              )}
+                            </div>
+                          </div>
+                        </div>
+                        <div
+                          class="break-session-cell"
+                          style="grid-column: 2 / -1;"
+                          data-talk-id={session.id}
+                        >
+                          <div
+                            class={`break-session-content ${session.room === "Dining Hall" ? "highlighted" : "session-content"}`}
+                          >
+                            <div class="break-time">{duration} minutes</div>
+                            <div
+                              class="session-category-indicator"
+                              style={`background-color: ${getTalkCategoryColor(session)}`}
+                            />
+                            {session.isLightningGroup ? (
+                              <>
+                                <h3 class="break-title">Lightning Talks</h3>
+                                <div class="break-location">
+                                  {session?.lightningChildren?.[0]?.room}
+                                </div>
+
+                                <div class="lightning-talk-list">
+                                  {session.lightningChildren?.map(
+                                    (child: any) => {
+                                      return (
+                                        <div class="lightning-talk-container">
+                                          <a
+                                            class="lightning-talk-title"
+                                            href={getTalkUrl(child)}
+                                          >
+                                            {child.title}
+                                          </a>
+                                          {child.speakers.length > 0 &&
+                                            child.speakers.map(
+                                              (speaker: any) => (
+                                                <a
+                                                  class="lightning-speaker"
+                                                  href={createSpeakerUrl(
+                                                    speaker.name,
+                                                  )}
+                                                >
+                                                  {speaker.name}
+                                                </a>
+                                              ),
+                                            )}
+                                        </div>
+                                      );
+                                    },
+                                  )}
+                                </div>
+                              </>
+                            ) : (
+                              <>
+                                <h3 class="break-title">{session.title}</h3>
+                                <div class="break-location">{session.room}</div>
+                              </>
+                            )}
+                          </div>
+                        </div>
+                      </div>
+                    );
+                  }
+
+                  // Regular row with individual sessions
+                  return (
+                    <div
+                      class="time-slot-row"
+                      id={`time-slot-${currentDay.slug}-${rowIndex}`}
+                    >
+                      <div class="time-column">
+                        <div class="time-display">
+                          <div class="start-time">
+                            {new Date(row.startsAt).toLocaleTimeString(
+                              "en-US",
+                              {
+                                hour12: false,
+                                hour: "2-digit",
+                                minute: "2-digit",
+                              },
+                            )}
+                          </div>
+                          <div class="end-time">
+                            {new Date(row.endsAt).toLocaleTimeString("en-US", {
+                              hour12: false,
+                              hour: "2-digit",
+                              minute: "2-digit",
+                            })}
+                          </div>
+                        </div>
+                      </div>
+
+                      {row.cells.map((cell, cellIndex) => {
+                        // Skip cells that are marked as hidden (e.g., spanned cells)
+                        if (cell.hidden) return null;
+
+                        // Find which room this cell index corresponds to
+                        const roomForCell = currentDay.rooms[cellIndex];
+                        if (!roomForCell)
+                          return (
+                            <div
+                              class="empty-cell"
+                              style={`grid-column: ${cellIndex + 2}`}
+                            />
+                          );
+
+                        // Check if this room is one of our desired rooms
+                        const roomIndex = desiredRooms.indexOf(
+                          roomForCell.name,
+                        );
+                        if (roomIndex === -1) return null; // Skip rooms not in our desired list
+
+                        // If no session in this cell, render empty cell
+                        if (!cell.session) {
+                          return (
+                            <div
+                              class="empty-cell"
+                              style={`grid-column: ${roomIndex + 2}`}
+                            />
+                          );
+                        }
+
+                        const session = cell.session;
+                        const duration = Math.round(
+                          (new Date(session.endsAt).getTime() -
+                            new Date(session.startsAt).getTime()) /
+                            (1000 * 60),
+                        );
+                        const categoryColor = getTalkCategoryColor(session);
+                        const track = getTrackName(session);
+                        return (
+                          <div
+                            class="session-cell"
+                            style={`grid-column: ${roomIndex + 2}`}
+                            onclick={`window.location.href='${getTalkUrl(session)}'`}
+                          >
+                            <div
+                              class="session-content"
+                              data-talk-id={session.id}
+                            >
+                              <div class="session-duration">
+                                {duration} minutes
+                              </div>
+                              <h3 class="session-title">
+                                <a href={getTalkUrl(session)}>
+                                  {session.title}
+                                </a>
+                              </h3>
+                              {session.speakers?.length ? (
+                                <div class="session-speakers">
+                                  {session.speakers.map(
+                                    (speaker: any, index: number) => (
+                                      <>
+                                        <a
+                                          href={createSpeakerUrl(speaker.name)}
+                                        >
+                                          {speaker.name}
+                                        </a>
+                                        {index < session.speakers.length - 1 &&
+                                          ", "}
+                                      </>
+                                    ),
+                                  )}
+                                </div>
+                              ) : null}
+                              {track && (
+                                <div
+                                  class="session-category"
+                                  style={`background-color: ${categoryColor}`}
+                                >
+                                  {track}
+                                </div>
+                              )}
+                              {/* TODO: Add like button */}
+                              {/* <button
+                              class="like-btn-desktop"
+                              data-talk-id={session.id}
+                              onclick={`event.stopPropagation(); toggleLike('${session.id}')`}
+                              title="Like this talk"
+                            >
+                              ♡
+                            </button> */}
+                              <div
+                                class="session-category-indicator"
+                                style={`background-color: ${categoryColor}`}
+                              />
+                            </div>
+                          </div>
+                        );
+                      })}
+                    </div>
+                  );
+                })
+              }
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mobile Card View -->
+    <div class="agenda-main mobile-only">
+      <div class="day-section active">
+        <div class="day-header">{currentDay.label}</div>
+        {
+          currentDay.grid.map((row, rowIndex) => (
+            <div
+              class="time-slot-container"
+              id={`time-slot-mobile-${currentDay.slug}-${rowIndex}`}
+            >
+              <div class="time-header">
+                {new Date(row.startsAt).toLocaleTimeString("en-US", {
+                  hour12: false,
+                  hour: "2-digit",
+                  minute: "2-digit",
+                })}
+              </div>
+              <div class="sessions-container">
+                {row.cells
+                  .filter((cell) => cell.session && !cell.hidden)
+                  .map((cell, cellIndex) => {
+                    const session = cell.session!;
+                    const duration = Math.round(
+                      (new Date(session.endsAt).getTime() -
+                        new Date(session.startsAt).getTime()) /
+                        (1000 * 60),
+                    );
+
+                    const categoryColor = getTalkCategoryColor(session);
+
+                    // If this is a service session (break), create non-interactive card
+                    if (session.isServiceSession) {
+                      return (
+                        <div
+                          class="session-card break-session-mobile"
+                          data-talk-id={session.id}
+                        >
+                          <div class="session-header">
+                            <div class="room-time-info">
+                              {session.room && (
+                                <span class="room-label">{session.room}</span>
+                              )}
+                              <span class="time-duration">
+                                {new Date(session.startsAt).toLocaleTimeString(
+                                  "en-US",
+                                  {
+                                    hour12: false,
+                                    hour: "2-digit",
+                                    minute: "2-digit",
+                                  },
+                                )}{" "}
+                                → {duration} min
+                              </span>
+                            </div>
+                          </div>
+                          <h3 class="session-title break-title-mobile">
+                            {session.title}
+                          </h3>
+                          <div
+                            class="session-category-indicator"
+                            style={`background-color: ${getTalkCategoryColor(session)}`}
+                          />
+                        </div>
+                      );
+                    }
+
+                    // If this is a lightning group, create one card with all lightning talks
+                    if (session.isLightningGroup && session.lightningChildren) {
+                      return (
+                        <div
+                          class="session-card lightning-group-mobile"
+                          data-talk-id={session.id}
+                        >
+                          <div class="session-header">
+                            <div class="room-time-info">
+                              {session.lightningChildren[0]?.room && (
+                                <span class="room-label">
+                                  {session.lightningChildren[0].room}
+                                </span>
+                              )}
+                              <span class="time-duration">
+                                {new Date(session.startsAt).toLocaleTimeString(
+                                  "en-US",
+                                  {
+                                    hour12: false,
+                                    hour: "2-digit",
+                                    minute: "2-digit",
+                                  },
+                                )}{" "}
+                                → {duration} min
+                              </span>
+                            </div>
+                          </div>
+                          <h3 class="session-title">Lightning Talks</h3>
+                          <div class="lightning-talks-mobile-list">
+                            {session.lightningChildren.map((child: any) => (
+                              <div class="lightning-talk-item-mobile">
+                                <h4 class="lightning-talk-title-mobile">
+                                  <a href={getTalkUrl(child)}>{child.title}</a>
+                                </h4>
+                                <div class="lightning-talk-speakers-mobile">
+                                  {child.speakers.map(
+                                    (speaker: any, index: number) => (
+                                      <>
+                                        <a
+                                          href={`/speakers/${speaker.name
+                                            .toLowerCase()
+                                            .replace(/[^\w\s-]/g, "")
+                                            .replace(/\s+/g, "-")
+                                            .replace(/-+/g, "-")
+                                            .replace(/^-+|-+$/g, "")}`}
+                                        >
+                                          {speaker.name}
+                                        </a>
+                                        {index < child.speakers.length - 1 &&
+                                          ", "}
+                                      </>
+                                    ),
+                                  )}
+                                </div>
+                              </div>
+                            ))}
+                          </div>
+                          <div
+                            class="session-category-indicator"
+                            style={`background-color: ${categoryColor}`}
+                          />
+                        </div>
+                      );
+                    }
+
+                    // Regular session card
+                    return (
+                      <div class="session-card" data-talk-id={session.id}>
+                        <div class="session-header">
+                          <div class="room-time-info">
+                            {session.room && (
+                              <span class="room-label">{session.room}</span>
+                            )}
+                            <span class="time-duration">
+                              {new Date(session.startsAt).toLocaleTimeString(
+                                "en-US",
+                                {
+                                  hour12: false,
+                                  hour: "2-digit",
+                                  minute: "2-digit",
+                                },
+                              )}{" "}
+                              → {duration} min
+                            </span>
+                          </div>
+                          {/* <button
+                          class="like-btn"
+                          data-talk-id={session.id}
+                          onclick={`event.stopPropagation(); toggleLike('${session.id}')`}
+                          title="Like this talk"
+                        >
+                          ♡
+                        </button> */}
+                        </div>
+                        <h3 class="session-title">
+                          <a href={getTalkUrl(session)}>{session.title}</a>
+                        </h3>
+                        <div class="session-speakers">
+                          {session.speakers.map(
+                            (speaker: any, index: number) => (
+                              <>
+                                <a
+                                  href={`/speakers/${speaker.name
+                                    .toLowerCase()
+                                    .replace(/[^\w\s-]/g, "")
+                                    .replace(/\s+/g, "-")
+                                    .replace(/-+/g, "-")
+                                    .replace(/^-+|-+$/g, "")}`}
+                                >
+                                  {speaker.name}
+                                </a>
+                                {index < session.speakers.length - 1 && ", "}
+                              </>
+                            ),
+                          )}
+                        </div>
+                        {getTrackName(session) && (
+                          <div
+                            class="session-category"
+                            style={`background-color: ${categoryColor}`}
+                          >
+                            {getTrackName(session)}
+                          </div>
+                        )}
+                        <div
+                          class="session-category-indicator"
+                          style={`background-color: ${getTalkCategoryColor(session)}`}
+                        />
+                      </div>
+                    );
+                  })}
+              </div>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </div>
+</Layout>
+
+<style lang="scss">
+  .agenda-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+
+  .agenda-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+
+    h2 {
+      margin: 0;
+    }
+  }
+
+  .header-actions {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+  }
+
+  .demo-notice {
+    background: var(--orange);
+    color: white;
+    padding: 8px 12px;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  .current-time-btn {
+    background: var(--blue);
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 600;
+    transition: background-color 0.3s ease;
+
+    &:hover {
+      background: #3d4e73;
+    }
+  }
+
+  .liked-section {
+    margin-bottom: 30px;
+
+    h3 {
+      margin: 0 0 15px 0;
+      font-size: 18px;
+    }
+
+    .liked-talks-container {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+  }
+
+  /* Filter Toggle Button */
+  .filter-toggle-container {
+    display: flex;
+    justify-content: flex-end;
+    margin: 16px 0;
+  }
+
+  .filter-toggle-btn {
+    background: var(--pink);
+    color: white;
+    border: 2px solid var(--pink);
+    border-radius: 25px;
+    padding: 12px 24px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 8px rgba(253, 106, 130, 0.3);
+
+    &:hover {
+      background: #e05574;
+      border-color: #e05574;
+      transform: translateY(-1px);
+      box-shadow: 0 4px 12px rgba(253, 106, 130, 0.4);
+    }
+
+    .filter-icon {
+      font-size: 18px;
+    }
+
+    .filter-arrow {
+      font-size: 12px;
+      transition: transform 0.3s ease;
+    }
+
+    &.active {
+      background: #e05574;
+      border-color: #e05574;
+
+      .filter-arrow {
+        transform: rotate(180deg);
+      }
+    }
+  }
+
+  /* Filter Section Styles */
+  .filter-section {
+    background: white;
+    border: 2px solid #e5e7eb;
+    border-radius: 16px;
+    padding: 16px 24px;
+    margin: 16px 0 24px 0;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    animation: slideDown 0.3s ease-out;
+  }
+
+  @keyframes slideDown {
+    from {
+      opacity: 0;
+      transform: translateY(-10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .filter-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 32px;
+    margin-bottom: 12px;
+  }
+
+  .filter-column {
+    display: flex;
+    flex-direction: column;
+
+    h4 {
+      font-size: 18px;
+      font-weight: 700;
+      color: #374151;
+      margin: 0 0 16px 0;
+      padding-bottom: 8px;
+      border-bottom: 2px solid #f3f4f6;
+    }
+  }
+
+  .filter-options {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .filter-checkbox {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    cursor: pointer;
+    padding: 8px 0;
+    font-size: 15px;
+    color: #6b7280;
+    font-weight: 500;
+    transition: color 0.2s ease;
+
+    &:hover {
+      color: #374151;
+    }
+
+    input[type="checkbox"] {
+      position: absolute;
+      opacity: 0;
+      cursor: pointer;
+      height: 0;
+      width: 0;
+    }
+
+    .checkmark {
+      height: 20px;
+      width: 20px;
+      background-color: #f9fafb;
+      border: 2px solid #d1d5db;
+      border-radius: 4px;
+      position: relative;
+      transition: all 0.2s ease;
+    }
+
+    &:hover .checkmark {
+      border-color: var(--pink);
+      background-color: #fef7f7;
+    }
+
+    input:checked ~ .checkmark {
+      background-color: var(--pink);
+      border-color: var(--pink);
+    }
+
+    .checkmark:after {
+      content: "";
+      position: absolute;
+      display: none;
+      left: 6px;
+      top: 2px;
+      width: 6px;
+      height: 10px;
+      border: solid white;
+      border-width: 0 2px 2px 0;
+      transform: rotate(45deg) translateX(-3px);
+    }
+
+    input:checked ~ .checkmark:after {
+      display: block;
+    }
+  }
+
+  .filter-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 16px;
+    border-top: 1px solid #e5e7eb;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+
+  .reset-filters-btn {
+    background: transparent;
+    color: var(--pink);
+    border: 2px solid var(--pink);
+    border-radius: 25px;
+    padding: 10px 24px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+
+    &:hover {
+      background: var(--pink);
+      color: white;
+      transform: translateY(-1px);
+    }
+  }
+  /* Desktop/Mobile View Switching */
+  .desktop-only {
+    display: block;
+  }
+
+  .mobile-only {
+    display: none;
+  }
+
+  /* Desktop Grid-based Schedule Styles */
+  .agenda-grid-container {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .day-schedule {
+    margin-bottom: 40px;
+
+    &.hidden {
+      display: none;
+    }
+
+    &.active {
+      display: block;
+    }
+  }
+
+  .schedule-header {
+    background: var(--green);
+    color: white;
+    padding: 15px 25px;
+    font-weight: 600;
+    text-align: center;
+    border-radius: 12px 12px 0 0;
+    font-size: 18px;
+  }
+
+  .grid-wrapper {
+    background: white;
+    border-radius: 0 0 12px 12px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    overflow-x: auto;
+  }
+
+  .agenda-grid {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .grid-header {
+    display: grid;
+    grid-template-columns: 120px 1fr 1fr 1fr;
+    background: #f8f9fa;
+    border-bottom: 2px solid #e9ecef;
+  }
+
+  .grid-body {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .time-column-header,
+  .room-column-header {
+    padding: 15px 20px;
+    text-align: center;
+    font-weight: 700;
+    color: var(--blue);
+    border-right: 1px solid #e9ecef;
+
+    &:last-child {
+      border-right: none;
+    }
+  }
+
+  .time-column-header {
+    width: 120px;
+    min-width: 120px;
+    background: #f1f3f4;
+  }
+
+  .room-column-header {
+    width: 100%;
+    min-width: 200px;
+  }
+
+  .time-slot-row {
+    display: grid;
+    grid-template-columns: 120px 1fr 1fr 1fr;
+    border-bottom: 1px solid #e9ecef;
+
+    &:last-child {
+      border-bottom: none;
+    }
+
+    &.full-width-row {
+      grid-template-columns: 120px 1fr;
+
+      .break-session-cell {
+        grid-column: 2;
+      }
+    }
+
+    &:has(.highlighted) {
+      background: linear-gradient(135deg, #e3f2fd, #bbdefb);
+      .time-column,
+      .break-session-cell {
+        background: none;
+        border: none;
+      }
+
+      .break-session-content {
+        border: none;
+        background: none;
+
+        &:hover {
+          background: none;
+          box-shadow: none;
+        }
+      }
+    }
+  }
+
+  .time-column {
+    grid-column: 1;
+    width: 120px;
+    min-width: 120px;
+    background: #f8f9fa;
+    border-right: 2px solid #e9ecef;
+    padding: 15px 10px;
+    text-align: center;
+    vertical-align: top;
+  }
+
+  .time-display {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+  }
+
+  .start-time {
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--blue);
+  }
+
+  .end-time {
+    font-size: 12px;
+    font-weight: 500;
+    color: #666;
+  }
+
+  .session-cell {
+    padding: 8px;
+    vertical-align: top;
+    border-right: 1px solid #e9ecef;
+
+    &:last-child {
+      border-right: none;
+    }
+  }
+
+  .empty-cell {
+    background: #fafafa;
+    border-right: 1px solid #e9ecef;
+
+    &:last-child {
+      border-right: none;
+    }
+  }
+
+  .session-content {
+    height: 100%;
+    background: #f8f9fa;
+    border: 2px solid #e9ecef;
+    border-radius: 8px;
+    padding: 15px;
+
+    cursor: pointer;
+    position: relative;
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    min-height: 120px;
+
+    &:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+      border-color: var(--blue);
+    }
+  }
+
+  .lightning-talk-list {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+    font-size: 14px;
+    margin-top: 10px;
+
+    .lightning-talk-container {
+      .lightning-talk-title {
+        font-weight: 700;
+        color: #2c3e50;
+
+        &:hover {
+          color: var(--blue);
+          text-decoration: underline;
+        }
+      }
+
+      .lightning-speaker {
+        &:hover {
+          color: var(--blue);
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+
+  .session-duration {
+    font-size: 12px;
+    color: #666;
+    font-weight: 500;
+    margin-bottom: 8px;
+  }
+
+  .session-title {
+    font-size: 15px;
+    font-weight: 700;
+    line-height: 1.3;
+    color: #2c3e50;
+    margin: 0 0 8px 0;
+    padding-right: 25px;
+
+    a {
+      color: inherit;
+      text-decoration: none;
+
+      &:hover {
+        color: var(--blue);
+        text-decoration: underline;
+      }
+    }
+  }
+
+  .session-speakers {
+    font-size: 13px;
+    color: #555;
+    font-weight: 500;
+    margin-top: auto;
+
+    a {
+      color: inherit;
+      text-decoration: none;
+
+      &:hover {
+        color: var(--blue);
+        text-decoration: underline;
+      }
+    }
+  }
+
+  .session-category {
+    background: var(--blue);
+    color: white;
+    padding: 3px 8px;
+    border-radius: 4px;
+    font-size: 10px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    display: inline-block;
+    margin-top: 10px;
+    width: max-content;
+  }
+
+  .like-btn-desktop {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: none;
+    border: none;
+    font-size: 16px;
+    cursor: pointer;
+    color: #ccc;
+    transition: color 0.3s ease;
+
+    &:hover {
+      color: var(--pink);
+    }
+
+    &.liked {
+      color: var(--pink);
+    }
+  }
+
+  .session-category-indicator {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 4px;
+    height: 100%;
+    border-radius: 4px 0 0 4px;
+  }
+
+  .break-session-cell {
+    padding: 8px;
+    border-right: 1px solid #e9ecef;
+
+    &:last-child {
+      border-right: none;
+    }
+  }
+
+  .break-session-content {
+    padding: 20px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border-radius: 8px;
+
+    &:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      border-color: var(--blue);
+    }
+  }
+
+  /* Break/Service Sessions */
+  .break-session {
+    width: 100%;
+    border: 2px solid #90caf9;
+    border-radius: 8px;
+    padding: 20px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+
+    &:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      border-color: var(--blue);
+    }
+  }
+
+  .break-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .break-time {
+    font-size: 12px;
+    color: #666;
+    font-weight: 500;
+  }
+
+  .break-title {
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--blue);
+    margin: 0;
+  }
+
+  .break-location {
+    font-size: 14px;
+    color: #666;
+    font-weight: 500;
+  }
+
+  /* Mobile Card Styles */
+  .agenda-main {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .day-switcher {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 30px;
+  }
+
+  .day-switch-btn {
+    background: white;
+    border: 2px solid #e9ecef;
+    border-radius: 8px;
+    padding: 12px 24px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    color: #666;
+    text-decoration: none;
+    display: inline-block;
+
+    &:hover {
+      border-color: var(--blue);
+      background: #f8f9fa;
+    }
+
+    &.active {
+      background: var(--blue);
+      border-color: var(--blue);
+      color: white;
+    }
+  }
+
+  .day-section {
+    margin-bottom: 40px;
+
+    &.hidden {
+      display: none;
+    }
+
+    &.active {
+      display: block;
+    }
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  .day-header {
+    background: var(--green);
+    color: white;
+    padding: 15px 25px;
+    font-weight: 600;
+    text-align: center;
+    border-radius: 12px 12px 0 0;
+    font-size: 18px;
+    margin-bottom: 20px;
+  }
+
+  .time-slot-container {
+    margin-bottom: 30px;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  .time-header {
+    font-size: 24px;
+    font-weight: 700;
+    color: #2c3e50;
+    margin-bottom: 15px;
+    padding-left: 10px;
+  }
+
+  .sessions-container {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .session-card {
+    background: white;
+    border: 2px solid #e9ecef;
+    border-radius: 12px;
+    padding: 20px;
+    cursor: pointer;
+    position: relative;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+
+    &:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+      border-color: var(--blue);
+    }
+  }
+
+  .session-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 15px;
+  }
+
+  .room-time-info {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .room-label {
+    background: var(--blue);
+    color: white;
+    padding: 4px 12px;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: 600;
+    display: inline-block;
+    width: fit-content;
+  }
+
+  .time-duration {
+    font-size: 13px;
+    color: #666;
+    font-weight: 500;
+  }
+
+  .session-title {
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 1.4;
+    margin: 0 0 12px 0;
+    color: #2c3e50;
+    padding-right: 40px;
+  }
+
+  .session-speakers {
+    font-size: 14px;
+    color: #555;
+    font-weight: 500;
+    margin-top: auto;
+
+    a {
+      color: inherit;
+      text-decoration: none;
+
+      &:hover {
+        color: var(--blue);
+        text-decoration: underline;
+      }
+    }
+  }
+
+  .session-category {
+    display: inline-block;
+    color: white;
+    padding: 4px 10px;
+    border-radius: 16px;
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    width: max-content;
+  }
+
+  .like-btn {
+    background: none;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+    color: #ccc;
+    transition: color 0.3s ease;
+    padding: 0;
+    margin: 0;
+    line-height: 1;
+
+    &:hover {
+      color: var(--pink);
+    }
+
+    &.liked {
+      color: var(--pink);
+    }
+  }
+
+  .session-category-indicator {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 6px;
+    height: 100%;
+    border-radius: 6px 0 0 6px;
+  }
+
+  .lightning-group-mobile {
+    .session-title {
+      font-size: 18px;
+      margin-bottom: 16px;
+    }
+  }
+
+  .lightning-talks-mobile-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .lightning-talk-item-mobile {
+    padding: 12px;
+    background: #f8f9fa;
+    border-radius: 8px;
+  }
+
+  .lightning-talk-title-mobile {
+    font-size: 15px;
+    font-weight: 600;
+    margin: 0 0 8px 0;
+    line-height: 1.3;
+
+    a {
+      color: #2c3e50;
+      text-decoration: none;
+
+      &:hover {
+        color: var(--blue);
+        text-decoration: underline;
+      }
+    }
+  }
+
+  .lightning-talk-speakers-mobile {
+    font-size: 13px;
+    color: #666;
+    font-weight: 500;
+
+    a {
+      color: inherit;
+      text-decoration: none;
+
+      &:hover {
+        color: var(--blue);
+        text-decoration: underline;
+      }
+    }
+  }
+
+  .liked-talks-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    padding: 25px;
+    border-radius: 15px;
+    margin-bottom: 30px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    border: 1px solid #dee2e6;
+
+    &:empty {
+      display: none;
+    }
+
+    &:before {
+      content: "Your Liked Talks";
+      font-size: 20px;
+      font-weight: 700;
+      color: #495057;
+      margin-bottom: 10px;
+      padding-bottom: 15px;
+      border-bottom: 2px solid #dee2e6;
+      display: block;
+    }
+  }
+
+  .liked-talk-item {
+    background: linear-gradient(135deg, #ffffff 0%, #fcfcfd 100%);
+    border: 2px solid #e9ecef;
+    border-radius: 16px;
+    padding: 24px;
+    cursor: pointer;
+    position: relative;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow:
+      0 4px 6px -1px rgba(0, 0, 0, 0.1),
+      0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    border-left: 6px solid var(--pink);
+    overflow: hidden;
+
+    &::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: linear-gradient(
+        90deg,
+        var(--pink) 0%,
+        var(--orange) 50%,
+        var(--green) 100%
+      );
+    }
+
+    &:hover {
+      transform: translateY(-4px) scale(1.01);
+      box-shadow:
+        0 20px 25px -5px rgba(0, 0, 0, 0.1),
+        0 10px 10px -5px rgba(0, 0, 0, 0.04);
+      border-color: var(--pink);
+      background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+    }
+  }
+
+  .liked-talk-content {
+    width: 100%;
+  }
+
+  .liked-talk-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 16px;
+    position: relative;
+  }
+
+  .liked-talk-title {
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 1.4;
+    margin: 0;
+    flex: 1;
+    padding-right: 16px;
+    color: #2d3748;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+
+    a {
+      color: inherit;
+      text-decoration: none;
+
+      &:hover {
+        color: var(--blue);
+        text-decoration: underline;
+      }
+    }
+  }
+
+  .liked-talk-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    font-size: 14px;
+    color: #718096;
+    margin-bottom: 12px;
+  }
+
+  .liked-talk-time,
+  .liked-talk-speakers,
+  .liked-talk-room {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    background: #f7fafc;
+    padding: 6px 12px;
+    border-radius: 8px;
+    font-weight: 500;
+    border: 1px solid #e2e8f0;
+    transition: all 0.2s ease;
+  }
+
+  .liked-talk-time:hover,
+  .liked-talk-speakers:hover,
+  .liked-talk-room:hover {
+    background: #edf2f7;
+    border-color: #cbd5e0;
+  }
+
+  .remove-liked-btn {
+    position: absolute;
+    top: -8px;
+    right: -8px;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: #e53e3e;
+    color: white;
+    border: 2px solid white;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    font-weight: 700;
+    transition: all 0.2s ease;
+    box-shadow: 0 2px 8px rgba(229, 62, 62, 0.3);
+    z-index: 10;
+
+    &:hover {
+      background: #c53030;
+      transform: scale(1.1);
+      box-shadow: 0 4px 12px rgba(197, 48, 48, 0.4);
+    }
+
+    &:active {
+      transform: scale(0.95);
+    }
+  }
+
+  .liked-talk-category {
+    position: absolute;
+    top: 3px;
+    left: 0;
+    width: 6px;
+    height: calc(100% - 6px);
+    border-radius: 0 6px 6px 0;
+    box-shadow: 2px 0 4px rgba(0, 0, 0, 0.1);
+  }
+
+  .liked-talk-info {
+    position: relative;
+    z-index: 1;
+  }
+
+  .liked-talk-category-badge {
+    display: inline-block;
+    padding: 4px 12px;
+    border-radius: 12px;
+    font-size: 12px;
+    font-weight: 600;
+    color: white;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-top: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+
+  /* Current time highlighting */
+  .current-time-highlight {
+    animation: highlightPulse 3s ease-in-out;
+
+    .session-card {
+      border-color: var(--green) !important;
+      box-shadow: 0 0 0 2px rgba(129, 196, 122, 0.3);
+    }
+
+    /* Desktop session content highlighting */
+    .session-content {
+      border-color: var(--green) !important;
+      box-shadow: 0 0 0 3px rgba(129, 196, 122, 0.3) !important;
+      transform: translateY(-2px) !important;
+    }
+  }
+
+  @keyframes highlightPulse {
+    0%,
+    100% {
+      box-shadow: 0 0 0 0 var(--green);
+    }
+    50% {
+      box-shadow: 0 0 0 8px rgba(129, 196, 122, 0.3);
+    }
+  }
+
+  /* Temporary message styling */
+  .temporary-message {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--blue);
+    color: white;
+    padding: 12px 20px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    z-index: 1001;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    display: none;
+  }
+
+  @media (max-width: 768px) {
+    /* Switch to mobile layout */
+    .desktop-only {
+      display: none !important;
+    }
+
+    .mobile-only {
+      display: block !important;
+    }
+
+    /* Disable user select, hover and focus effects on mobile cards */
+    .session-card {
+      user-select: none;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      cursor: default;
+
+      &:hover {
+        transform: none !important;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08) !important;
+        border-color: #e9ecef !important;
+      }
+
+      &:focus {
+        outline: none;
+        transform: none !important;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08) !important;
+        border-color: #e9ecef !important;
+      }
+
+      &:active {
+        transform: none !important;
+      }
+
+      /* Re-enable selection and cursor for links and interactive elements */
+      a,
+      button {
+        user-select: text;
+        -webkit-user-select: text;
+        -moz-user-select: text;
+        -ms-user-select: text;
+        cursor: pointer;
+      }
+
+      /* Keep lightning talk items selectable */
+      .lightning-talk-item-mobile {
+        a {
+          user-select: text;
+          -webkit-user-select: text;
+          cursor: pointer;
+        }
+      }
+
+      /* Break sessions - completely non-interactive */
+      .break-session-mobile {
+        pointer-events: none;
+        cursor: default;
+
+        .break-title-mobile {
+          cursor: default;
+          pointer-events: none;
+
+          /* Style break sessions differently */
+          background: linear-gradient(135deg, #f0f8ff, #e6f3ff);
+          border-color: #90caf9;
+
+          /* Remove any link styling if present */
+          a {
+            color: inherit !important;
+            text-decoration: none !important;
+            cursor: default !important;
+            pointer-events: none !important;
+          }
+        }
+
+        /* Ensure all content is non-interactive */
+        * {
+          pointer-events: none;
+          cursor: default;
+        }
+
+        &:hover {
+          background: linear-gradient(135deg, #f0f8ff, #e6f3ff) !important;
+          transform: none !important;
+          box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08) !important;
+        }
+      }
+    }
+
+    .agenda-header {
+      flex-direction: column;
+      gap: 15px;
+      text-align: center;
+    }
+
+    .day-header {
+      font-size: 16px;
+      padding: 12px 20px;
+    }
+
+    .time-header {
+      font-size: 20px;
+      padding-left: 5px;
+    }
+
+    .session-card {
+      padding: 16px;
+    }
+
+    .session-title {
+      font-size: 18px;
+      padding-right: 35px;
+    }
+
+    .room-time-info {
+      gap: 6px;
+    }
+
+    .like-btn {
+      font-size: 18px;
+    }
+
+    .day-switcher {
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .day-switch-btn {
+      padding: 10px 20px;
+      font-size: 13px;
+    }
+
+    .liked-talks-container {
+      padding: 20px;
+      gap: 16px;
+    }
+
+    .liked-talk-item {
+      padding: 20px;
+      border-radius: 12px;
+
+      &:hover {
+        transform: translateY(-2px) scale(1.005);
+      }
+    }
+
+    .liked-talk-title {
+      font-size: 16px;
+      padding-right: 12px;
+    }
+
+    .liked-talk-meta {
+      gap: 12px;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    .liked-talk-time,
+    .liked-talk-speakers,
+    .liked-talk-room {
+      font-size: 13px;
+      padding: 4px 8px;
+    }
+
+    .remove-liked-btn {
+      width: 24px;
+      height: 24px;
+      top: -6px;
+      right: -6px;
+      font-size: 12px;
+    }
+
+    .filter-toggle-container {
+      justify-content: center;
+      margin: 16px 0;
+    }
+
+    .filter-toggle-btn {
+      padding: 14px 28px;
+      font-size: 18px;
+    }
+
+    .filter-section {
+      padding: 24px 20px;
+      margin: 16px 0;
+    }
+
+    .filter-grid {
+      grid-template-columns: 1fr;
+      gap: 24px;
+      margin-bottom: 12px;
+    }
+
+    .filter-column {
+      h4 {
+        font-size: 16px;
+        margin-bottom: 12px;
+      }
+    }
+
+    .filter-checkbox {
+      padding: 12px 0;
+      font-size: 16px;
+
+      .checkmark {
+        height: 22px;
+        width: 22px;
+      }
+
+      .checkmark:after {
+        left: 7px;
+        top: 3px;
+        width: 6px;
+        height: 10px;
+      }
+    }
+
+    .filter-footer {
+      flex-direction: column;
+      gap: 16px;
+      padding-top: 16px;
+      align-items: stretch;
+    }
+
+    .reset-filters-btn {
+      width: 100%;
+      padding: 14px 24px;
+      font-size: 16px;
+    }
+  }
+</style>
+
+<script define:vars={{ allSessions, currentDay, agendaDays }}>
+  // Pass sessions data to the client-side script
+  const sessionsData = allSessions;
+  const agendaData = [currentDay]; // Only current day for this page
+  const allAgendaData = agendaDays; // All days for reference
+
+  // Helper functions for client-side use
+  const getSessionTrackName = (session) => {
+    const trackCategory = session.categories?.find((c) => c.name === "Track");
+    const item = trackCategory?.categoryItems?.[0];
+    if (!item) return null;
+    const raw = item.name;
+    if (raw === "AI Apps" || raw === "AI Infra") return "AI";
+    return raw;
+  };
+
+  const getSessionCategoryColor = (session) => {
+    const track = getSessionTrackName(session);
+    if (!track) return "#506592";
+
+    const categoryName = track.toLowerCase();
+    const colorMap = {
+      frontend: "#fd6a82",
+      front: "#fd6a82",
+      backend: "#f78750",
+      back: "#f78750",
+      ai: "#81c47a",
+      "artificial intelligence": "#81c47a",
+      data: "#81c47a",
+      mobile: "#506592",
+      devops: "#9d4edd",
+      security: "#e63946",
+      "ui/ux": "#f72585",
+      design: "#f72585",
+    };
+
+    return colorMap[categoryName] || "#506592";
+  };
+
+  const formatTime = (dateString) => {
+    const date = new Date(dateString);
+    return date.toLocaleTimeString("en-US", {
+      hour12: false,
+      hour: "2-digit",
+      minute: "2-digit",
+    });
+  };
+
+  const formatDate = (dateString) => {
+    const date = new Date(dateString);
+    return date.toLocaleDateString("en-US", {
+      weekday: "long",
+      year: "numeric",
+      month: "long",
+      day: "numeric",
+    });
+  };
+
+  const createSlug = (text) => {
+    return text
+      .toLowerCase()
+      .replace(/[^\w\s-]/g, "") // Remove special characters
+      .replace(/\s+/g, "-") // Replace spaces with hyphens
+      .replace(/-+/g, "-") // Replace multiple hyphens with single
+      .replace(/^-+|-+$/g, ""); // Remove leading/trailing hyphens
+  };
+
+  const createSpeakerUrl = (speakerName) => {
+    return `/speakers/${createSlug(speakerName)}`;
+  };
+
+  const createTalkUrl = (talkTitle) => {
+    return `/talks/${createSlug(talkTitle)}`;
+  };
+
+  const findSessionById = (sessionId) => {
+    return sessionsData.find((session) => session.id === sessionId);
+  };
+
+  // Filtering Functions
+  function applyFilters() {
+    // Get all selected values from checkboxes
+    const selectedThemes = Array.from(
+      document.querySelectorAll("#theme-filters input:checked"),
+    ).map((cb) => cb.value);
+    const selectedRooms = Array.from(
+      document.querySelectorAll("#room-filters input:checked"),
+    ).map((cb) => cb.value);
+
+    // Filter desktop cards (including lightning talk cards)
+    const desktopCards = document.querySelectorAll(".session-content");
+    const desktopBreaks = document.querySelectorAll(".break-session-content");
+    const desktopBreakCells = document.querySelectorAll(".break-session-cell");
+
+    // Filter mobile cards (including lightning talk cards)
+    const mobileCards = document.querySelectorAll(".session-card");
+
+    let visibleCount = 0;
+    let totalCount = 0;
+
+    // Apply filters to desktop session cards
+    [...desktopCards, ...desktopBreaks].forEach((card) => {
+      const sessionId = card.getAttribute("data-talk-id");
+      const session = findSessionById(sessionId);
+
+      if (session) {
+        totalCount++;
+
+        // Check theme match
+        const track = getSessionTrackName(session);
+        const matchesTheme =
+          selectedThemes.length === 0 ||
+          (track && selectedThemes.includes(track));
+
+        // Check room match
+        const matchesRoom =
+          selectedRooms.length === 0 || selectedRooms.includes(session.room);
+
+        if (matchesTheme && matchesRoom) {
+          card.style.opacity = "1";
+          card.style.transform = "scale(1)";
+          card.style.transition = "all 0.3s ease";
+          visibleCount++;
+        } else {
+          card.style.opacity = "0.1";
+          card.style.transform = "scale(0.95)";
+          card.style.transition = "all 0.3s ease";
+        }
+      }
+    });
+
+    // Apply filters to desktop full-width break session cells
+    desktopBreakCells.forEach((cell) => {
+      const sessionId = cell.getAttribute("data-talk-id");
+      const session = findSessionById(sessionId);
+
+      if (session) {
+        totalCount++;
+
+        // Check theme match
+        const track = getSessionTrackName(session);
+        const matchesTheme =
+          selectedThemes.length === 0 ||
+          (track && selectedThemes.includes(track));
+
+        // Check room match
+        const matchesRoom =
+          selectedRooms.length === 0 || selectedRooms.includes(session.room);
+
+        // Apply visual changes to the content only (like regular session cards)
+        const breakContent = cell.querySelector(".break-session-content");
+        if (breakContent) {
+          if (matchesTheme && matchesRoom) {
+            breakContent.style.opacity = "1";
+            breakContent.style.transform = "scale(1)";
+            breakContent.style.transition = "all 0.3s ease";
+            visibleCount++;
+          } else {
+            breakContent.style.opacity = "0.1";
+            breakContent.style.transform = "scale(0.95)";
+            breakContent.style.transition = "all 0.3s ease";
+          }
+        }
+      }
+    });
+
+    // Apply filters to mobile session cards
+    mobileCards.forEach((card) => {
+      const sessionId = card.getAttribute("data-talk-id");
+      const session = findSessionById(sessionId);
+
+      if (session) {
+        const track = getSessionTrackName(session);
+        const matchesTheme =
+          selectedThemes.length === 0 ||
+          (track && selectedThemes.includes(track));
+        const matchesRoom =
+          selectedRooms.length === 0 || selectedRooms.includes(session.room);
+
+        if (matchesTheme && matchesRoom) {
+          card.style.opacity = "1";
+          card.style.transform = "scale(1)";
+          card.style.transition = "all 0.3s ease";
+        } else {
+          card.style.opacity = "0.1";
+          card.style.transform = "scale(0.95)";
+          card.style.transition = "all 0.3s ease";
+        }
+      }
+    });
+  }
+
+  function clearAllFilters() {
+    // Uncheck all checkboxes
+    document
+      .querySelectorAll('.filter-section input[type="checkbox"]')
+      .forEach((checkbox) => {
+        checkbox.checked = false;
+      });
+
+    // Reset all cards to visible
+    const allCards = document.querySelectorAll(
+      ".session-content, .break-session-content, .break-session, .session-card",
+    );
+    allCards.forEach((card) => {
+      card.style.opacity = "1";
+      card.style.transform = "scale(1)";
+      card.style.transition = "all 0.3s ease";
+    });
+
+    // Filters cleared successfully
+  }
+
+  // Filter Toggle Function
+  function toggleFilters() {
+    const filterSection = document.getElementById("filter-section");
+    const toggleBtn = document.querySelector(".filter-toggle-btn");
+
+    if (filterSection.style.display === "none") {
+      filterSection.style.display = "block";
+      toggleBtn.classList.add("active");
+    } else {
+      filterSection.style.display = "none";
+      toggleBtn.classList.remove("active");
+    }
+  }
+
+  // Make functions globally available
+  window.applyFilters = applyFilters;
+  window.clearAllFilters = clearAllFilters;
+  window.toggleFilters = toggleFilters;
+</script>
