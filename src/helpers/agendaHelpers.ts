@@ -57,12 +57,12 @@ export function createSlug(text: string): string {
 
 // Helper function to create speaker URL
 export function createSpeakerUrl(speakerName: string): string {
-  return `/speakers/${createSlug(speakerName)}`;
+  return `/speaker/${createSlug(speakerName)}`;
 }
 
 // Helper function to create talk URL
 export function createTalkUrl(talkTitle: string): string {
-  return `/talks/${createSlug(talkTitle)}`;
+  return `/session/${createSlug(talkTitle)}`;
 }
 
 // Alias for createTalkUrl to match server-side usage
@@ -162,12 +162,12 @@ export const clientHelpers = {
 
   // Helper function to create speaker URL
   createSpeakerUrl: (speakerName: string): string => {
-    return `/speakers/${clientHelpers.createSlug(speakerName)}`;
+    return `/speaker/${clientHelpers.createSlug(speakerName)}`;
   },
 
   // Helper function to create talk URL
   createTalkUrl: (talkTitle: string): string => {
-    return `/talks/${clientHelpers.createSlug(talkTitle)}`;
+    return `/session/${clientHelpers.createSlug(talkTitle)}`;
   },
 
   // Find session by ID

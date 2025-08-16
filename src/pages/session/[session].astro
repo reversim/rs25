@@ -1,19 +1,19 @@
 ---
 import type { GetStaticPaths } from "astro";
 import slug from "slug";
-import { getTalks } from "../../helpers/getTalks";
+import { getSessions } from "../../helpers/getSessions";
 import Layout from "../../layouts/Layout.astro";
 import dayjs from "dayjs";
 import BackButton from "../../components/backButton.astro";
 
 export const getStaticPaths = (async () => {
-  const talks = await getTalks();
+  const sessions = await getSessions();
 
-  return talks.rawTalksList.map((talk) => ({
+  return sessions.rawSessionsList.map((session) => ({
     params: {
-      talk: slug(talk.title),
+      session: slug(session.title),
     },
-    props: { ...talk },
+    props: { ...session },
   }));
 }) satisfies GetStaticPaths;
 
@@ -50,7 +50,7 @@ function getDaySuffix(day: number) {
   }
 }
 
-function getTalkDate() {
+function getSessionDate() {
   const startAtDate = dayjs(startsAt);
   const endAtDate = dayjs(endsAt);
 
@@ -69,16 +69,16 @@ function getTalkDate() {
   <h2>{title}</h2>
   <p>{description}</p>
 
-  <div class="talk-information">
+  <div class="session-information">
     <p>Room {room}</p>
-    <p>{getTalkDate()}</p>
+    <p>{getSessionDate()}</p>
   </div>
 
   <h4>Speakers</h4>
   {
     speakers.map((speaker) => {
       return (
-        <a href={`/speakers/${slug(speaker.name)}`} class="speaker-name">
+        <a href={`/speaker/${slug(speaker.name)}`} class="speaker-name">
           {speaker.name}
         </a>
       );
@@ -100,7 +100,7 @@ function getTalkDate() {
     text-decoration: underline;
   }
 
-  .talk-information {
+  .session-information {
     margin-top: 30px;
   }
 </style>

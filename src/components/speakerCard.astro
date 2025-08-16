@@ -7,7 +7,7 @@ interface Props extends speaker {}
 const { fullName, profilePicture, tagLine, slug } = Astro.props;
 ---
 
-<a data-astro-prefetch href={`/speakers/${slug}`} class="card">
+<a data-astro-prefetch href={`/speaker/${slug}`} class="card">
   <Image
     class="image"
     alt={fullName}
