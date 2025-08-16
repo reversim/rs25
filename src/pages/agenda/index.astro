@@ -1,0 +1,17 @@
+---
+import {
+  getAgendaDays,
+} from "../../helpers/getAgenda";
+
+// Get agenda data from Sessionize
+const rawAgendaDays = await getAgendaDays();
+
+// Redirect to the first day
+if (rawAgendaDays.length > 0) {
+  const firstDaySlug = rawAgendaDays[0].slug || new Date(rawAgendaDays[0].date).toISOString().split("T")[0];
+  return Astro.redirect(`/agenda/${firstDaySlug}`);
+} else {
+  // No agenda data available
+  throw new Error("No agenda data available");
+}
+---
