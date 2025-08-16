@@ -1,10 +1,10 @@
 ---
 import Layout from "../../layouts/Layout.astro";
-import { getTalks } from "../../helpers/getTalks";
+import { getSessions } from "../../helpers/getSessions";
 import slug from "slug";
 
-const talks = await getTalks();
-const talksList = talks.rawTalksList;
+const sessions = await getSessions();
+const sessionsList = sessions.rawSessionsList;
 
 function getTalkInfo(fullText: string): {
   shouldLoadMore: boolean;
@@ -26,26 +26,26 @@ function getTalkInfo(fullText: string): {
 ---
 
 <Layout>
-  <h2>Our Talks</h2>
+  <h2>Our Sessions</h2>
 
-  <div class="talks-container">
+  <div class="sessions-container">
     {
-      talksList.map((talk) => {
-        const descriptionInfo = getTalkInfo(talk.description);
+      sessionsList.map((session) => {
+        const descriptionInfo = getTalkInfo(session.description);
         if (descriptionInfo.shouldDisplay) {
           return (
             <div class="card">
-              {!talk.isPlenumSession ? (
-                <a href={`/talks/${slug(talk.title)}`} class="talk-link">
-                  <h4>{talk.title}</h4>
+              {!session.isPlenumSession ? (
+                <a href={`/session/${slug(session.title)}`} class="session-link">
+                  <h4>{session.title}</h4>
                 </a>
               ) : (
-                <h4>{talk.title}</h4>
+                <h4>{session.title}</h4>
               )}
-              <p class="talk-description">
+              <p class="session-description">
                 {descriptionInfo.text}
                 {descriptionInfo.shouldLoadMore && (
-                  <a href={`/talks/${slug(talk.title)}`} class="talk-link">
+                  <a href={`/session/${slug(session.title)}`} class="session-link">
                     Read More
                   </a>
                 )}
@@ -68,11 +68,11 @@ function getTalkInfo(fullText: string): {
       font-size: 16px;
     }
 
-    .talk-description {
+    .session-description {
       margin-top: 8px;
       font-size: 14px;
 
-      .talk-link {
+      .session-link {
         color: rgb(88, 108, 142);
         margin-left: 5px;
         font-size: 0.9em;

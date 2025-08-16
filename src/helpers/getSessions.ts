@@ -33,24 +33,24 @@ export interface talk {
   isConfirmed: boolean;
 }
 
-export interface talks {
+export interface session {
   groupId: number;
   groupName: string;
   sessions: talk[];
 }
 
-export async function getTalks() {
+export async function getSessions() {
   const result = await fetch(
     "https://sessionize.com/api/v2/fan6lxrk/view/Sessions"
   );
 
-  const rawTalksList: talk[] = [];
+  const rawSessionsList: talk[] = [];
 
-  const data: talks[] = await result.json();
-  data.map((session: talks) => {
-    session.sessions.map((talk) => {
-      rawTalksList.push(talk);
+  const data: session[] = await result.json();
+  data.map((session: session) => {
+    session.sessions.map((session) => {
+      rawSessionsList.push(session);
     });
   });
-  return { rawData: data, rawTalksList };
+  return { rawData: data, rawSessionsList };
 }

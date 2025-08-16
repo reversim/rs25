@@ -541,7 +541,7 @@ const uniqueCategories = [
                                     (speaker: any, index: number) => (
                                       <>
                                         <a
-                                          href={`/speakers/${speaker.name
+                                          href={`/speaker/${speaker.name
                                             .toLowerCase()
                                             .replace(/[^\w\s-]/g, "")
                                             .replace(/\s+/g, "-")
@@ -604,7 +604,7 @@ const uniqueCategories = [
                             (speaker: any, index: number) => (
                               <>
                                 <a
-                                  href={`/speakers/${speaker.name
+                                  href={`/speaker/${speaker.name
                                     .toLowerCase()
                                     .replace(/[^\w\s-]/g, "")
                                     .replace(/\s+/g, "-")
@@ -2055,11 +2055,11 @@ const uniqueCategories = [
   };
 
   const createSpeakerUrl = (speakerName) => {
-    return `/speakers/${createSlug(speakerName)}`;
+    return `/speaker/${createSlug(speakerName)}`;
   };
 
   const createTalkUrl = (talkTitle) => {
-    return `/talks/${createSlug(talkTitle)}`;
+    return `/session/${createSlug(talkTitle)}`;
   };
 
   const findSessionById = (sessionId) => {
