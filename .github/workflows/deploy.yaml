@@ -24,6 +24,12 @@ jobs:
       # Install dependencies
       - name: Install dependencies
         run: yarn install
+      
+      # Install settimezone
+      - name: Set timezone
+        uses: szenius/set-timezone@v2.0
+        with:
+          timezoneLinux: Asia/Jerusalem
 
       # Build the Astro app
       - name: Build the Astro app
