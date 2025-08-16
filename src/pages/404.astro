@@ -19,3 +19,10 @@ import Layout from "../layouts/Layout.astro";
     text-align: center;
   }
 </style>
+
+<script>
+  const url = window.location.pathname;
+  if (url.startsWith("/agenda/")) {
+    window.location.href = "/agenda";
+  }
+</script>
