@@ -1,5 +1,6 @@
 ---
 import Layout from "../../layouts/Layout.astro";
+import AgendaDaySwitcher from "../../components/agenda/AgendaDaySwitcher.astro";
 import {
   getAgendaDays,
   buildDayGrid,
@@ -75,18 +76,7 @@ const uniqueCategories = [
     </div>
 
     <!-- Day switcher -->
-    <div class="day-switcher">
-      {
-        agendaDays.map((day) => (
-          <a
-            href={`/agenda/${day.slug}`}
-            class={`day-switch-btn ${day.slug === daySlug ? "active" : ""}`}
-          >
-            {day.label}
-          </a>
-        ))
-      }
-    </div>
+    <AgendaDaySwitcher availableDays={availableDays} currentDaySlug={daySlug} />
 
     <!-- TODO Filter Toggle Button -->
     <!-- <div class="filter-toggle-container">
@@ -1312,38 +1302,6 @@ const uniqueCategories = [
   .agenda-main {
     max-width: 800px;
     margin: 0 auto;
-  }
-
-  .day-switcher {
-    display: flex;
-    justify-content: center;
-    gap: 10px;
-    margin-bottom: 30px;
-  }
-
-  .day-switch-btn {
-    background: white;
-    border: 2px solid #e9ecef;
-    border-radius: 8px;
-    padding: 12px 24px;
-    font-size: 14px;
-    font-weight: 600;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    color: #666;
-    text-decoration: none;
-    display: inline-block;
-
-    &:hover {
-      border-color: var(--blue);
-      background: #f8f9fa;
-    }
-
-    &.active {
-      background: var(--blue);
-      border-color: var(--blue);
-      color: white;
-    }
   }
 
   .day-section {
