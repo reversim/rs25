@@ -648,20 +648,24 @@ const desiredRooms = ["Main hall", "Room 2", "Room 3"];
 
   .schedule-header {
     background: linear-gradient(135deg, #e3f2fd, #bbdefb);
+    height: 54px;
     color: var(--blue);
     padding: 15px 25px;
     font-weight: 600;
     text-align: center;
     border-radius: 12px 12px 0 0;
     font-size: 18px;
+
+    position: sticky;
+    top: var(--header-height);
+    z-index: 2;
   }
 
   .grid-wrapper {
     background: white;
     border-radius: 0 0 12px 12px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    overflow: hidden;
-    overflow-x: auto;
+    overflow: visible;
   }
 
   .agenda-grid {
@@ -675,6 +679,9 @@ const desiredRooms = ["Main hall", "Room 2", "Room 3"];
     grid-template-columns: 120px 1fr 1fr 1fr;
     background: #f8f9fa;
     border-bottom: 2px solid #e9ecef;
+    position: sticky;
+    top: calc(var(--header-height) + 54px);
+    z-index: 100;
   }
 
   .grid-body {
