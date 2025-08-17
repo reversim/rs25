@@ -2030,11 +2030,9 @@ const uniqueCategories = [
   }
 </style>
 
-<script define:vars={{ allSessions, currentDay, agendaDays }}>
+<script define:vars={{ allSessions }}>
   // Pass sessions data to the client-side script
   const sessionsData = allSessions;
-  const agendaData = [currentDay]; // Only current day for this page
-  const allAgendaData = agendaDays; // All days for reference
 
   // Helper functions for client-side use
   const getSessionTrackName = (session) => {
@@ -2044,57 +2042,6 @@ const uniqueCategories = [
     const raw = item.name;
     if (raw === "AI Apps" || raw === "AI Infra") return "AI";
     return raw;
-  };
-
-  const getSessionCategoryColor = (session) => {
-    const track = getSessionTrackName(session);
-    if (!track) return "#506592";
-
-    const categoryName = track.toLowerCase();
-    const colorMap = {
-      frontend: "#fd6a82",
-      front: "#fd6a82",
-      backend: "#f78750",
-      back: "#f78750",
-      ai: "#81c47a",
-      "artificial intelligence": "#81c47a",
-      data: "#81c47a",
-      mobile: "#506592",
-      devops: "#9d4edd",
-      security: "#e63946",
-      "ui/ux": "#f72585",
-      design: "#f72585",
-    };
-
-    return colorMap[categoryName] || "#506592";
-  };
-
-  const formatTime = (dateString) => {
-    const date = new Date(dateString);
-    return date.toLocaleTimeString("en-US", {
-      hour12: false,
-      hour: "2-digit",
-      minute: "2-digit",
-    });
-  };
-
-  const formatDate = (dateString) => {
-    const date = new Date(dateString);
-    return date.toLocaleDateString("en-US", {
-      weekday: "long",
-      year: "numeric",
-      month: "long",
-      day: "numeric",
-    });
-  };
-
-  const createSlug = (text) => {
-    return text
-      .toLowerCase()
-      .replace(/[^\w\s-]/g, "") // Remove special characters
-      .replace(/\s+/g, "-") // Replace spaces with hyphens
-      .replace(/-+/g, "-") // Replace multiple hyphens with single
-      .replace(/^-+|-+$/g, ""); // Remove leading/trailing hyphens
   };
 
   const findSessionById = (sessionId) => {
