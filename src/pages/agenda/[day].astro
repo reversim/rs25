@@ -3,15 +3,12 @@ import Layout from "../../layouts/Layout.astro";
 import {
   getAgendaDays,
   buildDayGrid,
-  type AgendaDay,
   type AgendaSession,
   getTrackName,
 } from "../../helpers/getAgenda";
 import {
   getTalkCategoryColor,
-  getTalkUrl,
-  createTalkUrl,
-  createSlug,
+  getSessionUrl,
 } from "../../helpers/agendaHelpers";
 import { createSpeakerUrl } from "../../helpers/agendaHelpers";
 
@@ -202,6 +199,7 @@ const uniqueCategories = [
 
                   if (fullWidthSession && fullWidthSession.session) {
                     const session = fullWidthSession.session;
+                    const track = getTrackName(session);
 
                     const duration = Math.round(
                       (new Date(session.endsAt).getTime() -
@@ -242,6 +240,11 @@ const uniqueCategories = [
                           class="break-session-cell"
                           style="grid-column: 2 / -1;"
                           data-talk-id={session.id}
+                          onclick={
+                            track === "Keynote"
+                              ? `window.location.href='${getSessionUrl(session)}'`
+                              : null
+                          }
                         >
                           <div
                             class={`break-session-content ${session.room === "Dining Hall" ? "highlighted" : "session-content"}`}
@@ -251,9 +254,18 @@ const uniqueCategories = [
                               class="session-category-indicator"
                               style={`background-color: ${getTalkCategoryColor(session)}`}
                             />
-                            {session.isLightningGroup ? (
+                            {track !== "Keynote" &&
+                            !session.isLightningGroup ? (
                               <>
-                                <h3 class="break-title">Lightning Talks</h3>
+                                <h3 class="break-title">{session.title}</h3>
+                                <div class="break-location">{session.room}</div>
+                              </>
+                            ) : (
+                              <div />
+                            )}
+                            {session.isLightningGroup && (
+                              <>
+                                <h3 class="break-title">Lightning sessions</h3>
                                 <div class="break-location">
                                   {session?.lightningChildren?.[0]?.room}
                                 </div>
@@ -265,7 +277,7 @@ const uniqueCategories = [
                                         <div class="lightning-talk-container">
                                           <a
                                             class="lightning-talk-title"
-                                            href={getTalkUrl(child)}
+                                            href={getSessionUrl(child)}
                                           >
                                             {child.title}
                                           </a>
@@ -288,11 +300,37 @@ const uniqueCategories = [
                                   )}
                                 </div>
                               </>
-                            ) : (
-                              <>
-                                <h3 class="break-title">{session.title}</h3>
+                            )}
+                            {track === "Keynote" && (
+                              <div class="session-speakers keynote-speaker">
+                                <a
+                                  class="break-title"
+                                  href={getSessionUrl(session)}
+                                >
+                                  {session.title}
+                                </a>
+                                {session.speakers.map(
+                                  (speaker: any, index: number) => (
+                                    <>
+                                      <a href={createSpeakerUrl(speaker.name)}>
+                                        {speaker.name}
+                                      </a>
+                                      {index < session.speakers.length - 1 &&
+                                        ", "}
+                                    </>
+                                  ),
+                                )}
                                 <div class="break-location">{session.room}</div>
-                              </>
+                              </div>
+                            )}
+
+                            {track && (
+                              <div
+                                class="session-category"
+                                style={`background-color: ${getTalkCategoryColor(session)}`}
+                              >
+                                {track}
+                              </div>
                             )}
                           </div>
                         </div>
@@ -370,7 +408,7 @@ const uniqueCategories = [
                           <div
                             class="session-cell"
                             style={`grid-column: ${roomIndex + 2}`}
-                            onclick={`window.location.href='${getTalkUrl(session)}'`}
+                            onclick={`window.location.href='${getSessionUrl(session)}'`}
                           >
                             <div
                               class="session-content"
@@ -380,7 +418,7 @@ const uniqueCategories = [
                                 {duration} minutes
                               </div>
                               <h3 class="session-title">
-                                <a href={getTalkUrl(session)}>
+                                <a href={getSessionUrl(session)}>
                                   {session.title}
                                 </a>
                               </h3>
@@ -534,7 +572,9 @@ const uniqueCategories = [
                             {session.lightningChildren.map((child: any) => (
                               <div class="lightning-talk-item-mobile">
                                 <h4 class="lightning-talk-title-mobile">
-                                  <a href={getTalkUrl(child)}>{child.title}</a>
+                                  <a href={getSessionUrl(child)}>
+                                    {child.title}
+                                  </a>
                                 </h4>
                                 <div class="lightning-talk-speakers-mobile">
                                   {child.speakers.map(
@@ -597,7 +637,7 @@ const uniqueCategories = [
                         </button> */}
                         </div>
                         <h3 class="session-title">
-                          <a href={getTalkUrl(session)}>{session.title}</a>
+                          <a href={getSessionUrl(session)}>{session.title}</a>
                         </h3>
                         <div class="session-speakers">
                           {session.speakers.map(
@@ -1145,6 +1185,20 @@ const uniqueCategories = [
     color: #555;
     font-weight: 500;
     margin-top: auto;
+
+    &.keynote-speaker {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 4px;
+
+      .break-title {
+        color: var(--blue);
+      }
+      a {
+        width: max-content;
+      }
+    }
 
     a {
       color: inherit;
@@ -2052,14 +2106,6 @@ const uniqueCategories = [
       .replace(/\s+/g, "-") // Replace spaces with hyphens
       .replace(/-+/g, "-") // Replace multiple hyphens with single
       .replace(/^-+|-+$/g, ""); // Remove leading/trailing hyphens
-  };
-
-  const createSpeakerUrl = (speakerName) => {
-    return `/speaker/${createSlug(speakerName)}`;
-  };
-
-  const createTalkUrl = (talkTitle) => {
-    return `/session/${createSlug(talkTitle)}`;
   };
 
   const findSessionById = (sessionId) => {

@@ -60,14 +60,14 @@ export function createSpeakerUrl(speakerName: string): string {
   return `/speaker/${createSlug(speakerName)}`;
 }
 
-// Helper function to create talk URL
-export function createTalkUrl(talkTitle: string): string {
+// Helper function to create session URL
+export function createSessionUrl(talkTitle: string): string {
   return `/session/${createSlug(talkTitle)}`;
 }
 
-// Alias for createTalkUrl to match server-side usage
-export const getTalkUrl = (session: AgendaSession): string => {
-  return createTalkUrl(session.title);
+// Alias for createSessionUrl to match server-side usage
+export const getSessionUrl = (session: AgendaSession): string => {
+  return createSessionUrl(session.title);
 };
 
 // Helper function to format time
