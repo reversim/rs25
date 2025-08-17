@@ -25,6 +25,7 @@ export async function getStaticPaths() {
           ...day,
           grid: grid,
         },
+        availableDays: agendaDays,
       },
     };
   });
@@ -32,9 +33,7 @@ export async function getStaticPaths() {
 
 // Get the day parameter from the URL
 const { day: daySlug } = Astro.params;
-const { currentDay } = Astro.props;
-
-const agendaDays = await getAgendaDays();
+const { currentDay, availableDays } = Astro.props;
 
 // Extract all sessions for filtering (from current day only)
 const allSessions: AgendaSession[] = currentDay.rooms.flatMap(
