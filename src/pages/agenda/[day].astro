@@ -13,6 +13,7 @@ import {
   getSessionUrl,
 } from "../../helpers/agendaHelpers";
 import { createSpeakerUrl } from "../../helpers/agendaHelpers";
+import slugify from "slug";
 // import FilterSessions from "../../components/agenda/filterSessions.astro";
 
 export async function getStaticPaths() {
@@ -487,12 +488,7 @@ const desiredRooms = ["Main hall", "Room 2", "Room 3"];
                                       ) => (
                                         <>
                                           <a
-                                            href={`/speaker/${speaker.name
-                                              .toLowerCase()
-                                              .replace(/[^\w\s-]/g, "")
-                                              .replace(/\s+/g, "-")
-                                              .replace(/-+/g, "-")
-                                              .replace(/^-+|-+$/g, "")}`}
+                                            href={`/speaker/${slugify(speaker.name)}`}
                                           >
                                             {speaker.name}
                                           </a>
@@ -550,14 +546,7 @@ const desiredRooms = ["Main hall", "Room 2", "Room 3"];
                           {session.speakers.map(
                             (speaker: AgendaSpeaker, index: number) => (
                               <>
-                                <a
-                                  href={`/speaker/${speaker.name
-                                    .toLowerCase()
-                                    .replace(/[^\w\s-]/g, "")
-                                    .replace(/\s+/g, "-")
-                                    .replace(/-+/g, "-")
-                                    .replace(/^-+|-+$/g, "")}`}
-                                >
+                                <a href={`/speaker/${slugify(speaker.name)}`}>
                                   {speaker.name}
                                 </a>
                                 {index < session.speakers.length - 1 && ", "}
