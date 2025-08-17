@@ -54,4 +54,15 @@ const { availableDays, currentDaySlug } = Astro.props;
       color: white;
     }
   }
+
+  @media (max-width: 768px) {
+    .day-switcher {
+      flex-direction: column;
+      gap: 8px;
+    }
+    .day-switch-btn {
+      padding: 10px 20px;
+      font-size: 13px;
+    }
+  }
 </style>
