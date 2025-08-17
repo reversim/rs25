@@ -93,6 +93,7 @@ const currentDayUrl = await getAgendaCurrentDay();
     left: 0;
     width: 100%;
     z-index: 99999;
+    height: var(--header-height);
 
     &:before {
       content: "";
@@ -126,6 +127,8 @@ const currentDayUrl = await getAgendaCurrentDay();
     justify-content: space-between;
     align-items: center;
     position: relative;
+    top: 50%;
+    transform: translateY(-50%);
   }
 
   .menu-toggle {
