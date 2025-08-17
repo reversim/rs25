@@ -1,0 +1,68 @@
+---
+import type { AgendaDay } from "../../helpers/getAgenda";
+
+interface Props {
+  availableDays: AgendaDay[];
+  currentDaySlug: string;
+}
+
+const { availableDays, currentDaySlug } = Astro.props;
+---
+
+<div class="day-switcher">
+  {
+    availableDays.map((day: AgendaDay) => (
+      <a
+        href={`/agenda/${day.slug}`}
+        class={`day-switch-btn ${day.slug === currentDaySlug ? "active" : ""}`}
+      >
+        {day.label}
+      </a>
+    ))
+  }
+</div>
+
+<style>
+  .day-switcher {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 30px;
+  }
+
+  .day-switch-btn {
+    background: white;
+    border: 2px solid #e9ecef;
+    border-radius: 8px;
+    padding: 12px 24px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    color: #666;
+    text-decoration: none;
+    display: inline-block;
+
+    &:hover {
+      border-color: var(--blue);
+      background: #f8f9fa;
+    }
+
+    &.active {
+      background: var(--blue);
+      border-color: var(--blue);
+      color: white;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .day-switcher {
+      flex-direction: column;
+      gap: 8px;
+    }
+    .day-switch-btn {
+      padding: 10px 20px;
+      font-size: 13px;
+    }
+  }
+</style>

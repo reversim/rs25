@@ -16,7 +16,7 @@ export interface speaker {
 
 export async function getSpeakers() {
   const result = await fetch(
-    "https://sessionize.com/api/v2/fan6lxrk/view/Speakers"
+    "https://sessionize.com/api/v2/fan6lxrk/view/Speakers",
   );
 
   const data: speaker[] = await result.json();

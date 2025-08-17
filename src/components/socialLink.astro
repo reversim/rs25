@@ -19,8 +19,21 @@ interface Props {
 const { link, type, variant } = Astro.props;
 const iconsSize = variant === "sponsor-page" ? 24 : 16;
 
-const supportedTypes = ["linkedin", "twitter", "bluesky", "facebook", "github", "instagram", "website", "company_website", "medium", "youtube", "sessionize"];
+const supportedTypes = [
+  "linkedin",
+  "twitter",
+  "bluesky",
+  "facebook",
+  "github",
+  "instagram",
+  "website",
+  "company_website",
+  "medium",
+  "youtube",
+  "sessionize",
+];
 ---
+
 {
   link && supportedTypes.includes(type) && (
     <a class={`${variant} ${type}`} target="_blank" href={link}>

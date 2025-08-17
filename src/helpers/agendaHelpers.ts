@@ -1,4 +1,5 @@
 import type { AgendaSession } from "./getAgenda";
+import slugify from "slug";
 
 // Helper function for getting category color (server-side version)
 export function getTalkCategoryColor(session: AgendaSession): string {
@@ -36,7 +37,11 @@ export function getTrackName(session: AgendaSession): string | null {
   if (session.title === "Opening Words") return "opening";
   if (session.room === "Dining Hall") return "dining";
   if (session.title.startsWith("Registration")) return "Registration";
-  if (session.title === "Keynote placeholder" || session.title === "Keynote Placeholder") return "keynote";
+  if (
+    session.title === "Keynote placeholder" ||
+    session.title === "Keynote Placeholder"
+  )
+    return "keynote";
   const trackCategory = session.categories?.find((c) => c.name === "Track");
   const item = trackCategory?.categoryItems?.[0];
   if (!item) return null;
@@ -57,12 +62,12 @@ export function createSlug(text: string): string {
 
 // Helper function to create speaker URL
 export function createSpeakerUrl(speakerName: string): string {
-  return `/speaker/${createSlug(speakerName)}`;
+  return `/speaker/${slugify(speakerName)}`;
 }
 
 // Helper function to create session URL
 export function createSessionUrl(talkTitle: string): string {
-  return `/session/${createSlug(talkTitle)}`;
+  return `/session/${slugify(talkTitle)}`;
 }
 
 // Alias for createSessionUrl to match server-side usage
@@ -96,7 +101,7 @@ export const clientHelpers = {
   // Helper function to get session track name (client-side version)
   getSessionTrackName: (session: any): string | null => {
     const trackCategory = session.categories?.find(
-      (c: any) => c.name === "Track"
+      (c: any) => c.name === "Track",
     );
     const item = trackCategory?.categoryItems?.[0];
     if (!item) return null;
@@ -150,24 +155,14 @@ export const clientHelpers = {
     });
   },
 
-  // Helper function to create URL-friendly slug
-  createSlug: (text: string): string => {
-    return text
-      .toLowerCase()
-      .replace(/[^\w\s-]/g, "") // Remove special characters
-      .replace(/\s+/g, "-") // Replace spaces with hyphens
-      .replace(/-+/g, "-") // Replace multiple hyphens with single
-      .replace(/^-+|-+$/g, ""); // Remove leading/trailing hyphens
-  },
-
   // Helper function to create speaker URL
   createSpeakerUrl: (speakerName: string): string => {
-    return `/speaker/${clientHelpers.createSlug(speakerName)}`;
+    return `/speaker/${slugify(speakerName)}`;
   },
 
   // Helper function to create talk URL
   createTalkUrl: (talkTitle: string): string => {
-    return `/session/${clientHelpers.createSlug(talkTitle)}`;
+    return `/session/${slugify(talkTitle)}`;
   },
 
   // Find session by ID
