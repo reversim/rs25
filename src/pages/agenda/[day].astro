@@ -570,35 +570,40 @@ const uniqueCategories = [
                           </div>
                           <h3 class="session-title">Lightning Talks</h3>
                           <div class="lightning-talks-mobile-list">
-                            {session.lightningChildren.map((child: AgendaSession) => (
-                              <div class="lightning-talk-item-mobile">
-                                <h4 class="lightning-talk-title-mobile">
-                                  <a href={getSessionUrl(child)}>
-                                    {child.title}
-                                  </a>
-                                </h4>
-                                <div class="lightning-talk-speakers-mobile">
-                                  {child.speakers.map(
-                                    (speaker: AgendaSpeaker, index: number) => (
-                                      <>
-                                        <a
-                                          href={`/speaker/${speaker.name
-                                            .toLowerCase()
-                                            .replace(/[^\w\s-]/g, "")
-                                            .replace(/\s+/g, "-")
-                                            .replace(/-+/g, "-")
-                                            .replace(/^-+|-+$/g, "")}`}
-                                        >
-                                          {speaker.name}
-                                        </a>
-                                        {index < child.speakers.length - 1 &&
-                                          ", "}
-                                      </>
-                                    ),
-                                  )}
+                            {session.lightningChildren.map(
+                              (child: AgendaSession) => (
+                                <div class="lightning-talk-item-mobile">
+                                  <h4 class="lightning-talk-title-mobile">
+                                    <a href={getSessionUrl(child)}>
+                                      {child.title}
+                                    </a>
+                                  </h4>
+                                  <div class="lightning-talk-speakers-mobile">
+                                    {child.speakers.map(
+                                      (
+                                        speaker: AgendaSpeaker,
+                                        index: number,
+                                      ) => (
+                                        <>
+                                          <a
+                                            href={`/speaker/${speaker.name
+                                              .toLowerCase()
+                                              .replace(/[^\w\s-]/g, "")
+                                              .replace(/\s+/g, "-")
+                                              .replace(/-+/g, "-")
+                                              .replace(/^-+|-+$/g, "")}`}
+                                          >
+                                            {speaker.name}
+                                          </a>
+                                          {index < child.speakers.length - 1 &&
+                                            ", "}
+                                        </>
+                                      ),
+                                    )}
+                                  </div>
                                 </div>
-                              </div>
-                            ))}
+                              ),
+                            )}
                           </div>
                           <div
                             class="session-category-indicator"

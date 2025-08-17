@@ -36,7 +36,11 @@ export function getTrackName(session: AgendaSession): string | null {
   if (session.title === "Opening Words") return "opening";
   if (session.room === "Dining Hall") return "dining";
   if (session.title.startsWith("Registration")) return "Registration";
-  if (session.title === "Keynote placeholder" || session.title === "Keynote Placeholder") return "keynote";
+  if (
+    session.title === "Keynote placeholder" ||
+    session.title === "Keynote Placeholder"
+  )
+    return "keynote";
   const trackCategory = session.categories?.find((c) => c.name === "Track");
   const item = trackCategory?.categoryItems?.[0];
   if (!item) return null;
@@ -96,7 +100,7 @@ export const clientHelpers = {
   // Helper function to get session track name (client-side version)
   getSessionTrackName: (session: any): string | null => {
     const trackCategory = session.categories?.find(
-      (c: any) => c.name === "Track"
+      (c: any) => c.name === "Track",
     );
     const item = trackCategory?.categoryItems?.[0];
     if (!item) return null;

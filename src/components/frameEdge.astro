@@ -37,31 +37,31 @@ const rotationDeg = rotation + 270 + "deg";
       100% 100%,
       100% 0%
     );
-    transform: rotate(var(--rotationDeg)) translate(2px, -2px);;
+    transform: rotate(var(--rotationDeg)) translate(2px, -2px);
 
-    .screw{
-        position: relative;
-        margin-top: 2px;
-        margin-left: 12px;
-        height: 6px;
-        aspect-ratio: 1;
-        border-radius: 50%;
-        background-color: #81b7c3;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        box-shadow: 1px -0.5px 1px rgb(0 0 0 / 80%);
-    
-        &::before {
-            content: "";
-            position: absolute;
-            display: block;
-            width: 0.5px;
-            height: inherit;
-            background-color: black;
-            transition: transform 0.3s;
-            transform: rotate(calc(var(--rotationDeg) + 30deg));
-        }
+    .screw {
+      position: relative;
+      margin-top: 2px;
+      margin-left: 12px;
+      height: 6px;
+      aspect-ratio: 1;
+      border-radius: 50%;
+      background-color: #81b7c3;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 1px -0.5px 1px rgb(0 0 0 / 80%);
+
+      &::before {
+        content: "";
+        position: absolute;
+        display: block;
+        width: 0.5px;
+        height: inherit;
+        background-color: black;
+        transition: transform 0.3s;
+        transform: rotate(calc(var(--rotationDeg) + 30deg));
+      }
     }
   }
 </style>

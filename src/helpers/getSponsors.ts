@@ -27,7 +27,7 @@ export interface sponsorData {
   medium: string;
   image: any;
   slug: string;
-  openJobsLink?: string
+  openJobsLink?: string;
 }
 
 export async function getSponsors(type?: sponsorData["sponsorTier"]) {
@@ -35,17 +35,17 @@ export async function getSponsors(type?: sponsorData["sponsorTier"]) {
   let finalSponsors = sponsorsData;
   if (type === "organizing") {
     finalSponsors = sponsorsData.filter(
-      (sponsor) => sponsor.sponsorTier === "organizing"
+      (sponsor) => sponsor.sponsorTier === "organizing",
     );
   }
   if (type === "community") {
     finalSponsors = sponsorsData.filter(
-      (sponsor) => sponsor.sponsorTier === "community"
+      (sponsor) => sponsor.sponsorTier === "community",
     );
   }
   if (type === "game-changers") {
     finalSponsors = sponsorsData.filter(
-      (sponsor) => sponsor.sponsorTier === "game-changers"
+      (sponsor) => sponsor.sponsorTier === "game-changers",
     );
   }
 

@@ -36,7 +36,7 @@ const cssVars = `
   const minMachineWidth = 1000;
   document.documentElement.style.setProperty(
     "--minMachineWidth",
-    `${minMachineWidth}px`
+    `${minMachineWidth}px`,
   );
   let machineStarted = false;
 
@@ -446,7 +446,8 @@ const cssVars = `
         opacity: 0.3;
         z-index: -1;
 
-        background: linear-gradient(
+        background:
+          linear-gradient(
             122deg,
             black 0%,
             rgba(0, 0, 0, 0.8) 30%,

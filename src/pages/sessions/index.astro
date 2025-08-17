@@ -36,7 +36,10 @@ function getTalkInfo(fullText: string): {
           return (
             <div class="card">
               {!session.isPlenumSession ? (
-                <a href={`/session/${slug(session.title)}`} class="session-link">
+                <a
+                  href={`/session/${slug(session.title)}`}
+                  class="session-link"
+                >
                   <h4>{session.title}</h4>
                 </a>
               ) : (
@@ -45,7 +48,10 @@ function getTalkInfo(fullText: string): {
               <p class="session-description">
                 {descriptionInfo.text}
                 {descriptionInfo.shouldLoadMore && (
-                  <a href={`/session/${slug(session.title)}`} class="session-link">
+                  <a
+                    href={`/session/${slug(session.title)}`}
+                    class="session-link"
+                  >
                     Read More
                   </a>
                 )}

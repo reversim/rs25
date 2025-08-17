@@ -6,6 +6,8 @@
     "dev": "astro dev --host",
     "build": "astro build",
     "preview": "astro preview",
+    "lint": "prettier --check .",
+    "lint:fix": "prettier --write .",
     "astro": "astro"
   },
   "dependencies": {

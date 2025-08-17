@@ -7,7 +7,7 @@ on:
   schedule:
     # Runs daily at 12:00 AM Jerusalem time (21:00 UTC during DST, 22:00 UTC during standard time)
     # Using 21:00 UTC to align with Jerusalem DST (UTC+3) which is observed most of the year
-    - cron: '0 21 * * *'
+    - cron: "0 21 * * *"
 
 jobs:
   deploy:
@@ -28,7 +28,7 @@ jobs:
       # Install dependencies
       - name: Install dependencies
         run: yarn install
-      
+
       # Install settimezone
       - name: Set timezone
         uses: szenius/set-timezone@v2.0
