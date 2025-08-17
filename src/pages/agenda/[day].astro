@@ -14,6 +14,8 @@ import {
 } from "../../helpers/agendaHelpers";
 import { createSpeakerUrl } from "../../helpers/agendaHelpers";
 import slugify from "slug";
+// import LikeTalkButton from "../../components/agenda/likeTalkButton.astro";
+// import LikeTalkSection from "../../components/agenda/likeTalkSection.astro";
 // import FilterSessions from "../../components/agenda/filterSessions.astro";
 
 export async function getStaticPaths() {
@@ -53,9 +55,7 @@ const desiredRooms = ["Main hall", "Room 2", "Room 3"];
     </div>
 
     <!-- Liked talks section (initially hidden) -->
-    <div id="liked-section" class="liked-section" style="display: none;">
-      <div id="liked-talks" class="liked-talks-container"></div>
-    </div>
+    <!-- <LikeTalkSection currentDay={currentDay} agendaDays={availableDays} /> -->
 
     <!-- Day switcher -->
     <AgendaDaySwitcher
@@ -351,14 +351,10 @@ const desiredRooms = ["Main hall", "Room 2", "Room 3"];
                                 </div>
                               )}
                               {/* TODO: Add like button */}
-                              {/* <button
-                              class="like-btn-desktop"
-                              data-talk-id={session.id}
-                              onclick={`event.stopPropagation(); toggleLike('${session.id}')`}
-                              title="Like this talk"
-                            >
-                              ♡
-                            </button> */}
+                              {/* <LikeTalkButton
+                                session={session}
+                                desktop={true}
+                              /> */}
                               <div
                                 class="session-category-indicator"
                                 style={`background-color: ${categoryColor}`}
@@ -530,14 +526,8 @@ const desiredRooms = ["Main hall", "Room 2", "Room 3"];
                               → {duration} min
                             </span>
                           </div>
-                          {/* <button
-                          class="like-btn"
-                          data-talk-id={session.id}
-                          onclick={`event.stopPropagation(); toggleLike('${session.id}')`}
-                          title="Like this talk"
-                        >
-                          ♡
-                        </button> */}
+                          {/* TODO: Add like button */}
+                          {/* <LikeTalkButton desktop={false} session={session} /> */}
                         </div>
                         <h3 class="session-title">
                           <a href={getSessionUrl(session)}>{session.title}</a>
@@ -626,21 +616,6 @@ const desiredRooms = ["Main hall", "Room 2", "Room 3"];
 
     &:hover {
       background: #3d4e73;
-    }
-  }
-
-  .liked-section {
-    margin-bottom: 30px;
-
-    h3 {
-      margin: 0 0 15px 0;
-      font-size: 18px;
-    }
-
-    .liked-talks-container {
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
     }
   }
 
@@ -937,26 +912,6 @@ const desiredRooms = ["Main hall", "Room 2", "Room 3"];
     width: max-content;
   }
 
-  .like-btn-desktop {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    background: none;
-    border: none;
-    font-size: 16px;
-    cursor: pointer;
-    color: #ccc;
-    transition: color 0.3s ease;
-
-    &:hover {
-      color: var(--pink);
-    }
-
-    &.liked {
-      color: var(--pink);
-    }
-  }
-
   .session-category-indicator {
     position: absolute;
     top: 0;
@@ -1172,26 +1127,6 @@ const desiredRooms = ["Main hall", "Room 2", "Room 3"];
     width: max-content;
   }
 
-  .like-btn {
-    background: none;
-    border: none;
-    font-size: 20px;
-    cursor: pointer;
-    color: #ccc;
-    transition: color 0.3s ease;
-    padding: 0;
-    margin: 0;
-    line-height: 1;
-
-    &:hover {
-      color: var(--pink);
-    }
-
-    &.liked {
-      color: var(--pink);
-    }
-  }
-
   .session-category-indicator {
     position: absolute;
     top: 0;
@@ -1251,197 +1186,6 @@ const desiredRooms = ["Main hall", "Room 2", "Room 3"];
         text-decoration: underline;
       }
     }
-  }
-
-  .liked-talks-container {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
-    padding: 25px;
-    border-radius: 15px;
-    margin-bottom: 30px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-    border: 1px solid #dee2e6;
-
-    &:empty {
-      display: none;
-    }
-
-    &:before {
-      content: "Your Liked Talks";
-      font-size: 20px;
-      font-weight: 700;
-      color: #495057;
-      margin-bottom: 10px;
-      padding-bottom: 15px;
-      border-bottom: 2px solid #dee2e6;
-      display: block;
-    }
-  }
-
-  .liked-talk-item {
-    background: linear-gradient(135deg, #ffffff 0%, #fcfcfd 100%);
-    border: 2px solid #e9ecef;
-    border-radius: 16px;
-    padding: 24px;
-    cursor: pointer;
-    position: relative;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    box-shadow:
-      0 4px 6px -1px rgba(0, 0, 0, 0.1),
-      0 2px 4px -1px rgba(0, 0, 0, 0.06);
-    border-left: 6px solid var(--pink);
-    overflow: hidden;
-
-    &::before {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 3px;
-      background: linear-gradient(
-        90deg,
-        var(--pink) 0%,
-        var(--orange) 50%,
-        var(--green) 100%
-      );
-    }
-
-    &:hover {
-      transform: translateY(-4px) scale(1.01);
-      box-shadow:
-        0 20px 25px -5px rgba(0, 0, 0, 0.1),
-        0 10px 10px -5px rgba(0, 0, 0, 0.04);
-      border-color: var(--pink);
-      background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
-    }
-  }
-
-  .liked-talk-content {
-    width: 100%;
-  }
-
-  .liked-talk-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    margin-bottom: 16px;
-    position: relative;
-  }
-
-  .liked-talk-title {
-    font-size: 18px;
-    font-weight: 700;
-    line-height: 1.4;
-    margin: 0;
-    flex: 1;
-    padding-right: 16px;
-    color: #2d3748;
-    display: -webkit-box;
-    -webkit-line-clamp: 2;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-
-    a {
-      color: inherit;
-      text-decoration: none;
-
-      &:hover {
-        color: var(--blue);
-        text-decoration: underline;
-      }
-    }
-  }
-
-  .liked-talk-meta {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-    font-size: 14px;
-    color: #718096;
-    margin-bottom: 12px;
-  }
-
-  .liked-talk-time,
-  .liked-talk-speakers,
-  .liked-talk-room {
-    display: flex;
-    align-items: center;
-    gap: 6px;
-    background: #f7fafc;
-    padding: 6px 12px;
-    border-radius: 8px;
-    font-weight: 500;
-    border: 1px solid #e2e8f0;
-    transition: all 0.2s ease;
-  }
-
-  .liked-talk-time:hover,
-  .liked-talk-speakers:hover,
-  .liked-talk-room:hover {
-    background: #edf2f7;
-    border-color: #cbd5e0;
-  }
-
-  .remove-liked-btn {
-    position: absolute;
-    top: -8px;
-    right: -8px;
-    width: 28px;
-    height: 28px;
-    border-radius: 50%;
-    background: #e53e3e;
-    color: white;
-    border: 2px solid white;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 14px;
-    font-weight: 700;
-    transition: all 0.2s ease;
-    box-shadow: 0 2px 8px rgba(229, 62, 62, 0.3);
-    z-index: 10;
-
-    &:hover {
-      background: #c53030;
-      transform: scale(1.1);
-      box-shadow: 0 4px 12px rgba(197, 48, 48, 0.4);
-    }
-
-    &:active {
-      transform: scale(0.95);
-    }
-  }
-
-  .liked-talk-category {
-    position: absolute;
-    top: 3px;
-    left: 0;
-    width: 6px;
-    height: calc(100% - 6px);
-    border-radius: 0 6px 6px 0;
-    box-shadow: 2px 0 4px rgba(0, 0, 0, 0.1);
-  }
-
-  .liked-talk-info {
-    position: relative;
-    z-index: 1;
-  }
-
-  .liked-talk-category-badge {
-    display: inline-block;
-    padding: 4px 12px;
-    border-radius: 12px;
-    font-size: 12px;
-    font-weight: 600;
-    color: white;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-    margin-top: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   }
 
   /* Current time highlighting */
@@ -1605,50 +1349,6 @@ const desiredRooms = ["Main hall", "Room 2", "Room 3"];
 
     .room-time-info {
       gap: 6px;
-    }
-
-    .like-btn {
-      font-size: 18px;
-    }
-
-    .liked-talks-container {
-      padding: 20px;
-      gap: 16px;
-    }
-
-    .liked-talk-item {
-      padding: 20px;
-      border-radius: 12px;
-
-      &:hover {
-        transform: translateY(-2px) scale(1.005);
-      }
-    }
-
-    .liked-talk-title {
-      font-size: 16px;
-      padding-right: 12px;
-    }
-
-    .liked-talk-meta {
-      gap: 12px;
-      flex-direction: column;
-      align-items: flex-start;
-    }
-
-    .liked-talk-time,
-    .liked-talk-speakers,
-    .liked-talk-room {
-      font-size: 13px;
-      padding: 4px 8px;
-    }
-
-    .remove-liked-btn {
-      width: 24px;
-      height: 24px;
-      top: -6px;
-      right: -6px;
-      font-size: 12px;
     }
   }
 </style>
