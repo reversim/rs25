@@ -705,7 +705,17 @@
       "companyName": "HiBob",
       "website": "https://www.hibob.com/",
       "description": "HiBob’s mission is to transform the world of work through Bob, its intuitive, centralized HR platform. Designed for today’s dynamic organizations, Bob simplifies complex global HR processes with automation, flexibility, and real-time people analytics.\n\nWhether teams work in-office, remotely, or globally, Bob keeps them connected and productive. With customizable workflows, task automation, and advanced reporting, it empowers HR teams to streamline operations, enhance decision-making, and create meaningful employee experiences. Bob also supports localized experiences—languages, currencies, holiday calendars, and compliance—without needing professional services.\n\nWith over 5,000 customers and 1 million users worldwide, Bob is recognized as a leading HR platform that helps companies build culture, manage complexity, and drive business success.",
-      "carouselImages": [],
+      "carouselImages": [
+        "hibob-1",
+        "hibob-2",
+        "hibob-3",
+        "hibob-4",
+        "hibob-5",
+        "hibob-6",
+        "hibob-7",
+        "hibob-8",
+        "hibob-9"
+      ],
       "linkedin": "https://www.linkedin.com/company/hibob/posts/?feedView=all",
       "twitter": "",
       "youtube": "",
