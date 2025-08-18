@@ -681,7 +681,7 @@ const desiredRooms = ["Main hall", "Room 2", "Room 3"];
     border-bottom: 2px solid #e9ecef;
     position: sticky;
     top: calc(var(--header-height) + 54px);
-    z-index: 100;
+    z-index: 3;
   }
 
   .grid-body {
@@ -784,6 +784,7 @@ const desiredRooms = ["Main hall", "Room 2", "Room 3"];
     padding: 8px;
     vertical-align: top;
     border-right: 1px solid #e9ecef;
+    z-index: 1;
 
     &:last-child {
       border-right: none;
@@ -1017,7 +1018,7 @@ const desiredRooms = ["Main hall", "Room 2", "Room 3"];
   }
 
   .day-header {
-    background: var(--green);
+    background: linear-gradient(135deg, #e3f2fd, #bbdefb);
     color: white;
     padding: 15px 25px;
     font-weight: 600;
@@ -1234,7 +1235,7 @@ const desiredRooms = ["Main hall", "Room 2", "Room 3"];
     border-radius: 8px;
     font-size: 14px;
     font-weight: 600;
-    z-index: 1001;
+    z-index: 10;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
     display: none;
   }
@@ -1338,6 +1339,16 @@ const desiredRooms = ["Main hall", "Room 2", "Room 3"];
     .day-header {
       font-size: 16px;
       padding: 12px 20px;
+
+      position: sticky;
+      top: var(--header-height);
+      z-index: 2;
+      height: 44px;
+
+      animation: shrinkRadius 0.5s both;
+      animation-timeline: scroll(root block);
+      animation-range-start: 0;
+      animation-range-end: 100dvh;
     }
 
     .time-header {
@@ -1356,6 +1367,15 @@ const desiredRooms = ["Main hall", "Room 2", "Room 3"];
 
     .room-time-info {
       gap: 6px;
+    }
+  }
+
+  @keyframes shrinkRadius {
+    from {
+      border-radius: 5px;
+    }
+    to {
+      border-radius: 0px;
     }
   }
 </style>
