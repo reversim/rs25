@@ -101,7 +101,8 @@ const { havePadding = true } = Astro.props;
   .body-container {
     margin: auto;
     box-sizing: unset;
-    height: 100vh;
+    height: 100%;
+    min-height: calc(100vh - var(--header-height) - 20px - 48px - 41px);
   }
 
   .have-padding {
