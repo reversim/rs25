@@ -1,0 +1,144 @@
+<div id="registration-banner" class="banner-container" style="display: none">
+  <div class="banner-content">
+    <div class="banner-message">
+      <strong>Registration Opens September 3rd!</strong>
+      <span
+        >Get ready to secure your spot at Reversim Summit 2025. Stay tuned for
+        more details</span
+      >
+    </div>
+    <div class="banner-actions">
+      <button id="never-show-again-btn" class="never-show-btn">
+        Never show again
+      </button>
+      <button id="close-banner-btn" class="close-btn" aria-label="Close banner">
+        Close
+      </button>
+    </div>
+  </div>
+</div>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const banner = document.getElementById("registration-banner");
+    const closeBannerBtn = document.getElementById("close-banner-btn");
+    const neverShowBtn = document.getElementById("never-show-again-btn");
+
+    // Check if user has permanently dismissed the banner
+    if (!localStorage.getItem("registration-banner-dismissed")) {
+      banner?.style.removeProperty("display");
+    }
+
+    // Close banner temporarily
+    closeBannerBtn?.addEventListener("click", () => {
+      banner?.style.setProperty("display", "none");
+    });
+
+    // Never show again - store in localStorage
+    neverShowBtn?.addEventListener("click", () => {
+      localStorage.setItem("registration-banner-dismissed", "true");
+      banner?.remove();
+    });
+  });
+</script>
+
+<style lang="scss">
+  .banner-container {
+    height: max-content;
+    display: flex;
+    justify-content: center;
+    background: linear-gradient(135deg, var(--pink) 0%, var(--orange) 100%);
+    color: white;
+    padding: 24px 16px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    position: sticky;
+    bottom: 0;
+    z-index: 1000;
+
+    .banner-content {
+      max-width: var(--max-container-width);
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 124px;
+
+      @media (max-width: 768px) {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 24px;
+      }
+    }
+
+    .banner-message {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+
+      strong {
+        font-size: 16px;
+        font-weight: 600;
+      }
+
+      span {
+        font-size: 14px;
+        opacity: 0.9;
+      }
+
+      @media (max-width: 768px) {
+        strong {
+          font-size: 15px;
+        }
+        span {
+          font-size: 13px;
+        }
+      }
+    }
+
+    .banner-actions {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-shrink: 0;
+
+      @media (max-width: 768px) {
+        align-self: flex-end;
+        gap: 8px;
+      }
+    }
+
+    .never-show-btn {
+      background: rgba(255, 255, 255, 0.2);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      color: white;
+      padding: 6px 12px;
+      border-radius: 4px;
+      font-size: 12px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+
+      &:hover {
+        background: rgba(255, 255, 255, 0.3);
+        border-color: rgba(255, 255, 255, 0.5);
+      }
+
+      &:active {
+        transform: translateY(1px);
+      }
+    }
+
+    .close-btn {
+      background: none;
+      border: none;
+      color: white;
+      font-size: 16px;
+      cursor: pointer;
+      padding: 4px;
+      border-radius: 50%;
+      height: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+</style>
