@@ -68,7 +68,7 @@ function getSessionDate() {
 <Layout>
   <BackButton />
   <h2>{title}</h2>
-  <p>{description}</p>
+  <p class="description">{description}</p>
 
   <div class="session-information">
     <p>Room {room}</p>
@@ -91,6 +91,10 @@ function getSessionDate() {
   h2 {
     text-align: start;
     margin-top: 16px;
+  }
+
+  .description {
+    line-height: 1.5;
   }
 
   h4 {
