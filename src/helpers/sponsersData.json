@@ -758,7 +758,16 @@
       "companyName": "TITAN",
       "website": "https://titandxp.com/",
       "description": "Titan is the leading no-code platform for Salesforce, and we’re growing fast. With thousands of global customers and a product that delivers real value, we’re solving real-world challenges at scale using the latest in AI, Agentforce, and automation. Our platform helps companies in every industry build dynamic digital experiences directly in Salesforce without writing a single line of code.\n\nFrom document generation to e-signatures, surveys to portals, and web apps to single-page applications, Titan empowers teams to design, launch, and manage any business interaction - internally or externally - directly on Salesforce. Everything stays real-time, secure, and fully compliant.\n\nOur R&D team has grown exponentially in the past two years, and this is set to continue in the years ahead. We work with technologies like React, Node.js, JavaScript, Redis, AWS and more - plus our own internal frameworks for no-code builder logic, scalable workflows, and Agentforce-compatible AI. Every engineer here has a seat at the table, a real impact on the product, and an exciting growth path. It’s fast-paced, collaborative, and never boring.",
-      "carouselImages": [],
+      "carouselImages": [
+        "titan-1",
+        "titan-2",
+        "titan-3",
+        "titan-4",
+        "titan-5",
+        "titan-6",
+        "titan-7",
+        "titan-8"
+      ],
       "linkedin": "https://www.linkedin.com/company/formtitan/posts/?feedView=all",
       "twitter": "https://x.com/TitanDXP",
       "youtube": "https://www.youtube.com/@titan_dxp",
