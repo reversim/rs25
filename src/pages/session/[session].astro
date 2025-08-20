@@ -71,7 +71,7 @@ function getSessionDate() {
   <p class="description">{description}</p>
 
   <div class="session-information">
-    <p>Room {room}</p>
+    <p>Room: {room}</p>
     <p>{getSessionDate()}</p>
   </div>
 
@@ -95,6 +95,7 @@ function getSessionDate() {
 
   .description {
     line-height: 1.5;
+    white-space: pre-wrap;
   }
 
   h4 {
