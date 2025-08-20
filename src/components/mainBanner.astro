@@ -536,6 +536,9 @@ const cssVars = `
           &.elementor {
             height: 42px;
           }
+          &.arpeely {
+            height: 58px;
+          }
         }
         .sponsor-logo {
           filter: brightness(0) invert(1);
@@ -573,18 +576,7 @@ const cssVars = `
           .logo-container {
             transform: translateY(0px) !important;
 
-            &.tenable,
-            &.plus500,
-            &.workday,
-            &.cyera,
-            &.melio,
-            &.hibob,
-            &.titan,
-            &.wsc-sports,
-            &.wix,
-            &.starkware,
-            &.lightricks,
-            &.elementor {
+            &[class*="logo-container"] {
               scale: 0.8;
             }
           }

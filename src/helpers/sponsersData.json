@@ -1052,6 +1052,46 @@
       ],
       "testimonials": [],
       "openJobsLink": ""
+    },
+    {
+      "sponsorTier": "game-changers",
+      "companyName": "Arpeely",
+      "website": "https://arpeely.com/",
+      "description": "We build and operate Machine Learning based media acquisition algorithms for managed & RTB environments.\nOur autonomous media engine, targets, re-targets, self-adapts and generates insights to zero-down on the most valuable traffic, users and LTV.\n\nDirectly connected to Ad-exchanges, it's able to predict, detect and evade fraudulent sources & low intent traffic, generating additional market edge.\n\nArpeely is a fusion of Engineering, Fraud Sciences, AI, Data Science, and Digital Marketing",
+      "carouselImages": [],
+      "linkedin": "https://www.linkedin.com/company/arpeely/?viewAsMember=true",
+      "twitter": "",
+      "youtube": "",
+      "github": "",
+      "facebook": "",
+      "instagram": "https://www.instagram.com/arpeely/",
+      "medium": "",
+      "meetup": "",
+      "technologyStack": [],
+      "openPositions": [
+        {
+          "position": "C++ Developer",
+          "location": "Tel Aviv",
+          "positionLink": "https://www.comeet.com/jobs/arpeely/57.001/c-developer/FB.55E"
+        },
+        {
+          "position": "Senior Full Stack Developer",
+          "location": "Tel Aviv",
+          "positionLink": "https://www.comeet.com/jobs/arpeely/57.001/senior-full-stack-developer/0C.558"
+        },
+        {
+          "position": "ML Engineer",
+          "location": "Tel Aviv",
+          "positionLink": "https://www.comeet.com/jobs/arpeely/57.001/ml-engineer/7E.451"
+        },
+        {
+          "position": "Senior Data Scientist",
+          "location": "Tel Aviv",
+          "positionLink": "https://www.comeet.com/jobs/arpeely/57.001/senior-data-scientist/47.756"
+        }
+      ],
+      "testimonials": [],
+      "openJobsLink": ""
     }
   ]
 }
