@@ -46,6 +46,9 @@ const desiredRooms = ["Main hall", "Room 2", "Room 3"];
   <div class="agenda-container">
     <div class="agenda-header">
       <h2>Conference Agenda</h2>
+      <p class="language-note">
+        <sup>*</sup>All sessions will be conducted in Hebrew
+      </p>
       <!-- TODO - add scroll to now button -->
       <!-- <div class="header-actions">
         <button id="scroll-to-now" class="current-time-btn">
@@ -578,8 +581,13 @@ const desiredRooms = ["Main hall", "Room 2", "Room 3"];
   .agenda-header {
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    align-items: end;
     margin-bottom: 30px;
+
+    .language-note {
+      font-size: 14px;
+      font-weight: 300;
+    }
 
     h2 {
       margin: 0;
