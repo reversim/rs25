@@ -267,6 +267,10 @@ const cssVars = `
         height: 600px;
       }
 
+      @media (max-width: 768px) {
+        height: 480px;
+      }
+
       #machine-stage {
         aspect-ratio: 1;
         height: 600px;
@@ -405,6 +409,10 @@ const cssVars = `
       padding: 8% 10%;
       border-bottom: var(--border-height) solid #9e9e9e;
 
+      @media (max-width: 768px) {
+        clip-path: ellipse(225% 100% at 40% 100%);
+      }
+
       &::after {
         content: "";
         position: absolute;
@@ -457,7 +465,7 @@ const cssVars = `
         background-size: 128%;
         background-position: center;
 
-        clip-path: ellipse(133% 100% at 40% 100%);
+        clip-path: inherit;
         filter: grayscale(1);
       }
 
