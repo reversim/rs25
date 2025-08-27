@@ -65,36 +65,42 @@ function getSessionDate() {
 }
 ---
 
-<Layout>
+<Layout haveBG={true}>
   <BackButton />
-  <h2>{title}</h2>
-  <p class="description">{description}</p>
+  <div class="session-container">
+    <h2>{title}</h2>
+    <p class="description">{description}</p>
 
-  <div class="session-information">
-    <p>Room: {room}</p>
-    <p>{getSessionDate()}</p>
+    <div class="session-information">
+      <p>Room: {room}</p>
+      <p>{getSessionDate()}</p>
+    </div>
+
+    <h4>Speakers</h4>
+    {
+      speakers.map((speaker) => {
+        return (
+          <a href={`/speaker/${slug(speaker.name)}`} class="speaker-name">
+            {speaker.name}
+          </a>
+        );
+      })
+    }
   </div>
-
-  <h4>Speakers</h4>
-  {
-    speakers.map((speaker) => {
-      return (
-        <a href={`/speaker/${slug(speaker.name)}`} class="speaker-name">
-          {speaker.name}
-        </a>
-      );
-    })
-  }
 </Layout>
 
 <style lang="scss">
+  .session-container {
+    padding: 20px 0px 50px;
+  }
   h2 {
     text-align: start;
     margin-top: 16px;
+    font-weight: 200;
   }
 
   .description {
-    line-height: 1.5;
+    line-height: 2;
     white-space: pre-wrap;
   }
 
