@@ -1101,6 +1101,49 @@
       ],
       "testimonials": [],
       "openJobsLink": ""
+    },
+    {
+      "sponsorTier": "game-changers",
+      "companyName": "mobileye",
+      "website": "https://careers.mobileye.com/",
+      "description": "Mobileye (Nasdaq: MBLY) leads the mobility revolution with its autonomous driving and driver-assistance technologies, harnessing world-renowned expertise in computer vision, artificial intelligence, mapping, and data analysis. Since its founding in 1999, Mobileye has pioneered such groundbreaking technologies as REM™ crowdsourced mapping, True Redundancy™ sensing, and Responsibility Sensitive Safety (RSS). These technologies are driving the ADAS and AV fields towards the future of mobility – enabling self-driving vehicles and mobility solutions, powering industry-leading advanced driver-assistance systems and delivering valuable intelligence to optimize mobility infrastructure. To date, more than 180 million vehicles worldwide have been built with Mobileye technology inside. In 2022 Mobileye listed as an independent company separate from Intel (Nasdaq: INTC), which retains majority ownership",
+      "carouselImages": [
+        "mobileye-1",
+        "mobileye-2",
+        "mobileye-3",
+        "mobileye-4"
+      ],
+      "linkedin": "https://www.linkedin.com/company/mobileye",
+      "twitter": "",
+      "youtube": "https://www.youtube.com/mobileye",
+      "github": "",
+      "facebook": "https://www.facebook.com/WeAreMobileye",
+      "instagram": "https://www.instagram.com/wearemobileye/",
+      "medium": "",
+      "meetup": "",
+      "technologyStack": [],
+      "openPositions": [],
+      "testimonials": [
+        {
+          "image": "akiva-stern",
+          "testimonialAuthor": "Akiva Stern",
+          "position": "Software Engineer",
+          "testimonialDescription": "Mobileye has powerful collective drive to succeed. As a software engineer, I work simultaneously with various components, ensure seamless functionality, and deliver the most accurate results."
+        },
+        {
+          "image": "amit-geler",
+          "testimonialAuthor": "Amit Geler",
+          "position": "Director of AV TPM",
+          "testimonialDescription": "We work with the leading automotive brands from around the world, as we adhere to the highest industry standards. Since I joined the company, my skills have only grown."
+        },
+        {
+          "image": "ofir-orenstein",
+          "testimonialAuthor": "Ofir Orenstein",
+          "position": "DiAlgorithms Engineer",
+          "testimonialDescription": "Mobileye’s culture fosters creativity and innovation. At Mobileye, I develop advanced algorithms to produce real-time, high-quality 3D pedestrian modeling based on various sources. This work is crucial for enhancing safety and improving the overall driving experience by preventing unnecessary braking and ensuring smooth navigation."
+        }
+      ],
+      "openJobsLink": ""
     }
   ]
 }
