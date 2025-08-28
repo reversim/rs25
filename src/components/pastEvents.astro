@@ -29,6 +29,12 @@ const image5 = await getImage({ src: Image5 });
     style="color: black; margin: 100px 0 0"
     id="past-events"
   />
+  <p class="past-events-description">
+    Reversim Summit has run every year since 2013 in Israel, providing a community-driven space for learning and networking in software.
+    <a href="https://summit.reversim.com/" target="_blank" class="past-events-link">
+      Explore our past events <span class="arrow">→</span>
+    </a>
+  </p>
 
   <Slider
     videos={[
@@ -69,6 +75,14 @@ const image5 = await getImage({ src: Image5 });
 
       @media screen and (min-width: 1500px) {
         display: none;
+      }
+    }
+
+    .past-events-description {
+      margin-top: 20px;
+      font-weight: 700;
+      a {
+        text-decoration: underline;
       }
     }
 
