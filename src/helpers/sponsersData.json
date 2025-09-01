@@ -1144,6 +1144,54 @@
         }
       ],
       "openJobsLink": ""
+    },
+    {
+      "sponsorTier": "game-changers",
+      "companyName": "HoneyBook",
+      "website": "https://www.honeybook.com/careers",
+      "description": "HoneyBook is the leading AI-powered business management platform for service-based business owners. Designed to enhance—not replace—independent professionals, HoneyBook’s AI-powered tools help businesses attract leads, connect with clients, book projects, and manage payments more efficiently. With AI seamlessly integrated into every workflow, entrepreneurs can focus on their craft while scaling their businesses with confidence. Since its founding in 2013, HoneyBook has powered over 25 million client relationships and processed more than $12 billion in transactions, helping independent businesses grow faster and smarter.\n\nOur culture is built on five core values that inform everything we do. We encourage collaboration, feedback, ownership, and have a growth mindset. We know experience comes in many forms, some visible on your resume, others not. No one candidate will be a 100% perfect match to our description, so if you thrive in a fast-paced, intellectually-charged environment and have similar experience to what we are looking for, we encourage you to apply.",
+      "carouselImages": [
+        "honeybook-1",
+        "honeybook-2",
+        "honeybook-3",
+        "honeybook-4",
+        "honeybook-5",
+        "honeybook-6",
+        "honeybook-7"
+      ],
+      "linkedin": "https://www.linkedin.com/company/honeybook/posts/?feedView=all",
+      "twitter": "",
+      "youtube": "https://www.youtube.com/@HoneyBookEng",
+      "github": "",
+      "facebook": "",
+      "instagram": "https://www.instagram.com/wearehoneybook/?hl=en",
+      "medium": "https://honeybook.engineering/",
+      "meetup": "https://www.meetup.com/honeybook-engineering/",
+      "technologyStack": [],
+      "openPositions": [
+        {
+          "position": "Senior Data Scientist",
+          "location": "Tel Aviv",
+          "positionLink": "https://job-boards.greenhouse.io/honeybook/jobs/6963164?gh_jid=6963164"
+        },
+        {
+          "position": "Senior Frontend Engineer",
+          "location": "Tel Aviv",
+          "positionLink": "https://job-boards.greenhouse.io/honeybook/jobs/5612795?gh_jid=5612795"
+        },
+        {
+          "position": "Senior ML Engineer",
+          "location": "Tel Aviv",
+          "positionLink": "https://job-boards.greenhouse.io/honeybook/jobs/6498636?gh_jid=6498636"
+        },
+        {
+          "position": "Staff Full Stack Engineer",
+          "location": "Tel Aviv",
+          "positionLink": "https://job-boards.greenhouse.io/honeybook/jobs/1708138?gh_jid=1708138"
+        }
+      ],
+      "testimonials": [],
+      "openJobsLink": ""
     }
   ]
 }
