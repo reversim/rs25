@@ -1,6 +1,5 @@
 ---
 import Header from "../components/header.astro";
-import RegistrationBanner from "../components/RegistrationBanner.astro";
 import STDImage from "../assets/std.png";
 import { Font } from "astro:assets";
 
@@ -65,7 +64,6 @@ const { havePadding = true, haveBG = false } = Astro.props;
     >
       <slot class="layout-container" />
     </div>
-    <RegistrationBanner />
   </body>
 </html>
 
