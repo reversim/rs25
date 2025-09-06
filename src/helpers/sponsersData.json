@@ -1218,6 +1218,54 @@
       "openPositions": [],
       "testimonials": [],
       "openJobsLink": ""
+    },
+    {
+      "sponsorTier": "game-changers",
+      "companyName": "Intuit",
+      "website": "https://www.intuit.com/careers/locations/israel/",
+      "description": "Intuit is a global AI-powered FinTech company, proudly serve 100 millions customers. Our platform helps consumers and small business manage their finance and run their business efficiently, driving success and prosperity.\n\nOur site in Israel is the 2nd largest R&D; center outside the U.S., employing 500+ engineers, developers, architects, data scientists, program and product manager and other technologists, specializing in the domains of Fintech, GenAI, cybersecurity, fraud prevention, and data exchange.",
+      "carouselImages": [
+        "intuit-1",
+        "intuit-2",
+        "intuit-3",
+        "intuit-4",
+        "intuit-5",
+        "intuit-6",
+        "intuit-7",
+        "intuit-8",
+        "intuit-9"
+      ],
+      "linkedin": "https://www.linkedin.com/showcase/intuit-israel/posts/?feedView=all",
+      "twitter": "",
+      "youtube": "https://www.youtube.com/@intuitisrael1414",
+      "github": "",
+      "facebook": "https://www.facebook.com/IntuitIsrael/",
+      "instagram": "https://www.instagram.com/intuit_israel/",
+      "medium": "",
+      "meetup": "",
+      "technologyStack": [],
+      "openPositions": [],
+      "testimonials": [
+        {
+          "image": "olga-kress",
+          "testimonialAuthor": "Olga Kress",
+          "position": "Fraud Insights Team Lead",
+          "testimonialDescription": "The collaborative environment empowers me to utilize my data analysis skills for strategic decision-making, impacting our products and fulfilling my career aspirations."
+        },
+        {
+          "image": "hisham-abdulhalim",
+          "testimonialAuthor": "Hisham Abdulhalim",
+          "position": "Artificial Intelligence Safety Product Manager",
+          "testimonialDescription": "Intuit's openness to new ideas fosters an innovative work environment where my perspective and expertise are valued."
+        },
+        {
+          "image": "smadar-gazit",
+          "testimonialAuthor": "Smadar Gazit",
+          "position": "Director of Software Engineering, Data Exchange",
+          "testimonialDescription": "The size, pace, variety, and scale of the information we deal with here are exceptional within the industry."
+        }
+      ],
+      "openJobsLink": ""
     }
   ]
 }
