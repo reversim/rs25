@@ -1192,6 +1192,32 @@
       ],
       "testimonials": [],
       "openJobsLink": ""
+    },
+    {
+      "sponsorTier": "game-changers",
+      "companyName": "AI21",
+      "website": "https://www.ai21.com",
+      "description": "AI21 is a pioneer in Foundation Models and AI Systems designed for enterprises. AI21's mission is to create trustworthy artificial intelligence that powers humanity towards superproductivity. Founded in 2017 by AI visionaries Prof. Amnon Shashua, Prof. Yoav Shoham, and Ori Goshen, AI21 has secured $336 million in funding from industry leaders, including NVIDIA, Google, and Intel, reinforcing its commitment to advancing AI innovation.",
+      "carouselImages": [],
+      "linkedin": "https://il.linkedin.com/company/ai21",
+      "twitter": "https://x.com/AI21Labs",
+      "youtube": "https://www.youtube.com/@ai21labs",
+      "github": "https://github.com/AI21Labs",
+      "facebook": "https://www.facebook.com/AI21Labs/",
+      "instagram": "https://www.instagram.com/ai21.life/?hl=en",
+      "medium": "https://medium.com/ai21-labs",
+      "meetup": "",
+      "technologyStack": [
+        "Jamba models",
+        "AI agents",
+        "Enterprise AI",
+        "AI Systems",
+        "Agentic AI",
+        "Generative AI."
+      ],
+      "openPositions": [],
+      "testimonials": [],
+      "openJobsLink": ""
     }
   ]
 }
