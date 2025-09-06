@@ -1266,6 +1266,57 @@
         }
       ],
       "openJobsLink": ""
+    },
+    {
+      "sponsorTier": "game-changers",
+      "companyName": "Monday",
+      "website": "monday.com",
+      "description": "monday.com is a global software company that transforms how businesses run. From monday work management and monday CRM to monday dev and monday service, our products are built on our powerful platform that can adapt to the needs of diverse industries and use cases. Our ~245,000 customers are reimagining how work gets done, driving greater efficiency, and scaling like never before.\n\nThe monday.com engineering org is a place where everyone is a driver, owns their domain, and leads initiatives that shape the future of work. We are deeply connected to our customers, bringing an impact-first mindset to every project. Our powerful platform enables us to ship new products at record speed, constantly pushing the boundaries of innovation. We nurture a data-driven environment, supported by cutting-edge internal tools, and a culture of engineering excellence. Our people get to work with the best engineers in the industry, tackle the most interesting tech challenges that lead to the most innovative solutions, and seize exciting opportunities as we rapidly scale.  ",
+      "carouselImages": [
+        "monday-1",
+        "monday-2",
+        "monday-3",
+        "monday-4",
+        "monday-5"
+      ],
+      "linkedin": "https://www.linkedin.com/company/monday-com-engineering",
+      "twitter": "",
+      "youtube": "https://www.youtube.com/@mondayEngineering",
+      "github": "https://github.com/mondaycom",
+      "facebook": "",
+      "instagram": "https://www.instagram.com/monday.com_engineering/",
+      "medium": "",
+      "meetup": "https://www.meetup.com/meetups-monday/?eventOrigin=your_groups",
+      "technologyStack": [
+        "TypeScript",
+        "Python",
+        "Spark",
+        "Go",
+        "Javascript",
+        "GraphQL",
+        "AWS",
+        "K8S",
+        "Cassandra",
+        "DynamoDB",
+        "MySQL",
+        "Redis",
+        "Zookeeper",
+        "Terraform",
+        "OpenTelemetry",
+        "Cillium",
+        "Karpenter",
+        "Lambda",
+        "Crossplane"
+      ],
+      "openPositions": [
+        {
+          "position": "Careers",
+          "location": "Tel Aviv",
+          "positionLink": "https://monday.com/careers"
+        }
+      ],
+      "testimonials": [],
+      "openJobsLink": ""
     }
   ]
 }
