@@ -4,6 +4,15 @@ import Logo from "../assets/reversim-25-icon.svg";
 import { getAgendaCurrentDay } from "../helpers/getAgendaCurrentDay";
 
 const currentDayUrl = await getAgendaCurrentDay();
+
+const navbarLinks = [
+  { link: "/", label: "Home", iconColor: "#7ebec8" },
+  { link: currentDayUrl, label: "Agenda", iconColor: "#506592" },
+  { link: "/#sponsors", label: "Sponsors", iconColor: "var(--orange)" },
+  { link: "/#team", label: "Team", iconColor: "var(--green)" },
+  { link: "/#past-events", label: "Past Events", iconColor: "var(--pink)" },
+  { link: "/#venue", label: "Venue", iconColor: "#7ebec8" },
+];
 ---
 
 <script>
@@ -49,16 +58,15 @@ const currentDayUrl = await getAgendaCurrentDay();
     <span></span>
   </div>
   <div class="sidebar-container">
-    <HeaderLink link="/#about" label="About" iconColor="#7ebec8" />
-    <HeaderLink link={currentDayUrl} label="Agenda" iconColor="#506592" />
-    <HeaderLink link="/#sponsors" label="Sponsors" iconColor="var(--orange)" />
-    <HeaderLink link="/#team" label="Team" iconColor="var(--green)" />
-    <HeaderLink
-      link="/#past-events"
-      label="Past Events"
-      iconColor="var(--pink)"
-    />
-    <HeaderLink link="/#venue" label="Venue" iconColor="#7ebec8" />
+    {
+      navbarLinks.map((link) => (
+        <HeaderLink
+          link={link.link}
+          label={link.label}
+          iconColor={link.iconColor}
+        />
+      ))
+    }
   </div>
 </div>
 
@@ -68,20 +76,15 @@ const currentDayUrl = await getAgendaCurrentDay();
       <Logo class="rv-icon" fill="currentColor" />
     </a>
     <div class="navbar-container">
-      <HeaderLink link="/#about" label="About" iconColor="#7ebec8" />
-      <HeaderLink link={currentDayUrl} label="Agenda" iconColor="#506592" />
-      <HeaderLink
-        link="/#sponsors"
-        label="Sponsors"
-        iconColor="var(--orange)"
-      />
-      <HeaderLink link="/#team" label="Team" iconColor="var(--green)" />
-      <HeaderLink
-        link="/#past-events"
-        label="Past Events"
-        iconColor="var(--pink)"
-      />
-      <HeaderLink link="/#venue" label="Venue" iconColor="#7ebec8" />
+      {
+        navbarLinks.map((link) => (
+          <HeaderLink
+            link={link.link}
+            label={link.label}
+            iconColor={link.iconColor}
+          />
+        ))
+      }
     </div>
   </div>
 </div>
