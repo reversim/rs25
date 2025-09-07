@@ -1317,6 +1317,41 @@
       ],
       "testimonials": [],
       "openJobsLink": ""
+    },
+    {
+      "sponsorTier": "game-changers",
+      "companyName": "Riverside",
+      "website": "https://riverside.com/",
+      "description": "Riverside.fm is a leading platform specializing in audio and video recording and editing for podcasters, content creators, and media professionals. The company's AI driven technology allows users to record and edit high-quality video and share it easily with the world, and significantly enhances the production quality of remote interviews, podcasts, and other multimedia projects.\n\nFounded with the goal of simplifying the recording process while maintaining professional standards, Riverside.fm offers features like AI Based editing, sound and image improvements, live streaming, and easy file management. Its user-friendly interface and reliable performance have made it a popular choice among creators who need a seamless solution for remote recording without compromising on audio clarity or video quality.\n\nWith over 300 employees worldwide and over 170 employees in Tel Aviv, Riverside.fm continues to evolve by integrating new features and expanding its capabilities, aiming to become the preferred platform for remote content production worldwide. The company's commitment to innovation and quality has positioned it as a market leader in the rapidly growing digital media landscape. ",
+      "carouselImages": [
+        "riverside-1",
+        "riverside-2",
+        "riverside-3",
+        "riverside-4",
+        "riverside-5",
+        "riverside-6",
+        "riverside-7",
+        "riverside-8"
+      ],
+      "linkedin": "https://www.linkedin.com/company/riverside-fm/posts/?feedView=all",
+      "twitter": "",
+      "youtube": "http://youtube.com/@Riversidefm",
+      "github": "",
+      "facebook": "",
+      "instagram": "",
+      "medium": "",
+      "meetup": "",
+      "technologyStack": [
+        "Javascript",
+        "TypeScript",
+        "react",
+        "native mobile",
+        "Machine learning",
+        "NLP"
+      ],
+      "openPositions": [],
+      "testimonials": [],
+      "openJobsLink": ""
     }
   ]
 }
