@@ -8,6 +8,9 @@ import PastEvents from "../components/pastEvents.astro";
 import { getTeamMembers } from "../helpers/getTeam";
 import MainBanner from "../components/mainBanner.astro";
 const teamMembers = await getTeamMembers();
+import computerRetroImage from "../assets/computer-retro.png";
+import hamsterImage from "../assets/hamster.png";
+import { Image } from "astro:assets";
 ---
 
 <style is:global>
@@ -102,6 +105,22 @@ const teamMembers = await getTeamMembers();
 
   <footer>
     <div class="footer-content">
+      <div class="hamster-container">
+        <Image
+          src={hamsterImage}
+          alt="Hamster"
+          class="hamster"
+          height={243}
+          width={122}
+        />
+        <Image
+          src={computerRetroImage}
+          alt="Computer Retro"
+          class="computer"
+          height={139}
+          width={145}
+        />
+      </div>
       <a class="header-link" href={"/coc"}>Code of conduct</a>
       <a class="header-link attributions" href={"/attributions"}>Attributions</a
       >
@@ -151,37 +170,36 @@ const teamMembers = await getTeamMembers();
     width: 100%;
     padding: 18px 0px 10px 0;
 
-    &::after,
-    &::before {
-      content: "";
-      background-size: contain;
-      background-repeat: no-repeat;
+    .hamster-container {
       position: absolute;
+      display: flex;
+      align-items: end;
       top: 0;
-      left: 100px;
+      transform: translateY(-100%);
 
-      @media screen and (max-width: 576px) {
-        left: 30px;
+      .hamster {
+        aspect-ratio: 61 / 42;
+        width: 52px;
+        height: max-content;
+        transform: translateX(25%);
+        user-select: none;
       }
-    }
 
-    &::after {
-      background-image: url(/src/assets/computer-retro.png);
-      width: 52px;
-      aspect-ratio: 145 / 139;
-      transform: translate(50%, -100%);
-    }
-    &::before {
-      background-image: url(/src/assets/hamster.png);
-      width: 52px;
-      aspect-ratio: 355 / 243;
-      transform: translate(-25%, -100%);
-      z-index: 1;
-    }
+      .computer {
+        aspect-ratio: 145 / 139;
+        width: 52px;
+        height: max-content;
+        user-select: none;
+      }
 
-    &:hover{
-      &::before{
-        animation: hamster-move 0.4s ease-in-out;
+      &:hover {
+        .hamster {
+          animation: hamster-move 0.4s ease-in-out;
+        }
+      }
+
+      @media (max-width: 576px) {
+        left: 20px;
       }
     }
 
@@ -233,19 +251,19 @@ const teamMembers = await getTeamMembers();
 
     @keyframes hamster-move {
       0% {
-        transform: translate(-25%, -100%);
+        transform: translateX(25%);
       }
       30% {
-        transform: translate(-20%, -100%);
+        transform: translateX(20%);
       }
       60% {
-        transform: translate(-28%, -100%);
+        transform: translateX(28%);
       }
       90% {
-        transform: translate(-20%, -100%);
+        transform: translateX(20%);
       }
       100% {
-        transform: translate(-25%, -100%);
+        transform: translateX(25%);
       }
     }
   }
