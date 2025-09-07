@@ -129,7 +129,7 @@ const cssVars = `
       </div>
       <div class="hero-btn-container">
         <a
-          class="hero-btn sponsor"
+          class="hero-btn"
           target="_blank"
           href="https://ti.to/reversim-summit/2025"
         >
@@ -717,8 +717,31 @@ const cssVars = `
       position: relative;
       z-index: 2;
 
-      border-right: 3px solid white;
-      border-left: 3px solid white;
+      &::before,
+      &::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        width: 3px;
+        height: 100%;
+        background-color: white;
+        transition: right 0.5s ease;
+      }
+      &::before {
+        right: 100%;
+      }
+      &::after {
+        right: 0;
+      }
+
+      &:hover {
+        &::before {
+          right: 0px;
+        }
+        &::after {
+          right: 100%;
+        }
+      }
     }
   }
 </style>
