@@ -1273,25 +1273,13 @@
       "medium": "",
       "meetup": "https://www.meetup.com/meetups-monday/?eventOrigin=your_groups",
       "technologyStack": [
-        "TypeScript",
-        "Python",
-        "Spark",
+        "React",
+        "Node.js",
+        "Ruby",
         "Go",
-        "Javascript",
-        "GraphQL",
-        "AWS",
-        "K8S",
-        "Cassandra",
-        "DynamoDB",
         "MySQL",
-        "Redis",
-        "Zookeeper",
-        "Terraform",
-        "OpenTelemetry",
-        "Cillium",
-        "Karpenter",
-        "Lambda",
-        "Crossplane"
+        "DynamoDB",
+        "Kafka"
       ],
       "openPositions": [
         {
