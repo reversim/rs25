@@ -1360,6 +1360,76 @@
       ],
       "testimonials": [],
       "openJobsLink": ""
+    },
+    {
+      "sponsorTier": "game-changers",
+      "companyName": "Connecteam",
+      "website": "http://connecteam.com/",
+      "description": "Connecteam is a fast-growing SaaS company based in Tel Aviv, on a mission to redefine the work experience for the 80% of the global workforce who don’t sit behind a desk. From retail and hospitality to logistics, manufacturing, and healthcare, we empower frontline employees and managers with a platform that makes work simpler, smarter, and more connected.\n\nOur all-in-one business management platform enables companies to streamline communication, scheduling, time tracking, onboarding, training, and task management—everything they need to manage their teams in one place. By reducing operational complexity and centralizing daily workflows, Connecteam helps thousands of organizations worldwide save time, cut costs, and boost employee engagement.\n\nWith tens of thousands of customers across 80+ countries and a rapidly expanding global footprint, Connecteam is shaping the future of work for millions of deskless employees. Our Tel Aviv headquarters is home to a passionate, collaborative team driven by innovation and impact. At Connecteam, you’ll have the opportunity to solve meaningful challenges, grow professionally, and be part of a mission that makes work better for people everywhere.",
+      "carouselImages": [],
+      "linkedin": "https://www.linkedin.com/company/connecteam/posts/?feedView=all",
+      "twitter": "",
+      "youtube": "https://www.youtube.com/@ConnecteamApp",
+      "github": "https://github.com/connecteam",
+      "facebook": "https://www.facebook.com/ConnecteamSoftware/?checkpoint_src=any",
+      "instagram": "https://www.instagram.com/connecteamapp?igsh=MW5rODhmanlsY2R0dg==",
+      "medium": "https://medium.com/connecteam-engineering",
+      "meetup": "",
+      "technologyStack": [
+        "React",
+        "Python",
+        "TypeScript",
+        "RabbitMQ",
+        "MongoDB",
+        "SQL",
+        "K8S",
+        "Redis",
+        "AI"
+      ],
+      "openPositions": [
+        {
+          "location": "Tel Aviv",
+          "position": "DevOps Engineer",
+          "positionLink": "https://connecteam.com/careers/5630778004/?gh_jid=5630778004"
+        },
+        {
+          "location": "Tel Aviv",
+          "position": "Senior Fullstack Engineer",
+          "positionLink": "https://connecteam.com/careers/5597296004/?gh_jid=5597296004"
+        },
+        {
+          "location": "Tel Aviv",
+          "position": "Senior Backend Engineer",
+          "positionLink": "https://connecteam.com/careers/5610808004/"
+        },
+        {
+          "location": "Tel Aviv",
+          "position": "R&D Group Lead",
+          "positionLink": "https://connecteam.com/careers/5550210004/?gh_jid=5550210004"
+        },
+        {
+          "location": "Tel Aviv",
+          "position": "Platform Team Lead",
+          "positionLink": "https://connecteam.com/careers/5575440004/?gh_jid=5575440004"
+        },
+        {
+          "location": "Tel Aviv",
+          "position": "AI Developer",
+          "positionLink": "https://connecteam.com/careers/5549978004/?gh_jid=5549978004"
+        },
+        {
+          "location": "Tel Aviv",
+          "position": "Fullstack Team Lead",
+          "positionLink": "https://connecteam.com/careers/5597288004/?gh_jid=5597288004"
+        },
+        {
+          "location": "Tel Aviv",
+          "position": "Senior Platform Engineer",
+          "positionLink": "https://connecteam.com/careers/4859221004/"
+        }
+      ],
+      "testimonials": [],
+      "openJobsLink": ""
     }
   ]
 }
