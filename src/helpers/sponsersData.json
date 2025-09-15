@@ -1325,6 +1325,41 @@
       "openPositions": [],
       "testimonials": [],
       "openJobsLink": ""
+    },
+    {
+      "sponsorTier": "game-changers",
+      "companyName": "Zenity",
+      "website": "https://zenity.io/",
+      "description": "Zenity is the first security and governance platform that gives enterprises visibility and control over AI agent behavior - what they access, what they do, and the tools they invoke - with full-lifecycle protection for any agent across SaaS, custom agent platforms, and end-user devices.",
+      "carouselImages": ["zenity-1", "zenity-2", "zenity-3", "zenity-4"],
+      "linkedin": "https://www.linkedin.com/company/zenitysec/?viewAsMember=true",
+      "twitter": "https://x.com/zenitysec",
+      "youtube": "",
+      "github": "",
+      "facebook": "",
+      "instagram": "https://www.instagram.com/lifeatzenity/",
+      "medium": "",
+      "meetup": "",
+      "technologyStack": [],
+      "openPositions": [
+        {
+          "position": "Senior GenAI Engineer",
+          "location": "Tel Aviv",
+          "positionLink": "https://zenity.io/careers/hybrid-tel-aviv-jaffa-tel-aviv-district-israel/senior-genai-engineer/95.452"
+        },
+        {
+          "position": "Senior Software Engineer",
+          "location": "Tel Aviv",
+          "positionLink": "https://zenity.io/careers/hybrid-tel-aviv-jaffa-tel-aviv-district-israel/senior-software-engineer/48.947"
+        },
+        {
+          "position": "Platform Team Manager",
+          "location": "Tel Aviv",
+          "positionLink": "https://zenity.io/careers/hybrid-tel-aviv-jaffa-tel-aviv-district-israel/platform-team-manager/45.B4D"
+        }
+      ],
+      "testimonials": [],
+      "openJobsLink": ""
     }
   ]
 }
