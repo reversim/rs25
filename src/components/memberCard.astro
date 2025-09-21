@@ -2,6 +2,7 @@
 import { Image } from "astro:assets";
 import type { teamMember } from "../helpers/getTeam";
 import type { ImageFunction } from "astro:content";
+import { Picture } from "astro:assets";
 
 interface Props extends teamMember {}
 
@@ -10,7 +11,14 @@ const { company, name, title, image, slug } = Astro.props;
 
 <a data-astro-prefetch href={`/about/${slug}`} class="member">
   <div class="image-container">
-    <Image class="image" alt={name} src={image} width="240" height="240" />
+    <Picture
+      formats={["avif", "webp"]}
+      class="image"
+      alt={name}
+      src={image}
+      width="240"
+      height="240"
+    />
   </div>
   <h3 class="name">{name}</h3>
   <span class="title">{title}{" "}{company ? `@${company}` : ""}</span>

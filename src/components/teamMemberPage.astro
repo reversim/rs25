@@ -3,6 +3,7 @@ import { Image } from "astro:assets";
 import SocialLink from "./socialLink.astro";
 import type { teamMember } from "../helpers/getTeam";
 import BackButton from "./backButton.astro";
+import { Picture } from "astro:assets";
 
 interface Props extends Partial<teamMember> {
   socialList: Record<string, string | undefined>;
@@ -16,7 +17,13 @@ const { socialList, name, image, title, company, bio } = Astro.props;
 
   <div class="person-info">
     <div class="media-socials-container">
-      <Image src={image} alt={name || ""} width="500" height={"500"} />
+      <Picture
+        formats={["avif", "webp"]}
+        src={image}
+        alt={name || ""}
+        width="500"
+        height={"500"}
+      />
       <div class="links">
         {
           Object.entries(socialList).map(([social, link]) => {

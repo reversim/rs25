@@ -1,10 +1,11 @@
 ---
-import Title from "./title.astro";
-import SponsorDialog from "./sponsorDialog.astro";
+import { getImage, Picture } from "astro:assets";
 import Asterisk from "../assets/asterisk.svg";
 import rs24Image from "../assets/reversim24-image.png";
-import { getImage, Image } from "astro:assets";
 import { getSponsors } from "../helpers/getSponsors";
+import SponsorDialog from "./sponsorDialog.astro";
+import Title from "./title.astro";
+import { Image } from "astro:assets";
 
 const optimizedRS24ImageMobile = await getImage({
   src: rs24Image,
@@ -169,8 +170,8 @@ const cssVars = `
               <Image
                 class={`organizer sponsor-logo ${sponsor.slug}`}
                 src={sponsor.companyNameLogo}
-                width={400}
-                height={1000}
+                width={300}
+                height={150}
                 alt={`Sponsor ${sponsor.companyName}`}
               />
             </a>
@@ -504,6 +505,10 @@ const cssVars = `
           .sponsor-item {
             display: flex;
             align-items: center;
+
+            &[data-sponsor="startio"] {
+              height: 38px;
+            }
           }
 
           .sponsor-logo {
@@ -516,6 +521,11 @@ const cssVars = `
           display: flex;
           height: 48px;
 
+          &.tenable {
+            height: 55px;
+            transform: translateY(-5px);
+          }
+
           &.plus500 {
             height: 44px;
             transform: translateY(-7px);
@@ -525,7 +535,7 @@ const cssVars = `
             transform: translateY(-20px);
           }
           &.cyera {
-            height: 40px;
+            height: 34px;
           }
           &.titan {
             height: 40px;
@@ -534,7 +544,7 @@ const cssVars = `
             height: 39px;
           }
           &.elementor {
-            height: 42px;
+            height: 52px;
           }
           &.arpeely {
             height: 58px;
@@ -553,7 +563,7 @@ const cssVars = `
             height: 28px;
           }
           &.monday {
-            height: 42px;
+            height: 58px;
           }
           &.riverside {
             height: 44px;
@@ -574,6 +584,10 @@ const cssVars = `
           align-self: center;
           transition: scale 0.2s ease;
 
+          &.teads{
+            filter: brightness(1) invert(0);
+          }
+
           &:hover {
             scale: 1.05;
           }
@@ -585,15 +599,17 @@ const cssVars = `
 
         @media (max-width: 768px) {
           flex-direction: column;
-          align-items: start;
-          gap: 18px;
+          align-items: center;
+          gap: 20px;
 
           &.game-changers {
             transform: translateX(-18px);
+            // align-items: center;
           }
 
           &.community {
             flex-direction: row;
+            justify-content: center;
             row-gap: 18px;
             column-gap: 24px;
           }
@@ -746,6 +762,13 @@ const cssVars = `
           right: 100%;
         }
       }
+    }
+  }
+
+  @media screen and (max-width: 768px) {
+    .game-changers {
+      justify-content: center;
+      gap: 20px;
     }
   }
 </style>

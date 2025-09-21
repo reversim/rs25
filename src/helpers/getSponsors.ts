@@ -67,10 +67,19 @@ export async function getSponsors(type?: sponsorData["sponsorTier"]) {
       return import(`../assets/sponsors/${sponsorSlug}/${image}.png`);
     });
 
+    const images = import.meta.glob<{ default: ImageMetadata }>(
+      "../assets/sponsors/*/logo.{jpeg,jpg,png,gif,svg}",
+    );
+
+    const currentImage =
+      images[`../assets/sponsors/${sponsorSlug}/logo.svg`] ||
+      images[`../assets/sponsors/${sponsorSlug}/logo.png`];
+
     return {
       ...sponsor,
       slug: sponsorSlug,
-      companyNameLogo: import(`../assets/sponsors/${sponsorSlug}/logo.png`),
+      companyNameLogo: currentImage(),
+
       testimonials,
       carouselImages,
     };

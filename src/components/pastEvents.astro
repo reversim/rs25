@@ -1,5 +1,5 @@
 ---
-import { Image, getImage } from "astro:assets";
+import { Image, Picture, getImage } from "astro:assets";
 import Title from "./title.astro";
 import Image1 from "../assets/past-events/image-1.png";
 import Image2 from "../assets/past-events/image-2.png";
@@ -17,7 +17,8 @@ const image4 = await getImage({ src: Image4 });
 const image5 = await getImage({ src: Image5 });
 ---
 
-<Image
+<Picture
+  formats={["avif", "webp"]}
   class="past-event-background"
   height={400}
   src={pastEvent}

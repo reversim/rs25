@@ -1,5 +1,5 @@
 ---
-import { Image } from "astro:assets";
+import { Image, Picture } from "astro:assets";
 
 export interface Props {
   sponsor: {
@@ -18,7 +18,8 @@ const { sponsor } = Astro.props;
 <dialog id={`sponsor-dialog-${sponsor.slug}`} class="sponsor-dialog">
   <div class="dialog-content">
     <div class="dialog-header">
-      <Image
+      <Picture
+        formats={["avif", "webp"]}
         class="dialog-logo"
         src={sponsor.companyNameLogo}
         width={300}
