@@ -1,14 +1,14 @@
 ---
 import "@splidejs/splide/css";
 import type { GetStaticPaths } from "astro";
-import { getImage, Image } from "astro:assets";
-import Layout from "../../layouts/Layout.astro";
-import { getSponsors } from "../../helpers/getSponsors";
+import { getImage, Image, Picture } from "astro:assets";
+import "glightbox/dist/css/glightbox.css";
+import Slider from "../../components/slider.astro";
+import SocialLink from "../../components/socialLink.astro";
 import BackgroundMask from "../../components/sponsorsBackgroundMask.astro";
 import Title from "../../components/title.astro";
-import Slider from "../../components/slider.astro";
-import "glightbox/dist/css/glightbox.css";
-import SocialLink from "../../components/socialLink.astro";
+import { getSponsors } from "../../helpers/getSponsors";
+import Layout from "../../layouts/Layout.astro";
 
 export const getStaticPaths = (async () => {
   const sponsors = await getSponsors();
@@ -70,7 +70,7 @@ const carouselImagesPromise = await Promise.all(
         class={`company-info ${!haveOpenPositions ? "no-open-positions" : ""}`}
       >
         <Image
-          class="company-logo"
+          class={`company-logo ${slug}`}
           src={companyNameLogo}
           alt={companyName}
           height={500}
@@ -149,7 +149,8 @@ const carouselImagesPromise = await Promise.all(
               <div class="testimonials-container">
                 {testimonials.map((testimonial) => (
                   <div class="testimonial-card">
-                    <Image
+                    <Picture
+                      formats={["avif", "webp"]}
                       src={testimonial.image}
                       alt={testimonial.testimonialAuthor}
                       class="testimonial-image"
@@ -181,6 +182,10 @@ const carouselImagesPromise = await Promise.all(
     width: 40%;
     object-fit: contain;
     margin-bottom: 32px;
+    
+    &.teads{
+      filter: brightness(1) invert(0);
+    }
   }
 
   .open-positions {
@@ -346,10 +351,10 @@ const carouselImagesPromise = await Promise.all(
 
           &::before {
             content: "\201C"; /* “ */
-          } 
+          }
           &::after {
             content: "\201D"; /* ” */
-          } 
+          }
         }
 
         .author-info {
@@ -369,7 +374,6 @@ const carouselImagesPromise = await Promise.all(
     }
 
     .company-logo {
-      filter: brightness(0) invert(1);
       width: 100%;
     }
   }

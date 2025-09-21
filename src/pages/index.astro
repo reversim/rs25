@@ -10,7 +10,7 @@ import MainBanner from "../components/mainBanner.astro";
 const teamMembers = await getTeamMembers();
 import computerRetroImage from "../assets/computer-retro.png";
 import hamsterImage from "../assets/hamster.png";
-import { Image } from "astro:assets";
+import { Picture } from "astro:assets";
 ---
 
 <style is:global>
@@ -106,14 +106,16 @@ import { Image } from "astro:assets";
   <footer>
     <div class="footer-content">
       <div class="hamster-container">
-        <Image
+        <Picture
+          formats={["avif", "webp"]}
           src={hamsterImage}
           alt="Hamster"
           class="hamster"
           height={243}
           width={122}
         />
-        <Image
+        <Picture
+          formats={["avif", "webp"]}
           src={computerRetroImage}
           alt="Computer Retro"
           class="computer"
