@@ -1500,6 +1500,73 @@
         }
       ],
       "openJobsLink": ""
+    },
+    {
+      "sponsorTier": "game-changers",
+      "companyName": "Semperis",
+      "website": "https://www.semperis.com/careers/",
+      "description": "Semperis is the global leader in identity security and cyber resilience. With most cyberattacks exploiting Active Directory, Semperis delivers the industry’s most comprehensive AI powered defense for hybrid identity systems, including on prem AD and Entra ID. Our Identity Resilience Platform protects the full lifecycle of identity based attacks with prevention, detection, response, and recovery, backed by a world class incident response team.\n\nAt Semperis, people and purpose drive our success. Our global team fosters a culture of teamwork, diversity, and growth, creating a supportive and enjoyable environment where employees can thrive. We are mission driven to be a Force for Good: protecting organizations from cyberattacks, investing in our people, empowering communities, and contributing to the broader security ecosystem",
+      "carouselImages": ["semperis-1", "semperis-2"],
+      "linkedin": "https://il.linkedin.com/company/semperis",
+      "twitter": "https://x.com/semperistech",
+      "youtube": "https://www.youtube.com/@semperistech",
+      "github": "https://github.com/Semperis",
+      "facebook": "https://www.facebook.com/SemperisTech/",
+      "instagram": "https://www.instagram.com/lifeat_semperis_labs/",
+      "medium": "",
+      "meetup": "",
+      "technologyStack": [
+        "C#",
+        "Postgres",
+        "Kafka",
+        "OpenSearch",
+        "ArgoCD",
+        "Kubernetes",
+        "Keycloak",
+        "Kafka streams",
+        "Docker",
+        "Azure Cloud",
+        "GRPC",
+        "Terraform",
+        "Help",
+        "Odata",
+        "Flink",
+        "GRPC",
+        "Vue3",
+        "vite",
+        "typescript",
+        "Pinia",
+        "playwright"
+      ],
+      "openPositions": [
+        {
+          "position": "Director of Platform Engineering",
+          "location": "Tel Aviv",
+          "positionLink": "https://www.semperis.com/careers/?ashby_jid=13451880-b1a6-425e-bf7e-9a6027e69a9a"
+        },
+        {
+          "position": "Senior C++ Software Engineer",
+          "location": "Tel Aviv",
+          "positionLink": "https://www.semperis.com/careers/?ashby_jid=ebd5bf0e-f050-4848-9fc3-3ab926c9e938"
+        },
+        {
+          "position": "Solutions Architect",
+          "location": "Tel Aviv",
+          "positionLink": "https://www.semperis.com/careers/?ashby_jid=03af5f4c-28da-445a-9b48-8011be175f20"
+        },
+        {
+          "position": "DevOps Team Lead",
+          "location": "Tel Aviv",
+          "positionLink": "https://www.semperis.com/careers/?ashby_jid=525d9c9c-943e-440b-95f0-708589132d19"
+        },
+        {
+          "position": "Software Engineer, Backend",
+          "location": "Tel Aviv",
+          "positionLink": "https://www.semperis.com/careers/?ashby_jid=118ce1bd-44da-45ca-88e4-66215d159ff1"
+        }
+      ],
+      "testimonials": [],
+      "openJobsLink": ""
     }
   ]
 }
