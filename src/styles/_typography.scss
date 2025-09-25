@@ -1,0 +1,40 @@
+// TYPOGRAPHY
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+}
+
+h2 {
+  font-size: 36px;
+  margin-bottom: var(--spacing-md);
+  font-weight: 100;
+  text-align: center;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+// Text Utilities
+.text-center { text-align: center; }
+.text-left { text-align: left; }
+.text-right { text-align: right; }
+
+.font-light { font-weight: 300; }
+.font-normal { font-weight: 400; }
+.font-medium { font-weight: 500; }
+.font-semibold { font-weight: 600; }
+.font-bold { font-weight: 700; }
+
+// Color Text Utilities
+.text-pink { color: var(--pink); }
+.text-orange { color: var(--orange); }
+.text-green { color: var(--green); }
+.text-blue { color: var(--blue); }
+.text-white { color: var(--white); }

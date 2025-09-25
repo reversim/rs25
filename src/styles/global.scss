@@ -1,0 +1,17 @@
+// MAIN GLOBAL STYLES
+// Import all partial SCSS files
+
+// Variables first (needed by all other files)
+@use "_variables";
+
+// Base styles and reset
+@use "_base";
+
+// Typography
+@use "_typography";
+
+// Layout utilities
+@use "_layout";
+
+// Component-specific styles
+@use "_slider";
