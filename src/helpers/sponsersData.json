@@ -1430,6 +1430,76 @@
       ],
       "testimonials": [],
       "openJobsLink": ""
+    },
+    {
+      "sponsorTier": "game-changers",
+      "companyName": "Papaya",
+      "website": "https://www.papaya.com/",
+      "description": "Papaya is building a real-time matchmaking platform that connects millions of players in skill-based tournaments — powered by a lean team of engineers who thrive on solving the most complex problems.\nAt the crossroads of gaming, data, and distributed systems, we run massive live events, power microtransactions, fight fraud, and craft personalized player journeys — all in real time, at scale. Every millisecond counts.\nHere, small teams drive outsized impact. You’ll move fast, own your code end-to-end, and shape the future of a platform turning casual play into meaningful tournaments for millions worldwide.\nWe breathe AI into everything we do — doubling our impact, pushing boundaries, and taking our work to the next level.\nIf you’re ready to make your mark on the next generation of competitive platforms, Papaya is where every developer makes a difference.",
+      "carouselImages": [
+        "papaya-1",
+        "papaya-2",
+        "papaya-3",
+        "papaya-4",
+        "papaya-5",
+        "papaya-6",
+        "papaya-7"
+      ],
+      "linkedin": "https://www.linkedin.com/company/papayaltd",
+      "twitter": "",
+      "youtube": "",
+      "github": "",
+      "facebook": "",
+      "instagram": "https://www.instagram.com/lifeatpapaya/",
+      "medium": "",
+      "meetup": "",
+      "technologyStack": [
+        "NodeJs",
+        "Typescript",
+        "Redis",
+        "MySQL",
+        "AWS",
+        "Kubernetes",
+        "C#",
+        "Unity"
+      ],
+      "openPositions": [
+        {
+          "position": "Unity developer",
+          "location": "Tel Aviv",
+          "positionLink": "https://www.papaya.com/open-positions/Unity-developer-IL"
+        },
+        {
+          "position": "Backend Engineer",
+          "location": "Tel Aviv",
+          "positionLink": "https://www.papaya.com/open-positions/Backend-Engineer-IL"
+        },
+        {
+          "position": "Senior Backend Engineer - .NET Core",
+          "location": "Tel Aviv",
+          "positionLink": "https://www.papaya.com/open-positions/Senior-Backend-Engineer---dot-NET-Core-IL"
+        },
+        {
+          "position": "Backend Team Lead",
+          "location": "Tel Aviv",
+          "positionLink": "https://www.papaya.com/open-positions/backend-team-lead-il"
+        }
+      ],
+      "testimonials": [
+        {
+          "testimonialAuthor": "Eran Kaufman",
+          "testimonialDescription": "I love working at Papaya because it brings together my passion for gaming with a culture built on creativity, innovation, and teamwork. Every day feels exciting, whether it’s developing new gaming experiences or collaborating with talented colleagues who share the same drive. What makes Papaya stand out is the strong sense of ownership - you’re encouraged to take initiative, share ideas, and see your impact directly in the games millions of people enjoy. It’s a place where gaming passion meets real opportunity to grow and make a difference.",
+          "image": "eran-kaufman",
+          "position": "Tech Lead"
+        },
+        {
+          "testimonialAuthor": "Andrew Tofler",
+          "testimonialDescription": "What really excites me about working at Papaya is that the complexity here is on another level. Everything needs to connect and work together, and when you add the huge scale of so many users, this combination of complexity and scale is exactly what excites me as a backend developer. On top of that, the people here are amazing and fun to work with.",
+          "image": "andrew-tofler",
+          "position": "Tech Lead"
+        }
+      ],
+      "openJobsLink": ""
     }
   ]
 }
