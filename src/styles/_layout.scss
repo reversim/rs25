@@ -1,0 +1,36 @@
+// LAYOUT UTILITIES
+.body-container {
+  position: relative;
+  margin: auto;
+  box-sizing: unset;
+  height: 100%;
+  min-height: calc(100vh - var(--header-height) - var(--spacing-lg) - var(--spacing-xl) - 41px);
+  z-index: 1;
+
+  &.have-background {
+    &::before {
+      content: "";
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background-color: var(--background-opacity);
+      mask-image: radial-gradient(var(--white) 85% 0, transparent 100%);
+      -webkit-mask-image: radial-gradient(var(--white) 85% 0, transparent 100%);
+      top: 0;
+      right: 0;
+      z-index: -1;
+    }
+
+    @media (max-width: 768px) {
+      &::before {
+        mask-image: radial-gradient(circle at 50% 50%, var(--white) 100% 0, transparent 100%);
+        -webkit-mask-image: radial-gradient(circle at 50% 50%, var(--white) 100% 0, transparent 100%);
+      }
+    }
+  }
+}
+
+.have-padding {
+  max-width: var(--max-container-width);
+  padding: var(--spacing-lg) 10% 0;
+}
