@@ -79,6 +79,7 @@ const { videos = [], images } = Astro.props as Props;
       });
 
       new Splide(".splide", {
+        lazyLoad: "nearby",
         type: "loop",
         autoplay: true,
         interval: 3000,
