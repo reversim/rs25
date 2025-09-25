@@ -1,5 +1,5 @@
 ---
-import { Image, Picture, getImage } from "astro:assets";
+import { Picture, getImage } from "astro:assets";
 import Title from "./title.astro";
 import Image1 from "../assets/past-events/image-1.png";
 import Image2 from "../assets/past-events/image-2.png";
@@ -31,8 +31,13 @@ const image5 = await getImage({ src: Image5 });
     id="past-events"
   />
   <p class="past-events-description">
-    Reversim Summit has run every year since 2013 in Israel, providing a community-driven space for learning and networking in software.
-    <a href="https://summit.reversim.com/" target="_blank" class="past-events-link">
+    Reversim Summit has run every year since 2013 in Israel, providing a
+    community-driven space for learning and networking in software.
+    <a
+      href="https://summit.reversim.com/"
+      target="_blank"
+      class="past-events-link"
+    >
       Explore our past events <span class="arrow">→</span>
     </a>
   </p>

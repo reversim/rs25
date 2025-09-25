@@ -4,12 +4,14 @@ import type { teamMember } from "../helpers/getTeam";
 import type { ImageFunction } from "astro:content";
 import { Picture } from "astro:assets";
 
-interface Props extends teamMember {}
+interface Props extends teamMember {
+  pageBase?: string;
+}
 
-const { company, name, title, image, slug } = Astro.props;
+const { company, name, title, image, slug, pageBase = "about" } = Astro.props;
 ---
 
-<a data-astro-prefetch href={`/about/${slug}`} class="member">
+<a data-astro-prefetch href={`/${pageBase}/${slug}`} class="member">
   <div class="image-container">
     <Picture
       formats={["avif", "webp"]}
