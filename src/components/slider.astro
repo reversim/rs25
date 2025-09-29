@@ -54,9 +54,9 @@ const { videos = [], images } = Astro.props as Props;
                 <Picture
                   formats={["avif", "webp"]}
                   height={400}
+                  width={600}
                   src={image.src}
                   alt={image.alt}
-                  width={600}
                 />
               </a>
             </li>

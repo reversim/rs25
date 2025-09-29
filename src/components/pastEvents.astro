@@ -10,17 +10,18 @@ import pastEvent from "../assets/past-events/background.png";
 import "glightbox/dist/css/glightbox.css";
 import Slider from "./slider.astro";
 
-const image1 = await getImage({ src: Image1 });
-const image2 = await getImage({ src: Image2 });
-const image3 = await getImage({ src: Image3 });
-const image4 = await getImage({ src: Image4 });
-const image5 = await getImage({ src: Image5 });
+const image1 = await getImage({ src: Image1, width: 600, height: 400 });
+const image2 = await getImage({ src: Image2,  width: 600, height: 400 });
+const image3 = await getImage({ src: Image3, width: 600, height: 400 });
+const image4 = await getImage({ src: Image4, width: 600, height: 400 });
+const image5 = await getImage({ src: Image5, width: 600, height: 400 });
 ---
 
 <Picture
   formats={["avif", "webp"]}
   class="past-event-background"
   height={400}
+  width={600}
   src={pastEvent}
   alt="Slide 4"
 />
