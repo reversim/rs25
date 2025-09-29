@@ -58,7 +58,7 @@ const socialList = {
 };
 const carouselImagesPromise = await Promise.all(
   carouselImages.map(async (image) => {
-    return await getImage({ src: image, width: 1200, height: 800 });
+    return await getImage({ src: image, width: 1000, height: 600 });
   }),
 );
 ---
