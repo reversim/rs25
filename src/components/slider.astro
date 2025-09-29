@@ -1,5 +1,5 @@
 ---
-import { Picture } from "astro:assets";
+import { Image } from "astro:assets";
 
 interface Video {
   url: string;
@@ -51,10 +51,9 @@ const { videos = [], images } = Astro.props as Props;
           images.map((image) => (
             <li class="splide__slide">
               <a href={image.src} class="glightbox" data-gallery="past-events">
-                <Picture
-                  formats={["avif", "webp"]}
-                  height={800}
-                  width={1200}
+                <Image
+                  height={600}
+                  width={1000}
                   src={image.src}
                   alt={image.alt}
                 />
