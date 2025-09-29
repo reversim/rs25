@@ -63,7 +63,7 @@ export async function getAgendaDays(): Promise<AgendaDay[]> {
   if (!res.ok) throw new Error("Failed fetching agenda");
   const raw: RawGridDay[] = await res.json();
 
-  // stable desired order by room id (Main Hall, Room 2, Room 3, Dining Hall, Entrance)
+  // stable desired order by room id (Main Hall, A2+A3, A4+A5, Dining Hall, Entrance)
   const ROOM_ORDER = [59470, 59471, 59472, 70835, 70834];
   const orderIndex = new Map(ROOM_ORDER.map((id, i) => [id, i] as const));
 
