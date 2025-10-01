@@ -1618,16 +1618,6 @@
       ],
       "openPositions": [
         {
-          "position": "QA Automation Engineer",
-          "location": "Tel Aviv",
-          "positionLink": "https://career.mlp.com/careers?domain=mlp.com&sort_by=relevance&pid=755936615453"
-        },
-        {
-          "position": "Software Engineer - C#",
-          "location": "Tel Aviv",
-          "positionLink": "https://career.mlp.com/careers?domain=mlp.com&sort_by=relevance&pid=755936615453"
-        },
-        {
           "position": "Platform Engineer",
           "location": "Tel Aviv",
           "positionLink": "https://mlp.eightfold.ai/careers/job/755941284621"
@@ -1641,6 +1631,11 @@
           "position": "Cloud Engineer",
           "location": "Tel Aviv",
           "positionLink": "https://mlp.eightfold.ai/careers/job/755941420057"
+        },
+        {
+          "position": "AI/ML Infrastructure Engineer",
+          "location": "Tel Aviv",
+          "positionLink": "https://mlp.eightfold.ai/careers/job/755952524461"
         }
       ],
       "testimonials": [],
