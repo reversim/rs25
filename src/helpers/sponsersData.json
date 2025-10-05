@@ -1662,6 +1662,90 @@
       ],
       "testimonials": [],
       "openJobsLink": ""
+    },
+    {
+      "sponsorTier": "game-changers",
+      "companyName": "PhaseV",
+      "website": "https://www.phasevtrials.com/",
+      "description": "PhaseV develops technology for adaptive clinical trials, using causal machine learning, generative AI, and real-world data. Our platform enables trials to adjust in real time while keeping scientific and regulatory standards.\n\nWe focus on solving complex data challenges in healthcare, such as drawing reliable causal insights from high-dimensional and incomplete datasets. Our work combines statistical modeling with scalable engineering.\n\nFor developers, this means working on problems at the intersection of AI, experimentation design, and healthcare — where technical solutions have a direct impact on how new treatments reach patients.",
+      "carouselImages": [
+        "phaseV-1",
+        "phaseV-2",
+        "phaseV-3",
+        "phaseV-4",
+        "phaseV-5",
+        "phaseV-6",
+        "phaseV-7",
+        "phaseV-8"
+      ],
+      "linkedin": "http://linkedin.com/company/phasevtrials/",
+      "twitter": "",
+      "youtube": "",
+      "github": "https://github.com/PhaseVPublic",
+      "facebook": "",
+      "instagram": "",
+      "medium": "",
+      "meetup": "",
+      "technologyStack": [
+        "TypeScript",
+        "Python",
+        "AWS",
+        "K8s",
+        "Temporal.io",
+        "next.js",
+        "React",
+        "ArgoCD",
+        "terraform",
+        "sklearn"
+      ],
+      "openPositions": [
+        {
+          "position": "Engineering Team Lead",
+          "location": "Tel Aviv",
+          "positionLink": "https://www.phasevtrials.com/careers/engineering-team-lead"
+        },
+        {
+          "position": "Senior Backend Developer",
+          "location": "Tel Aviv",
+          "positionLink": "https://www.phasevtrials.com/careers/senior-backend-developer"
+        },
+        {
+          "position": "Senior Data Scientist",
+          "location": "Tel Aviv",
+          "positionLink": "https://www.phasevtrials.com/careers/senior-data-scientist"
+        },
+        {
+          "position": "Senior Project Manager",
+          "location": "Tel Aviv",
+          "positionLink": "https://www.phasevtrials.com/careers/senior-project-manager"
+        },
+        {
+          "position": "Biological Data Scientist",
+          "location": "Tel Aviv",
+          "positionLink": "https://www.phasevtrials.com/careers/biological-data-scientist"
+        }
+      ],
+      "testimonials": [
+        {
+          "testimonialAuthor": "David Shimon",
+          "image": "david-shimon",
+          "position": "Senior Software Developer",
+          "testimonialDescription": "Clinical trials have shaped modern medicine since Dr. James Lind’s first experiment in 1747, when he discovered that citrus fruits cured scurvy. That simple test marked the beginning of evidence-based medicine.\n\nAt PhaseV, we continue this journey — rethinking how clinical trials are designed, executed, and analyzed. Our mission is to make them more accurate, efficient, and humane.\n\nI’m grateful to the teams, participants, researchers, physicians, and health systems who dedicate their efforts to answering the most important questions: what truly works, and how can we do it better?"
+        },
+        {
+          "testimonialAuthor": "Ariel Vishne",
+          "image": "ariel-vishne",
+          "position": "Data Scientist",
+          "testimonialDescription": "As a data scientist, I get to see how my work directly shapes clinical trials. Turning complex data into clear evidence is challenging, but also deeply meaningful. Working alongside engineers, clinicians, and statisticians pushes me to learn every day and reminds me that this is more than a job — it’s a chance to help bring better treatments to patients faster"
+        },
+        {
+          "testimonialAuthor": "Amitai Levy",
+          "image": "amitai-levy",
+          "position": "Senior Software Developer",
+          "testimonialDescription": "At PhaseV I get to work in a small, experienced team where every person has a real impact. I collaborate not only with great developers, but also with data scientists, statisticians, clinicians, and more. The variety keeps me learning new skills all the time—backend, frontend, cloud, ML, security. The culture balances meaningful work today with smart planning for tomorrow, in a friendly and open environment. And most important: we build a product that helps bring new medicines faster to patients who need them."
+        }
+      ],
+      "openJobsLink": ""
     }
   ]
 }
