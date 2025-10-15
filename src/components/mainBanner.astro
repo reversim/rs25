@@ -507,7 +507,9 @@ const cssVars = `
             align-items: center;
 
             &[data-sponsor="startio"] {
-              height: 38px;
+              > img {
+                height: 26px;
+              }
             }
           }
 
@@ -581,7 +583,7 @@ const cssVars = `
             height: 31px;
             transform: translateY(-3px);
           }
-          &.phasev{
+          &.phasev {
             height: 43px;
           }
         }

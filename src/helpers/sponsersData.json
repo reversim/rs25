@@ -1752,7 +1752,12 @@
       "companyName": "AppsFlyer",
       "website": "https://www.appsflyer.com/",
       "description": "AppsFlyer helps brands make good choices for their business and their customers with its advanced measurement, data analytics, deep linking, engagement, fraud protection, data clean room and privacy-preserving technologies. Built on the idea that brands can increase customer privacy while providing exceptional experiences, AppsFlyer empowers thousands of creators and 10,000+ technology partners to create better, more meaningful customer relationships.",
-      "carouselImages": ["appsflyer-1", "appsflyer-2", "appsflyer-3", "appsflyer-4"],
+      "carouselImages": [
+        "appsflyer-1",
+        "appsflyer-2",
+        "appsflyer-3",
+        "appsflyer-4"
+      ],
       "linkedin": "https://www.linkedin.com/company/appsflyerhq",
       "twitter": "https://x.com/AppsFlyer",
       "youtube": "https://www.youtube.com/c/Appsflyer",
@@ -1794,6 +1799,26 @@
       ],
       "testimonials": [],
       "openJobsLink": ""
+    },
+    {
+      "sponsorTier": "community",
+      "openJobsLink": "https://www.comeet.com/jobs/minimus/19.00B",
+      "companyName": "Minimus",
+      "description": "Minimus’ secure container images reduce vulnerabilities by over 97% compared to typical container images. Images are continuously rebuilt from source, containing only the necessary bits to run the application, radically reducing the attack surface.  Minimus images are OCI compliant and deployed with a single line change in configuration files. \n\nIn addition to hardened images, Minimus provides real-time exploit advisories, provable compliance with NIST, CIS and STIG benchmarks, and no-code actions and integrations that eliminate time consuming remediation work and deliver instant risk reduction to dev and security teams. \n\nFounded in 2022 by the team behind container security pioneer Twistlock and the author of NIST SP 800-190, Minimus has raised a $51 million seed round from YL Ventures and Mayfield. The company is headquartered in Baton Rouge with offices in New York, Tel Aviv, and Portland, OR. ",
+      "website": "https://www.minimus.io/",
+      "carouselImages": [],
+      "technologyStack": ["Go", "PostgreSQL", "Kubernetes", "Docker", "GitHub Actions"],
+      "openPositions": [],
+      "testimonials": [],
+      "linkedin": "https://www.linkedin.com/company/minimusio/",
+      "bluesky": "https://bsky.app/profile/minimus.io",
+      "facebook": "",
+      "twitter": "",
+      "meetup": "",
+      "instagram": "https://www.instagram.com/minimusio/",
+      "youtube": "https://www.youtube.com/@minimusio",
+      "github": "https://github.com/minimusio",
+      "medium": ""
     }
   ]
 }
