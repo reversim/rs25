@@ -1,0 +1,46 @@
+---
+interface Props {
+  track?: string | null;
+  categoryColor: string;
+  uppercase?: boolean;
+  style?: string | null;
+}
+const { track, categoryColor, uppercase = true , style} = Astro.props;
+---
+
+{
+  track && (
+    <div
+      class={`session-category ${uppercase ? "uppercase" : ""}`}
+      style={`background-color: ${categoryColor} ${style ? `; ${style}` : ""}`}
+    >
+      {track}
+    </div>
+  )
+}
+
+<style lang="scss">
+  .session-category {
+    margin-top: 10px;
+    display: inline-block;
+    color: white;
+    padding: 4px 10px;
+    border-radius: 16px;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    width: max-content;
+
+    &.uppercase {
+      text-transform: uppercase;
+    }
+  }
+
+  @media screen and (max-width: 767px) {
+    .session-category {
+      padding: 4px 12px;
+      border-radius: 6px;
+      margin-top: 0;
+    }
+  }
+</style>

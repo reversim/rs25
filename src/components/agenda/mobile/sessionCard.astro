@@ -1,0 +1,142 @@
+---
+import {
+  getSessionDuration,
+  getSessionUrl,
+  getTalkCategoryColor,
+} from "../../../helpers/agendaHelpers";
+import { getTrackName, type Cell } from "../../../helpers/getAgenda";
+import Category from "../category.astro";
+import LightningTalkMobile from "./lightningTalkMobile.astro";
+import SessionCardHeader from "./sessionCardHeader.astro";
+import SessionCategoryIndicator from "../sessionCategoryIndicator.astro";
+import SessionSpeakers from "../sessionSpeakers.astro";
+
+interface Props {
+  session: Cell[];
+}
+const { session } = Astro.props;
+---
+
+<div class="sessions-container">
+  {
+    session
+      .filter((cell) => cell.session && !cell.hidden)
+      .map((cell, cellIndex) => {
+        const session = cell.session!;
+        const duration = getSessionDuration(session.startsAt, session.endsAt);
+
+        const categoryColor = getTalkCategoryColor(session);
+
+        // If this is a service session (break), create non-interactive card
+        if (session.isServiceSession) {
+          return (
+            <div
+              class="session-card break-session-mobile"
+              data-talk-id={session.id}
+            >
+              <SessionCardHeader
+                sessionRoom={session.room}
+                sessionStartsAt={session.startsAt}
+                duration={duration}
+              />
+              <h3 class="session-title break-title-mobile">{session.title}</h3>
+
+              <SessionCategoryIndicator categoryColor={categoryColor} />
+            </div>
+          );
+        }
+
+        // If this is a lightning group, create one card with all lightning talks
+        if (session.isLightningGroup && session.lightningChildren) {
+          return (
+            <div
+              class="session-card lightning-group-mobile"
+              data-talk-id={session.id}
+            >
+              <SessionCardHeader
+                sessionRoom={session.lightningChildren[0]?.room}
+                sessionStartsAt={session.startsAt}
+                duration={duration}
+              />
+
+              <h3 class="session-title">Lightning Talks</h3>
+              <LightningTalkMobile lightnings={session.lightningChildren} />
+
+              <SessionCategoryIndicator categoryColor={categoryColor} />
+            </div>
+          );
+        }
+
+        // Regular session card
+        return (
+          <div class="session-card" data-talk-id={session.id}>
+            <SessionCardHeader
+              sessionRoom={session.room}
+              sessionStartsAt={session.startsAt}
+              duration={duration}
+            />
+
+            <h3 class="session-title">
+              <a href={getSessionUrl(session)}>{session.title}</a>
+            </h3>
+            <SessionSpeakers speakers={session.speakers} />
+
+            <Category
+              categoryColor={categoryColor}
+              track={getTrackName(session)}
+              style="margin-top: 10px"
+            />
+
+            <SessionCategoryIndicator categoryColor={categoryColor} />
+          </div>
+        );
+      })
+  }
+</div>
+
+<style lang="scss">
+  .sessions-container {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+
+    .session-card {
+      user-select: none;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      cursor: default;
+      padding: 16px;
+      background: white;
+      border: 2px solid #e9ecef;
+      border-radius: 12px;
+      position: relative;
+      transition: all 0.3s ease;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+
+      &:hover {
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08) !important;
+        border-color: #e9ecef !important;
+      }
+
+      &:focus {
+        outline: none;
+        transform: none !important;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08) !important;
+        border-color: #e9ecef !important;
+      }
+
+      &:active {
+        transform: none !important;
+      }
+    }
+
+    .session-title {
+      font-size: 18px;
+      padding-right: 35px;
+      line-height: 1.4;
+      margin: 0 0 12px 0;
+      color: #2c3e50;
+    }
+  }
+</style>

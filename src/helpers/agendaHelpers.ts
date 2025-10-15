@@ -202,3 +202,11 @@ export const storageHelpers = {
     return likedTalks.includes(talkId);
   },
 };
+
+export function getSessionDuration(startsAt: string, endsAt: string): number {
+  const duration = Math.round(
+    (new Date(endsAt).getTime() - new Date(startsAt).getTime()) / (1000 * 60),
+  );
+
+  return duration;
+}

@@ -1,0 +1,196 @@
+---
+const { currentDay, rowIndex, row, session, track, duration } = Astro.props;
+
+import {
+  getSessionUrl,
+  getTalkCategoryColor,
+} from "../../../helpers/agendaHelpers";
+import SessionCategory from "../category.astro";
+import LightningTalkList from "./lightningTalksGrid.astro";
+import SessionCategoryIndicator from "../sessionCategoryIndicator.astro";
+import SessionSpeakers from "../sessionSpeakers.astro";
+import TimeColumn from "./timeColumn.astro";
+---
+
+<div
+  class="time-slot-row full-width-row"
+  id={`time-slot-${currentDay.slug}-${rowIndex}`}
+>
+  <TimeColumn
+    highlighted={session.room === "Dining Hall"}
+    startsAt={row.startsAt}
+    endsAt={row.endsAt}
+  />
+  <div
+    class="full-width-session-cell"
+    data-talk-id={session.id}
+    onclick={track === "Keynote"
+      ? `window.location.href='${getSessionUrl(session)}'`
+      : null}
+  >
+    <div
+      class={`full-width-session-content ${session.room === "Dining Hall" ? "highlighted" : "session-content"}`}
+    >
+      <div class="break-time">{duration} minutes</div>
+
+      <SessionCategoryIndicator categoryColor={getTalkCategoryColor(session)} />
+      {
+        track !== "Keynote" && !session.isLightningGroup ? (
+          <>
+            <h3 class="break-title">{session.title}</h3>
+            <div class="break-location">{session.room}</div>
+          </>
+        ) : (
+          <div />
+        )
+      }
+      {
+        session.isLightningGroup && (
+          <>
+            <h3 class="break-title">Lightning sessions</h3>
+            <div class="break-location">
+              {session?.lightningChildren?.[0]?.room}
+            </div>
+
+            <LightningTalkList lightningArr={session.lightningChildren} />
+          </>
+        )
+      }
+      {
+        track === "Keynote" && (
+          <div class="keynote-session">
+            <a class="break-title" href={getSessionUrl(session)}>
+              {session.title}
+            </a>
+            <SessionSpeakers speakers={session.speakers} />
+            <div class="break-location">{session.room}</div>
+          </div>
+        )
+      }
+
+      <SessionCategory
+        categoryColor={getTalkCategoryColor(session)}
+        track={track}
+      />
+    </div>
+  </div>
+</div>
+
+<style lang="scss">
+  a {
+    color: inherit;
+    text-decoration: none;
+
+    &:hover {
+      color: var(--blue);
+      text-decoration: underline;
+    }
+  }
+
+  .session-content {
+    height: 100%;
+    background: #f8f9fa;
+    border: 2px solid #e9ecef;
+    border-radius: 8px;
+    padding: 15px;
+
+    cursor: pointer;
+    position: relative;
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    min-height: 120px;
+
+    &:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+      border-color: var(--blue);
+    }
+  }
+
+  .time-slot-row {
+    display: grid;
+    grid-template-columns: 120px 1fr 1fr 1fr;
+    border-bottom: 1px solid #e9ecef;
+
+    &:last-child {
+      border-bottom: none;
+    }
+
+    &.full-width-row {
+      grid-template-columns: 120px 1fr;
+
+      .full-width-session-cell {
+        grid-column: 2;
+        padding: 8px;
+        border-right: 1px solid #e9ecef;
+
+        &:last-child {
+          border-right: none;
+        }
+      }
+    }
+
+    .full-width-session-content {
+      padding: 20px;
+      text-align: center;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      border-radius: 8px;
+      color: var(--secondary-text-color);
+
+      &:hover {
+        transform: translateY(-1px);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        border-color: var(--blue);
+      }
+
+      .break-time {
+        font-size: 12px;
+        font-weight: 500;
+      }
+
+      .break-title {
+        font-size: 24px;
+        font-weight: 700;
+        color: var(--blue);
+        margin: 0;
+      }
+
+      .break-location {
+        font-size: 14px;
+        font-weight: 500;
+      }
+
+      .keynote-session {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 4px;
+
+        a {
+          width: max-content;
+        }
+      }
+    }
+
+    &:has(.highlighted) {
+      background: linear-gradient(135deg, #e3f2fd, #bbdefb);
+      .time-column,
+      .full-width-session-cell {
+        background: none;
+        border: none;
+      }
+
+      .full-width-session-content {
+        border: none;
+        background: none;
+
+        &:hover {
+          background: none;
+          box-shadow: none;
+        }
+      }
+    }
+  }
+</style>

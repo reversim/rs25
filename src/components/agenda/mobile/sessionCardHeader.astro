@@ -1,0 +1,37 @@
+---
+import { formatTime } from "../../../helpers/agendaHelpers";
+import Category from "../category.astro";
+
+interface Props {
+  sessionStartsAt: string;
+  duration: number;
+  sessionRoom?: string;
+}
+const { sessionRoom, sessionStartsAt, duration } = Astro.props;
+---
+
+<div class="session-header">
+  <Category uppercase={false} categoryColor={"#506592"} track={sessionRoom} />
+  <span class="time-duration">
+    {formatTime(sessionStartsAt)}
+    {" "}
+    → {duration} min
+  </span>
+  {/* TODO: Add like button */}
+  {/* <LikeTalkButton desktop={false} session={session} /> */}
+</div>
+
+<style lang="scss">
+  .session-header {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    margin-bottom: 15px;
+
+    .time-duration {
+      font-size: 13px;
+      color: var(--secondary-text-color);
+      font-weight: 500;
+    }
+  }
+</style>

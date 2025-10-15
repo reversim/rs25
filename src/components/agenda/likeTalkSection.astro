@@ -268,6 +268,8 @@ const allSessions: AgendaSession[] = currentDay.rooms.flatMap(
 </style>
 
 <script is:inline define:vars={{ allSessions, agendaDays }}>
+import { formatTime } from "../../helpers/agendaHelpers";
+
   // Pass sessions data to the client-side script
   const sessionsData = allSessions;
   const agendaData = agendaDays;
@@ -303,15 +305,6 @@ const allSessions: AgendaSession[] = currentDay.rooms.flatMap(
     };
 
     return colorMap[categoryName] || "#506592";
-  };
-
-  const formatTime = (dateString) => {
-    const date = new Date(dateString);
-    return date.toLocaleTimeString("en-US", {
-      hour12: false,
-      hour: "2-digit",
-      minute: "2-digit",
-    });
   };
 
   const createSlug = (text) => {

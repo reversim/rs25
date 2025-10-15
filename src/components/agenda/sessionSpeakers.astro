@@ -1,0 +1,41 @@
+---
+import { createSpeakerUrl } from "../../helpers/agendaHelpers";
+import type { AgendaSpeaker } from "../../helpers/getAgenda";
+
+interface Props {
+  speakers?: AgendaSpeaker[];
+}
+const { speakers } = Astro.props;
+---
+
+{
+  speakers?.length ? (
+    <div class="session-speakers">
+      {speakers.map((speaker: AgendaSpeaker, index: number) => (
+        <>
+          <a href={createSpeakerUrl(speaker.name)}>{speaker.name}</a>
+          {index < speakers.length - 1 && "  , "}
+        </>
+      ))}
+    </div>
+  ) : null
+}
+
+<style lang="scss">
+  .session-speakers {
+    font-size: 14px;
+    color: #555;
+    font-weight: 500;
+    margin-top: auto;
+
+    a {
+      color: inherit;
+      text-decoration: none;
+
+      &:hover {
+        color: var(--blue);
+        text-decoration: underline;
+      }
+    }
+  }
+</style>
