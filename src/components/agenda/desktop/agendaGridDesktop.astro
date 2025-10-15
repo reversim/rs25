@@ -1,0 +1,116 @@
+---
+import { getSessionDuration } from "../../../helpers/agendaHelpers";
+import {
+  getTrackName,
+  type Cell,
+  type CurrentDay,
+} from "../../../helpers/getAgenda";
+import AgendaCell from "./agendaCell.astro";
+import FullWidthRow from "./fullWidthRow.astro";
+import GridHeader from "./gridHeader.astro";
+import TimeColumn from "./timeColumn.astro";
+const desiredRooms = ["Main hall", "A2+A3", "A4+A5"];
+
+interface Props {
+  currentDay: CurrentDay;
+}
+const { currentDay } = Astro.props;
+
+const isFullWidthSession = (cell: Cell) =>
+  cell.session &&
+  !cell.hidden &&
+  (cell.session.isServiceSession ||
+    cell.session.isPlenumSession ||
+    (cell.span && cell.span >= desiredRooms.length));
+---
+
+<div class="agenda-grid-container desktop">
+  <div class="day-schedule active">
+    <div class="grid-wrapper">
+      <div
+        class="agenda-grid"
+        role="grid"
+        aria-label={`Agenda for ${currentDay.label}`}
+      >
+        <GridHeader dayLabel={currentDay.label} desiredRooms={desiredRooms} />
+
+        <!-- Grid Body -->
+        <div class="grid-body">
+          {
+            currentDay.grid.map((row, rowIndex) => {
+              // Check if this row has a full-width session
+              const fullWidthSession = row.cells.find((cell) =>
+                isFullWidthSession(cell),
+              );
+
+              if (fullWidthSession && fullWidthSession.session) {
+                const session = fullWidthSession.session;
+                const track = getTrackName(session);
+
+                const duration = getSessionDuration(
+                  session.startsAt,
+                  session.endsAt,
+                );
+
+                return (
+                  <FullWidthRow
+                    currentDay={currentDay}
+                    rowIndex={rowIndex}
+                    row={row}
+                    session={session}
+                    track={track}
+                    duration={duration}
+                  />
+                );
+              }
+
+              // Regular row with individual sessions
+              return (
+                <div
+                  class="time-slot-row"
+                  id={`time-slot-${currentDay.slug}-${rowIndex}`}
+                >
+                  <TimeColumn
+                    highlighted={false}
+                    startsAt={row.startsAt}
+                    endsAt={row.endsAt}
+                  />
+
+                  <AgendaCell
+                    cells={row.cells}
+                    currentDay={currentDay}
+                    desiredRooms={desiredRooms}
+                  />
+                </div>
+              );
+            })
+          }
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style lang="scss">
+  .grid-wrapper {
+    background: white;
+    border-radius: 0 0 12px 12px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    overflow: visible;
+
+    .time-slot-row {
+      display: grid;
+      grid-template-columns: 120px 1fr 1fr 1fr;
+      border-bottom: 1px solid #e9ecef;
+
+      &:last-child {
+        border-bottom: none;
+      }
+    }
+
+    /* Switch to mobile layout */
+    @media (max-width: 768px) {
+      display: none;
+    }
+  }
+</style>

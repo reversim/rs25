@@ -1,0 +1,142 @@
+---
+import {
+  getSessionDuration,
+  getSessionUrl,
+  getTalkCategoryColor,
+  getTrackName,
+} from "../../../helpers/agendaHelpers";
+import type { CurrentDay } from "../../../helpers/getAgenda";
+import { type Cell } from "../../../helpers/getAgenda";
+import SessionCategoryIndicator from "../sessionCategoryIndicator.astro";
+import SessionSpeakers from "../sessionSpeakers.astro";
+import SessionCategory from "../category.astro";
+interface Props {
+  cells: Cell[];
+  currentDay: CurrentDay;
+  desiredRooms: string[];
+}
+const { cells, currentDay, desiredRooms } = Astro.props;
+---
+
+{
+  cells.map((cell, cellIndex) => {
+    // Skip cells that are marked as hidden (e.g., spanned cells)
+    if (cell.hidden) return null;
+
+    // Find which room this cell index corresponds to
+    const roomForCell = currentDay.rooms[cellIndex];
+
+    if (!roomForCell)
+      return <div class="empty-cell" style={`--col-index: ${cellIndex + 2}`} />;
+
+    // Check if this room is one of our desired rooms
+    const roomIndex = desiredRooms.indexOf(roomForCell.name);
+    if (roomIndex === -1) return null; // Skip rooms not in our desired list
+
+    // If no session in this cell, render empty cell
+    if (!cell.session) {
+      return <div class="empty-cell" style={`--col-index: ${roomIndex + 2}`} />;
+    }
+
+    const session = cell.session;
+
+    const duration = getSessionDuration(session.startsAt, session.endsAt);
+    const categoryColor = getTalkCategoryColor(session);
+    const track = getTrackName(session);
+
+    return (
+      <div
+        class="session-cell"
+        style={`--col-index: ${roomIndex + 2}`}
+        onclick={`window.location.href='${getSessionUrl(session)}'`}
+      >
+        <div class="session-content" data-talk-id={session.id}>
+          <div class="session-duration">{duration} minutes</div>
+          <h3 class="session-title">
+            <a href={getSessionUrl(session)}>{session.title}</a>
+          </h3>
+          <SessionSpeakers speakers={session.speakers} />
+          <SessionCategory track={track} categoryColor={categoryColor} />
+          {/* TODO: Add like button */}
+          {/* <LikeTalkButton
+                                session={session}
+                                desktop={true}
+                              /> */}
+
+          <SessionCategoryIndicator categoryColor={categoryColor} />
+        </div>
+      </div>
+    );
+  })
+}
+
+<style lang="scss">
+  .empty-cell {
+    background: #fafafa;
+    border-right: 1px solid #e9ecef;
+    grid-column: var(--col-index);
+
+    &:last-child {
+      border-right: none;
+    }
+  }
+
+  .session-cell {
+    padding: 8px;
+    vertical-align: top;
+    border-right: 1px solid #e9ecef;
+    z-index: 1;
+    grid-column: var(--col-index);
+
+    &:last-child {
+      border-right: none;
+    }
+
+    .session-content {
+      height: 100%;
+      background: #f8f9fa;
+      border: 2px solid #e9ecef;
+      border-radius: 8px;
+      padding: 15px;
+
+      cursor: pointer;
+      position: relative;
+      transition: all 0.3s ease;
+      display: flex;
+      flex-direction: column;
+      min-height: 120px;
+
+      &:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+        border-color: var(--blue);
+      }
+
+      .session-duration {
+        font-size: 12px;
+        color: var(--secondary-text-color);
+        font-weight: 500;
+        margin-bottom: 8px;
+      }
+
+      .session-title {
+        font-size: 20px;
+        font-weight: 700;
+        line-height: 1.4;
+        margin: 0 0 12px 0;
+        color: #2c3e50;
+        padding-right: 40px;
+
+        a {
+          color: inherit;
+          text-decoration: none;
+
+          &:hover {
+            color: var(--blue);
+            text-decoration: underline;
+          }
+        }
+      }
+    }
+  }
+</style>

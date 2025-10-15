@@ -1,0 +1,57 @@
+---
+import { createSpeakerUrl, getSessionUrl } from "../../../helpers/agendaHelpers";
+import type { AgendaSession, AgendaSpeaker } from "../../../helpers/getAgenda";
+const { lightningArr } = Astro.props;
+---
+<div class="lightning-talk-list">
+  {
+    lightningArr?.map((child: AgendaSession) => {
+      return (
+        <div class="lightning-talk-container">
+          <a class="lightning-talk-title" href={getSessionUrl(child)}>
+            {child.title}
+          </a>
+          {child.speakers.length > 0 &&
+            child.speakers.map((speaker: AgendaSpeaker) => (
+              <a
+                class="lightning-speaker"
+                href={createSpeakerUrl(speaker.name)}
+              >
+                {speaker.name}
+              </a>
+            ))}
+        </div>
+      );
+    })
+  }
+</div>
+
+<style lang="scss">
+  .lightning-talk-list {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+    font-size: 14px;
+    margin-top: 10px;
+
+    .lightning-talk-container {
+      .lightning-talk-title {
+        font-weight: 700;
+        color: #2c3e50;
+
+        &:hover {
+          color: var(--blue);
+          text-decoration: underline;
+        }
+      }
+
+      .lightning-speaker {
+        &:hover {
+          color: var(--blue);
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+</style>

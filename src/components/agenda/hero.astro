@@ -1,0 +1,36 @@
+<div class="agenda-header">
+  <h2>Conference Agenda</h2>
+  <p class="language-note">
+    <sup>*</sup>All sessions will be conducted in Hebrew
+  </p>
+  <!-- TODO - add scroll to now button -->
+  <!-- <div class="header-actions">
+        <button id="scroll-to-now" class="current-time-btn">
+          What's there now?
+        </button>
+      </div> -->
+</div>
+
+<style lang="scss">
+  .agenda-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: end;
+    margin-bottom: 30px;
+
+    .language-note {
+      font-size: 14px;
+      font-weight: 300;
+    }
+
+    h2 {
+      margin: 0;
+    }
+
+    @media (max-width: 768px) {
+      flex-direction: column;
+      gap: 15px;
+      text-align: center;
+    }
+  }
+</style>

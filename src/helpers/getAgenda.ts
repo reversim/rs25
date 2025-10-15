@@ -42,6 +42,28 @@ export interface AgendaDay extends RawGridDay {
   label: string; // human readable date (e.g. Mon Oct 27)
 }
 
+export interface Cell {
+  key: string;
+  session?: AgendaSession;
+  span?: number;
+  hidden?: boolean;
+}
+
+export interface CurrentDay {
+  grid: {
+    startsAt: string;
+    endsAt: string;
+    cells: Cell[];
+    shortRow: boolean;
+  }[];
+  slug: string;
+  label: string;
+  date: string;
+  isDefault?: boolean;
+  rooms: AgendaRoom[];
+  hasOnlyPlenumSessions?: boolean;
+}
+
 const AGENDA_URL = "https://sessionize.com/api/v2/fan6lxrk/view/GridSmart";
 
 function formatDayLabel(dateStr: string) {
@@ -127,12 +149,6 @@ export function buildDayGrid(day: AgendaDay) {
       ? new Date(Math.max(...ends)).toISOString()
       : startAt;
 
-    interface Cell {
-      key: string;
-      session?: AgendaSession;
-      span?: number;
-      hidden?: boolean;
-    }
     const cells: Cell[] = rowSessions.map((s, idx) => ({
       key: `${startAt}-${rooms[idx].id}`,
       session: s,

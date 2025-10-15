@@ -22,7 +22,7 @@ const { availableDays, currentDaySlug } = Astro.props;
   }
 </div>
 
-<style>
+<style lang="scss">
   .day-switcher {
     display: flex;
     justify-content: center;
@@ -39,7 +39,7 @@ const { availableDays, currentDaySlug } = Astro.props;
     font-weight: 600;
     cursor: pointer;
     transition: all 0.3s ease;
-    color: #666;
+    color: var(--secondary-text-color);
     text-decoration: none;
     display: inline-block;
 
@@ -52,6 +52,11 @@ const { availableDays, currentDaySlug } = Astro.props;
       background: var(--blue);
       border-color: var(--blue);
       color: white;
+
+      &:hover {
+        background: white;
+        color: var(--secondary-text-color);
+      }
     }
   }
 

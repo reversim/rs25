@@ -1,0 +1,24 @@
+---
+interface Props {
+  categoryColor: string;
+}
+
+const { categoryColor } = Astro.props;
+---
+
+<div
+  class="session-category-indicator"
+  style={`background-color: ${categoryColor}`}
+>
+</div>
+
+<style lang="scss">
+  .session-category-indicator {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 6px;
+    height: 100%;
+    border-radius: 6px 0 0 6px;
+  }
+</style>

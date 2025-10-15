@@ -1,0 +1,58 @@
+---
+import { formatTime } from "../../../helpers/agendaHelpers";
+
+interface Props {
+  highlighted: boolean;
+  startsAt: string;
+  endsAt: string;
+}
+const { startsAt, endsAt, highlighted } = Astro.props;
+---
+
+<div class=`time-column ${highlighted ? "highlighted" : ""}`>
+  <div class="time-display">
+    <div class="start-time">
+      {formatTime(startsAt)}
+    </div>
+    <div class="end-time">
+      {formatTime(endsAt)}
+    </div>
+  </div>
+</div>
+
+<style lang="scss">
+  .time-column {
+    grid-column: 1;
+    width: 120px;
+    min-width: 120px;
+    background: #f8f9fa;
+    border-right: 2px solid #e9ecef;
+    padding: 15px 10px;
+    text-align: center;
+    vertical-align: top;
+
+    .time-display {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 4px;
+
+      .start-time {
+        font-size: 16px;
+        font-weight: 700;
+        color: var(--blue);
+      }
+
+      .end-time {
+        font-size: 12px;
+        font-weight: 500;
+        color: var(--secondary-text-color);
+      }
+    }
+
+    &.highlighted {
+      background: none;
+      border: none;
+    }
+  }
+</style>
