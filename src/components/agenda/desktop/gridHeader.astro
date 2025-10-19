@@ -1,4 +1,6 @@
 ---
+import DayHeader from "../dayHeader.astro";
+
 interface Props {
   dayLabel: string;
   desiredRooms: string[];
@@ -6,7 +8,7 @@ interface Props {
 const { dayLabel, desiredRooms } = Astro.props;
 ---
 
-<div class="schedule-header">{dayLabel}</div>
+<DayHeader dayLabel={dayLabel} />
 <div class="grid-header">
   <div class="time-column-header">Time</div>
   {
@@ -17,21 +19,6 @@ const { dayLabel, desiredRooms } = Astro.props;
 </div>
 
 <style lang="scss">
-  .schedule-header {
-    background: linear-gradient(135deg, #e3f2fd, #bbdefb);
-    height: 54px;
-    color: var(--blue);
-    padding: 15px 25px;
-    font-weight: 600;
-    text-align: center;
-    border-radius: 12px 12px 0 0;
-    font-size: 18px;
-
-    position: sticky;
-    top: var(--header-height);
-    z-index: 2;
-  }
-
   .grid-header {
     display: grid;
     grid-template-columns: 120px 1fr 1fr 1fr;

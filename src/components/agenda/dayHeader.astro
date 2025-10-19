@@ -1,0 +1,96 @@
+---
+import Arrow from "../../assets/arrow.svg";
+
+interface Props {
+  dayLabel: string;
+}
+const { dayLabel } = Astro.props;
+const displayNextDay = dayLabel.includes("27");
+---
+
+<div class="day-header">
+  <span> {dayLabel}</span>
+  {
+    displayNextDay ? (
+      <a href="/agenda/2025-10-28" class="next">
+        <Arrow class="arrow" />
+      </a>
+    ) : (
+      <a href="/agenda/2025-10-27" class="prev">
+        <Arrow class="arrow" />
+      </a>
+    )
+  }
+</div>
+
+<style lang="scss">
+  .day-header {
+    position: sticky;
+    top: var(--header-height);
+    z-index: 2;
+
+    height: 54px;
+    padding: 15px 25px;
+    border-radius: 12px 12px 0 0;
+
+    background: linear-gradient(135deg, #e3f2fd, #bbdefb);
+    color: var(--blue);
+    font-weight: 600;
+    text-align: center;
+    font-size: 18px;
+
+    @media screen and (max-width: 768px) {
+      height: 44px;
+      margin-bottom: 20px;
+      padding: 12px 20px;
+
+      color: white;
+      font-size: 16px;
+
+      animation: shrinkRadius 0.5s both;
+      animation-timeline: scroll(root block);
+      animation-range-start: 0;
+      animation-range-end: 100dvh;
+    }
+
+    .next,
+    .prev {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 18px;
+      width: max-content;
+      position: absolute;
+      transform: translate(0, -50%);
+
+      .arrow {
+        height: 100%;
+        width: max-content;
+      }
+    }
+
+    .next {
+      top: 50%;
+      right: 25px;
+    }
+    .prev {
+      top: 50%;
+      left: 25px;
+
+      .arrow {
+        -webkit-transform: scaleX(-1);
+        transform: scaleX(-1);
+      }
+    }
+  }
+
+  @keyframes shrinkRadius {
+    from {
+      border-radius: 5px;
+    }
+    to {
+      border-radius: 0px;
+    }
+  }
+</style>
