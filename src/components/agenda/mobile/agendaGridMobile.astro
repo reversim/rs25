@@ -1,6 +1,7 @@
 ---
 import { formatTime } from "../../../helpers/agendaHelpers";
 import type { CurrentDay } from "../../../helpers/getAgenda";
+import DayHeader from "../dayHeader.astro";
 import SessionCard from "./sessionCard.astro";
 
 interface Props {
@@ -11,7 +12,7 @@ const { currentDay } = Astro.props;
 
 <div class="agenda-main agenda-container mobile-only">
   <div class="day-section active">
-    <div class="day-header">{currentDay.label}</div>
+    <DayHeader dayLabel={currentDay.label} />
     {
       currentDay.grid.map((row, rowIndex) => (
         <div
@@ -31,36 +32,6 @@ const { currentDay } = Astro.props;
   @media (min-width: 768px) {
     .agenda-container {
       display: none;
-    }
-  }
-
-  .day-header {
-    position: sticky;
-    top: var(--header-height);
-    z-index: 2;
-    height: 44px;
-
-    background: linear-gradient(135deg, #e3f2fd, #bbdefb);
-    color: white;
-    font-size: 16px;
-    font-weight: 600;
-    text-align: center;
-    border-radius: 12px 12px 0 0;
-    margin-bottom: 20px;
-    padding: 12px 20px;
-
-    animation: shrinkRadius 0.5s both;
-    animation-timeline: scroll(root block);
-    animation-range-start: 0;
-    animation-range-end: 100dvh;
-  }
-
-  @keyframes shrinkRadius {
-    from {
-      border-radius: 5px;
-    }
-    to {
-      border-radius: 0px;
     }
   }
 
