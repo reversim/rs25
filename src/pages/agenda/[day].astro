@@ -8,9 +8,8 @@ buildDayGrid,
 getAgendaDays
 } from "../../helpers/getAgenda";
 import Layout from "../../layouts/Layout.astro";
-// import LikeTalkButton from "../../components/agenda/likeTalkButton.astro";
 // import LikeTalkSection from "../../components/agenda/likeTalkSection.astro";
-// import FilterSessions from "../../components/agenda/filterSessions.astro";
+import FilterSessions from "../../components/agenda/filterSessions.astro";
 
 export async function getStaticPaths() {
   const agendaDays = await getAgendaDays();
@@ -31,9 +30,6 @@ export async function getStaticPaths() {
 }
 
 const { currentDay, availableDays } = Astro.props;
-
-// Define the visible room names and their order for the 3-column layout
-const desiredRooms = ["Main hall", "A2+A3", "A4+A5"]; // TODO: please remove this line
 ---
 
 <Layout havePadding={false}>
@@ -49,8 +45,7 @@ const desiredRooms = ["Main hall", "A2+A3", "A4+A5"]; // TODO: please remove thi
       currentDaySlug={currentDay.slug}
     />
 
-    <!-- TODO: Add filter sessions -->
-    <!-- <FilterSessions currentDay={currentDay} /> -->
+    <FilterSessions currentDay={currentDay} />
 
     <!-- Desktop Grid-based Schedule View -->
     <AgendaGridDesktop currentDay={currentDay} />

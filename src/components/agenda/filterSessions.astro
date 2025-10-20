@@ -4,7 +4,7 @@ import {
   type AgendaDay,
   type AgendaSession,
 } from "../../helpers/getAgenda";
-
+import Star from "../../assets/star.svg";
 interface Props {
   currentDay: AgendaDay;
 }
@@ -33,7 +33,6 @@ const uniqueCategories = [
 <!-- TODO Filter Toggle Button -->
 <div class="filter-toggle-container">
   <button class="filter-toggle-btn" onclick="toggleFilters()">
-    <span class="filter-icon">🔍</span>
     Filters
     <span class="filter-arrow">▼</span>
   </button>
@@ -75,6 +74,16 @@ const uniqueCategories = [
         }
       </div>
     </div>
+    <div class="filter-column">
+      <h4 class="favorite-filter"><Star />Favorites</h4>
+      <div class="filter-options" id="favorite-filters">
+        <label class="filter-checkbox">
+          <input type="checkbox" value={"favorite"} onchange="applyFilters()" />
+          <span class="checkmark"></span>
+          Favorites
+        </label>
+      </div>
+    </div>
   </div>
 
   <div class="filter-footer">
@@ -84,174 +93,17 @@ const uniqueCategories = [
 
 <script is:inline define:vars={{ allSessions }}>
   // Pass sessions data to the client-side script
-  const sessionsData = allSessions;
+  window.sessionsData = allSessions;
+</script>
 
-  // Helper functions for client-side use
-  const getSessionTrackName = (session) => {
-    const trackCategory = session.categories?.find((c) => c.name === "Track");
-    const item = trackCategory?.categoryItems?.[0];
-    if (!item) return null;
-    const raw = item.name;
-    if (raw === "AI Apps" || raw === "AI Infra") return "AI";
-    return raw;
-  };
+<script>
+  import { initializeFilters } from "../../helpers/filterHelpers";
 
-  const findSessionById = (sessionId) => {
-    return sessionsData.find((session) => session.id === sessionId);
-  };
+  // Get sessions data from the inline script
+  const sessionsData = (window as any).sessionsData || [];
 
-  // Filtering Functions
-  function applyFilters() {
-    // Get all selected values from checkboxes
-    const selectedThemes = Array.from(
-      document.querySelectorAll("#theme-filters input:checked"),
-    ).map((cb) => cb.value);
-    const selectedRooms = Array.from(
-      document.querySelectorAll("#room-filters input:checked"),
-    ).map((cb) => cb.value);
-
-    // Filter desktop cards (including lightning talk cards)
-    const desktopCards = document.querySelectorAll(".session-content");
-    const desktopBreaks = document.querySelectorAll(".break-session-content");
-    const desktopBreakCells = document.querySelectorAll(".break-session-cell");
-
-    // Filter mobile cards (including lightning talk cards)
-    const mobileCards = document.querySelectorAll(".session-card");
-
-    let visibleCount = 0;
-    let totalCount = 0;
-
-    // Apply filters to desktop session cards
-    [...desktopCards, ...desktopBreaks].forEach((card) => {
-      const sessionId = card.getAttribute("data-talk-id");
-      const session = findSessionById(sessionId);
-
-      if (session) {
-        totalCount++;
-
-        // Check theme match
-        const track = getSessionTrackName(session);
-        const matchesTheme =
-          selectedThemes.length === 0 ||
-          (track && selectedThemes.includes(track));
-
-        // Check room match
-        const matchesRoom =
-          selectedRooms.length === 0 || selectedRooms.includes(session.room);
-
-        if (matchesTheme && matchesRoom) {
-          card.style.opacity = "1";
-          card.style.transform = "scale(1)";
-          card.style.transition = "all 0.3s ease";
-          visibleCount++;
-        } else {
-          card.style.opacity = "0.1";
-          card.style.transform = "scale(0.95)";
-          card.style.transition = "all 0.3s ease";
-        }
-      }
-    });
-
-    // Apply filters to desktop full-width break session cells
-    desktopBreakCells.forEach((cell) => {
-      const sessionId = cell.getAttribute("data-talk-id");
-      const session = findSessionById(sessionId);
-
-      if (session) {
-        totalCount++;
-
-        // Check theme match
-        const track = getSessionTrackName(session);
-        const matchesTheme =
-          selectedThemes.length === 0 ||
-          (track && selectedThemes.includes(track));
-
-        // Check room match
-        const matchesRoom =
-          selectedRooms.length === 0 || selectedRooms.includes(session.room);
-
-        // Apply visual changes to the content only (like regular session cards)
-        const breakContent = cell.querySelector(".break-session-content");
-        if (breakContent) {
-          if (matchesTheme && matchesRoom) {
-            breakContent.style.opacity = "1";
-            breakContent.style.transform = "scale(1)";
-            breakContent.style.transition = "all 0.3s ease";
-            visibleCount++;
-          } else {
-            breakContent.style.opacity = "0.1";
-            breakContent.style.transform = "scale(0.95)";
-            breakContent.style.transition = "all 0.3s ease";
-          }
-        }
-      }
-    });
-
-    // Apply filters to mobile session cards
-    mobileCards.forEach((card) => {
-      const sessionId = card.getAttribute("data-talk-id");
-      const session = findSessionById(sessionId);
-
-      if (session) {
-        const track = getSessionTrackName(session);
-        const matchesTheme =
-          selectedThemes.length === 0 ||
-          (track && selectedThemes.includes(track));
-        const matchesRoom =
-          selectedRooms.length === 0 || selectedRooms.includes(session.room);
-
-        if (matchesTheme && matchesRoom) {
-          card.style.opacity = "1";
-          card.style.transform = "scale(1)";
-          card.style.transition = "all 0.3s ease";
-        } else {
-          card.style.opacity = "0.1";
-          card.style.transform = "scale(0.95)";
-          card.style.transition = "all 0.3s ease";
-        }
-      }
-    });
-  }
-
-  function clearAllFilters() {
-    // Uncheck all checkboxes
-    document
-      .querySelectorAll('.filter-section input[type="checkbox"]')
-      .forEach((checkbox) => {
-        checkbox.checked = false;
-      });
-
-    // Reset all cards to visible
-    const allCards = document.querySelectorAll(
-      ".session-content, .break-session-content, .break-session, .session-card",
-    );
-    allCards.forEach((card) => {
-      card.style.opacity = "1";
-      card.style.transform = "scale(1)";
-      card.style.transition = "all 0.3s ease";
-    });
-
-    // Filters cleared successfully
-  }
-
-  // Filter Toggle Function
-  function toggleFilters() {
-    const filterSection = document.getElementById("filter-section");
-    const toggleBtn = document.querySelector(".filter-toggle-btn");
-
-    if (filterSection.style.display === "none") {
-      filterSection.style.display = "block";
-      toggleBtn.classList.add("active");
-    } else {
-      filterSection.style.display = "none";
-      toggleBtn.classList.remove("active");
-    }
-  }
-
-  // Make functions globally available
-  window.applyFilters = applyFilters;
-  window.clearAllFilters = clearAllFilters;
-  window.toggleFilters = toggleFilters;
+  // Initialize filters with sessions data
+  initializeFilters(sessionsData);
 </script>
 
 <style lang="scss">
@@ -275,9 +127,9 @@ const uniqueCategories = [
   }
 
   .filter-toggle-btn {
-    background: var(--pink);
+    background: var(--pink-dark);
     color: white;
-    border: 2px solid var(--pink);
+    border: none;
     border-radius: 25px;
     padding: 12px 24px;
     font-size: 16px;
@@ -290,8 +142,6 @@ const uniqueCategories = [
     box-shadow: 0 2px 8px rgba(253, 106, 130, 0.3);
 
     &:hover {
-      background: #e05574;
-      border-color: #e05574;
       transform: translateY(-1px);
       box-shadow: 0 4px 12px rgba(253, 106, 130, 0.4);
     }
@@ -306,8 +156,8 @@ const uniqueCategories = [
     }
 
     &.active {
-      background: #e05574;
-      border-color: #e05574;
+      background: var(--pink-dark);
+      border-color: var(--pink-dark);
 
       .filter-arrow {
         transform: rotate(180deg);
@@ -343,6 +193,17 @@ const uniqueCategories = [
       margin: 0 0 16px 0;
       padding-bottom: 8px;
       border-bottom: 2px solid #f3f4f6;
+    }
+
+    .favorite-filter {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+
+      svg {
+        color: var(--yellow);
+        transform: translateY(-1px);
+      }
     }
   }
 
@@ -383,10 +244,11 @@ const uniqueCategories = [
       position: relative;
       transition: all 0.2s ease;
     }
-
-    &:hover .checkmark {
-      border-color: var(--pink);
-      background-color: #fef7f7;
+    @media screen and (min-width: 768px) {
+      &:hover .checkmark {
+        border-color: var(--pink);
+        background-color: #fef7f7;
+      }
     }
 
     input:checked ~ .checkmark {
@@ -423,8 +285,8 @@ const uniqueCategories = [
   }
 
   .reset-filters-btn {
-    background: transparent;
-    color: var(--pink);
+    background: var(--pink);
+    color: white;
     border: 2px solid var(--pink);
     border-radius: 25px;
     padding: 10px 24px;
@@ -433,10 +295,14 @@ const uniqueCategories = [
     cursor: pointer;
     transition: all 0.3s ease;
 
-    &:hover {
-      background: var(--pink);
-      color: white;
-      transform: translateY(-1px);
+    @media screen and (min-width: 768px) {
+      background: transparent;
+      color: var(--pink);
+      &:hover {
+        background: var(--pink);
+        color: white;
+        transform: translateY(-1px);
+      }
     }
   }
 

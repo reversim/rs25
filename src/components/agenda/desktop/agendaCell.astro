@@ -1,15 +1,16 @@
 ---
 import {
+  createSessionUrl,
   getSessionDuration,
-  getSessionUrl,
   getTalkCategoryColor,
   getTrackName,
 } from "../../../helpers/agendaHelpers";
 import type { CurrentDay } from "../../../helpers/getAgenda";
 import { type Cell } from "../../../helpers/getAgenda";
+import SessionCategory from "../category.astro";
+import LikeTalkButton from "../likeTalkButton.astro";
 import SessionCategoryIndicator from "../sessionCategoryIndicator.astro";
 import SessionSpeakers from "../sessionSpeakers.astro";
-import SessionCategory from "../category.astro";
 interface Props {
   cells: Cell[];
   currentDay: CurrentDay;
@@ -48,21 +49,16 @@ const { cells, currentDay, desiredRooms } = Astro.props;
       <div
         class="session-cell"
         style={`--col-index: ${roomIndex + 2}`}
-        onclick={`window.location.href='${getSessionUrl(session)}'`}
+        onclick={`window.location.href='${createSessionUrl(session.title)}'`}
       >
         <div class="session-content" data-talk-id={session.id}>
           <div class="session-duration">{duration} minutes</div>
           <h3 class="session-title">
-            <a href={getSessionUrl(session)}>{session.title}</a>
+            <a href={createSessionUrl(session.title)}>{session.title}</a>
           </h3>
           <SessionSpeakers speakers={session.speakers} />
           <SessionCategory track={track} categoryColor={categoryColor} />
-          {/* TODO: Add like button */}
-          {/* <LikeTalkButton
-                                session={session}
-                                desktop={true}
-                              /> */}
-
+          <LikeTalkButton sessionId={session.id} />
           <SessionCategoryIndicator categoryColor={categoryColor} />
         </div>
       </div>
