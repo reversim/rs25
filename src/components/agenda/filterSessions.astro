@@ -42,6 +42,16 @@ const uniqueCategories = [
 <div class="filter-section" id="filter-section" style="display: none;">
   <div class="filter-grid">
     <div class="filter-column">
+      <h4 class="favorite-filter"><Star />Favorites</h4>
+      <div class="filter-options" id="favorite-filters">
+        <label class="filter-checkbox">
+          <input type="checkbox" value={"favorite"} onchange="applyFilters()" />
+          <span class="checkmark"></span>
+          Favorites
+        </label>
+      </div>
+    </div>
+    <div class="filter-column">
       <h4>Theme</h4>
       <div class="filter-options" id="theme-filters">
         {
@@ -72,16 +82,6 @@ const uniqueCategories = [
             </label>
           ))
         }
-      </div>
-    </div>
-    <div class="filter-column">
-      <h4 class="favorite-filter"><Star />Favorites</h4>
-      <div class="filter-options" id="favorite-filters">
-        <label class="filter-checkbox">
-          <input type="checkbox" value={"favorite"} onchange="applyFilters()" />
-          <span class="checkmark"></span>
-          Favorites
-        </label>
       </div>
     </div>
   </div>
