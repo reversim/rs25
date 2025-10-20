@@ -4,9 +4,10 @@ interface Props {
   link: string;
   iconColor: string;
   iconDegree?: number;
+  variant?: "button" | "link";
 }
 
-const { label, iconColor, link } = Astro.props;
+const { label, iconColor, link, variant } = Astro.props;
 
 let iconDegree = Astro.props.iconDegree;
 
@@ -16,9 +17,13 @@ if (!iconDegree) {
 const iconDegreeStr = `${iconDegree}deg`;
 ---
 
-<a class="header-link" href={link}>
+<a
+  class={`header-link ${variant}`}
+  target={variant === "button" ? "_blank" : "_self"}
+  href={link}
+>
   <div class="screw"></div>
-  {label}
+  <span class="label"> {label} </span>
 </a>
 
 <style define:vars={{ iconColor, iconDegreeStr }} lang="scss">
@@ -30,6 +35,31 @@ const iconDegreeStr = `${iconDegree}deg`;
     align-items: center;
     &:hover {
       --modifiedDegree: calc(var(--iconDegreeStr) - 180deg);
+    }
+
+    &.button {
+      position: relative;
+      border: none;
+      padding: 8px 12px;
+      color: white;
+      border-radius: 50px;
+      background-color: var(--iconColor);
+      box-shadow: 4px 4px 0px #c1c1c182;
+      transition: all 0.15s ease-in;
+
+      .screw {
+        background-color: var(--pink);
+        position: absolute;
+        top: 46%;
+        left: 39.3%;
+        transform: translate(-50%, -50%);
+        scale: 0.63;
+
+        &::before {
+          background-color: white;
+          width: 3px;
+        }
+      }
     }
   }
 

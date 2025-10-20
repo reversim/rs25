@@ -5,13 +5,25 @@ import { getAgendaCurrentDay } from "../helpers/getAgendaCurrentDay";
 
 const currentDayUrl = await getAgendaCurrentDay();
 
-const navbarLinks = [
+interface HeaderLink {
+  link: string;
+  label: string;
+  iconColor: string;
+  variant?: "button" | "link";
+}
+
+const navbarLinks: HeaderLink[] = [
   { link: "/", label: "Home", iconColor: "#7ebec8" },
-  { link: currentDayUrl, label: "Agenda", iconColor: "#506592" },
   { link: "/#sponsors", label: "Sponsors", iconColor: "var(--orange)" },
-  { link: "/#team", label: "Team", iconColor: "var(--green)" },
-  { link: "/#past-events", label: "Past Events", iconColor: "var(--pink)" },
-  { link: "/#venue", label: "Venue", iconColor: "#7ebec8" },
+  { link: currentDayUrl, label: "Agenda", iconColor: "#506592" },
+  { link: "/speakers", label: "Speakers", iconColor: "var(--green)" },
+  { link: "/about", label: "Team", iconColor: "var(--pink)" },
+  {
+    link: "https://ti.to/reversim-summit/2025",
+    label: "Get Your Ticket",
+    iconColor: "#7ebec8",
+    variant: "button",
+  },
 ];
 ---
 
@@ -64,6 +76,7 @@ const navbarLinks = [
           link={link.link}
           label={link.label}
           iconColor={link.iconColor}
+          variant={link?.variant}
         />
       ))
     }
@@ -82,6 +95,7 @@ const navbarLinks = [
             link={link.link}
             label={link.label}
             iconColor={link.iconColor}
+            variant={link?.variant}
           />
         ))
       }
