@@ -4,7 +4,7 @@ import {
   type AgendaDay,
   type AgendaSession,
 } from "../../helpers/getAgenda";
-
+import Star from "../../assets/star.svg";
 interface Props {
   currentDay: AgendaDay;
 }
@@ -75,7 +75,7 @@ const uniqueCategories = [
       </div>
     </div>
     <div class="filter-column">
-      <h4>Favorites</h4>
+      <h4 class="favorite-filter"><Star />Favorites</h4>
       <div class="filter-options" id="favorite-filters">
         <label class="filter-checkbox">
           <input type="checkbox" value={"favorite"} onchange="applyFilters()" />
@@ -193,6 +193,17 @@ const uniqueCategories = [
       margin: 0 0 16px 0;
       padding-bottom: 8px;
       border-bottom: 2px solid #f3f4f6;
+    }
+
+    .favorite-filter {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+
+      svg {
+        color: var(--yellow);
+        transform: translateY(-1px);
+      }
     }
   }
 
