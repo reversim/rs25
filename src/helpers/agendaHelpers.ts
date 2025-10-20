@@ -141,10 +141,19 @@ export function toggleLike(sessionId: string, el: Element) {
 }
 
 export function handleToggle(el: Element) {
-  const isLiked = storageHelpers.isLiked(
-    String(el.getAttribute("data-talk-id")),
+  const sessionId = el.getAttribute("data-talk-id");
+
+  if (!sessionId) return;
+
+  const sessionsEl = document.querySelectorAll(
+    `.like-btn[data-talk-id="${sessionId}"]`,
   );
-  el.classList.toggle("liked", isLiked);
+
+  // change like button from mobile and desktop
+  sessionsEl?.forEach((el) => {
+    const isLiked = storageHelpers.isLiked(String(sessionId));
+    el.classList.toggle("liked", isLiked);
+  });
 }
 
 // Find session by ID

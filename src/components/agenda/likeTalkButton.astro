@@ -7,24 +7,28 @@ interface Props {
 const { sessionId } = Astro.props;
 ---
 
-<button class="like-btn" data-talk-id={sessionId} title="Like this talk">
+<button class=`like-btn` data-talk-id={sessionId}>
   <Star />
 </button>
 
 <script>
-  import { handleToggle, toggleLike } from "../../helpers/agendaHelpers";
+  import {
+handleToggle,
+toggleLike
+} from "../../helpers/agendaHelpers";
 
   document.addEventListener("DOMContentLoaded", () => {
     const likeBtns = document.querySelectorAll(".like-btn");
 
     likeBtns.forEach((el) => {
+      handleToggle(el);
+
       el?.addEventListener("click", (e) => {
         e.stopPropagation();
 
-        toggleLike(el.getAttribute("data-talk-id") || "", el);
+        const talkId = el.getAttribute("data-talk-id");
+        toggleLike(talkId || "", el);
       });
-
-      handleToggle(el);
     });
   });
 </script>
