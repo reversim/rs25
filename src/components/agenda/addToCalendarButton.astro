@@ -1,5 +1,6 @@
 ---
 import type { AgendaSession } from "../../helpers/getAgenda";
+import type { CalendarSessionData } from "../../helpers/addToCalendar";
 import Calendar from "../../assets/agenda/calendar.svg";
 
 interface Props {
@@ -7,7 +8,19 @@ interface Props {
 }
 
 const { session } = Astro.props;
-const sessionData = JSON.stringify(session);
+
+// Extract only the fields needed for calendar functionality
+const calendarData: CalendarSessionData = {
+  id: session.id,
+  title: session.title,
+  startsAt: session.startsAt,
+  endsAt: session.endsAt,
+  room: session.room,
+  speakers: session.speakers,
+  description: session.description,
+};
+
+const sessionData = JSON.stringify(calendarData);
 ---
 
 <div class={`add-to-calendar-wrapper`}>
@@ -29,8 +42,8 @@ const sessionData = JSON.stringify(session);
     createOutlookCalendarUrl,
     createYahooCalendarUrl,
     createICalContent,
+    type CalendarSessionData,
   } from "../../helpers/addToCalendar";
-import type { AgendaSession } from "../../helpers/getAgenda";
 
   function setupAddToCalendar() {
     const buttons = document.querySelectorAll(".add-to-calendar-btn");
@@ -39,7 +52,7 @@ import type { AgendaSession } from "../../helpers/getAgenda";
       const sessionData = button.getAttribute("data-session");
       if (!sessionData) return;
 
-      const session: AgendaSession = JSON.parse(sessionData);
+      const session: CalendarSessionData = JSON.parse(sessionData);
       const wrapper = button.closest(".add-to-calendar-wrapper");
       const dropdown = wrapper?.querySelector(".calendar-dropdown");
 

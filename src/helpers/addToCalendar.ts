@@ -1,6 +1,19 @@
 import type { AgendaSession } from "./getAgenda";
 
 /**
+ * Minimal session data needed for calendar functionality
+ */
+export interface CalendarSessionData {
+  id: string | number;
+  title: string;
+  startsAt: string;
+  endsAt: string;
+  room?: string;
+  speakers: Array<{ name: string }>;
+  description?: string | null;
+}
+
+/**
  * Format date for calendar URLs (YYYYMMDDTHHMMSSZ format)
  */
 function formatDateForCalendar(date: Date): string {
@@ -13,7 +26,7 @@ function formatDateForCalendar(date: Date): string {
 /**
  * Generate event details text
  */
-function generateEventDetails(session: AgendaSession): string {
+function generateEventDetails(session: CalendarSessionData): string {
   const speakers = session.speakers.map((s) => s.name).join(", ");
   return `
 Speakers: ${speakers}
@@ -26,7 +39,7 @@ ${session.description || "No description available."}
 /**
  * Generate Google Calendar URL
  */
-export function createGoogleCalendarUrl(session: AgendaSession): string {
+export function createGoogleCalendarUrl(session: CalendarSessionData): string {
   const startDate = new Date(session.startsAt);
   const endDate = new Date(session.endsAt);
 
@@ -43,7 +56,7 @@ export function createGoogleCalendarUrl(session: AgendaSession): string {
 /**
  * Generate Outlook Calendar URL
  */
-export function createOutlookCalendarUrl(session: AgendaSession): string {
+export function createOutlookCalendarUrl(session: CalendarSessionData): string {
   const startDate = new Date(session.startsAt);
   const endDate = new Date(session.endsAt);
 
@@ -60,7 +73,7 @@ export function createOutlookCalendarUrl(session: AgendaSession): string {
 /**
  * Generate Yahoo Calendar URL
  */
-export function createYahooCalendarUrl(session: AgendaSession): string {
+export function createYahooCalendarUrl(session: CalendarSessionData): string {
   const startDate = new Date(session.startsAt);
   const endDate = new Date(session.endsAt);
 
@@ -77,7 +90,7 @@ export function createYahooCalendarUrl(session: AgendaSession): string {
 /**
  * Generate iCal file content (.ics)
  */
-export function createICalContent(session: AgendaSession): string {
+export function createICalContent(session: CalendarSessionData): string {
   const startDate = new Date(session.startsAt);
   const endDate = new Date(session.endsAt);
 
@@ -109,7 +122,7 @@ END:VCALENDAR`;
 /**
  * Generate iCal download URL
  */
-export function createICalUrl(session: AgendaSession): string {
+export function createICalUrl(session: CalendarSessionData): string {
   const icalContent = createICalContent(session);
   const blob = new Blob([icalContent], { type: "text/calendar" });
   return URL.createObjectURL(blob);
@@ -120,7 +133,7 @@ export type CalendarType = "google" | "outlook" | "yahoo" | "ical";
 /**
  * Get calendar URL based on calendar type
  */
-export function getCalendarUrl(session: AgendaSession, type: CalendarType): string {
+export function getCalendarUrl(session: CalendarSessionData, type: CalendarType): string {
   switch (type) {
     case "google":
       return createGoogleCalendarUrl(session);
