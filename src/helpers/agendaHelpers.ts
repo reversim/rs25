@@ -1,4 +1,4 @@
-import type { AgendaSession } from "./getAgenda";
+import type { AgendaSession, Cell } from "./getAgenda";
 import slugify from "slug";
 
 // Helper function for getting category color (server-side version)
@@ -50,16 +50,6 @@ export function getTrackName(session: AgendaSession): string | null {
   return raw;
 }
 
-// Helper function to create URL-friendly slug
-export function createSlug(text: string): string {
-  return text
-    .toLowerCase()
-    .replace(/[^\w\s-]/g, "") // Remove special characters
-    .replace(/\s+/g, "-") // Replace spaces with hyphens
-    .replace(/-+/g, "-") // Replace multiple hyphens with single
-    .replace(/^-+|-+$/g, ""); // Remove leading/trailing hyphens
-}
-
 // Helper function to create speaker URL
 export function createSpeakerUrl(speakerName: string): string {
   return `/speaker/${slugify(speakerName)}`;
@@ -69,11 +59,6 @@ export function createSpeakerUrl(speakerName: string): string {
 export function createSessionUrl(talkTitle: string): string {
   return `/session/${slugify(talkTitle)}`;
 }
-
-// Alias for createSessionUrl to match server-side usage
-export const getSessionUrl = (session: AgendaSession): string => {
-  return createSessionUrl(session.title);
-};
 
 // Helper function to format time
 export function formatTime(dateString: string): string {
@@ -96,80 +81,89 @@ export function formatDate(dateString: string): string {
   });
 }
 
+// Helper function to get session track name (client-side version)
+export function getSessionTrackName(session: any): string | null {
+  const trackCategory = session.categories?.find(
+    (c: any) => c.name === "Track",
+  );
+  const item = trackCategory?.categoryItems?.[0];
+  if (!item) return null;
+  const raw = item.name;
+  if (raw === "AI Apps" || raw === "AI Infra") return "AI";
+  return raw;
+}
+
 // Client-side helper functions for browser environment
-export const clientHelpers = {
-  // Helper function to get session track name (client-side version)
-  getSessionTrackName: (session: any): string | null => {
-    const trackCategory = session.categories?.find(
-      (c: any) => c.name === "Track",
-    );
-    const item = trackCategory?.categoryItems?.[0];
-    if (!item) return null;
-    const raw = item.name;
-    if (raw === "AI Apps" || raw === "AI Infra") return "AI";
-    return raw;
-  },
 
-  // Helper function to get session category color (client-side version)
-  getSessionCategoryColor: (session: any): string => {
-    const track = clientHelpers.getSessionTrackName(session);
-    if (!track) return "#506592";
+// Helper function to get session category color (client-side version)
+export function getSessionCategoryColor(session: any): string {
+  const track = getSessionTrackName(session);
+  if (!track) return "#506592";
 
-    const categoryName = track.toLowerCase();
-    const colorMap: Record<string, string> = {
-      frontend: "#fd6a82",
-      front: "#fd6a82",
-      backend: "#f78750",
-      back: "#f78750",
-      ai: "#81c47a",
-      "artificial intelligence": "#81c47a",
-      data: "#81c47a",
-      mobile: "#506592",
-      devops: "#9d4edd",
-      security: "#e63946",
-      "ui/ux": "#f72585",
-      design: "#f72585",
-    };
+  const categoryName = track.toLowerCase();
+  const colorMap: Record<string, string> = {
+    frontend: "#fd6a82",
+    front: "#fd6a82",
+    backend: "#f78750",
+    back: "#f78750",
+    ai: "#81c47a",
+    "artificial intelligence": "#81c47a",
+    data: "#81c47a",
+    mobile: "#506592",
+    devops: "#9d4edd",
+    security: "#e63946",
+    "ui/ux": "#f72585",
+    design: "#f72585",
+  };
 
-    return colorMap[categoryName] || "#506592";
-  },
+  return colorMap[categoryName] || "#506592";
+}
 
-  // Helper function to format time
-  formatTime: (dateString: string): string => {
-    const date = new Date(dateString);
-    return date.toLocaleTimeString("en-US", {
-      hour12: false,
-      hour: "2-digit",
-      minute: "2-digit",
-    });
-  },
+// Toggle like status for a session
+export function toggleLike(sessionId: string, el: Element) {
+  const likedSessions = storageHelpers.getLikedTalks();
+  const isCurrentlyLiked = likedSessions.includes(sessionId);
 
-  // Helper function to format date
-  formatDate: (dateString: string): string => {
-    const date = new Date(dateString);
-    return date.toLocaleDateString("en-US", {
-      weekday: "long",
-      year: "numeric",
-      month: "long",
-      day: "numeric",
-    });
-  },
+  let newLikedSessions;
+  if (isCurrentlyLiked) {
+    // Remove from liked
+    newLikedSessions = likedSessions.filter((id) => id !== sessionId);
+  } else {
+    // Add to liked
+    newLikedSessions = [...likedSessions, sessionId];
+  }
 
-  // Helper function to create speaker URL
-  createSpeakerUrl: (speakerName: string): string => {
-    return `/speaker/${slugify(speakerName)}`;
-  },
+  storageHelpers.saveLikedTalks(newLikedSessions || []);
+  handleToggle(el);
+  // updateAllLikeButtons();
+  // updateAllTableLikeButtons();
+  // updateLikedSection();
+}
 
-  // Helper function to create talk URL
-  createTalkUrl: (talkTitle: string): string => {
-    return `/session/${slugify(talkTitle)}`;
-  },
+export function handleToggle(el: Element) {
+  const isLiked = storageHelpers.isLiked(
+    String(el.getAttribute("data-talk-id")),
+  );
+  el.classList.toggle("liked", isLiked);
+}
 
-  // Find session by ID
-  findSessionById: (sessionId: string, sessionsData: any[]): any => {
-    return sessionsData.find((session) => session.id === sessionId);
-  },
-};
+// Find session by ID
+export function findSessionById(
+  sessionId: string,
+  sessionsData: AgendaSession[],
+): AgendaSession | undefined {
+  return sessionsData.find(
+    (session: AgendaSession) => session.id === sessionId,
+  );
+}
+
+export function getSessionDuration(startsAt: string, endsAt: string): number {
+  const duration = Math.round(
+    (new Date(endsAt).getTime() - new Date(startsAt).getTime()) / (1000 * 60),
+  );
+
+  return duration;
+}
 
 // Constants for local storage
 export const LIKED_TALKS_KEY = "reversim-liked-talks";
@@ -202,11 +196,3 @@ export const storageHelpers = {
     return likedTalks.includes(talkId);
   },
 };
-
-export function getSessionDuration(startsAt: string, endsAt: string): number {
-  const duration = Math.round(
-    (new Date(endsAt).getTime() - new Date(startsAt).getTime()) / (1000 * 60),
-  );
-
-  return duration;
-}

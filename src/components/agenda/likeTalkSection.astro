@@ -268,57 +268,11 @@ const allSessions: AgendaSession[] = currentDay.rooms.flatMap(
 </style>
 
 <script is:inline define:vars={{ allSessions, agendaDays }}>
-import { formatTime } from "../../helpers/agendaHelpers";
+  import { findSessionById, formatTime, getSessionCategoryColor, storageHelpers } from "../../helpers/agendaHelpers";
+  import slugify from "slug";
 
   // Pass sessions data to the client-side script
   const sessionsData = allSessions;
-  const agendaData = agendaDays;
-
-  // Helper functions for client-side use
-  const getSessionTrackName = (session) => {
-    const trackCategory = session.categories?.find((c) => c.name === "Track");
-    const item = trackCategory?.categoryItems?.[0];
-    if (!item) return null;
-    const raw = item.name;
-    if (raw === "AI Apps" || raw === "AI Infra") return "AI";
-    return raw;
-  };
-
-  const getSessionCategoryColor = (session) => {
-    const track = getSessionTrackName(session);
-    if (!track) return "#506592";
-
-    const categoryName = track.toLowerCase();
-    const colorMap = {
-      frontend: "#fd6a82",
-      front: "#fd6a82",
-      backend: "#f78750",
-      back: "#f78750",
-      ai: "#81c47a",
-      "artificial intelligence": "#81c47a",
-      data: "#81c47a",
-      mobile: "#506592",
-      devops: "#9d4edd",
-      security: "#e63946",
-      "ui/ux": "#f72585",
-      design: "#f72585",
-    };
-
-    return colorMap[categoryName] || "#506592";
-  };
-
-  const createSlug = (text) => {
-    return text
-      .toLowerCase()
-      .replace(/[^\w\s-]/g, "") // Remove special characters
-      .replace(/\s+/g, "-") // Replace spaces with hyphens
-      .replace(/-+/g, "-") // Replace multiple hyphens with single
-      .replace(/^-+|-+$/g, ""); // Remove leading/trailing hyphens
-  };
-
-  const findSessionById = (sessionId) => {
-    return sessionsData.find((session) => session.id === sessionId);
-  };
 
   // Local storage constants and functions
   const LIKED_TALKS_KEY = "reversim-liked-talks";
@@ -330,14 +284,6 @@ import { formatTime } from "../../helpers/agendaHelpers";
     } catch (e) {
       console.error("Error reading liked talks from localStorage:", e);
       return [];
-    }
-  };
-
-  const saveLikedTalks = (likedTalkIds) => {
-    try {
-      localStorage.setItem(LIKED_TALKS_KEY, JSON.stringify(likedTalkIds));
-    } catch (e) {
-      console.error("Error saving liked talks to localStorage:", e);
     }
   };
 
@@ -360,7 +306,7 @@ import { formatTime } from "../../helpers/agendaHelpers";
       newLikedSessions = [...likedSessions, sessionId];
     }
 
-    saveLikedTalks(newLikedSessions);
+    storageHelpers.saveLikedTalks(newLikedSessions || []);
     updateAllLikeButtons();
     updateAllTableLikeButtons();
     updateLikedSection();
@@ -414,13 +360,13 @@ import { formatTime } from "../../helpers/agendaHelpers";
     likedSection.style.display = "block";
 
     const likedSessions = likedSessionIds
-      .map((id) => findSessionById(id))
+      .map((id) => findSessionById(id, sessionsData))
       .filter((session) => session);
 
     likedContainer.innerHTML = likedSessions
       .map((session) => {
         const speakers = session.speakers
-          .map((s) => `<a href="/speaker/${createSlug(s.name)}">${s.name}</a>`)
+          .map((s) => `<a href="/speaker/${slugify(s.name)}">${s.name}</a>`)
           .join(", ");
         const startTime = formatTime(session.startsAt);
         const endTime = formatTime(session.endsAt);
@@ -440,7 +386,7 @@ import { formatTime } from "../../helpers/agendaHelpers";
           <div class="liked-talk-content">
             <div class="liked-talk-header">
               <h4 class="liked-talk-title">
-                <a href="/session/${createSlug(session.title)}">${session.title}</a>
+                <a href="/session/${slugify(session.title)}">${session.title}</a>
               </h4>
             </div>
             <div class="liked-talk-info">

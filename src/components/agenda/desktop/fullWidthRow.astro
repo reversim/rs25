@@ -2,14 +2,20 @@
 const { currentDay, rowIndex, row, session, track, duration } = Astro.props;
 
 import {
-  getSessionUrl,
+  createSessionUrl,
   getTalkCategoryColor,
 } from "../../../helpers/agendaHelpers";
 import SessionCategory from "../category.astro";
-import LightningTalkList from "./lightningTalksGrid.astro";
+import LikeTalkButton from "../likeTalkButton.astro";
 import SessionCategoryIndicator from "../sessionCategoryIndicator.astro";
 import SessionSpeakers from "../sessionSpeakers.astro";
+import LightningTalkList from "./lightningTalksGrid.astro";
 import TimeColumn from "./timeColumn.astro";
+
+const isSession =
+  session.isLightningGroup ||
+  track === "Keynote" ||
+  session.title === "Opening Words";
 ---
 
 <div
@@ -25,7 +31,7 @@ import TimeColumn from "./timeColumn.astro";
     class="full-width-session-cell"
     data-talk-id={session.id}
     onclick={track === "Keynote"
-      ? `window.location.href='${getSessionUrl(session)}'`
+      ? `window.location.href='${createSessionUrl(session.title)}'`
       : null}
   >
     <div
@@ -44,6 +50,7 @@ import TimeColumn from "./timeColumn.astro";
           <div />
         )
       }
+      {isSession ? <LikeTalkButton sessionId={session.id} /> : <div />}
       {
         session.isLightningGroup && (
           <>
@@ -59,7 +66,7 @@ import TimeColumn from "./timeColumn.astro";
       {
         track === "Keynote" && (
           <div class="keynote-session">
-            <a class="break-title" href={getSessionUrl(session)}>
+            <a class="break-title" href={createSessionUrl(session.title)}>
               {session.title}
             </a>
             <SessionSpeakers speakers={session.speakers} />

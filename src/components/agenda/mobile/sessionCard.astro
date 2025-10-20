@@ -1,28 +1,34 @@
 ---
 import {
+  createSessionUrl,
   getSessionDuration,
-  getSessionUrl,
   getTalkCategoryColor,
 } from "../../../helpers/agendaHelpers";
-import { getTrackName, type Cell } from "../../../helpers/getAgenda";
+import {
+  getTrackName,
+  type AgendaSession,
+  type Cell,
+} from "../../../helpers/getAgenda";
 import Category from "../category.astro";
-import LightningTalkMobile from "./lightningTalkMobile.astro";
-import SessionCardHeader from "./sessionCardHeader.astro";
 import SessionCategoryIndicator from "../sessionCategoryIndicator.astro";
 import SessionSpeakers from "../sessionSpeakers.astro";
-
+import LightningTalkMobile from "./lightningTalkMobile.astro";
+import SessionCardHeader from "./sessionHeader.astro";
 interface Props {
   session: Cell[];
 }
-const { session } = Astro.props;
+const { session: sessions } = Astro.props;
 ---
 
 <div class="sessions-container">
   {
-    session
+    sessions
       .filter((cell) => cell.session && !cell.hidden)
       .map((cell, cellIndex) => {
-        const session = cell.session!;
+        const session = cell.session! as AgendaSession;
+        const isSession =
+          !session.isServiceSession || session.room === "Main hall";
+
         const duration = getSessionDuration(session.startsAt, session.endsAt);
 
         const categoryColor = getTalkCategoryColor(session);
@@ -38,6 +44,8 @@ const { session } = Astro.props;
                 sessionRoom={session.room}
                 sessionStartsAt={session.startsAt}
                 duration={duration}
+                sessionId={session.id}
+                isSession={isSession}
               />
               <h3 class="session-title break-title-mobile">{session.title}</h3>
 
@@ -57,6 +65,8 @@ const { session } = Astro.props;
                 sessionRoom={session.lightningChildren[0]?.room}
                 sessionStartsAt={session.startsAt}
                 duration={duration}
+                sessionId={session.id}
+                isSession={isSession}
               />
 
               <h3 class="session-title">Lightning Talks</h3>
@@ -74,10 +84,12 @@ const { session } = Astro.props;
               sessionRoom={session.room}
               sessionStartsAt={session.startsAt}
               duration={duration}
+              sessionId={session.id}
+              isSession={isSession}
             />
 
             <h3 class="session-title">
-              <a href={getSessionUrl(session)}>{session.title}</a>
+              <a href={createSessionUrl(session.title)}>{session.title}</a>
             </h3>
             <SessionSpeakers speakers={session.speakers} />
 

@@ -1,74 +1,57 @@
 ---
-import type { AgendaSession } from "../../helpers/getAgenda";
-
+import { storageHelpers } from "../../helpers/agendaHelpers";
+import Star from "../../assets/star.svg";
 interface Props {
-  session: AgendaSession;
-  desktop: boolean;
+  sessionId: string | number;
 }
 
-const { session, desktop } = Astro.props;
+const { sessionId } = Astro.props;
 ---
 
-{
-  desktop ? (
-    <button
-      class="like-btn-desktop"
-      data-talk-id={session.id}
-      onclick={`event.stopPropagation(); toggleLike('${session.id}')`}
-      title="Like this talk"
-    >
-      ♡
-    </button>
-  ) : (
-    <button
-      class="like-btn"
-      data-talk-id={session.id}
-      onclick={`event.stopPropagation(); toggleLike('${session.id}')`}
-      title="Like this talk"
-    >
-      ♡
-    </button>
-  )
-}
+<button class="like-btn" data-talk-id={sessionId} title="Like this talk">
+  <Star />
+</button>
+
+<script>
+  import { handleToggle, toggleLike } from "../../helpers/agendaHelpers";
+
+  document.addEventListener("DOMContentLoaded", () => {
+    const likeBtns = document.querySelectorAll(".like-btn");
+
+    likeBtns.forEach((el) => {
+      el?.addEventListener("click", (e) => {
+        e.stopPropagation();
+
+        toggleLike(el.getAttribute("data-talk-id") || "", el);
+      });
+
+      handleToggle(el);
+    });
+  });
+</script>
 
 <style lang="scss">
   .like-btn {
-    background: none;
-    border: none;
-    font-size: 18px;
-    cursor: pointer;
-    color: #ccc;
-    transition: color 0.3s ease;
-    padding: 0;
-    margin: 0;
-    line-height: 1;
-
-    &:hover {
-      color: var(--pink);
-    }
-
-    &.liked {
-      color: var(--pink);
-    }
-  }
-
-  .like-btn-desktop {
     position: absolute;
     top: 10px;
     right: 10px;
     background: none;
     border: none;
-    font-size: 16px;
+    font-size: 20px;
     cursor: pointer;
     color: #ccc;
-    transition: color 0.3s ease;
-
-    &:hover {
-      color: var(--pink);
-    }
+    transition: all 0.25s ease;
+    line-height: 1;
+    padding: 0;
+    margin: 0;
 
     &.liked {
-      color: var(--pink);
+      color: var(--yellow);
+    }
+
+    &:hover:not(.liked) {
+      color: var(--yellow);
+      opacity: 0.4;
     }
   }
 </style>

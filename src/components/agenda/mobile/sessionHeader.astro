@@ -1,13 +1,22 @@
 ---
 import { formatTime } from "../../../helpers/agendaHelpers";
 import Category from "../category.astro";
+import LikeTalkButton from "../likeTalkButton.astro";
 
 interface Props {
   sessionStartsAt: string;
   duration: number;
   sessionRoom?: string;
+  sessionId: string | number;
+  isSession: boolean;
 }
-const { sessionRoom, sessionStartsAt, duration } = Astro.props;
+const {
+  sessionRoom,
+  sessionStartsAt,
+  duration,
+  sessionId,
+  isSession,
+} = Astro.props;
 ---
 
 <div class="session-header">
@@ -17,8 +26,7 @@ const { sessionRoom, sessionStartsAt, duration } = Astro.props;
     {" "}
     → {duration} min
   </span>
-  {/* TODO: Add like button */}
-  {/* <LikeTalkButton desktop={false} session={session} /> */}
+  {isSession ? <LikeTalkButton sessionId={sessionId} /> : <div />}
 </div>
 
 <style lang="scss">
