@@ -1,22 +1,18 @@
 ---
 import { formatTime } from "../../../helpers/agendaHelpers";
+import type { AgendaSession } from "../../../helpers/getAgenda";
 import Category from "../category.astro";
-import LikeTalkButton from "../likeTalkButton.astro";
+import TalkActions from "../talkActions.astro";
 
 interface Props {
   sessionStartsAt: string;
   duration: number;
   sessionRoom?: string;
-  sessionId: string | number;
+  session: AgendaSession;
   isSession: boolean;
 }
-const {
-  sessionRoom,
-  sessionStartsAt,
-  duration,
-  sessionId,
-  isSession,
-} = Astro.props;
+const { sessionRoom, sessionStartsAt, duration, session, isSession } =
+  Astro.props;
 ---
 
 <div class="session-header">
@@ -26,7 +22,15 @@ const {
     {" "}
     → {duration} min
   </span>
-  {isSession ? <LikeTalkButton sessionId={sessionId} /> : <div />}
+  {
+    isSession ? (
+      <TalkActions
+        session={{ ...session, room: sessionRoom, startsAt: sessionStartsAt }}
+      />
+    ) : (
+      <div />
+    )
+  }
 </div>
 
 <style lang="scss">

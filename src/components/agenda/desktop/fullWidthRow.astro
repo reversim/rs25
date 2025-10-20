@@ -9,6 +9,7 @@ import SessionCategory from "../category.astro";
 import LikeTalkButton from "../likeTalkButton.astro";
 import SessionCategoryIndicator from "../sessionCategoryIndicator.astro";
 import SessionSpeakers from "../sessionSpeakers.astro";
+import TalkActions from "../talkActions.astro";
 import LightningTalkList from "./lightningTalksGrid.astro";
 import TimeColumn from "./timeColumn.astro";
 
@@ -50,7 +51,7 @@ const isSession =
           <div />
         )
       }
-      {isSession ? <LikeTalkButton sessionId={session.id} /> : <div />}
+      {isSession ? <TalkActions session={session} /> : <div />}
       {
         session.isLightningGroup && (
           <>
@@ -150,6 +151,7 @@ const isSession =
         transform: translateY(-1px);
         box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
         border-color: var(--blue);
+        z-index: 1;
       }
 
       .break-time {

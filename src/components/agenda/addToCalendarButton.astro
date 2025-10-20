@@ -1,0 +1,211 @@
+---
+import type { AgendaSession } from "../../helpers/getAgenda";
+import Calendar from "../../assets/agenda/calendar.svg";
+
+interface Props {
+  session: AgendaSession;
+}
+
+const { session } = Astro.props;
+const sessionData = JSON.stringify(session);
+---
+
+<div class={`add-to-calendar-wrapper`}>
+  <button class="add-to-calendar-btn" data-session={sessionData}>
+    <Calendar />
+  </button>
+
+  <div class="calendar-dropdown">
+    <button class="calendar-option google"> Google </button>
+    <button class="calendar-option outlook"> Outlook </button>
+    <button class="calendar-option yahoo"> Yahoo </button>
+    <button class="calendar-option ical"> Apple/iCal (.ics) </button>
+  </div>
+</div>
+
+<script>
+  import {
+    createGoogleCalendarUrl,
+    createOutlookCalendarUrl,
+    createYahooCalendarUrl,
+    createICalContent,
+  } from "../../helpers/addToCalendar";
+import type { AgendaSession } from "../../helpers/getAgenda";
+
+  function setupAddToCalendar() {
+    const buttons = document.querySelectorAll(".add-to-calendar-btn");
+
+    buttons.forEach((button) => {
+      const sessionData = button.getAttribute("data-session");
+      if (!sessionData) return;
+
+      const session: AgendaSession = JSON.parse(sessionData);
+      const wrapper = button.closest(".add-to-calendar-wrapper");
+      const dropdown = wrapper?.querySelector(".calendar-dropdown");
+
+      // Toggle dropdown
+      button.addEventListener("click", (e) => {
+        e.stopPropagation();
+        dropdown?.classList.toggle("show");
+
+        // Close other dropdowns
+        document.querySelectorAll(".calendar-dropdown.show").forEach((d) => {
+          if (d !== dropdown) d.classList.remove("show");
+        });
+      });
+
+      // Handle calendar option clicks
+      const options = dropdown?.querySelectorAll(".calendar-option");
+      options?.forEach((option) => {
+        option.addEventListener("click", (e) => {
+          e.stopPropagation();
+          const calendarType = option.classList[1]; // google, outlook, yahoo, or ical
+
+          let url: string;
+          switch (calendarType) {
+            case "google":
+              url = createGoogleCalendarUrl(session);
+              window.open(url, "_blank");
+              break;
+            case "outlook":
+              url = createOutlookCalendarUrl(session);
+              window.open(url, "_blank");
+              break;
+            case "yahoo":
+              url = createYahooCalendarUrl(session);
+              window.open(url, "_blank");
+              break;
+            case "ical":
+              // Download .ics file
+              const icalContent = createICalContent(session);
+              const blob = new Blob([icalContent], { type: "text/calendar" });
+              const downloadUrl = URL.createObjectURL(blob);
+              const a = document.createElement("a");
+              a.href = downloadUrl;
+              a.download = `${session.title.replace(/[^a-z0-9]/gi, "_")}.ics`;
+              a.click();
+              URL.revokeObjectURL(downloadUrl);
+              break;
+          }
+
+          dropdown?.classList.remove("show");
+        });
+      });
+    });
+
+    // Close dropdown when clicking outside
+    document.addEventListener("click", () => {
+      document
+        .querySelectorAll(".calendar-dropdown.show")
+        .forEach((d) => d.classList.remove("show"));
+    });
+  }
+
+  // Run on page load
+  setupAddToCalendar();
+
+  // Re-run after navigation (for SPA-like behavior)
+  document.addEventListener("astro:page-load", setupAddToCalendar);
+</script>
+
+<style lang="scss">
+  .add-to-calendar-wrapper {
+    position: relative;
+    display: inline-block;
+
+    svg {
+      width: 20px;
+      height: 20px;
+      transition: all 0.2s ease;
+    }
+
+    @media screen and (min-width: 768px) {
+      &:hover {
+        svg {
+          stroke: #929292;
+        }
+      }
+    }
+  }
+
+  .add-to-calendar-btn {
+    display: flex;
+    align-items: center;
+    color: #ccc;
+    background: none;
+    border: none;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    white-space: nowrap;
+    outline: none;
+
+    .chevron {
+      margin-left: auto;
+      transition: transform 0.2s ease;
+    }
+  }
+
+  .add-to-calendar-wrapper:has(.calendar-dropdown.show) {
+    .chevron {
+      transform: rotate(180deg);
+    }
+  }
+
+  .calendar-dropdown {
+    position: absolute;
+    top: calc(100% + 8px);
+    right: 0;
+    background: white;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    box-shadow:
+      0 4px 6px rgba(0, 0, 0, 0.07),
+      0 10px 20px rgba(0, 0, 0, 0.1);
+    min-width: 160px;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: all 0.2s ease;
+    z-index: 1000;
+
+    &.show {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+  }
+
+  .calendar-option {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    width: 100%;
+    padding: 12px 16px;
+    background: white;
+    border: none;
+    text-align: left;
+    font-size: 14px;
+    color: #333;
+    cursor: pointer;
+    transition: background 0.2s ease;
+
+    &:first-child {
+      border-radius: 8px 8px 0 0;
+    }
+
+    &:last-child {
+      border-radius: 0 0 8px 8px;
+    }
+
+    &:not(:last-child) {
+      border-bottom: 1px solid #f0f0f0;
+    }
+
+    &:hover {
+      background: #f8f9fa;
+    }
+  }
+</style>
