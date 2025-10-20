@@ -66,8 +66,9 @@ export function filterHandler({
       const likeBtn = (applyStylesCard as HTMLElement).querySelector(
         ".like-btn",
       );
-      if (likeBtn) {
+      if (likeBtn && likeBtn instanceof HTMLButtonElement) {
         likeBtn.classList.remove("hidden");
+        likeBtn.disabled = true;
       }
     } else {
       (applyStylesCard as HTMLElement).style.opacity = "0.1";
@@ -79,8 +80,25 @@ export function filterHandler({
       const likeBtn = (applyStylesCard as HTMLElement).querySelector(
         ".like-btn",
       );
-      if (likeBtn) {
+      if (likeBtn && likeBtn instanceof HTMLButtonElement) {
         likeBtn.classList.add("hidden");
+        likeBtn.disabled = true;
+      }
+    }
+
+    // If no filters are applied, show the like button
+    if (
+      selectedThemes.length === 0 &&
+      selectedRooms.length === 0 &&
+      !isFavoritesFilterActive
+    ) {
+      const likeBtn = (applyStylesCard as HTMLElement).querySelector(
+        ".like-btn",
+      );
+
+      if (likeBtn && likeBtn instanceof HTMLButtonElement) {
+        likeBtn.classList.remove("hidden");
+        likeBtn.disabled = false;
       }
     }
   }
@@ -170,8 +188,9 @@ export function clearAllFilters(): void {
     (card as HTMLElement).style.transition = "all 0.3s ease";
 
     const likeBtn = (card as HTMLElement).querySelector(".like-btn");
-    if (likeBtn) {
+    if (likeBtn && likeBtn instanceof HTMLButtonElement) {
       likeBtn.classList.remove("hidden");
+      likeBtn.disabled = false;
     }
   });
 

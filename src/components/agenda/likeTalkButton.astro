@@ -49,8 +49,8 @@ const { sessionId } = Astro.props;
       color: var(--yellow);
     }
 
-    &.hidden {
-      display: none;
+    &[disabled]:not(.hidden) {
+      opacity: 0.5;
     }
 
     @media screen and (min-width: 768px) {
