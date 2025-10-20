@@ -11,6 +11,7 @@ import SessionCategory from "../category.astro";
 import LikeTalkButton from "../likeTalkButton.astro";
 import SessionCategoryIndicator from "../sessionCategoryIndicator.astro";
 import SessionSpeakers from "../sessionSpeakers.astro";
+import TalkActions from "../talkActions.astro";
 interface Props {
   cells: Cell[];
   currentDay: CurrentDay;
@@ -58,7 +59,7 @@ const { cells, currentDay, desiredRooms } = Astro.props;
           </h3>
           <SessionSpeakers speakers={session.speakers} />
           <SessionCategory track={track} categoryColor={categoryColor} />
-          <LikeTalkButton sessionId={session.id} />
+          <TalkActions session={session} />
           <SessionCategoryIndicator categoryColor={categoryColor} />
         </div>
       </div>

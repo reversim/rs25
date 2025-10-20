@@ -44,7 +44,7 @@ const { session: sessions } = Astro.props;
                 sessionRoom={session.room}
                 sessionStartsAt={session.startsAt}
                 duration={duration}
-                sessionId={session.id}
+                session={session}
                 isSession={isSession}
               />
               <h3 class="session-title break-title-mobile">{session.title}</h3>
@@ -65,7 +65,7 @@ const { session: sessions } = Astro.props;
                 sessionRoom={session.lightningChildren[0]?.room}
                 sessionStartsAt={session.startsAt}
                 duration={duration}
-                sessionId={session.id}
+                session={session}
                 isSession={isSession}
               />
 
@@ -84,7 +84,7 @@ const { session: sessions } = Astro.props;
               sessionRoom={session.room}
               sessionStartsAt={session.startsAt}
               duration={duration}
-              sessionId={session.id}
+              session={session}
               isSession={isSession}
             />
 

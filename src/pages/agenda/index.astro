@@ -8,6 +8,7 @@ getAgendaDays
 } from "../../helpers/getAgenda";
 import Layout from "../../layouts/Layout.astro";
 import AgendaDaySwitcher from "../../components/agenda/agendaDaySwitcher.astro";
+import FilterSessions from "../../components/agenda/filterSessions.astro";
 // import LikeTalkSection from "../../components/agenda/likeTalkSection.astro";
 // import FilterSessions from "../../components/agenda/filterSessions.astro";
 
@@ -37,8 +38,7 @@ const currentDay = {
       currentDaySlug={currentDay.slug}
     />
 
-    <!-- TODO: Add filter sessions -->
-    <!-- <FilterSessions currentDay={currentDay} /> -->
+    <FilterSessions currentDay={currentDay} />
 
     <!-- Desktop Grid-based Schedule View -->
     <AgendaGridDesktop currentDay={currentDay} />

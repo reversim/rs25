@@ -1,0 +1,23 @@
+---
+import type { AgendaSession } from "../../helpers/getAgenda";
+import AddToCalendarButton from "./addToCalendarButton.astro";
+import LikeTalkButton from "./likeTalkButton.astro";
+
+interface Props {
+  session: AgendaSession;
+}
+const { session } = Astro.props;
+---
+
+<div class="talk-actions">
+  <AddToCalendarButton session={session}/>
+  <LikeTalkButton sessionId={session.id} />
+</div>
+
+<style lang="scss">
+  .talk-actions {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+  }
+</style>
