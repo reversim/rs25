@@ -12,10 +12,7 @@ const { sessionId } = Astro.props;
 </button>
 
 <script>
-  import {
-handleToggle,
-toggleLike
-} from "../../helpers/agendaHelpers";
+  import { handleToggle, toggleLike } from "../../helpers/agendaHelpers";
 
   document.addEventListener("DOMContentLoaded", () => {
     const likeBtns = document.querySelectorAll(".like-btn");
@@ -56,9 +53,11 @@ toggleLike
       display: none;
     }
 
-    &:hover:not(.liked) {
-      color: var(--yellow);
-      opacity: 0.4;
+    @media screen and (min-width: 768px) {
+      &:hover:not(.liked) {
+        color: var(--yellow);
+        opacity: 0.4;
+      }
     }
   }
 </style>
