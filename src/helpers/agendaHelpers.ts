@@ -151,10 +151,20 @@ export function handleToggle(el: Element) {
 export function findSessionById(
   sessionId: string,
   sessionsData: AgendaSession[],
-): AgendaSession | undefined {
-  return sessionsData.find(
-    (session: AgendaSession) => session.id === sessionId,
-  );
+): AgendaSession | { id: string; room: string } | undefined {
+  if (sessionId === "lightning-2025-10-27") {
+    return {
+      id: "lightning-2025-10-27",
+      room: "Main hall",
+    };
+  }
+  if (sessionId === "lightning-2025-10-28") {
+    return {
+      id: "lightning-2025-10-28",
+      room: "Main hall",
+    };
+  }
+  return sessionsData.find((session) => session.id === sessionId);
 }
 
 export function getSessionDuration(startsAt: string, endsAt: string): number {

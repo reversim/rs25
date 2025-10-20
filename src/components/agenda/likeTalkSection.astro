@@ -268,14 +268,13 @@ const allSessions: AgendaSession[] = currentDay.rooms.flatMap(
 </style>
 
 <script is:inline define:vars={{ allSessions, agendaDays }}>
-  import { findSessionById, formatTime, getSessionCategoryColor, storageHelpers } from "../../helpers/agendaHelpers";
+  import { findSessionById, formatTime, getSessionCategoryColor, LIKED_TALKS_KEY, storageHelpers } from "../../helpers/agendaHelpers";
   import slugify from "slug";
 
   // Pass sessions data to the client-side script
   const sessionsData = allSessions;
 
   // Local storage constants and functions
-  const LIKED_TALKS_KEY = "reversim-liked-talks";
 
   const getLikedTalks = () => {
     try {

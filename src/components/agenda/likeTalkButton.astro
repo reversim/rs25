@@ -1,5 +1,4 @@
 ---
-import { storageHelpers } from "../../helpers/agendaHelpers";
 import Star from "../../assets/star.svg";
 interface Props {
   sessionId: string | number;
@@ -47,6 +46,10 @@ const { sessionId } = Astro.props;
 
     &.liked {
       color: var(--yellow);
+    }
+
+    &.hidden {
+      display: none;
     }
 
     &:hover:not(.liked) {
