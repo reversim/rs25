@@ -127,9 +127,9 @@ const uniqueCategories = [
   }
 
   .filter-toggle-btn {
-    background: var(--pink);
+    background: var(--pink-dark);
     color: white;
-    border: 2px solid var(--pink);
+    border: none;
     border-radius: 25px;
     padding: 12px 24px;
     font-size: 16px;
@@ -142,8 +142,6 @@ const uniqueCategories = [
     box-shadow: 0 2px 8px rgba(253, 106, 130, 0.3);
 
     &:hover {
-      background: #e05574;
-      border-color: #e05574;
       transform: translateY(-1px);
       box-shadow: 0 4px 12px rgba(253, 106, 130, 0.4);
     }
@@ -158,8 +156,8 @@ const uniqueCategories = [
     }
 
     &.active {
-      background: #e05574;
-      border-color: #e05574;
+      background: var(--pink-dark);
+      border-color: var(--pink-dark);
 
       .filter-arrow {
         transform: rotate(180deg);
@@ -235,10 +233,11 @@ const uniqueCategories = [
       position: relative;
       transition: all 0.2s ease;
     }
-
-    &:hover .checkmark {
-      border-color: var(--pink);
-      background-color: #fef7f7;
+    @media screen and (min-width: 768px) {
+      &:hover .checkmark {
+        border-color: var(--pink);
+        background-color: #fef7f7;
+      }
     }
 
     input:checked ~ .checkmark {
@@ -275,8 +274,8 @@ const uniqueCategories = [
   }
 
   .reset-filters-btn {
-    background: transparent;
-    color: var(--pink);
+    background: var(--pink);
+    color: white;
     border: 2px solid var(--pink);
     border-radius: 25px;
     padding: 10px 24px;
@@ -285,10 +284,14 @@ const uniqueCategories = [
     cursor: pointer;
     transition: all 0.3s ease;
 
-    &:hover {
-      background: var(--pink);
-      color: white;
-      transform: translateY(-1px);
+    @media screen and (min-width: 768px) {
+      background: transparent;
+      color: var(--pink);
+      &:hover {
+        background: var(--pink);
+        color: white;
+        transform: translateY(-1px);
+      }
     }
   }
 
