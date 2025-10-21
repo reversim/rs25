@@ -46,12 +46,15 @@ const { sessionId } = Astro.props;
       color: var(--yellow);
     }
 
-    &[disabled]:not(.hidden) {
-      opacity: 0.5;
+    &[disabled] {
+      cursor: auto;
+      &:not(.hidden) {
+        opacity: 0.5;
+      }
     }
 
     @media screen and (min-width: 768px) {
-      &:hover:not(.liked) {
+      &:hover:not(.liked):not([disabled]) {
         color: var(--yellow);
         opacity: 0.4;
       }
