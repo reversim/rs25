@@ -13,6 +13,8 @@ export function getLikedTalks(): string[] {
 }
 
 export const getSessionTrackName = (session: any): string | null => {
+  if (session?.isIgnites) return "Ignites";
+
   const trackCategory = session.categories?.find(
     (c: any) => c.name === "Track",
   );
@@ -71,7 +73,7 @@ export function filterHandler({
         likeBtn.disabled = true;
       }
     } else {
-      (applyStylesCard as HTMLElement).style.opacity = "0.1";
+      (applyStylesCard as HTMLElement).style.opacity = "0.2";
       (applyStylesCard as HTMLElement).style.transform = "scale(0.95)";
       (applyStylesCard as HTMLElement).style.transition = "all 0.3s ease";
       (applyStylesCard as HTMLElement).classList.add("hidden");
@@ -211,6 +213,9 @@ export function toggleFilters(): void {
 }
 
 export function initializeFilters(sessionsData: any[]): void {
+  // run applyFilters when initialized
+  applyFilters(sessionsData);
+
   // Make functions globally available
   (window as any).applyFilters = () => applyFilters(sessionsData);
   (window as any).clearAllFilters = clearAllFilters;

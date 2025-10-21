@@ -160,17 +160,22 @@ export function handleToggle(el: Element) {
 export function findSessionById(
   sessionId: string,
   sessionsData: AgendaSession[],
-): AgendaSession | { id: string; room: string } | undefined {
+):
+  | AgendaSession
+  | { id: string; room: string; isIgnites: boolean }
+  | undefined {
   if (sessionId === "lightning-2025-10-27") {
     return {
       id: "lightning-2025-10-27",
       room: "Main hall",
+      isIgnites: true,
     };
   }
   if (sessionId === "lightning-2025-10-28") {
     return {
       id: "lightning-2025-10-28",
       room: "Main hall",
+      isIgnites: true,
     };
   }
   return sessionsData.find((session) => session.id === sessionId);

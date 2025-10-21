@@ -98,12 +98,13 @@ const uniqueCategories = [
 
 <script>
   import { initializeFilters } from "../../helpers/filterHelpers";
+  window.addEventListener("load", () => {
+    // Get sessions data from the inline script
+    const sessionsData = (window as any).sessionsData || [];
 
-  // Get sessions data from the inline script
-  const sessionsData = (window as any).sessionsData || [];
-
-  // Initialize filters with sessions data
-  initializeFilters(sessionsData);
+    // Initialize filters with sessions data
+    initializeFilters(sessionsData);
+  });
 </script>
 
 <style lang="scss">
