@@ -1522,7 +1522,13 @@
       "companyName": "Semperis",
       "website": "https://www.semperis.com/careers/",
       "description": "Semperis is the global leader in identity security and cyber resilience. With most cyberattacks exploiting Active Directory, Semperis delivers the industry’s most comprehensive AI powered defense for hybrid identity systems, including on prem AD and Entra ID. Our Identity Resilience Platform protects the full lifecycle of identity based attacks with prevention, detection, response, and recovery, backed by a world class incident response team.\n\nAt Semperis, people and purpose drive our success. Our global team fosters a culture of teamwork, diversity, and growth, creating a supportive and enjoyable environment where employees can thrive. We are mission driven to be a Force for Good: protecting organizations from cyberattacks, investing in our people, empowering communities, and contributing to the broader security ecosystem",
-      "carouselImages": ["semperis-1", "semperis-2"],
+      "carouselImages": [
+        "semperis-1",
+        "semperis-2",
+        "semperis-3",
+        "semperis-4",
+        "semperis-5"
+      ],
       "linkedin": "https://il.linkedin.com/company/semperis",
       "twitter": "https://x.com/semperistech",
       "youtube": "https://www.youtube.com/@semperistech",
@@ -1807,7 +1813,13 @@
       "description": "Minimus’ secure container images reduce vulnerabilities by over 97% compared to typical container images. Images are continuously rebuilt from source, containing only the necessary bits to run the application, radically reducing the attack surface.  Minimus images are OCI compliant and deployed with a single line change in configuration files. \n\nIn addition to hardened images, Minimus provides real-time exploit advisories, provable compliance with NIST, CIS and STIG benchmarks, and no-code actions and integrations that eliminate time consuming remediation work and deliver instant risk reduction to dev and security teams. \n\nFounded in 2022 by the team behind container security pioneer Twistlock and the author of NIST SP 800-190, Minimus has raised a $51 million seed round from YL Ventures and Mayfield. The company is headquartered in Baton Rouge with offices in New York, Tel Aviv, and Portland, OR. ",
       "website": "https://www.minimus.io/",
       "carouselImages": [],
-      "technologyStack": ["Go", "PostgreSQL", "Kubernetes", "Docker", "GitHub Actions"],
+      "technologyStack": [
+        "Go",
+        "PostgreSQL",
+        "Kubernetes",
+        "Docker",
+        "GitHub Actions"
+      ],
       "openPositions": [],
       "testimonials": [],
       "linkedin": "https://www.linkedin.com/company/minimusio/",
