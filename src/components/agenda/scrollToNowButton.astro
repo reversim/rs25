@@ -1,0 +1,220 @@
+---
+import type { CurrentDay } from "../../helpers/getAgenda";
+
+interface Props {
+  currentDay: CurrentDay;
+}
+
+const { currentDay } = Astro.props;
+---
+
+<button
+  id="scroll-to-now-btn"
+  class="scroll-to-now-btn"
+  data-day-slug={currentDay.slug}
+>
+  <span>What's on now?</span>
+</button>
+
+<script>
+  // @ts-nocheck
+  function toLocalDateOnly(d) {
+    return new Date(d.getFullYear(), d.getMonth(), d.getDate());
+  }
+
+  function parseSlugToDate(slug) {
+    const [y, m, d] = slug.split("-").map(Number);
+    return new Date(y, (m ?? 1) - 1, d ?? 1);
+  }
+
+  function dateToSlug(d) {
+    const y = d.getFullYear();
+    const m = String(d.getMonth() + 1).padStart(2, "0");
+    const day = String(d.getDate()).padStart(2, "0");
+    return `${y}-${m}-${day}`;
+  }
+
+  function getNextDaySlug(slug) {
+    const dt = parseSlugToDate(slug);
+    dt.setDate(dt.getDate() + 1);
+    return dateToSlug(dt);
+  }
+
+  function scrollToNowForSlug(daySlug) {
+    const now = new Date();
+    const isMobile = window.innerWidth < 768;
+    const prefix = isMobile ? "time-slot-mobile-" : "time-slot-";
+    const timeSlots = document.querySelectorAll(`[id^="${prefix}${daySlug}-"]`);
+
+    if (timeSlots.length === 0) return;
+
+    let targetSlot = null;
+    let closestFutureSlot = null;
+    let minFutureDiff = Infinity;
+
+    timeSlots.forEach((slot) => {
+      const timeHeader =
+        slot.querySelector(".time-header") || slot.querySelector(".start-time");
+      if (!timeHeader) return;
+      const timeText = timeHeader.textContent?.trim();
+      if (!timeText) return;
+      const [hours, minutes] = timeText.split(":").map(Number);
+      const slotTime = new Date(now);
+      slotTime.setHours(hours, minutes, 0, 0);
+      const diff = slotTime.getTime() - now.getTime();
+      if (diff <= 0 && diff > -15 * 60 * 1000) {
+        if (!targetSlot || diff > -15 * 60 * 1000) {
+          targetSlot = slot;
+        }
+      }
+      if (diff > 0 && diff < minFutureDiff) {
+        closestFutureSlot = slot;
+        minFutureDiff = diff;
+      }
+    });
+
+    const scrollTarget = targetSlot || closestFutureSlot || timeSlots[0];
+    if (scrollTarget) {
+      scrollTarget.scrollIntoView({ behavior: "smooth", block: "center" });
+      // Highlight all children of scrollTarget except the first one
+      const childrenToHighlight = Array.from(scrollTarget.children).slice(1);
+      childrenToHighlight.forEach((child) =>
+        child.classList.add("highlight-slot"),
+      );
+      setTimeout(
+        () =>
+          childrenToHighlight.forEach((child) =>
+            child.classList.remove("highlight-slot"),
+          ),
+        2100,
+      );
+    }
+  }
+
+  function initScrollToNowButton() {
+    const button = document.getElementById("scroll-to-now-btn");
+    if (!button) return;
+
+    const daySlug = button.getAttribute("data-day-slug");
+    if (!daySlug) return;
+
+    // Show/hide button based on current real date (only 2025-10-27 or 2025-10-28)
+    const CONFERENCE_DAYS = ["2025-10-27", "2025-10-28"];
+    const todaySlug = dateToSlug(toLocalDateOnly(new Date()));
+    const isConferenceToday = CONFERENCE_DAYS.includes(todaySlug);
+    if (!isConferenceToday) {
+      button.style.display = "none";
+    } else {
+      button.style.display = "block";
+    }
+
+    // Auto-scroll on load when asked
+    const searchParams = new URLSearchParams(window.location.search);
+    if (searchParams.get("scroll") === "now") {
+      // If today is a conference day and differs from the page, redirect to today's page
+      if (isConferenceToday && todaySlug !== daySlug) {
+        window.location.replace(`/agenda/${todaySlug}?scroll=now`);
+        return;
+      }
+      // Only scroll if we are on the correct day and during the conference
+      if (isConferenceToday) {
+        // Delay slightly to ensure layout is ready
+        setTimeout(() => scrollToNowForSlug(daySlug), 50);
+      }
+    }
+
+    button.addEventListener("click", () => {
+      const today = toLocalDateOnly(new Date());
+      const todaySlugClick = dateToSlug(today);
+
+      // If today is one of the conference days and different than the page, go there
+      if (
+        CONFERENCE_DAYS.includes(todaySlugClick) &&
+        todaySlugClick !== daySlug
+      ) {
+        window.location.href = `/agenda/${todaySlugClick}?scroll=now`;
+        return;
+      }
+
+      // Otherwise, scroll within the same page
+      scrollToNowForSlug(daySlug);
+    });
+  }
+
+  // Initialize on page load
+  document.addEventListener("DOMContentLoaded", initScrollToNowButton);
+
+  // Re-initialize after navigation (for client-side routing)
+  document.addEventListener("astro:page-load", initScrollToNowButton);
+</script>
+
+<style is:global>
+  @keyframes highlight-bg {
+    0%,
+    100% {
+      background-color: none;
+    }
+    20%,
+    80% {
+      background-color: lightgray;
+    }
+  }
+  @keyframes highlight-border {
+    0%,
+    100% {
+      border-color: #e9ecef;
+    }
+    20%,
+    80% {
+      border-color: var(--blue);
+    }
+  }
+
+  .highlight-slot {
+    animation: highlight-bg 2s ease-in-out;
+
+    .session-content {
+      animation: highlight-border 2s ease-in-out;
+    }
+    @media screen and (max-width: 768px) {
+      border-radius: 8px;
+      animation: none;
+
+      .session-card {
+        animation: highlight-border 2s ease-in-out;
+      }
+    }
+  }
+</style>
+
+<style lang="scss">
+  .scroll-to-now-btn {
+    display: none;
+    padding: 10px 20px;
+    background-color: var(--blue);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 6px rgba(102, 126, 234, 0.3);
+
+    position: sticky;
+    top: 100%;
+    transform: translateY(calc(-100% - 10px)) translateX(-10px);
+    left: 100%;
+    z-index: 9999;
+
+    &:hover {
+      transform: translateY(calc(-100% - 8px)) translateX(-10px);
+    }
+
+    @media (max-width: 768px) {
+      font-size: 14px;
+      padding: 8px 16px;
+      // width: 100%;
+    }
+  }
+</style>
