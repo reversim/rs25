@@ -5,12 +5,13 @@ import computerRetroImage from "../assets/computer-retro.png";
 import hamsterImage from "../assets/hamster.png";
 import MainBanner from "../components/mainBanner.astro";
 import Member from "../components/memberCard.astro";
+import PastEvents from "../components/pastEvents.astro";
+import PrimaryButton from "../components/primaryButton.astro";
 import Title from "../components/title.astro";
 import Venue from "../components/venue.astro";
-import { getTeamMembers } from "../helpers/getTeam";
+import { getSpeakers } from "../helpers/getSpeakers";
 import Layout from "../layouts/Layout.astro";
-import PastEvents from "../components/pastEvents.astro";
-const teamMembers = await getTeamMembers();
+const speakers = await getSpeakers();
 ---
 
 <style is:global>
@@ -35,11 +36,28 @@ const teamMembers = await getTeamMembers();
   <MainBanner />
 
   <div class="card">
-    <Title style="color: black" title="Organizing Team" id="team" />
+    <Title style="color: black" title="Speakers" id="speakers" />
 
     <div class="team-member-container">
-      {teamMembers.map((member) => <Member {...member} />)}
+      {
+        speakers
+          .sort(() => Math.random() - 0.5)
+          .slice(0, 18)
+          .map((speaker) => (
+          <Member
+            pageBase="speaker"
+            slug={`${speaker.slug}`}
+            name={speaker.fullName}
+            title={speaker.tagLine}
+            company={""}
+            image={speaker.profilePicture}
+            bio={speaker.bio}
+          />
+        ))
+      }
     </div>
+    <PrimaryButton variant="speakers" buttonText="View All Speakers" link="/speakers" />
+
   </div>
 
   <div class="past-events-card card">

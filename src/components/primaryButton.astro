@@ -1,0 +1,154 @@
+---
+interface Props {
+  buttonText: string;
+  link: string;
+  variant?: "default" | "speakers";
+}
+const { buttonText, link, variant = "default" } = Astro.props;
+---
+
+<div class="hero-btn-container">
+  <a class={`hero-btn ${variant}`} href={link}>
+    <button>{buttonText}</button>
+    <div class="wave"></div>
+  </a>
+</div>
+
+<style lang="scss">
+  .hero-btn-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 40px;
+    margin-top: 60px;
+
+    @media (max-width: 768px) {
+      gap: 20px;
+    }
+  }
+
+  .hero-btn {
+    position: relative;
+    border: none;
+    width: 286px;
+    align-self: center;
+    justify-self: center;
+    border-radius: 50px;
+
+    background-color: var(--pink-dark);
+    cursor: pointer;
+    box-shadow: 4px 4px 0px #c1c1c182;
+    transition: all 0.15s ease-in;
+
+    &.speakers {
+      background-color: var(--blue);
+   
+      button{
+        padding: 12px 24px;
+      }
+
+      .wave {
+        background-color: #485b7a;
+        &::after {
+          background-color: var(--blue);
+        }
+        &::before {
+          background-color: var(--blue);
+        }
+      }
+    }
+
+    .wave,
+    .wave:before,
+    .wave:after {
+      opacity: 1;
+      transition: all 0.15s ease-in;
+    }
+
+    &:hover {
+      .wave {
+        opacity: 0;
+      }
+    }
+
+    .wave {
+      position: absolute;
+      background-color: #d95579;
+      border-radius: 30px 30px 0;
+      width: 50%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      z-index: 1;
+
+      // TODO - improve wave
+      &::after {
+        content: "";
+        content: "";
+        position: absolute;
+        width: 17px;
+        height: 100%;
+        right: 0px;
+        top: 0px;
+        background-color: var(--pink-dark);
+        border-radius: 0px 500%;
+        rotate: -2deg;
+      }
+      &::before {
+        content: "";
+        content: "";
+        position: absolute;
+        width: 17px;
+        height: 100%;
+        right: -5px;
+        top: 0px;
+        background-color: var(--pink-dark);
+        border-radius: 0px 500%;
+        rotate: -2deg;
+      }
+    }
+
+    button {
+      color: white;
+      background: none;
+      border: none;
+      cursor: pointer;
+      font-size: 18px;
+      pointer-events: all;
+
+      font-weight: bold;
+      padding: 12px 54px;
+      margin: auto;
+      display: block;
+
+      position: relative;
+      z-index: 2;
+
+      &::before,
+      &::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        width: 3px;
+        height: 100%;
+        background-color: white;
+        transition: right 0.5s ease;
+      }
+      &::before {
+        right: 100%;
+      }
+      &::after {
+        right: 0;
+      }
+
+      &:hover {
+        &::before {
+          right: 0px;
+        }
+        &::after {
+          right: 100%;
+        }
+      }
+    }
+  }
+</style>
