@@ -1,21 +1,58 @@
 ---
 import type { GetStaticPaths } from "astro";
-import slug from "slug";
-import { getSessions } from "../../helpers/getSessions";
-import Layout from "../../layouts/Layout.astro";
 import dayjs from "dayjs";
+import slug from "slug";
+import Arrow from "../../assets/agenda/arrow.svg";
+import SessionCategory from "../../components/agenda/category.astro";
+import SessionSpeakers from "../../components/agenda/sessionSpeakers.astro";
 import BackButton from "../../components/backButton.astro";
+import { getTalkCategoryColor } from "../../helpers/agendaHelpers";
+import { getTrackName } from "../../helpers/getAgenda";
+import { getSessions, type talk } from "../../helpers/getSessions";
+import Layout from "../../layouts/Layout.astro";
 
 export const getStaticPaths = (async () => {
+  async function getPrevAndNextOfTrack(sessions: talk[], session: talk) {
+    const track = getTrackName(session);
+
+    const sessionsOfTrack = sessions.filter(
+      (trackSession: talk) =>
+        getTrackName(trackSession) === track &&
+        dayjs(trackSession.startsAt).isSame(dayjs(session.startsAt), "day"),
+    );
+
+    const index = sessionsOfTrack.findIndex(
+      (trackSession: talk) => session.id === trackSession.id,
+    );
+    const prev = sessionsOfTrack[index - 1];
+    const next = sessionsOfTrack[index + 1];
+
+    return { prev, next };
+  }
+
   const sessions = await getSessions();
 
-  return sessions.rawSessionsList.map((session) => ({
-    params: {
-      session: slug(session.title),
-    },
-    props: { ...session },
-  }));
+  return Promise.all(
+    sessions.rawSessionsList.map(async (session) => {
+      const prevAndNext = await getPrevAndNextOfTrack(
+        sessions.rawSessionsList,
+        session,
+      );
+
+      return {
+        params: {
+          session: slug(session.title),
+        },
+        props: {
+          session,
+          ...prevAndNext,
+        },
+      };
+    }),
+  );
 }) satisfies GetStaticPaths;
+
+const { session, prev, next } = Astro.props;
 
 const {
   title,
@@ -26,13 +63,8 @@ const {
   endsAt,
   categories,
   id,
-  isConfirmed,
-  isServiceSession,
-  questionAnswers,
   recordingUrl,
-  roomId,
-  status,
-} = Astro.props;
+} = session;
 
 function getDaySuffix(day: number) {
   if (day >= 11 && day <= 13) {
@@ -63,39 +95,63 @@ function getSessionDate() {
 
   return `${day}, ${month} ${dayInMonth}${getDaySuffix(dayInMonth)}, ${startTime} - ${endTime}`;
 }
+
+const categoryColor = getTalkCategoryColor(session);
+const track = getTrackName(session);
 ---
 
-<Layout haveBG={true}>
-  <BackButton />
+<Layout>
+  <BackButton backToText="Agenda" href="/agenda" />
   <div class="session-container">
     <h2>{title}</h2>
     <p class="description">{description}</p>
 
-    <div class="session-information">
-      <p>Room: {room}</p>
-      <p>{getSessionDate()}</p>
-    </div>
+    <div class="session-track-navigator">
+      <SessionCategory track={track} categoryColor={categoryColor} />
 
-    <h4>Speakers</h4>
-    {
-      speakers.map((speaker) => {
-        return (
-          <a href={`/speaker/${slug(speaker.name)}`} class="speaker-name">
-            {speaker.name}
-          </a>
-        );
-      })
-    }
+      <div class="session-actions">
+        <button disabled={!prev} class="track-navigator prev">
+          {
+            prev ? (
+              <a href={`/session/${slug(prev.title)}`}>
+                <Arrow class="arrow" />
+              </a>
+            ) : null
+          }
+        </button>
+        <button disabled={!next} class="track-navigator next">
+          {
+            next ? (
+              <a href={`/session/${slug(next.title)}`}>
+                <Arrow class="arrow" />
+              </a>
+            ) : null
+          }
+        </button>
+      </div>
+    </div>
+    <div class="session-information">
+      <h4>Time & Room</h4>
+      <p>{getSessionDate()} <span class="separator">•</span> Room: {room}</p>
+
+      <h4 class="speakers-title">Speakers</h4>
+
+      <SessionSpeakers speakers={speakers} variant="session-page" />
+    </div>
   </div>
 </Layout>
 
-<style lang="scss">
+<style lang="scss" define:vars={{ categoryColor }}>
   .session-container {
-    padding: 20px 0px 50px;
+    margin: 16px 0 24px;
+    padding: 24px;
+    border-radius: 8px;
+    box-shadow: 2px 2px 6px lightgray;
+    background-color: white;
   }
   h2 {
     text-align: start;
-    margin-top: 16px;
+    margin-top: 24px;
     font-weight: 200;
   }
 
@@ -104,15 +160,57 @@ function getSessionDate() {
     white-space: pre-wrap;
   }
 
-  h4 {
-    margin: 32px 0 8px;
-  }
+  .session-track-navigator {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 
-  a:hover {
-    text-decoration: underline;
+    .session-actions {
+      display: flex;
+      gap: 24px;
+      .track-navigator {
+        background: none;
+        border: none;
+        cursor: pointer;
+        color: var(--categoryColor);
+
+        &.prev {
+          -webkit-transform: scaleX(-1);
+          transform: scaleX(-1);
+        }
+
+        svg {
+          height: 14px;
+          width: max-content;
+        }
+        &:hover {
+          filter: brightness(0.7);
+        }
+      }
+    }
   }
 
   .session-information {
-    margin-top: 30px;
+    margin-top: 24px;
+    padding-top: 24px;
+    border-top: 1px solid lightgray;
+
+    h4 {
+      margin-bottom: 4px;
+      font-weight: 400;
+      font-size: 14px;
+      color: var(--gray);
+      &.speakers-title {
+        margin-top: 24px;
+      }
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    .separator {
+      font-size: 18px;
+    }
   }
 </style>
