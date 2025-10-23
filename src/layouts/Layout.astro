@@ -6,10 +6,11 @@ import "../styles/global.scss";
 
 interface Props {
   havePadding?: boolean;
+  havePaddingBottom?: boolean;
   haveBG?: boolean;
 }
 
-const { havePadding = true, haveBG = false } = Astro.props;
+const { havePadding = true, haveBG = false, havePaddingBottom = false } = Astro.props;
 ---
 
 <!doctype html>
@@ -61,7 +62,7 @@ const { havePadding = true, haveBG = false } = Astro.props;
   <body>
     <Header />
     <div
-      class={`body-container ${havePadding ? "have-padding" : ""} ${haveBG ? "have-background" : ""}`}
+      class={`body-container ${havePadding ? "have-padding" : ""} ${haveBG ? "have-background" : ""} ${havePaddingBottom ? "have-padding-bottom" : ""}`}
     >
       <slot class="layout-container" />
     </div>
