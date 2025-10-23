@@ -4,13 +4,14 @@ import type { AgendaSpeaker } from "../../helpers/getAgenda";
 
 interface Props {
   speakers?: AgendaSpeaker[];
+  variant?: "default" | "session-page";
 }
-const { speakers } = Astro.props;
+const { speakers, variant = "default" } = Astro.props;
 ---
 
 {
   speakers?.length ? (
-    <div class="session-speakers">
+    <div class={`session-speakers ${variant || ""}`}>
       {speakers.map((speaker: AgendaSpeaker, index: number) => (
         <>
           <a href={createSpeakerUrl(speaker.name)}>{speaker.name}</a>
@@ -36,6 +37,12 @@ const { speakers } = Astro.props;
         color: var(--blue);
         text-decoration: underline;
       }
+    }
+
+    &.session-page {
+      font-size: 16px;
+      font-weight: 400;
+      color: black;
     }
   }
 </style>

@@ -49,8 +49,9 @@ links.map((link) => {
 const image = await getImage({ src: profilePicture, height: 500, width: 500 });
 ---
 
-<Layout>
+<Layout havePaddingBottom={true}>
   <MemberPage
+    type="speaker"
     socialList={socialLinks}
     name={fullName}
     image={image.src}

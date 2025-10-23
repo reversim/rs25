@@ -6,13 +6,25 @@ import { Picture } from "astro:assets";
 
 interface Props extends Partial<teamMember> {
   socialList: Record<string, string | undefined>;
+  type?: "about" | "speaker";
 }
 
-const { socialList, name, image, title, company, bio } = Astro.props;
+const {
+  socialList,
+  name,
+  image,
+  title,
+  company,
+  bio,
+  type = "about",
+} = Astro.props;
 ---
 
 <div class="main-container">
-  <BackButton />
+  <BackButton
+    backToText={type === "about" ? "Team" : "Speakers"}
+    href={type === "about" ? `/about` : `/speakers`}
+  />
 
   <div class="person-info">
     <div class="media-socials-container">
