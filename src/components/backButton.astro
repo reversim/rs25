@@ -1,23 +1,32 @@
-<script>
-  const button = document.querySelector("#back-button");
-  button?.addEventListener("click", () => {
-    history.back();
-  });
-</script>
+---
+const { href, backToText = "" } = Astro.props;
+import Arrow from "../assets/agenda/arrow.svg";
+---
 
-<button id="back-button" class="back-button">Back</button>
+<a id="back-button" class="back-button" href={href}>
+  <Arrow class="arrow" /> Back to {backToText}</a
+>
 
 <style>
   .back-button {
-    border: none;
-    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
     width: max-content;
     height: max-content;
-    background-color: #7ca4d6;
-    padding: 6px 12px;
-    color: white;
     cursor: pointer;
+    margin-bottom: 12px;
+
+    color: var(--dark-blue);
     font-family: inherit;
     font-weight: 600;
+
+    .arrow {
+      height: 16px;
+      width: max-content;
+      -webkit-transform: scaleX(-1);
+      transform: scaleX(-1);
+    }
   }
 </style>
