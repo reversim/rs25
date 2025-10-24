@@ -9,6 +9,8 @@ on:
     # Using 21:00 UTC to align with Jerusalem DST (UTC+3) which is observed most of the year
     - cron: "0 21 * * *"
 
+  workflow_dispatch:
+
 jobs:
   deploy:
     runs-on: ubuntu-latest
