@@ -24,7 +24,6 @@ const { socialList, variant = "sponsor" } = Astro.props;
     gap: 12px;
 
     margin-bottom: 24px;
-    max-width: 250px;
 
     &.member-large {
       margin-top: 12px;
@@ -35,6 +34,10 @@ const { socialList, variant = "sponsor" } = Astro.props;
       justify-content: start;
       gap: 4px;
       margin-top: 12px;
+    }
+
+    &.member-large {
+      max-width: 250px;
     }
   }
 </style>
