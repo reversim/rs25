@@ -7,8 +7,9 @@ import SessionCategory from "../../components/agenda/category.astro";
 import SessionSpeakers from "../../components/agenda/sessionSpeakers.astro";
 import BackButton from "../../components/backButton.astro";
 import { getTalkCategoryColor } from "../../helpers/agendaHelpers";
-import { getTrackName } from "../../helpers/getAgenda";
+import { getTrackName, type AgendaSpeaker } from "../../helpers/getAgenda";
 import { getSessions, type talk } from "../../helpers/getSessions";
+import { getSpeakerById } from "../../helpers/getSpeakers";
 import Layout from "../../layouts/Layout.astro";
 
 export const getStaticPaths = (async () => {
@@ -34,6 +35,11 @@ export const getStaticPaths = (async () => {
 
   return Promise.all(
     sessions.rawSessionsList.map(async (session) => {
+      const speakers: AgendaSpeaker[] = await Promise.all(
+        session.speakers.map(async (speaker) => {
+          return await getSpeakerById(speaker.id);
+        }),
+      );
       const prevAndNext = await getPrevAndNextOfTrack(
         sessions.rawSessionsList,
         session,
@@ -44,7 +50,10 @@ export const getStaticPaths = (async () => {
           session: slug(session.title),
         },
         props: {
-          session,
+          session: {
+            ...session,
+            speakers,
+          },
           ...prevAndNext,
         },
       };

@@ -13,11 +13,12 @@ import Sessionize from "../assets/socials/sessionize.svg";
 interface Props {
   link?: string;
   type: string;
-  variant?: "sponsor-page" | "team-member-page";
+  variant?: "sponsor" | "member-large" | "member-medium";
 }
 
 const { link, type, variant } = Astro.props;
-const iconsSize = variant === "sponsor-page" ? 24 : 16;
+const iconsSize = variant === "member-medium" ? 20 : 24;
+const lowerCaseType = type.toLowerCase();
 
 const supportedTypes = [
   "linkedin",
@@ -35,10 +36,10 @@ const supportedTypes = [
 ---
 
 {
-  link && supportedTypes.includes(type) && (
-    <a class={`${variant} ${type}`} target="_blank" href={link}>
+  link && supportedTypes.includes(lowerCaseType) && (
+    <a class={`${variant} ${lowerCaseType}`} target="_blank" href={link}>
       {() => {
-        switch (type) {
+        switch (lowerCaseType) {
           case "linkedin":
             return <Linkedin width={iconsSize} />;
 
@@ -79,7 +80,6 @@ const supportedTypes = [
 
 <style lang="scss">
   a {
-    background-color: #000000;
     border-radius: 50%;
     aspect-ratio: 1;
     width: 28px;
@@ -89,20 +89,25 @@ const supportedTypes = [
     align-items: center;
 
     svg {
-      // scale: 0.7;
       fill: #cddcf0;
+      transition: 0.3s;
     }
 
-    &.sponsor-page {
-      background: none;
-
+    &:hover {
       svg {
-        transition: 0.3s;
+        fill: white;
+      }
+    }
+
+    &.member-large,
+    &.member-medium {
+      svg {
+        fill: black;
       }
 
       &:hover {
         svg {
-          fill: white;
+          fill: var(--dark-gray);
         }
       }
     }

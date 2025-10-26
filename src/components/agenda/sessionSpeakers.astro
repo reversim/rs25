@@ -1,10 +1,11 @@
 ---
 import { createSpeakerUrl } from "../../helpers/agendaHelpers";
 import type { AgendaSpeaker } from "../../helpers/getAgenda";
+import SocialLinks from "../socialLinks.astro";
 
 interface Props {
-  speakers?: AgendaSpeaker[];
   variant?: "default" | "session-page";
+  speakers?: AgendaSpeaker[];
 }
 const { speakers, variant = "default" } = Astro.props;
 ---
@@ -14,8 +15,32 @@ const { speakers, variant = "default" } = Astro.props;
     <div class={`session-speakers ${variant || ""}`}>
       {speakers.map((speaker: AgendaSpeaker, index: number) => (
         <>
-          <a href={createSpeakerUrl(speaker.name)}>{speaker.name}</a>
-          {index < speakers.length - 1 && "  , "}
+          {variant === "session-page" ? (
+            <div class="session-speaker">
+              <a href={createSpeakerUrl(speaker.fullName || "")}>
+                <img src={speaker.profilePicture} alt={speaker.fullName} />
+              </a>
+              <div class="session-speaker-info">
+                <a href={createSpeakerUrl(speaker.fullName || "")}>
+                  {speaker.fullName}
+                </a>
+                <p class="session-speaker-tagline">{speaker.tagLine}</p>
+
+                <SocialLinks
+                  variant="member-medium"
+                  socialList={(speaker.links || []).map((social) => ({
+                    social: social.linkType,
+                    link: social.url || "",
+                  }))}
+                />
+              </div>
+            </div>
+          ) : (
+            <>
+              <a href={createSpeakerUrl(speaker.name || "")}>{speaker.name}</a>
+              {index < speakers.length - 1 && "  , "}
+            </>
+          )}
         </>
       ))}
     </div>
@@ -40,9 +65,50 @@ const { speakers, variant = "default" } = Astro.props;
     }
 
     &.session-page {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 32px;
+      margin-top: 24px;
+
       font-size: 16px;
       font-weight: 400;
       color: black;
+
+      .session-speaker {
+        display: flex;
+        flex: 1;
+        gap: 16px;
+
+        .session-speaker-info {
+          padding: 4px 0;
+
+          > a {
+            font-weight: 600;
+          }
+
+          .session-speaker-tagline {
+            margin-top: 4px;
+            font-size: 14px;
+            color: var(--dark-gray);
+          }
+        }
+
+        img {
+          aspect-ratio: 1;
+          width: 154px;
+          border-radius: 8px;
+        }
+
+        .links {
+          display: flex;
+          gap: 8px;
+          margin-top: 8px;
+        }
+      }
+    }
+
+    @media screen and (max-width: 992px) {
+      flex-direction: column;
     }
   }
 </style>

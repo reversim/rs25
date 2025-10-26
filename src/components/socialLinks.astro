@@ -1,0 +1,40 @@
+---
+import SocialLink from "./socialLink.astro";
+
+interface Props {
+  socialList: { social: string; link: string }[];
+  variant?: "sponsor" | "member-large" | "member-medium";
+}
+const { socialList, variant = "sponsor" } = Astro.props;
+---
+
+<div class={`social-links ${variant}`}>
+  {
+    socialList.map(({ social, link }) => {
+      return <SocialLink variant={variant} type={social} link={link || ""} />;
+    })
+  }
+</div>
+
+<style lang="scss">
+  .social-links {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 12px;
+
+    margin-bottom: 24px;
+    max-width: 250px;
+
+    &.member-large {
+      margin-top: 12px;
+      justify-content: center;
+    }
+
+    &.member-medium {
+      justify-content: start;
+      gap: 4px;
+      margin-top: 12px;
+    }
+  }
+</style>

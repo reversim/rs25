@@ -1,6 +1,17 @@
 export interface AgendaSpeaker {
   id: string | number;
-  name: string;
+  name?: string;
+
+  firstName?: string;
+  lastName?: string;
+  fullName?: string;
+  tagLine?: string;
+  bio?: string;
+  profilePicture?: string;
+  slug?: string;
+  isTopSpeaker?: boolean;
+  sessions?: any[];
+  links?: { title: string; url: string; linkType: string }[];
 }
 
 export interface AgendaSession {

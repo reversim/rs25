@@ -9,6 +9,7 @@ import BackgroundMask from "../../components/sponsorsBackgroundMask.astro";
 import Title from "../../components/title.astro";
 import { getSponsors } from "../../helpers/getSponsors";
 import Layout from "../../layouts/Layout.astro";
+import SocialLinks from "../../components/socialLinks.astro";
 
 export const getStaticPaths = (async () => {
   const sponsors = await getSponsors();
@@ -77,19 +78,14 @@ const carouselImagesPromise = await Promise.all(
           width={500}
         />
 
-        <div class="social-links">
-          {
-            Object.entries(socialList).map(([social, link]) => {
-              return (
-                <SocialLink
-                  variant="sponsor-page"
-                  type={social}
-                  link={link || ""}
-                />
-              );
-            })
-          }
-        </div>
+        <SocialLinks
+          socialList={Object.entries(socialList || {}).map(
+            ([social, link]) => ({
+              social,
+              link: link || "",
+            }),
+          )}
+        />
 
         <div class="sponsor-basic-info">
           <div class="who-we-are">
@@ -182,8 +178,8 @@ const carouselImagesPromise = await Promise.all(
     width: 40%;
     object-fit: contain;
     margin-bottom: 32px;
-    
-    &.teads{
+
+    &.teads {
       filter: brightness(1) invert(0);
     }
   }
@@ -209,14 +205,6 @@ const carouselImagesPromise = await Promise.all(
       }
     }
   }
-
-  .social-links {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    margin-bottom: 24px;
-  }
-
   .sponsor-basic-info {
     width: 60%;
     margin-bottom: 60px;
@@ -279,8 +267,6 @@ const carouselImagesPromise = await Promise.all(
     font-weight: 400;
     font-size: 14px;
   }
-
-
 
   .testimonials-container {
     display: flex;
