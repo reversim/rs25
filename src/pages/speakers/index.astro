@@ -22,11 +22,11 @@ const speakers = await getSpeakers();
           <MemberCard
             pageBase="speaker"
             slug={`${speaker.slug}`}
-            name={speaker.fullName}
-            title={speaker.tagLine}
+            name={speaker.fullName || ""}
+            title={speaker.tagLine || ""}
             company={""}
             image={speaker.profilePicture}
-            bio={speaker.bio}
+            bio={speaker.bio || ""}
           />
         );
       })
