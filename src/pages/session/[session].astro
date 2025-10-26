@@ -176,7 +176,6 @@ const track = getTrackName(session);
 
     .session-actions {
       display: flex;
-      gap: 24px;
       .track-navigator {
         background: none;
         border: none;
@@ -186,6 +185,12 @@ const track = getTrackName(session);
         &.prev {
           -webkit-transform: scaleX(-1);
           transform: scaleX(-1);
+        }
+
+        > a {
+          --gap: 12px;
+          padding: var(--gap);
+          margin-right: calc(var(--gap) * -1);
         }
 
         svg {
