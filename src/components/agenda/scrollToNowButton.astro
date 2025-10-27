@@ -208,11 +208,7 @@ const { currentDay } = Astro.props;
     z-index: 9999;
 
     &:hover {
-      transform: translateY(-2px);
-    }
-
-    &:active {
-      transform: translateY(0);
+      transform: translateY(calc(-100% - 8px)) translateX(-10px);
     }
 
     @media (max-width: 768px) {
