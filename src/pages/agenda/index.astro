@@ -14,7 +14,8 @@ const availableDays = await getAgendaDays();
 
 const day =
   availableDays.find((day) => day.date === new Date().toISOString()) ||
-  availableDays[0];
+  availableDays[1];
+
 const grid = buildDayGrid(day);
 const currentDay = {
   ...day,
