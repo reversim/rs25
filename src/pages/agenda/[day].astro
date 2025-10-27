@@ -3,12 +3,10 @@ import AgendaDaySwitcher from "../../components/agenda/agendaDaySwitcher.astro";
 import AgendaGridDesktop from "../../components/agenda/desktop/agendaGridDesktop.astro";
 import AgendaHero from "../../components/agenda/hero.astro";
 import AgendaGridMobile from "../../components/agenda/mobile/agendaGridMobile.astro";
-import {
-buildDayGrid,
-getAgendaDays
-} from "../../helpers/getAgenda";
+import { buildDayGrid, getAgendaDays } from "../../helpers/getAgenda";
 import Layout from "../../layouts/Layout.astro";
 import FilterSessions from "../../components/agenda/filterSessions.astro";
+import ScrollToNowButton from "../../components/agenda/scrollToNowButton.astro";
 
 export async function getStaticPaths() {
   const agendaDays = await getAgendaDays();
@@ -33,7 +31,7 @@ const { currentDay, availableDays } = Astro.props;
 
 <Layout havePadding={false}>
   <div class="agenda-container">
-    <AgendaHero />
+    <AgendaHero currentDay={currentDay} />
 
     <!-- Liked talks section (initially hidden) -->
     <!-- <LikeTalkSection currentDay={currentDay} agendaDays={availableDays} /> -->
@@ -45,6 +43,8 @@ const { currentDay, availableDays } = Astro.props;
     />
 
     <FilterSessions currentDay={currentDay} />
+
+    <ScrollToNowButton currentDay={currentDay} />
 
     <!-- Desktop Grid-based Schedule View -->
     <AgendaGridDesktop currentDay={currentDay} />
@@ -60,5 +60,6 @@ const { currentDay, availableDays } = Astro.props;
     margin: 0 auto;
     padding: 20px;
     margin-bottom: 40px;
+    position: relative;
   }
 </style>
