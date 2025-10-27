@@ -1,6 +1,27 @@
 import { findSessionById } from "./agendaHelpers";
 
 const LIKED_TALKS_KEY = "reversim-liked-talks";
+const FILTERS_KEY = "reversim-filters";
+
+export function getSavedFilters(): {
+  themes: string[];
+  rooms: string[];
+  favorites: string[];
+} {
+  const defaultFilters = {
+    themes: [],
+    rooms: [],
+    favorites: [],
+  };
+
+  try {
+    return (
+      JSON.parse(localStorage.getItem(FILTERS_KEY) || "") || defaultFilters
+    );
+  } catch {
+    return defaultFilters;
+  }
+}
 
 export function getLikedTalks(): string[] {
   try {
@@ -119,6 +140,48 @@ export function applyFilters(sessionsData: any[]): void {
     document.querySelectorAll("#favorite-filters input:checked"),
   ).map((cb) => (cb as HTMLInputElement).value);
 
+  // Persist selections (single key)
+  try {
+    localStorage.setItem(
+      FILTERS_KEY,
+      JSON.stringify({
+        themes: selectedThemes,
+        rooms: selectedRooms,
+        favorites: selectedFavorites,
+      }),
+    );
+  } catch {
+    // ignore
+  }
+
+  // Update Filters button badge with active count
+  try {
+    const activeCount =
+      selectedThemes.length +
+      selectedRooms.length +
+      (selectedFavorites.length > 0 ? 1 : 0);
+    const btn = document.querySelector(
+      ".filter-toggle-btn",
+    ) as HTMLElement | null;
+    if (btn) {
+      let badge = btn.querySelector(".filter-badge") as HTMLElement | null;
+      if (!badge) {
+        badge = document.createElement("span");
+        badge.className = "filter-badge";
+        btn.prepend(badge);
+      }
+      if (activeCount > 0) {
+        badge.textContent = `(${String(activeCount)})`;
+        badge.style.display = "inline-flex";
+      } else {
+        badge.textContent = "";
+        badge.style.display = "none";
+      }
+    }
+  } catch {
+    // ignore
+  }
+
   // Get liked talks for favorites filter
   const likedTalks = getLikedTalks();
   const isFavoritesFilterActive = selectedFavorites.length > 0;
@@ -180,6 +243,13 @@ export function clearAllFilters(): void {
       (checkbox as HTMLInputElement).checked = false;
     });
 
+  // Clear persisted selections (single key)
+  try {
+    localStorage.removeItem(FILTERS_KEY);
+  } catch {
+    // ignore
+  }
+
   // Reset all cards to visible
   const allCards = document.querySelectorAll(
     ".session-content, .full-width-session-cell, .break-session, .session-card",
@@ -197,6 +267,18 @@ export function clearAllFilters(): void {
   });
 
   // Filters cleared successfully
+  try {
+    const btn = document.querySelector(
+      ".filter-toggle-btn",
+    ) as HTMLElement | null;
+    const badge = btn?.querySelector(".filter-badge") as HTMLElement | null;
+    if (badge) {
+      badge.textContent = "";
+      badge.style.display = "none";
+    }
+  } catch {
+    // ignore
+  }
 }
 
 export function toggleFilters(): void {
@@ -213,7 +295,23 @@ export function toggleFilters(): void {
 }
 
 export function initializeFilters(sessionsData: any[]): void {
-  // run applyFilters when initialized
+  // Restore saved selections into checkboxes (single key)
+  const saved = getSavedFilters();
+  const filterCheckboxes: { id: string; values: string[] }[] = [
+    { id: "#theme-filters", values: saved.themes },
+    { id: "#room-filters", values: saved.rooms },
+    { id: "#favorite-filters", values: saved.favorites },
+  ];
+
+  filterCheckboxes.forEach(({ id, values }) => {
+    if (values.length === 0) return;
+    document.querySelectorAll(`${id} input[type="checkbox"]`).forEach((cb) => {
+      const input = cb as HTMLInputElement;
+      input.checked = values.includes(input.value);
+    });
+  });
+
+  // Apply with restored state
   applyFilters(sessionsData);
 
   // Make functions globally available
