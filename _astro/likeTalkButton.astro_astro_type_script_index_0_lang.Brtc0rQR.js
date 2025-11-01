@@ -1,0 +1,1 @@
+import{h as o,t as a}from"./agendaHelpers.DXHU8vB0.js";document.addEventListener("DOMContentLoaded",()=>{document.querySelectorAll(".like-btn").forEach(t=>{o(t),t?.addEventListener("click",e=>{e.stopPropagation();const n=t.getAttribute("data-talk-id");a(n||"",t)})})});
