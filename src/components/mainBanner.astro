@@ -128,9 +128,14 @@ const cssVars = `
         <div class="event-date">
           <p>October 27-28, 2025</p>
         </div>
+        <p class="next-year-text">See you next year!</p>
       </div>
 
-      <PrimaryButton buttonText="View Agenda" link="/agenda" />
+      <PrimaryButton
+        variant="no-border"
+        buttonText="Watch all Reversim Summit 2025 sessions"
+        link="https://www.youtube.com/playlist?list=PLqXy0aX6TzQqBTdWTLnN--urikR5CFIaz"
+      />
     </div>
   </div>
 
@@ -381,10 +386,22 @@ const cssVars = `
       .event-date {
         margin-top: 40px;
         font-weight: 600;
-        font-size: 32px;
+        font-size: 24px;
+        color: var(--dark-gray);
         p {
           text-align: center;
         }
+
+        @media (max-width: 768px) {
+          font-size: 18px;
+        }
+      }
+
+      .next-year-text {
+        font-size: 32px;
+        font-weight: 600;
+        text-align: center;
+        margin-top: 40px;
 
         @media (max-width: 768px) {
           font-size: 24px;
