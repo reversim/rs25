@@ -2,7 +2,7 @@
 interface Props {
   buttonText: string;
   link: string;
-  variant?: "default" | "speakers";
+  variant?: "default" | "speakers" | "no-border";
 }
 const { buttonText, link, variant = "default" } = Astro.props;
 ---
@@ -25,6 +25,10 @@ const { buttonText, link, variant = "default" } = Astro.props;
     @media (max-width: 768px) {
       gap: 20px;
     }
+
+    &:has(.no-border) {
+      margin-top: 24px;
+    }
   }
 
   .hero-btn {
@@ -42,8 +46,8 @@ const { buttonText, link, variant = "default" } = Astro.props;
 
     &.speakers {
       background-color: var(--blue);
-   
-      button{
+
+      button {
         padding: 12px 24px;
       }
 
@@ -54,6 +58,20 @@ const { buttonText, link, variant = "default" } = Astro.props;
         }
         &::before {
           background-color: var(--blue);
+        }
+      }
+    }
+
+    &.no-border {
+      button {
+        padding: 12px;
+        &::before,
+        &::after {
+          display: none;
+        }
+        @media (max-width: 768px) {
+          font-size: 16px;
+          padding: 12px 24px;
         }
       }
     }
