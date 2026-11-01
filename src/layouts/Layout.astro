@@ -4,6 +4,7 @@ import RegistrationBar from "../components/registrationBar.astro";
 import { Font } from "astro:assets";
 import { getRedirectTarget, isPreview } from "../config/redirects";
 import GoogleAnalytics from "../components/shared/googleAnalytics.astro";
+import { OG_CARD } from "../helpers/meta";
 import "../styles/global.scss";
 
 interface Props {
@@ -12,9 +13,14 @@ interface Props {
   displayHeader?: boolean;
   /**
    * Page-specific link preview. When set, the page is shared under its own
-   * URL with this title and description instead of the homepage's.
+   * URL with this title and description instead of the homepage's, and
+   * with `image` (a card from helpers/og/ogCard.ts) when given.
    */
-  share?: { title: string; description: string };
+  share?: {
+    title: string;
+    description: string;
+    image?: { path: string; alt: string };
+  };
 }
 
 const {
@@ -35,7 +41,18 @@ const loadAnalytics = import.meta.env.PROD && !isPreview && !isBlocked;
 
 const description =
   "Reversim Summit 2026 is Israel’s leading community-driven tech conference, bringing together developers, product managers, and data scientists for top-tier content and networking.";
-const ogImage = new URL("/og-image-2026.png", Astro.site);
+const ogImage = share?.image
+  ? {
+      url: new URL(share.image.path, Astro.site),
+      alt: share.image.alt,
+      ...OG_CARD,
+    }
+  : {
+      url: new URL("/og-image-2026.png", Astro.site),
+      alt: "Reversim Summit 2026, 30.11-1.12, 2026",
+      width: 1200,
+      height: 600,
+    };
 const ogTitle = share?.title ?? "Reversim 2026";
 const ogDescription = share?.description ?? description;
 const ogUrl = share ? canonicalUrl : "https://summit2026.reversim.com/";
@@ -99,20 +116,18 @@ const ogUrl = share ? canonicalUrl : "https://summit2026.reversim.com/";
     <meta property="og:title" content={ogTitle} />
     <meta property="og:site_name" content="Reversim Summit 2026" />
     <meta property="og:description" content={ogDescription} />
-    <meta property="og:image" content={ogImage} />
-    <meta property="og:image:width" content="1200" />
-    <meta property="og:image:height" content="600" />
-    <meta
-      property="og:image:alt"
-      content="Reversim Summit 2026, 30.11-1.12, 2026"
-    />
+    <meta property="og:image" content={ogImage.url} />
+    <meta property="og:image:width" content={String(ogImage.width)} />
+    <meta property="og:image:height" content={String(ogImage.height)} />
+    <meta property="og:image:alt" content={ogImage.alt} />
     <meta property="og:type" content="website" />
     <meta property="og:url" content={ogUrl} />
 
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={ogTitle} />
     <meta name="twitter:description" content={ogDescription} />
-    <meta name="twitter:image" content={ogImage} />
+    <meta name="twitter:image" content={ogImage.url} />
+    <meta name="twitter:image:alt" content={ogImage.alt} />
 
     {loadAnalytics && <GoogleAnalytics />}
     <script>

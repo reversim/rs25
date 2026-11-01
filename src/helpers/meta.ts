@@ -3,6 +3,13 @@
 
 export const SITE_NAME = "Reversim Summit 2026";
 
+/** Size of the per-page preview cards (JPEG) drawn by helpers/og/ogCard.ts. */
+export const OG_CARD = { width: 1200, height: 630 };
+
+/** Where a speaker's or session's preview card is published. */
+export const ogCardPath = (kind: "speaker" | "session", slug: string) =>
+  `/og/${kind}/${slug}.jpg`;
+
 const RTL_CHAR = /[\u0590-\u08FF\uFB1D-\uFDFF\uFE70-\uFEFF]/;
 const LTR_CHAR = /[A-Za-z\u00C0-\u024F]/;
 // Right-to-left mark: keeps trailing punctuation of Hebrew text on the
