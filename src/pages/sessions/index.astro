@@ -2,6 +2,7 @@
 import Layout from "../../layouts/Layout.astro";
 import { getSessions } from "../../helpers/data/getSessions";
 import { getSpeakers } from "../../helpers/data/getSpeakers";
+import { getTrackName } from "../../helpers/data/getAgenda";
 import FilterTabs from "../../components/shared/filterTabs.astro";
 import PageTitle from "../../components/shared/pageTitle.astro";
 import SessionCard from "../../components/sessions/sessionCard.astro";
@@ -48,6 +49,7 @@ const sessionsList = sessions.rawSessionsList.filter(
             href={`/session/${slug(session.title)}`}
             speakers={resolvedSpeakers}
             day={session.day}
+            track={getTrackName(session)}
           />
         );
       })

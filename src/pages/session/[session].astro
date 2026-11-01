@@ -145,7 +145,12 @@ const shareDescription = [
 >
   <Button variant="back" text="Sessions" href="/sessions" />
   <div class="session-container">
-    <h2>{title}</h2>
+    <SessionCategory
+      track={track}
+      categoryColor={categoryColor}
+      style="margin-top: 0"
+    />
+    <h2 class:list={{ "has-track": track }}>{title}</h2>
     <p class="description">{description}</p>
 
     <!-- TODO: add this when we have the time zone data -->
@@ -205,6 +210,11 @@ const shareDescription = [
     text-align: start;
     margin-top: 24px;
     color: var(--rs26-white);
+
+    // Tighter gap when the track chip sits above the title.
+    &.has-track {
+      margin-top: 16px;
+    }
   }
 
   .description {

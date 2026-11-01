@@ -2,6 +2,8 @@
 import dayjs from "dayjs";
 import type { AgendaSpeaker } from "../../types/agenda";
 import SessionCardAvatar from "./sessionCardAvatar.astro";
+import SessionCategory from "../agenda/category.astro";
+import { getTrackColor } from "../../config/trackColors";
 import {
   AnalyticsEvent,
   SessionSource,
@@ -14,6 +16,7 @@ interface Props {
   href: string;
   speakers?: AgendaSpeaker[];
   day?: number | string;
+  track?: string;
   /** Off by default; the time column can be re-enabled later by passing showTime + startsAt/endsAt. */
   showTime?: boolean;
   startsAt?: string;
@@ -26,6 +29,7 @@ const {
   href,
   speakers = [],
   day,
+  track,
   showTime = false,
   startsAt,
   endsAt,
@@ -55,7 +59,12 @@ const endTime = showTime && endsAt ? dayjs(endsAt).format("H:mm") : null;
   }
 
   <div class="content">
-    <h4 class="title">{title}</h4>
+    <SessionCategory
+      track={track}
+      categoryColor={getTrackColor(track)}
+      style="margin-top: 0"
+    />
+    <h4 class:list={["title", { "has-track": track }]}>{title}</h4>
     {description && <p class="description">{description}</p>}
     {
       speakers.length > 0 && (
@@ -142,6 +151,10 @@ const endTime = showTime && endsAt ? dayjs(endsAt).format("H:mm") : null;
     font-family: var(--rs26-display);
     font-size: 18px;
     color: var(--rs26-white);
+
+    &.has-track {
+      margin-top: 12px;
+    }
   }
 
   .description {

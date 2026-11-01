@@ -3,6 +3,9 @@ import type { GetStaticPaths } from "astro";
 import { getImage } from "astro:assets";
 import dayjs from "dayjs";
 import MemberPage from "../../components/member/memberPage.astro";
+import SessionCategory from "../../components/agenda/category.astro";
+import { getTrackColor } from "../../config/trackColors";
+import { getTrackName } from "../../helpers/data/getAgenda";
 import { getSpeakers } from "../../helpers/data/getSpeakers";
 import { getSessions } from "../../helpers/data/getSessions";
 import { formatTime } from "../../helpers/agenda/agendaHelpers";
@@ -34,6 +37,7 @@ export const getStaticPaths = (async () => {
         id: talk.id,
         name: talk.name,
         day: fullSession?.day,
+        track: fullSession ? getTrackName(fullSession) : undefined,
         startsAt: fullSession?.startsAt,
         endsAt: fullSession?.endsAt,
         coSpeakers: (fullSession?.speakers || []).filter(
@@ -154,7 +158,12 @@ const shareDescription = [
                 </div>
               )}
               <div class="talk-body">
-                <h4>{talk.name}</h4>
+                <SessionCategory
+                  track={talk.track}
+                  categoryColor={getTrackColor(talk.track)}
+                  style="margin-top: 0"
+                />
+                <h4 class:list={{ "has-track": talk.track }}>{talk.name}</h4>
                 {talk.coSpeakers.length > 0 && (
                   <p>with {talk.coSpeakers.map((s) => s.name).join(", ")}</p>
                 )}
@@ -265,6 +274,10 @@ const shareDescription = [
       color: var(--rs26-white);
       letter-spacing: -0.015em;
       line-height: 1.25;
+
+      &.has-track {
+        margin-top: 10px;
+      }
     }
 
     p {
