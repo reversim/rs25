@@ -8,7 +8,7 @@ import { getSessions } from "../../helpers/data/getSessions";
 import { formatTime } from "../../helpers/agenda/agendaHelpers";
 import { supportedSocials } from "../../config/socials";
 import Layout from "../../layouts/Layout.astro";
-import { SITE_NAME, withDirectionMark } from "../../helpers/meta";
+import { SITE_NAME, ogCardPath, withDirectionMark } from "../../helpers/meta";
 import slugify from "slug";
 import {
   AnalyticsEvent,
@@ -107,7 +107,14 @@ const shareDescription = [
 
 <Layout
   havePaddingBottom={true}
-  share={{ title: shareTitle, description: shareDescription }}
+  share={{
+    title: shareTitle,
+    description: shareDescription,
+    image: {
+      path: ogCardPath("speaker", slug || ""),
+      alt: `${fullName}, speaking at ${SITE_NAME}`,
+    },
+  }}
 >
   <MemberPage
     type="speaker"

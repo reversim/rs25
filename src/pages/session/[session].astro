@@ -17,6 +17,7 @@ import {
   SITE_NAME,
   excerpt,
   joinNames,
+  ogCardPath,
   withDirectionMark,
 } from "../../helpers/meta";
 
@@ -132,7 +133,16 @@ const shareDescription = [
   .join(". ");
 ---
 
-<Layout share={{ title: shareTitle, description: shareDescription }}>
+<Layout
+  share={{
+    title: shareTitle,
+    description: shareDescription,
+    image: {
+      path: ogCardPath("session", Astro.params.session),
+      alt: [title, speakerNames].filter(Boolean).join(" by "),
+    },
+  }}
+>
   <Button variant="back" text="Sessions" href="/sessions" />
   <div class="session-container">
     <h2>{title}</h2>
