@@ -47,11 +47,7 @@ const agendaUrl = await getAgendaCurrentDay();
 </Layout>
 
 <script>
-  // Agenda deep links that no longer resolve should land on the agenda index.
-  const url = window.location.pathname;
-  if (url.startsWith("/agenda/")) {
-    window.location.href = "/agenda";
-  }
+
 
   // Drifting snow — skipped when the visitor prefers reduced motion.
   const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
