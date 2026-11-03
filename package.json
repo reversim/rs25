@@ -8,6 +8,8 @@
     "astro-check": "astro check",
     "preview": "astro preview",
     "deploy:preview": "node scripts/deploy-preview.mjs",
+    "test": "vitest run",
+    "test:ci": "vitest run --browser.headless",
     "lint": "prettier --check .",
     "lint:fix": "prettier --write .",
     "astro": "astro"
@@ -29,6 +31,10 @@
     "@astrojs/check": "0.9.12",
     "@emnapi/runtime": "1.11.3",
     "@types/slug": "^5.0.9",
-    "typescript": "^6"
+    "@vitest/browser-playwright": "5.1.0",
+    "msw": "^3.0.3",
+    "playwright": "^1.64.1",
+    "typescript": "^6",
+    "vitest": "^5.1.0"
   }
 }

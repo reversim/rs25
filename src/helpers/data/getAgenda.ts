@@ -159,6 +159,9 @@ export function buildDayGrid(day: AgendaDay) {
       const synthetic: AgendaSession = {
         id: `lightning-${day.slug}`,
         title: "Lightning Sessions",
+        // Ignites share one room; without it the block's calendar events
+        // get the location "undefined".
+        room: lightningSessions[0].room,
         startsAt: blockRows[0].startsAt,
         endsAt: blockRows[blockRows.length - 1].endsAt,
         speakers: [],

@@ -2,7 +2,9 @@
 const { currentDay, rowIndex, row, session, track, duration } = Astro.props;
 
 import {
+  agendaSessionAnalytics,
   createSessionUrl,
+  formatTime,
   getTalkCategoryColor,
 } from "../../../helpers/agenda/agendaHelpers";
 import SessionCategory from "../category.astro";
@@ -22,6 +24,8 @@ const isSession =
 <div
   class="time-slot-row full-width-row"
   id={`time-slot-${currentDay.slug}-${rowIndex}`}
+  role="group"
+  aria-label={`Sessions at ${formatTime(row.startsAt)}`}
 >
   <TimeColumn
     highlighted={session.room === "Dining Hall"}
@@ -32,7 +36,7 @@ const isSession =
     class="full-width-session-cell"
     data-talk-id={session.id}
     onclick={track === "Keynote"
-      ? `window.location.href='${createSessionUrl(session.title)}'`
+      ? "if (!event.target.closest('a, button')) this.querySelector('a.break-title').click()"
       : null}
   >
     <div
@@ -67,7 +71,11 @@ const isSession =
       {
         track === "Keynote" && (
           <div class="keynote-session">
-            <a class="break-title" href={createSessionUrl(session.title)}>
+            <a
+              class="break-title"
+              href={createSessionUrl(session.title)}
+              {...agendaSessionAnalytics(session.title)}
+            >
               {session.title}
             </a>
             <SessionSpeakers speakers={session.speakers} />
@@ -135,6 +143,12 @@ const isSession =
 
         &:last-child {
           border-right: none;
+        }
+
+        // Lift the row whose calendar menu is open: otherwise the next row
+        // paints over the part of the menu hanging below this one.
+        &:has(:global(.calendar-dropdown.show)) {
+          z-index: 2;
         }
       }
     }

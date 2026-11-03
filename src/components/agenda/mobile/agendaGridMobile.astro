@@ -22,6 +22,8 @@ const { currentDay } = Astro.props;
         <div
           class="time-slot-container"
           id={`time-slot-mobile-${currentDay.slug}-${rowIndex}`}
+          role="group"
+          aria-label={`Sessions at ${formatTime(row.startsAt)}`}
         >
           <div class="time-header">{formatTime(row.startsAt)}</div>
           <SessionCard session={row.cells} />

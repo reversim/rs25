@@ -56,8 +56,11 @@ export function filterHandler({
   isFavoritesFilterActive: boolean;
   likedTalks: string[];
 }) {
+  // Full-width rows reuse .session-content on an inner div with no id; their
+  // outer .full-width-session-cell carries the id and is filtered instead.
   const sessionId = card.getAttribute("data-talk-id");
-  const session = findSessionById(sessionId!, sessionsData);
+  if (!sessionId) return;
+  const session = findSessionById(sessionId, sessionsData);
   const applyStylesCard = breakContent || card;
 
   if (session?.id && session?.room) {
@@ -72,7 +75,7 @@ export function filterHandler({
 
     // Check favorites match
     const matchesFavorites =
-      !isFavoritesFilterActive || likedTalks.includes(sessionId!);
+      !isFavoritesFilterActive || likedTalks.includes(sessionId);
 
     if (matchesTheme && matchesRoom && matchesFavorites) {
       (applyStylesCard as HTMLElement).style.opacity = "1";

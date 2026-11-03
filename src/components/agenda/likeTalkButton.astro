@@ -2,12 +2,18 @@
 import Star from "../../assets/agenda/star.svg";
 interface Props {
   sessionId: string | number;
+  sessionTitle: string;
 }
 
-const { sessionId } = Astro.props;
+const { sessionId, sessionTitle } = Astro.props;
 ---
 
-<button class=`like-btn` data-talk-id={sessionId}>
+<button
+  class=`like-btn`
+  data-talk-id={sessionId}
+  aria-label={`Like ${sessionTitle}`}
+  aria-pressed="false"
+>
   <Star />
 </button>
 

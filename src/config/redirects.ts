@@ -13,7 +13,7 @@ export type RedirectRule = string | Redirect;
 
 // IMPORTANT: firebase.json mirrors these as server-side redirects (skipping the stub
 // IMPORTANT: page load); keep its `redirects` in sync when changing this list.
-export const redirects: RedirectRule[] = [{ from: "/agenda", to: "/sessions" }];
+export const redirects: RedirectRule[] = [];
 
 // Preview builds (`npm run deploy:preview`) render every hidden page so the team
 // can review it before launch.

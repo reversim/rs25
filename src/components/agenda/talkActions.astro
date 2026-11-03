@@ -11,7 +11,7 @@ const { session } = Astro.props;
 
 <div class="talk-actions">
   <AddToCalendarButton session={session} />
-  <LikeTalkButton sessionId={session.id} />
+  <LikeTalkButton sessionId={session.id} sessionTitle={session.title} />
 </div>
 
 <style lang="scss">

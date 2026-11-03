@@ -31,7 +31,7 @@ const uniqueCategories = [
 <div class="filter-toggle-container">
   <button class="filter-toggle-btn" onclick="toggleFilters()">
     Filters
-    <span class="filter-arrow">▼</span>
+    <span class="filter-arrow" aria-hidden="true">▼</span>
   </button>
 </div>
 
@@ -208,6 +208,7 @@ const uniqueCategories = [
   }
 
   .filter-checkbox {
+    position: relative;
     display: flex;
     align-items: center;
     gap: 12px;
@@ -222,12 +223,16 @@ const uniqueCategories = [
       color: var(--rs26-white);
     }
 
+    // Invisible but covering the label, not zero-sized: the real checkbox
+    // stays clickable and available to assistive tech.
     input[type="checkbox"] {
       position: absolute;
+      inset: 0;
+      margin: 0;
       opacity: 0;
       cursor: pointer;
-      height: 0;
-      width: 0;
+      height: 100%;
+      width: 100%;
     }
 
     .checkmark {

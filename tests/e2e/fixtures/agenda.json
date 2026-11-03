@@ -1,0 +1,703 @@
+[
+  {
+    "date": "2026-11-30T00:00:00",
+    "isDefault": false,
+    "rooms": [
+      {
+        "id": 101,
+        "name": "Main hall",
+        "sessions": [
+          {
+            "id": "d1-opening",
+            "title": "Opening Words",
+            "description": null,
+            "startsAt": "2026-11-30T10:00:00",
+            "endsAt": "2026-11-30T10:20:00",
+            "isServiceSession": true,
+            "isPlenumSession": true,
+            "speakers": [],
+            "categories": [],
+            "roomId": 101,
+            "room": "Main hall"
+          },
+          {
+            "id": "1003",
+            "title": "Keynote: Building What Lasts",
+            "description": "Opening keynote.",
+            "startsAt": "2026-11-30T10:20:00",
+            "endsAt": "2026-11-30T10:50:00",
+            "isServiceSession": false,
+            "isPlenumSession": true,
+            "speakers": [{ "id": "s3", "name": "Keynote Speaker" }],
+            "categories": [
+              {
+                "id": 1,
+                "name": "Track",
+                "categoryItems": [{ "id": 15, "name": "Keynote" }],
+                "sort": 1
+              }
+            ],
+            "roomId": 101,
+            "room": "Main hall"
+          },
+          {
+            "id": "1004",
+            "title": "Maps, Not Vibes: Service Graphs for Agents",
+            "description": "Agents need maps, not vibes.\nWe built a service graph; here is how.",
+            "startsAt": "2026-11-30T11:10:00",
+            "endsAt": "2026-11-30T11:40:00",
+            "isServiceSession": false,
+            "isPlenumSession": false,
+            "speakers": [
+              { "id": "s4", "name": "Dana Graph" },
+              { "id": "s5", "name": "Omer Node" }
+            ],
+            "categories": [
+              {
+                "id": 1,
+                "name": "Track",
+                "categoryItems": [{ "id": 12, "name": "Craft" }],
+                "sort": 1
+              }
+            ],
+            "roomId": 101,
+            "room": "Main hall"
+          },
+          {
+            "id": "1016",
+            "title": "Taste Is an Engineering Skill",
+            "description": "Nobody taught us this.",
+            "startsAt": "2026-11-30T11:50:00",
+            "endsAt": "2026-11-30T12:20:00",
+            "isServiceSession": false,
+            "isPlenumSession": false,
+            "speakers": [{ "id": "s17", "name": "Alon Taste" }],
+            "categories": [
+              {
+                "id": 1,
+                "name": "Track",
+                "categoryItems": [{ "id": 12, "name": "Craft" }],
+                "sort": 1
+              }
+            ],
+            "roomId": 101,
+            "room": "Main hall"
+          },
+          {
+            "id": "1007",
+            "title": "Rubber Ducking for Teams",
+            "description": "Talking it through.",
+            "startsAt": "2026-11-30T13:20:00",
+            "endsAt": "2026-11-30T13:50:00",
+            "isServiceSession": false,
+            "isPlenumSession": false,
+            "speakers": [{ "id": "s7", "name": "Rina Duck" }],
+            "categories": [
+              {
+                "id": 1,
+                "name": "Track",
+                "categoryItems": [{ "id": 12, "name": "Craft" }],
+                "sort": 1
+              }
+            ],
+            "roomId": 101,
+            "room": "Main hall"
+          },
+          {
+            "id": "1010",
+            "title": "Five Minutes on Layoffs",
+            "description": "An ignite.",
+            "startsAt": "2026-11-30T14:40:00",
+            "endsAt": "2026-11-30T14:45:00",
+            "isServiceSession": false,
+            "isPlenumSession": true,
+            "speakers": [{ "id": "s10", "name": "Ignite One" }],
+            "categories": [
+              {
+                "id": 1,
+                "name": "Track",
+                "categoryItems": [{ "id": 16, "name": "Ignites" }],
+                "sort": 1
+              }
+            ],
+            "roomId": 101,
+            "room": "Main hall"
+          },
+          {
+            "id": "1011",
+            "title": "Who Runs Things at 3 AM",
+            "description": "An ignite.",
+            "startsAt": "2026-11-30T14:45:00",
+            "endsAt": "2026-11-30T14:50:00",
+            "isServiceSession": false,
+            "isPlenumSession": true,
+            "speakers": [{ "id": "s11", "name": "Ignite Two" }],
+            "categories": [
+              {
+                "id": 1,
+                "name": "Track",
+                "categoryItems": [{ "id": 16, "name": "Ignites" }],
+                "sort": 1
+              }
+            ],
+            "roomId": 101,
+            "room": "Main hall"
+          },
+          {
+            "id": "1012",
+            "title": "A Yak Walks into a Standup",
+            "description": "An ignite.",
+            "startsAt": "2026-11-30T14:50:00",
+            "endsAt": "2026-11-30T14:55:00",
+            "isServiceSession": false,
+            "isPlenumSession": true,
+            "speakers": [{ "id": "s12", "name": "Ignite Three" }],
+            "categories": [
+              {
+                "id": 1,
+                "name": "Track",
+                "categoryItems": [{ "id": 16, "name": "Ignites" }],
+                "sort": 1
+              }
+            ],
+            "roomId": 101,
+            "room": "Main hall"
+          },
+          {
+            "id": "1013",
+            "title": "Navigating Huge Codebases",
+            "description": "Big code.",
+            "startsAt": "2026-11-30T15:50:00",
+            "endsAt": "2026-11-30T16:20:00",
+            "isServiceSession": false,
+            "isPlenumSession": false,
+            "speakers": [{ "id": "s13", "name": "Tal Rex" }],
+            "categories": [
+              {
+                "id": 1,
+                "name": "Track",
+                "categoryItems": [{ "id": 12, "name": "Craft" }],
+                "sort": 1
+              }
+            ],
+            "roomId": 101,
+            "room": "Main hall"
+          }
+        ]
+      },
+      {
+        "id": 102,
+        "name": "A2+A3",
+        "sessions": [
+          {
+            "id": "1001",
+            "title": "On-Device AI in the Browser",
+            "description": "Running models client-side.",
+            "startsAt": "2026-11-30T09:00:00",
+            "endsAt": "2026-11-30T09:30:00",
+            "isServiceSession": false,
+            "isPlenumSession": false,
+            "speakers": [{ "id": "s1", "name": "Gil Early" }],
+            "categories": [
+              {
+                "id": 1,
+                "name": "Track",
+                "categoryItems": [{ "id": 11, "name": "Frontend" }],
+                "sort": 1
+              }
+            ],
+            "roomId": 102,
+            "room": "A2+A3"
+          },
+          {
+            "id": "1005",
+            "title": "Server-Side Apps Are Back",
+            "description": "SSR revisited.",
+            "startsAt": "2026-11-30T11:10:00",
+            "endsAt": "2026-11-30T11:40:00",
+            "isServiceSession": false,
+            "isPlenumSession": false,
+            "speakers": [{ "id": "s6", "name": "Yael Render" }],
+            "categories": [
+              {
+                "id": 1,
+                "name": "Track",
+                "categoryItems": [{ "id": 11, "name": "Frontend" }],
+                "sort": 1
+              }
+            ],
+            "roomId": 102,
+            "room": "A2+A3"
+          },
+          {
+            "id": "1017",
+            "title": "When AI Completes Actions for You",
+            "description": "Accidental conversions.",
+            "startsAt": "2026-11-30T11:50:00",
+            "endsAt": "2026-11-30T12:20:00",
+            "isServiceSession": false,
+            "isPlenumSession": false,
+            "speakers": [{ "id": "s18", "name": "Noa Click" }],
+            "categories": [
+              {
+                "id": 1,
+                "name": "Track",
+                "categoryItems": [{ "id": 11, "name": "Frontend" }],
+                "sort": 1
+              }
+            ],
+            "roomId": 102,
+            "room": "A2+A3"
+          },
+          {
+            "id": "1008",
+            "title": "Side Projects That Ship",
+            "description": "Shipping on weekends.",
+            "startsAt": "2026-11-30T13:20:00",
+            "endsAt": "2026-11-30T13:50:00",
+            "isServiceSession": false,
+            "isPlenumSession": false,
+            "speakers": [{ "id": "s8", "name": "Shem Ship" }],
+            "categories": [
+              {
+                "id": 1,
+                "name": "Track",
+                "categoryItems": [{ "id": 11, "name": "Frontend" }],
+                "sort": 1
+              }
+            ],
+            "roomId": 102,
+            "room": "A2+A3"
+          },
+          {
+            "id": "1014",
+            "title": "Secure Mobile Apps",
+            "description": "Mobile security.",
+            "startsAt": "2026-11-30T15:50:00",
+            "endsAt": "2026-11-30T16:20:00",
+            "isServiceSession": false,
+            "isPlenumSession": false,
+            "speakers": [{ "id": "s14", "name": "Yoni Secure" }],
+            "categories": [
+              {
+                "id": 1,
+                "name": "Track",
+                "categoryItems": [{ "id": 11, "name": "Frontend" }],
+                "sort": 1
+              }
+            ],
+            "roomId": 102,
+            "room": "A2+A3"
+          }
+        ]
+      },
+      {
+        "id": 103,
+        "name": "A4+A5",
+        "sessions": [
+          {
+            "id": "1002",
+            "title": "Paranoia Driven Development",
+            "description": "Learning from production.",
+            "startsAt": "2026-11-30T09:00:00",
+            "endsAt": "2026-11-30T09:30:00",
+            "isServiceSession": false,
+            "isPlenumSession": false,
+            "speakers": [{ "id": "s2", "name": "Karin Early" }],
+            "categories": [
+              {
+                "id": 1,
+                "name": "Track",
+                "categoryItems": [{ "id": 12, "name": "Craft" }],
+                "sort": 1
+              }
+            ],
+            "roomId": 103,
+            "room": "A4+A5"
+          },
+          {
+            "id": "1006",
+            "title": "From a Minute to a Second",
+            "description": null,
+            "startsAt": "2026-11-30T11:10:00",
+            "endsAt": "2026-11-30T11:40:00",
+            "isServiceSession": false,
+            "isPlenumSession": false,
+            "speakers": [{ "id": "s9", "name": "Barak Fast" }],
+            "categories": [
+              {
+                "id": 1,
+                "name": "Track",
+                "categoryItems": [{ "id": 13, "name": "AI/ML" }],
+                "sort": 1
+              }
+            ],
+            "roomId": 103,
+            "room": "A4+A5"
+          },
+          {
+            "id": "1018",
+            "title": "Road Closure Data at Scale",
+            "description": "Ingesting closures.",
+            "startsAt": "2026-11-30T11:50:00",
+            "endsAt": "2026-11-30T12:20:00",
+            "isServiceSession": false,
+            "isPlenumSession": false,
+            "speakers": [{ "id": "s19", "name": "Lital Road" }],
+            "categories": [
+              {
+                "id": 1,
+                "name": "Track",
+                "categoryItems": [{ "id": 13, "name": "AI/ML" }],
+                "sort": 1
+              }
+            ],
+            "roomId": 103,
+            "room": "A4+A5"
+          },
+          {
+            "id": "1009",
+            "title": "LLMs Gave the Fun Back",
+            "description": "Better tooling.",
+            "startsAt": "2026-11-30T13:20:00",
+            "endsAt": "2026-11-30T13:50:00",
+            "isServiceSession": false,
+            "isPlenumSession": false,
+            "speakers": [{ "id": "s15", "name": "Dean Fun" }],
+            "categories": [
+              {
+                "id": 1,
+                "name": "Track",
+                "categoryItems": [{ "id": 13, "name": "AI/ML" }],
+                "sort": 1
+              }
+            ],
+            "roomId": 103,
+            "room": "A4+A5"
+          },
+          {
+            "id": "1015",
+            "title": "Context Diet",
+            "description": "Smaller prompts.",
+            "startsAt": "2026-11-30T15:50:00",
+            "endsAt": "2026-11-30T16:20:00",
+            "isServiceSession": false,
+            "isPlenumSession": false,
+            "speakers": [{ "id": "s16", "name": "Guy Lean" }],
+            "categories": [
+              {
+                "id": 1,
+                "name": "Track",
+                "categoryItems": [{ "id": 13, "name": "AI/ML" }],
+                "sort": 1
+              }
+            ],
+            "roomId": 103,
+            "room": "A4+A5"
+          }
+        ]
+      },
+      {
+        "id": 104,
+        "name": "Dining Hall",
+        "sessions": [
+          {
+            "id": "d1-coffee",
+            "title": "Coffee Break",
+            "description": null,
+            "startsAt": "2026-11-30T10:50:00",
+            "endsAt": "2026-11-30T11:10:00",
+            "isServiceSession": true,
+            "isPlenumSession": true,
+            "speakers": [],
+            "categories": [],
+            "roomId": 104,
+            "room": "Dining Hall"
+          },
+          {
+            "id": "d1-lunch",
+            "title": "Lunch",
+            "description": null,
+            "startsAt": "2026-11-30T12:20:00",
+            "endsAt": "2026-11-30T13:20:00",
+            "isServiceSession": true,
+            "isPlenumSession": true,
+            "speakers": [],
+            "categories": [],
+            "roomId": 104,
+            "room": "Dining Hall"
+          }
+        ]
+      },
+      {
+        "id": 105,
+        "name": "Entrance",
+        "sessions": [
+          {
+            "id": "d1-registration",
+            "title": "Registration",
+            "description": null,
+            "startsAt": "2026-11-30T08:00:00",
+            "endsAt": "2026-11-30T10:05:00",
+            "isServiceSession": true,
+            "isPlenumSession": false,
+            "speakers": [],
+            "categories": [],
+            "roomId": 105,
+            "room": "Entrance"
+          }
+        ]
+      }
+    ],
+    "timeSlots": []
+  },
+  {
+    "date": "2026-12-01T00:00:00",
+    "isDefault": false,
+    "rooms": [
+      {
+        "id": 101,
+        "name": "Main hall",
+        "sessions": [
+          {
+            "id": "d2-opening",
+            "title": "Opening Words",
+            "description": null,
+            "startsAt": "2026-12-01T10:00:00",
+            "endsAt": "2026-12-01T10:20:00",
+            "isServiceSession": true,
+            "isPlenumSession": true,
+            "speakers": [],
+            "categories": [],
+            "roomId": 101,
+            "room": "Main hall"
+          },
+          {
+            "id": "2003",
+            "title": "Day Two Keynote",
+            "description": "Second keynote.",
+            "startsAt": "2026-12-01T10:20:00",
+            "endsAt": "2026-12-01T10:50:00",
+            "isServiceSession": false,
+            "isPlenumSession": true,
+            "speakers": [{ "id": "s23", "name": "Neta Keynote" }],
+            "categories": [
+              {
+                "id": 1,
+                "name": "Track",
+                "categoryItems": [{ "id": 15, "name": "Keynote" }],
+                "sort": 1
+              }
+            ],
+            "roomId": 101,
+            "room": "Main hall"
+          },
+          {
+            "id": "2004",
+            "title": "Expired Truths",
+            "description": "Advice that stopped working.",
+            "startsAt": "2026-12-01T11:10:00",
+            "endsAt": "2026-12-01T11:40:00",
+            "isServiceSession": false,
+            "isPlenumSession": false,
+            "speakers": [{ "id": "s24", "name": "Nadav Truth" }],
+            "categories": [
+              {
+                "id": 1,
+                "name": "Track",
+                "categoryItems": [{ "id": 21, "name": "Culture" }],
+                "sort": 1
+              }
+            ],
+            "roomId": 101,
+            "room": "Main hall"
+          },
+          {
+            "id": "2010",
+            "title": "Hiring Post-AI",
+            "description": "An ignite.",
+            "startsAt": "2026-12-01T14:40:00",
+            "endsAt": "2026-12-01T14:45:00",
+            "isServiceSession": false,
+            "isPlenumSession": true,
+            "speakers": [{ "id": "s30", "name": "Guy Hire" }],
+            "categories": [
+              {
+                "id": 1,
+                "name": "Track",
+                "categoryItems": [{ "id": 16, "name": "Ignites" }],
+                "sort": 1
+              }
+            ],
+            "roomId": 101,
+            "room": "Main hall"
+          },
+          {
+            "id": "2011",
+            "title": "Are Quantum Computers Faster?",
+            "description": "An ignite.",
+            "startsAt": "2026-12-01T14:45:00",
+            "endsAt": "2026-12-01T14:50:00",
+            "isServiceSession": false,
+            "isPlenumSession": true,
+            "speakers": [{ "id": "s31", "name": "Iftach Qubit" }],
+            "categories": [
+              {
+                "id": 1,
+                "name": "Track",
+                "categoryItems": [{ "id": 16, "name": "Ignites" }],
+                "sort": 1
+              }
+            ],
+            "roomId": 101,
+            "room": "Main hall"
+          }
+        ]
+      },
+      {
+        "id": 102,
+        "name": "A2+A3",
+        "sessions": [
+          {
+            "id": "2005",
+            "title": "Merging Two Clouds",
+            "description": "A migration story.",
+            "startsAt": "2026-12-01T11:10:00",
+            "endsAt": "2026-12-01T11:40:00",
+            "isServiceSession": false,
+            "isPlenumSession": false,
+            "speakers": [{ "id": "s25", "name": "Shahar Cloud" }],
+            "categories": [
+              {
+                "id": 1,
+                "name": "Track",
+                "categoryItems": [{ "id": 22, "name": "Infrastructure" }],
+                "sort": 1
+              }
+            ],
+            "roomId": 102,
+            "room": "A2+A3"
+          },
+          {
+            "id": "2007",
+            "title": "Autonomous On-Call",
+            "description": "Agents that page you less.",
+            "startsAt": "2026-12-01T13:20:00",
+            "endsAt": "2026-12-01T13:50:00",
+            "isServiceSession": false,
+            "isPlenumSession": false,
+            "speakers": [{ "id": "s27", "name": "Shira Pager" }],
+            "categories": [
+              {
+                "id": 1,
+                "name": "Track",
+                "categoryItems": [{ "id": 22, "name": "Infrastructure" }],
+                "sort": 1
+              }
+            ],
+            "roomId": 102,
+            "room": "A2+A3"
+          }
+        ]
+      },
+      {
+        "id": 103,
+        "name": "A4+A5",
+        "sessions": [
+          {
+            "id": "2006",
+            "title": "Strategies to Boost Your Caches",
+            "description": "Cache all the things.",
+            "startsAt": "2026-12-01T11:10:00",
+            "endsAt": "2026-12-01T11:40:00",
+            "isServiceSession": false,
+            "isPlenumSession": false,
+            "speakers": [{ "id": "s26", "name": "Yonatan Cache" }],
+            "categories": [
+              {
+                "id": 1,
+                "name": "Track",
+                "categoryItems": [{ "id": 23, "name": "Backend" }],
+                "sort": 1
+              }
+            ],
+            "roomId": 103,
+            "room": "A4+A5"
+          },
+          {
+            "id": "2008",
+            "title": "Living with a Personal Agent",
+            "description": "Six months in.",
+            "startsAt": "2026-12-01T13:20:00",
+            "endsAt": "2026-12-01T13:50:00",
+            "isServiceSession": false,
+            "isPlenumSession": false,
+            "speakers": [{ "id": "s28", "name": "Dvir Agent" }],
+            "categories": [
+              {
+                "id": 1,
+                "name": "Track",
+                "categoryItems": [{ "id": 23, "name": "Backend" }],
+                "sort": 1
+              }
+            ],
+            "roomId": 103,
+            "room": "A4+A5"
+          }
+        ]
+      },
+      {
+        "id": 104,
+        "name": "Dining Hall",
+        "sessions": [
+          {
+            "id": "d2-coffee",
+            "title": "Coffee Break",
+            "description": null,
+            "startsAt": "2026-12-01T10:50:00",
+            "endsAt": "2026-12-01T11:10:00",
+            "isServiceSession": true,
+            "isPlenumSession": true,
+            "speakers": [],
+            "categories": [],
+            "roomId": 104,
+            "room": "Dining Hall"
+          },
+          {
+            "id": "d2-lunch",
+            "title": "Lunch",
+            "description": null,
+            "startsAt": "2026-12-01T12:20:00",
+            "endsAt": "2026-12-01T13:20:00",
+            "isServiceSession": true,
+            "isPlenumSession": true,
+            "speakers": [],
+            "categories": [],
+            "roomId": 104,
+            "room": "Dining Hall"
+          }
+        ]
+      },
+      {
+        "id": 105,
+        "name": "Entrance",
+        "sessions": [
+          {
+            "id": "d2-registration",
+            "title": "Registration",
+            "description": null,
+            "startsAt": "2026-12-01T08:00:00",
+            "endsAt": "2026-12-01T10:00:00",
+            "isServiceSession": true,
+            "isPlenumSession": false,
+            "speakers": [],
+            "categories": [],
+            "roomId": 105,
+            "room": "Entrance"
+          }
+        ]
+      }
+    ],
+    "timeSlots": []
+  }
+]
