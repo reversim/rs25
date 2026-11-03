@@ -24,7 +24,12 @@ const sessionData = JSON.stringify(calendarData);
 ---
 
 <div class={`add-to-calendar-wrapper`}>
-  <button class="add-to-calendar-btn" data-session={sessionData}>
+  <button
+    class="add-to-calendar-btn"
+    data-session={sessionData}
+    aria-label={`Add ${session.title} to calendar`}
+    aria-expanded="false"
+  >
     <Calendar />
   </button>
 
@@ -45,6 +50,14 @@ const sessionData = JSON.stringify(calendarData);
   } from "../../helpers/agenda/addToCalendar";
   import type { CalendarSessionData } from "../../types/calendar";
 
+  function closeDropdown(dropdown: Element) {
+    dropdown.classList.remove("show");
+    dropdown
+      .closest(".add-to-calendar-wrapper")
+      ?.querySelector(".add-to-calendar-btn")
+      ?.setAttribute("aria-expanded", "false");
+  }
+
   function setupAddToCalendar() {
     const buttons = document.querySelectorAll(".add-to-calendar-btn");
 
@@ -59,11 +72,12 @@ const sessionData = JSON.stringify(calendarData);
       // Toggle dropdown
       button.addEventListener("click", (e) => {
         e.stopPropagation();
-        dropdown?.classList.toggle("show");
+        const isOpen = dropdown?.classList.toggle("show") ?? false;
+        button.setAttribute("aria-expanded", String(isOpen));
 
         // Close other dropdowns
         document.querySelectorAll(".calendar-dropdown.show").forEach((d) => {
-          if (d !== dropdown) d.classList.remove("show");
+          if (d !== dropdown) closeDropdown(d);
         });
       });
 
@@ -101,7 +115,7 @@ const sessionData = JSON.stringify(calendarData);
               break;
           }
 
-          dropdown?.classList.remove("show");
+          if (dropdown) closeDropdown(dropdown);
         });
       });
     });
@@ -110,7 +124,7 @@ const sessionData = JSON.stringify(calendarData);
     document.addEventListener("click", () => {
       document
         .querySelectorAll(".calendar-dropdown.show")
-        .forEach((d) => d.classList.remove("show"));
+        .forEach(closeDropdown);
     });
   }
 

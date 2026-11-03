@@ -1,5 +1,8 @@
 ---
-import { getSessionDuration } from "../../../helpers/agenda/agendaHelpers";
+import {
+  formatTime,
+  getSessionDuration,
+} from "../../../helpers/agenda/agendaHelpers";
 import { getTrackName } from "../../../helpers/data/getAgenda";
 import type { Cell, CurrentDay } from "../../../types/agenda";
 import AgendaCell from "./agendaCell.astro";
@@ -71,6 +74,8 @@ const isFullWidthSession = (cell: Cell) =>
                 <div
                   class="time-slot-row"
                   id={`time-slot-${currentDay.slug}-${rowIndex}`}
+                  role="group"
+                  aria-label={`Sessions at ${formatTime(row.startsAt)}`}
                 >
                   <TimeColumn
                     highlighted={false}

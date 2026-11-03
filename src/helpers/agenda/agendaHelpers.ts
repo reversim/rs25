@@ -100,6 +100,7 @@ export function handleToggle(el: Element) {
   sessionsEl?.forEach((el) => {
     const isLiked = storageHelpers.isLiked(String(sessionId));
     el.classList.toggle("liked", isLiked);
+    el.setAttribute("aria-pressed", String(isLiked));
   });
 }
 

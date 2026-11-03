@@ -3,6 +3,7 @@ const { currentDay, rowIndex, row, session, track, duration } = Astro.props;
 
 import {
   createSessionUrl,
+  formatTime,
   getTalkCategoryColor,
 } from "../../../helpers/agenda/agendaHelpers";
 import SessionCategory from "../category.astro";
@@ -22,6 +23,8 @@ const isSession =
 <div
   class="time-slot-row full-width-row"
   id={`time-slot-${currentDay.slug}-${rowIndex}`}
+  role="group"
+  aria-label={`Sessions at ${formatTime(row.startsAt)}`}
 >
   <TimeColumn
     highlighted={session.room === "Dining Hall"}
@@ -135,6 +138,12 @@ const isSession =
 
         &:last-child {
           border-right: none;
+        }
+
+        // Lift the row whose calendar menu is open: otherwise the next row
+        // paints over the part of the menu hanging below this one.
+        &:has(:global(.calendar-dropdown.show)) {
+          z-index: 2;
         }
       }
     }
