@@ -1,5 +1,8 @@
 ---
-import { createSessionUrl } from "../../../helpers/agenda/agendaHelpers";
+import {
+  agendaSessionAnalytics,
+  createSessionUrl,
+} from "../../../helpers/agenda/agendaHelpers";
 import type { AgendaSession } from "../../../types/agenda";
 import SessionSpeakers from "../sessionSpeakers.astro";
 
@@ -14,7 +17,12 @@ const { lightnings } = Astro.props;
     lightnings.map((session: AgendaSession) => (
       <div class="lightning-talk-item-mobile">
         <h4 class="lightning-talk-title-mobile">
-          <a href={createSessionUrl(session.title)}>{session.title}</a>
+          <a
+            href={createSessionUrl(session.title)}
+            {...agendaSessionAnalytics(session.title)}
+          >
+            {session.title}
+          </a>
         </h4>
         <SessionSpeakers speakers={session.speakers} />
       </div>

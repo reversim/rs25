@@ -1,5 +1,6 @@
 ---
 import {
+  agendaSessionAnalytics,
   createSessionUrl,
   createSpeakerUrl,
 } from "../../../helpers/agenda/agendaHelpers";
@@ -15,6 +16,7 @@ const { lightningArr } = Astro.props;
           <a
             class="lightning-talk-title"
             href={createSessionUrl(session.title)}
+            {...agendaSessionAnalytics(session.title)}
           >
             {session.title}
           </a>

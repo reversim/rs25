@@ -1,5 +1,6 @@
 ---
 import {
+  agendaSessionAnalytics,
   createSessionUrl,
   getSessionDuration,
   getTalkCategoryColor,
@@ -86,7 +87,12 @@ const { session: sessions } = Astro.props;
             />
 
             <h3 class="session-title">
-              <a href={createSessionUrl(session.title)}>{session.title}</a>
+              <a
+                href={createSessionUrl(session.title)}
+                {...agendaSessionAnalytics(session.title)}
+              >
+                {session.title}
+              </a>
             </h3>
             <SessionSpeakers speakers={session.speakers} />
 

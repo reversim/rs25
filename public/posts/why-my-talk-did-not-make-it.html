@@ -1,714 +1,913 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="he" dir="rtl">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" type="image/png" href="/favicon-dark-mode.png" />
+    <link
+      rel="icon"
+      type="image/png"
+      href="/favicon-light-mode.png"
+      media="(prefers-color-scheme: light)"
+    />
+    <title>
+      הכנתי הרצאה נהדרת. איך זה שהיא לא התקבלה לרברסים? | Reversim 2026
+    </title>
+    <meta
+      name="description"
+      content="ה-CFP של רברסים 26 מבפנים: מה מטה את הכף בין ההגשות, טיפים לפעם הבאה, והעצה החשובה מכל"
+    />
+    <link
+      rel="canonical"
+      href="https://summit2026.reversim.com/posts/why-my-talk-did-not-make-it.html"
+    />
 
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="icon" type="image/png" href="/favicon-dark-mode.png" />
-  <link rel="icon" type="image/png" href="/favicon-light-mode.png" media="(prefers-color-scheme: light)" />
-  <title>הכנתי הרצאה נהדרת. איך זה שהיא לא התקבלה לרברסים? | Reversim 2026</title>
-  <meta name="description"
-    content="ה-CFP של רברסים 26 מבפנים: מה מטה את הכף בין ההגשות, טיפים לפעם הבאה, והעצה החשובה מכל">
-  <link rel="canonical" href="https://summit2026.reversim.com/posts/why-my-talk-did-not-make-it.html">
+    <!-- Open Graph (WhatsApp, Facebook, LinkedIn, Slack) -->
+    <meta property="og:type" content="article" />
+    <meta property="og:locale" content="he_IL" />
+    <meta property="og:site_name" content="Reversim Summit 2026" />
+    <meta
+      property="og:url"
+      content="https://summit2026.reversim.com/posts/why-my-talk-did-not-make-it.html"
+    />
+    <meta
+      property="og:title"
+      content="הכנתי הרצאה נהדרת. איך זה שהיא לא התקבלה לרברסים?&rlm;"
+    />
+    <meta
+      property="og:description"
+      content="מה מטה את הכף בין ההגשות, טיפים לפעם הבאה, והעצה החשובה מכל"
+    />
+    <meta
+      property="og:image"
+      content="https://summit2026.reversim.com/og-image-2026.png"
+    />
+    <meta
+      property="og:image:secure_url"
+      content="https://summit2026.reversim.com/og-image-2026.png"
+    />
+    <meta property="og:image:type" content="image/png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="600" />
+    <meta
+      property="og:image:alt"
+      content="Reversim Summit 2026, 30.11-1.12, 2026"
+    />
+    <meta
+      property="article:published_time"
+      content="2026-09-17T21:44:00+03:00"
+    />
+    <meta property="article:author" content="איתי ממן" />
+    <meta property="article:section" content="CFP" />
+    <meta property="article:tag" content="Reversim" />
+    <meta property="article:tag" content="CFP" />
 
-  <!-- Open Graph (WhatsApp, Facebook, LinkedIn, Slack) -->
-  <meta property="og:type" content="article">
-  <meta property="og:locale" content="he_IL">
-  <meta property="og:site_name" content="Reversim Summit 2026">
-  <meta property="og:url" content="https://summit2026.reversim.com/posts/why-my-talk-did-not-make-it.html">
-  <meta property="og:title" content="הכנתי הרצאה נהדרת. איך זה שהיא לא התקבלה לרברסים?&rlm;">
-  <meta property="og:description"
-    content="מה מטה את הכף בין ההגשות, טיפים לפעם הבאה, והעצה החשובה מכל">
-  <meta property="og:image" content="https://summit2026.reversim.com/og-image-2026.png">
-  <meta property="og:image:secure_url" content="https://summit2026.reversim.com/og-image-2026.png">
-  <meta property="og:image:type" content="image/png">
-  <meta property="og:image:width" content="1200">
-  <meta property="og:image:height" content="600">
-  <meta property="og:image:alt" content="Reversim Summit 2026, 30.11-1.12, 2026">
-  <meta property="article:published_time" content="2026-09-17T21:44:00+03:00">
-  <meta property="article:author" content="איתי ממן">
-  <meta property="article:section" content="CFP">
-  <meta property="article:tag" content="Reversim">
-  <meta property="article:tag" content="CFP">
+    <!-- Twitter / X card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@reversim" />
+    <meta
+      name="twitter:title"
+      content="הכנתי הרצאה נהדרת. איך זה שהיא לא התקבלה לרברסים?&rlm;"
+    />
+    <meta
+      name="twitter:description"
+      content="מה מטה את הכף בין ההגשות, טיפים לפעם הבאה, והעצה החשובה מכל"
+    />
+    <meta
+      name="twitter:image"
+      content="https://summit2026.reversim.com/og-image-2026.png"
+    />
+    <meta
+      name="twitter:image:alt"
+      content="Reversim Summit 2026, 30.11-1.12, 2026"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;700;900&family=JetBrains+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --bg: #0b0f1e;
+        --bg-2: #111730;
+        --panel: #161d3a;
+        --line: #26304f;
+        --text: #e6eaf6;
+        --muted: #9aa5c6;
+        --accent: #a78bfa;
+        --accent-2: #38e1c8;
+        --accent-soft: rgba(167, 139, 250, 0.14);
+        --code-bg: #0a0d1a;
+        --max: 44rem;
+      }
 
-  <!-- Twitter / X card -->
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:site" content="@reversim">
-  <meta name="twitter:title" content="הכנתי הרצאה נהדרת. איך זה שהיא לא התקבלה לרברסים?&rlm;">
-  <meta name="twitter:description"
-    content="מה מטה את הכף בין ההגשות, טיפים לפעם הבאה, והעצה החשובה מכל">
-  <meta name="twitter:image" content="https://summit2026.reversim.com/og-image-2026.png">
-  <meta name="twitter:image:alt" content="Reversim Summit 2026, 30.11-1.12, 2026">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link
-    href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;700;900&family=JetBrains+Mono:wght@400;500&display=swap"
-    rel="stylesheet">
-  <style>
-    :root {
-      --bg: #0b0f1e;
-      --bg-2: #111730;
-      --panel: #161d3a;
-      --line: #26304f;
-      --text: #e6eaf6;
-      --muted: #9aa5c6;
-      --accent: #a78bfa;
-      --accent-2: #38e1c8;
-      --accent-soft: rgba(167, 139, 250, 0.14);
-      --code-bg: #0a0d1a;
-      --max: 44rem;
-    }
+      * {
+        box-sizing: border-box;
+      }
 
-    * {
-      box-sizing: border-box;
-    }
+      html {
+        scroll-behavior: smooth;
+      }
 
-    html {
-      scroll-behavior: smooth;
-    }
-
-    body {
-      margin: 0;
-      background: var(--bg);
-      color: var(--text);
-      font-family: "Heebo", "Segoe UI", Arial, sans-serif;
-      font-size: 1.125rem;
-      line-height: 1.8;
-      -webkit-font-smoothing: antialiased;
-    }
-
-    a {
-      color: var(--accent);
-      text-decoration: none;
-    }
-
-    a:hover {
-      text-decoration: underline;
-      text-underline-offset: 4px;
-    }
-
-    a:focus-visible,
-    button:focus-visible {
-      outline: 2px solid var(--accent-2);
-      outline-offset: 3px;
-      border-radius: 4px;
-    }
-
-
-    /* ---------- hero ---------- */
-    .hero {
-      position: relative;
-      overflow: hidden;
-      padding: clamp(3rem, 7vw, 4.75rem) 1.5rem clamp(3rem, 7vw, 5rem);
-      background:
-        radial-gradient(60rem 30rem at 80% -10%, rgba(167, 139, 250, 0.16), transparent 60%),
-        radial-gradient(40rem 22rem at 10% 110%, rgba(56, 225, 200, 0.10), transparent 60%),
-        var(--bg-2);
-      border-bottom: 1px solid var(--line);
-    }
-
-    .hero svg.graph {
-      position: absolute;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      opacity: 0.55;
-      pointer-events: none;
-    }
-
-    .hero .inner {
-      position: relative;
-      max-width: var(--max);
-      margin: 0 auto;
-    }
-
-    h1 {
-      font-size: clamp(2rem, 5.2vw, 3.4rem);
-      line-height: 1.15;
-      font-weight: 900;
-      letter-spacing: -0.02em;
-      margin: 0 0 1.25rem;
-    }
-
-    .lede {
-      font-size: 1.25rem;
-      color: var(--muted);
-      font-weight: 300;
-      margin: 0 0 2rem;
-      max-width: 36rem;
-    }
-
-    .meta {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.75rem 1.5rem;
-      color: var(--muted);
-      font-size: 0.95rem;
-    }
-
-    .meta span b {
-      color: var(--text);
-      font-weight: 500;
-    }
-
-    /* ---------- stats strip ---------- */
-    .stats {
-      max-width: var(--max);
-      margin: -1.75rem auto 0;
-      position: relative;
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 1px;
-      background: var(--line);
-      border: 1px solid var(--line);
-      border-radius: 14px;
-      overflow: hidden;
-      box-shadow: 0 20px 50px -30px rgba(0, 0, 0, 0.8);
-    }
-
-    .stats div {
-      background: var(--panel);
-      padding: 1.1rem 1.25rem;
-    }
-
-    .stats strong {
-      display: block;
-      font-size: 1.9rem;
-      font-weight: 900;
-      line-height: 1.1;
-      color: var(--text);
-      direction: ltr;
-      text-align: right;
-    }
-
-    .stats span {
-      display: block;
-      color: var(--muted);
-      font-size: 0.9rem;
-      margin-top: 0.25rem;
-    }
-
-    .stats strong em {
-      font-style: normal;
-      color: var(--accent);
-    }
-
-    /* ---------- article ---------- */
-    article {
-      max-width: var(--max);
-      margin: 0 auto;
-      padding: 3.5rem 1.5rem 4rem;
-    }
-
-    article>p {
-      margin: 0 0 1.35rem;
-    }
-
-    h2 {
-      font-size: clamp(1.45rem, 3vw, 1.85rem);
-      font-weight: 700;
-      letter-spacing: -0.01em;
-      margin: 3.25rem 0 1rem;
-      padding-top: 1.5rem;
-      border-top: 1px solid var(--line);
-      position: relative;
-    }
-
-    h2::before {
-      content: "";
-      position: absolute;
-      top: -1px;
-      right: 0;
-      width: 3.5rem;
-      height: 3px;
-      background: linear-gradient(90deg, var(--accent-2), var(--accent));
-      border-radius: 2px;
-    }
-
-    h2 .en {
-      color: var(--muted);
-      font-weight: 400;
-      font-size: 0.75em;
-      margin-inline-start: 0.5rem;
-    }
-
-    ul,
-    ol {
-      margin: 0 0 1.35rem;
-      padding-inline-start: 1.4rem;
-    }
-
-    li {
-      margin-bottom: 0.4rem;
-    }
-
-    li::marker {
-      color: var(--accent);
-    }
-
-    strong {
-      font-weight: 700;
-      color: #fff;
-    }
-
-    .callout {
-      margin: 1.75rem 0;
-      padding: 1.1rem 1.35rem;
-      border-radius: 12px;
-      background: var(--accent-soft);
-      border-inline-start: 4px solid var(--accent);
-    }
-
-    .callout p {
-      margin: 0;
-    }
-
-    .callout p+p {
-      margin-top: 0.75rem;
-    }
-
-    .callout .label {
-      font-weight: 700;
-      color: var(--accent);
-    }
-
-    .keyline {
-      margin: 2rem 0;
-      padding: 1.35rem 1.5rem;
-      border: 1px solid var(--line);
-      border-radius: 14px;
-      background: var(--panel);
-      font-size: 1.2rem;
-      font-weight: 500;
-      line-height: 1.6;
-    }
-
-    .code {
-      direction: ltr;
-      text-align: left;
-      margin: 1.5rem 0;
-      background: var(--code-bg);
-      border: 1px solid var(--line);
-      border-radius: 12px;
-      overflow: hidden;
-    }
-
-    .code .title-row {
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      padding: 0.7rem 1rem;
-      border-bottom: 1px solid var(--line);
-      font-family: "JetBrains Mono", ui-monospace, monospace;
-      font-size: 0.85rem;
-      color: var(--muted);
-    }
-
-    .code .title-row i {
-      display: inline-block;
-      width: 9px;
-      height: 9px;
-      border-radius: 50%;
-      background: var(--line);
-    }
-
-    .code pre {
-      margin: 0;
-      padding: 1rem 1.25rem 1.2rem;
-      font-family: "JetBrains Mono", ui-monospace, monospace;
-      font-size: 0.92rem;
-      line-height: 1.7;
-      color: #d6dcf0;
-      overflow-x: auto;
-    }
-
-    .code pre .t {
-      color: var(--accent-2);
-    }
-
-    .code pre .h {
-      color: #fff;
-      font-weight: 500;
-    }
-
-    /* ---------- resource link cards ---------- */
-    .resources {
-      list-style: none;
-      padding: 0;
-      display: grid;
-      gap: 0.75rem;
-    }
-
-    .resources li {
-      margin: 0;
-    }
-
-    .resources a {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 1rem;
-      padding: 0.9rem 1.15rem;
-      border: 1px solid var(--line);
-      border-radius: 12px;
-      background: var(--panel);
-      color: var(--text);
-      text-decoration: none;
-      transition: border-color 0.2s ease, background-color 0.2s ease, transform 0.2s ease;
-    }
-
-    .resources a:hover,
-    .resources a:focus-visible {
-      border-color: var(--accent);
-      background: #1a2244;
-      text-decoration: none;
-      transform: translateY(-1px);
-    }
-
-    .resources .name {
-      font-weight: 700;
-      color: #fff;
-    }
-
-    .resources .src {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      color: var(--muted);
-      font-size: 0.9rem;
-      white-space: nowrap;
-      transition: color 0.2s ease;
-    }
-
-    .resources a:hover .src {
-      color: var(--text);
-    }
-
-    .resources .src svg {
-      width: 18px;
-      height: 18px;
-      flex: 0 0 auto;
-      fill: currentColor;
-    }
-
-    .closing {
-      margin-top: 3rem;
-      padding: 2rem 1.5rem;
-      text-align: center;
-      border-radius: 16px;
-      background:
-        radial-gradient(30rem 12rem at 50% 0%, rgba(56, 225, 200, 0.14), transparent 70%),
-        var(--panel);
-      border: 1px solid var(--line);
-    }
-
-    .closing p {
-      margin: 0;
-    }
-
-    .closing .big {
-      font-size: clamp(1.6rem, 4vw, 2.2rem);
-      font-weight: 900;
-      letter-spacing: -0.01em;
-    }
-
-    .closing .big span {
-      color: var(--accent-2);
-    }
-
-    .closing .small {
-      color: var(--muted);
-      margin-top: 0.5rem;
-    }
-
-
-    @media (max-width: 720px) {
       body {
-        font-size: 1.05rem;
+        margin: 0;
+        background: var(--bg);
+        color: var(--text);
+        font-family: "Heebo", "Segoe UI", Arial, sans-serif;
+        font-size: 1.125rem;
+        line-height: 1.8;
+        -webkit-font-smoothing: antialiased;
       }
 
-      .stats {
-        grid-template-columns: repeat(2, 1fr);
-        border-radius: 12px;
+      a {
+        color: var(--accent);
+        text-decoration: none;
       }
 
-      .resources a {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 0.35rem;
-      }
-    }
-
-    @media (prefers-reduced-motion: no-preference) {
-      .hero svg.graph .pulse {
-        animation: pulse 4s ease-in-out infinite;
-        transform-origin: center;
-        transform-box: fill-box;
+      a:hover {
+        text-decoration: underline;
+        text-underline-offset: 4px;
       }
 
-      .hero svg.graph .pulse:nth-of-type(2) {
-        animation-delay: 1.3s;
+      a:focus-visible,
+      button:focus-visible {
+        outline: 2px solid var(--accent-2);
+        outline-offset: 3px;
+        border-radius: 4px;
       }
 
-      .hero svg.graph .pulse:nth-of-type(3) {
-        animation-delay: 2.6s;
+      /* ---------- hero ---------- */
+      .hero {
+        position: relative;
+        overflow: hidden;
+        padding: clamp(3rem, 7vw, 4.75rem) 1.5rem clamp(3rem, 7vw, 5rem);
+        background:
+          radial-gradient(
+            60rem 30rem at 80% -10%,
+            rgba(167, 139, 250, 0.16),
+            transparent 60%
+          ),
+          radial-gradient(
+            40rem 22rem at 10% 110%,
+            rgba(56, 225, 200, 0.1),
+            transparent 60%
+          ),
+          var(--bg-2);
+        border-bottom: 1px solid var(--line);
       }
 
-      @keyframes pulse {
-
-        0%,
-        100% {
-          opacity: 0.5;
-          transform: scale(1);
-        }
-
-        50% {
-          opacity: 1;
-          transform: scale(1.5);
-        }
-      }
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-      .resources a {
-        transition: none;
-      }
-
-      .resources a:hover {
-        transform: none;
-      }
-    }
-
-    @media print {
       .hero svg.graph {
-        display: none;
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        opacity: 0.55;
+        pointer-events: none;
       }
 
-      body {
-        background: #fff;
-        color: #111;
+      .hero .inner {
+        position: relative;
+        max-width: var(--max);
+        margin: 0 auto;
       }
-    }
-  </style>
-</head>
 
-<body>
+      h1 {
+        font-size: clamp(2rem, 5.2vw, 3.4rem);
+        line-height: 1.15;
+        font-weight: 900;
+        letter-spacing: -0.02em;
+        margin: 0 0 1.25rem;
+      }
 
-  <section class="hero">
-    <svg class="graph" viewBox="0 0 1200 500" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
-      <g stroke="#a78bfa" stroke-opacity="0.25" stroke-width="1.2" fill="none">
-        <path d="M80 420 L220 300 L410 340 L560 210 L740 260 L900 140 L1080 190" />
-        <path d="M220 300 L300 120 L560 210" />
-        <path d="M410 340 L520 460 L740 260" />
-        <path d="M740 260 L820 420 L1080 190" />
-        <path d="M300 120 L470 60 L900 140" />
-        <path d="M900 140 L1010 40" />
-      </g>
-      <g fill="#a78bfa">
-        <circle cx="80" cy="420" r="4" />
-        <circle cx="220" cy="300" r="5" />
-        <circle cx="410" cy="340" r="4" />
-        <circle cx="560" cy="210" r="6" />
-        <circle cx="740" cy="260" r="5" />
-        <circle cx="900" cy="140" r="6" />
-        <circle cx="1080" cy="190" r="4" />
-        <circle cx="300" cy="120" r="4" />
-        <circle cx="520" cy="460" r="4" />
-        <circle cx="820" cy="420" r="4" />
-        <circle cx="470" cy="60" r="4" />
-        <circle cx="1010" cy="40" r="3" />
-      </g>
-      <g fill="#38e1c8">
-        <circle class="pulse" cx="560" cy="210" r="6" />
-        <circle class="pulse" cx="900" cy="140" r="6" />
-        <circle class="pulse" cx="220" cy="300" r="5" />
-      </g>
-    </svg>
+      .lede {
+        font-size: 1.25rem;
+        color: var(--muted);
+        font-weight: 300;
+        margin: 0 0 2rem;
+        max-width: 36rem;
+      }
 
-    <div class="inner">
-      <h1>"הכנתי הרצאה נהדרת. איך זה שהיא לא התקבלה לרברסים?"</h1>
-      <p class="lede">מה מטה את הכף בין ההגשות, טיפים לפעם הבאה, והעצה החשובה מכל.</p>
-      <div class="meta">
-        <span>מאת <b>איתי ממן, צוות התוכן, Reversim 2026</b></span>
-        <span>זמן קריאה <b>כ-6 דקות</b></span>
+      .meta {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.75rem 1.5rem;
+        color: var(--muted);
+        font-size: 0.95rem;
+      }
+
+      .meta span b {
+        color: var(--text);
+        font-weight: 500;
+      }
+
+      /* ---------- stats strip ---------- */
+      .stats {
+        max-width: var(--max);
+        margin: -1.75rem auto 0;
+        position: relative;
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 1px;
+        background: var(--line);
+        border: 1px solid var(--line);
+        border-radius: 14px;
+        overflow: hidden;
+        box-shadow: 0 20px 50px -30px rgba(0, 0, 0, 0.8);
+      }
+
+      .stats div {
+        background: var(--panel);
+        padding: 1.1rem 1.25rem;
+      }
+
+      .stats strong {
+        display: block;
+        font-size: 1.9rem;
+        font-weight: 900;
+        line-height: 1.1;
+        color: var(--text);
+        direction: ltr;
+        text-align: right;
+      }
+
+      .stats span {
+        display: block;
+        color: var(--muted);
+        font-size: 0.9rem;
+        margin-top: 0.25rem;
+      }
+
+      .stats strong em {
+        font-style: normal;
+        color: var(--accent);
+      }
+
+      /* ---------- article ---------- */
+      article {
+        max-width: var(--max);
+        margin: 0 auto;
+        padding: 3.5rem 1.5rem 4rem;
+      }
+
+      article > p {
+        margin: 0 0 1.35rem;
+      }
+
+      h2 {
+        font-size: clamp(1.45rem, 3vw, 1.85rem);
+        font-weight: 700;
+        letter-spacing: -0.01em;
+        margin: 3.25rem 0 1rem;
+        padding-top: 1.5rem;
+        border-top: 1px solid var(--line);
+        position: relative;
+      }
+
+      h2::before {
+        content: "";
+        position: absolute;
+        top: -1px;
+        right: 0;
+        width: 3.5rem;
+        height: 3px;
+        background: linear-gradient(90deg, var(--accent-2), var(--accent));
+        border-radius: 2px;
+      }
+
+      h2 .en {
+        color: var(--muted);
+        font-weight: 400;
+        font-size: 0.75em;
+        margin-inline-start: 0.5rem;
+      }
+
+      ul,
+      ol {
+        margin: 0 0 1.35rem;
+        padding-inline-start: 1.4rem;
+      }
+
+      li {
+        margin-bottom: 0.4rem;
+      }
+
+      li::marker {
+        color: var(--accent);
+      }
+
+      strong {
+        font-weight: 700;
+        color: #fff;
+      }
+
+      .callout {
+        margin: 1.75rem 0;
+        padding: 1.1rem 1.35rem;
+        border-radius: 12px;
+        background: var(--accent-soft);
+        border-inline-start: 4px solid var(--accent);
+      }
+
+      .callout p {
+        margin: 0;
+      }
+
+      .callout p + p {
+        margin-top: 0.75rem;
+      }
+
+      .callout .label {
+        font-weight: 700;
+        color: var(--accent);
+      }
+
+      .keyline {
+        margin: 2rem 0;
+        padding: 1.35rem 1.5rem;
+        border: 1px solid var(--line);
+        border-radius: 14px;
+        background: var(--panel);
+        font-size: 1.2rem;
+        font-weight: 500;
+        line-height: 1.6;
+      }
+
+      .code {
+        direction: ltr;
+        text-align: left;
+        margin: 1.5rem 0;
+        background: var(--code-bg);
+        border: 1px solid var(--line);
+        border-radius: 12px;
+        overflow: hidden;
+      }
+
+      .code .title-row {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 0.7rem 1rem;
+        border-bottom: 1px solid var(--line);
+        font-family: "JetBrains Mono", ui-monospace, monospace;
+        font-size: 0.85rem;
+        color: var(--muted);
+      }
+
+      .code .title-row i {
+        display: inline-block;
+        width: 9px;
+        height: 9px;
+        border-radius: 50%;
+        background: var(--line);
+      }
+
+      .code pre {
+        margin: 0;
+        padding: 1rem 1.25rem 1.2rem;
+        font-family: "JetBrains Mono", ui-monospace, monospace;
+        font-size: 0.92rem;
+        line-height: 1.7;
+        color: #d6dcf0;
+        overflow-x: auto;
+      }
+
+      .code pre .t {
+        color: var(--accent-2);
+      }
+
+      .code pre .h {
+        color: #fff;
+        font-weight: 500;
+      }
+
+      /* ---------- resource link cards ---------- */
+      .resources {
+        list-style: none;
+        padding: 0;
+        display: grid;
+        gap: 0.75rem;
+      }
+
+      .resources li {
+        margin: 0;
+      }
+
+      .resources a {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1rem;
+        padding: 0.9rem 1.15rem;
+        border: 1px solid var(--line);
+        border-radius: 12px;
+        background: var(--panel);
+        color: var(--text);
+        text-decoration: none;
+        transition:
+          border-color 0.2s ease,
+          background-color 0.2s ease,
+          transform 0.2s ease;
+      }
+
+      .resources a:hover,
+      .resources a:focus-visible {
+        border-color: var(--accent);
+        background: #1a2244;
+        text-decoration: none;
+        transform: translateY(-1px);
+      }
+
+      .resources .name {
+        font-weight: 700;
+        color: #fff;
+      }
+
+      .resources .src {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        color: var(--muted);
+        font-size: 0.9rem;
+        white-space: nowrap;
+        transition: color 0.2s ease;
+      }
+
+      .resources a:hover .src {
+        color: var(--text);
+      }
+
+      .resources .src svg {
+        width: 18px;
+        height: 18px;
+        flex: 0 0 auto;
+        fill: currentColor;
+      }
+
+      .closing {
+        margin-top: 3rem;
+        padding: 2rem 1.5rem;
+        text-align: center;
+        border-radius: 16px;
+        background:
+          radial-gradient(
+            30rem 12rem at 50% 0%,
+            rgba(56, 225, 200, 0.14),
+            transparent 70%
+          ),
+          var(--panel);
+        border: 1px solid var(--line);
+      }
+
+      .closing p {
+        margin: 0;
+      }
+
+      .closing .big {
+        font-size: clamp(1.6rem, 4vw, 2.2rem);
+        font-weight: 900;
+        letter-spacing: -0.01em;
+      }
+
+      .closing .big span {
+        color: var(--accent-2);
+      }
+
+      .closing .small {
+        color: var(--muted);
+        margin-top: 0.5rem;
+      }
+
+      @media (max-width: 720px) {
+        body {
+          font-size: 1.05rem;
+        }
+
+        .stats {
+          grid-template-columns: repeat(2, 1fr);
+          border-radius: 12px;
+        }
+
+        .resources a {
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 0.35rem;
+        }
+      }
+
+      @media (prefers-reduced-motion: no-preference) {
+        .hero svg.graph .pulse {
+          animation: pulse 4s ease-in-out infinite;
+          transform-origin: center;
+          transform-box: fill-box;
+        }
+
+        .hero svg.graph .pulse:nth-of-type(2) {
+          animation-delay: 1.3s;
+        }
+
+        .hero svg.graph .pulse:nth-of-type(3) {
+          animation-delay: 2.6s;
+        }
+
+        @keyframes pulse {
+          0%,
+          100% {
+            opacity: 0.5;
+            transform: scale(1);
+          }
+
+          50% {
+            opacity: 1;
+            transform: scale(1.5);
+          }
+        }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        .resources a {
+          transition: none;
+        }
+
+        .resources a:hover {
+          transform: none;
+        }
+      }
+
+      @media print {
+        .hero svg.graph {
+          display: none;
+        }
+
+        body {
+          background: #fff;
+          color: #111;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <section class="hero">
+      <svg
+        class="graph"
+        viewBox="0 0 1200 500"
+        preserveAspectRatio="xMidYMid slice"
+        aria-hidden="true"
+      >
+        <g
+          stroke="#a78bfa"
+          stroke-opacity="0.25"
+          stroke-width="1.2"
+          fill="none"
+        >
+          <path
+            d="M80 420 L220 300 L410 340 L560 210 L740 260 L900 140 L1080 190"
+          />
+          <path d="M220 300 L300 120 L560 210" />
+          <path d="M410 340 L520 460 L740 260" />
+          <path d="M740 260 L820 420 L1080 190" />
+          <path d="M300 120 L470 60 L900 140" />
+          <path d="M900 140 L1010 40" />
+        </g>
+        <g fill="#a78bfa">
+          <circle cx="80" cy="420" r="4" />
+          <circle cx="220" cy="300" r="5" />
+          <circle cx="410" cy="340" r="4" />
+          <circle cx="560" cy="210" r="6" />
+          <circle cx="740" cy="260" r="5" />
+          <circle cx="900" cy="140" r="6" />
+          <circle cx="1080" cy="190" r="4" />
+          <circle cx="300" cy="120" r="4" />
+          <circle cx="520" cy="460" r="4" />
+          <circle cx="820" cy="420" r="4" />
+          <circle cx="470" cy="60" r="4" />
+          <circle cx="1010" cy="40" r="3" />
+        </g>
+        <g fill="#38e1c8">
+          <circle class="pulse" cx="560" cy="210" r="6" />
+          <circle class="pulse" cx="900" cy="140" r="6" />
+          <circle class="pulse" cx="220" cy="300" r="5" />
+        </g>
+      </svg>
+
+      <div class="inner">
+        <h1>"הכנתי הרצאה נהדרת. איך זה שהיא לא התקבלה לרברסים?"</h1>
+        <p class="lede">
+          מה מטה את הכף בין ההגשות, טיפים לפעם הבאה, והעצה החשובה מכל.
+        </p>
+        <div class="meta">
+          <span>מאת <b>איתי ממן, צוות התוכן, Reversim 2026</b></span>
+          <span>זמן קריאה <b>כ-6 דקות</b></span>
+        </div>
+      </div>
+    </section>
+
+    <div class="stats" role="list">
+      <div role="listitem"><strong>519</strong><span>הגשות</span></div>
+      <div role="listitem"><strong>56</strong><span>הרצאות שהתקבלו</span></div>
+      <div role="listitem"><strong>7</strong><span>מסלולים</span></div>
+      <div role="listitem">
+        <strong>61<em>%</em></strong
+        ><span>דוברים בפעם הראשונה</span>
       </div>
     </div>
-  </section>
 
-  <div class="stats" role="list">
-    <div role="listitem"><strong>519</strong><span>הגשות</span></div>
-    <div role="listitem"><strong>56</strong><span>הרצאות שהתקבלו</span></div>
-    <div role="listitem"><strong>7</strong><span>מסלולים</span></div>
-    <div role="listitem"><strong>61<em>%</em></strong><span>דוברים בפעם הראשונה</span></div>
-  </div>
+    <article>
+      <p>
+        תודה רבה לכל מי שהשקיע ושלח הגשה
+        <a
+          href="https://summit2026.reversim.com/"
+          target="_blank"
+          rel="noopener"
+          >לרברסים 26</a
+        >. בדומה לשנים קודמות, גם השנה היה קשה להתקבל: תשע מכל עשר הגשות נדחו.
+        מי שהגיש ולא התקבל שואל את עצמו איך זה קרה.
+      </p>
+      <p>
+        הטקסט הזה מנסה לענות על השאלה שבכותרת. ניתחנו את ההגשות, בחנו מה מבדיל
+        בין הגשות שהתקבלו לכאלה שלא, וריכזנו את התובנות המרכזיות.
+      </p>
 
-  <article>
-    <p>תודה רבה לכל מי שהשקיע ושלח הגשה <a href="https://summit2026.reversim.com/" target="_blank"
-        rel="noopener">לרברסים 26</a>. בדומה לשנים קודמות, גם השנה היה קשה להתקבל: תשע מכל עשר הגשות נדחו. מי שהגיש ולא
-      התקבל שואל את עצמו איך זה קרה.</p>
-    <p>הטקסט הזה מנסה לענות על השאלה שבכותרת. ניתחנו את ההגשות, בחנו מה מבדיל בין הגשות שהתקבלו לכאלה שלא, וריכזנו את
-      התובנות המרכזיות.</p>
+      <div class="keyline">
+        לפני הכל, חשוב לנו להדגיש שהגשה שנדחתה היא שלב בדרך, לא סוף. לא מעט
+        מהדוברים שהתקבלו השנה
+        <a
+          href="https://summit2026.reversim.com/reports/cfp/#prior-section"
+          target="_blank"
+          rel="noopener"
+          >הגישו במופעים קודמים</a
+        >
+        ולא התקבלו אז. לכן, העצה הכי טובה להמשך היא:
+        <strong>תמשיכו לנסות!</strong>
+      </div>
 
-    <div class="keyline">
-      לפני הכל, חשוב לנו להדגיש שהגשה שנדחתה היא שלב בדרך, לא סוף. לא מעט מהדוברים שהתקבלו השנה
-      <a href="https://summit2026.reversim.com/reports/cfp/#prior-section" target="_blank" rel="noopener">הגישו במופעים קודמים</a> ולא
-      התקבלו אז. לכן, העצה הכי טובה להמשך היא:
-      <strong>תמשיכו לנסות!</strong>
-    </div>
+      <h2>המסגרת הכללית</h2>
+      <p>
+        בכל הנוגע לתוכן, הצוות עובד לפי סט של קווים מנחים שהתגבשו במהלך השנים
+        מתוך רצון לדייק את תהליך בחירת ההגשות. הקווים הללו מתייחסים בדרך כלל
+        להיבטים "רכים" של ההגשות, ורבים מהם מפורטים כאן בהמשך. אלו הם "קווים"
+        ולא "כללים" ולכן, לא פעם יש יוצאים מהכלל. למשל: הגשה שממש לא עומדת בקו
+        מנחה א' יכולה להתקבל לכנס בגלל שהיא ממש מצטיינת ביחס לקו מנחה ב'.
+      </p>
+      <p>
+        פרט לכך, יש כמה כללים קשיחים. כללים אלו לא נוגעים לתוכן ההגשות אלא יותר
+        ל"מעטפת" ומטרתם גיוון התוכן:
+      </p>
+      <ul>
+        <li>הגבלה על מספר ההרצאות מכל ארגון/חברה.</li>
+        <li>הגבלה על מספר ההרצאות בטרק מכל ארגון.</li>
+        <li>הרצאה אחת בלבד לכל מרצה.</li>
+      </ul>
 
-    <h2>המסגרת הכללית</h2>
-    <p>בכל הנוגע לתוכן, הצוות עובד לפי סט של קווים מנחים שהתגבשו במהלך השנים מתוך רצון לדייק את תהליך בחירת ההגשות.
-      הקווים הללו מתייחסים בדרך כלל להיבטים "רכים" של ההגשות, ורבים מהם מפורטים כאן בהמשך. אלו הם "קווים" ולא "כללים"
-      ולכן, לא פעם יש יוצאים מהכלל. למשל: הגשה שממש לא עומדת בקו מנחה א' יכולה להתקבל לכנס בגלל שהיא ממש מצטיינת ביחס
-      לקו מנחה ב'.</p>
-    <p>פרט לכך, יש כמה כללים קשיחים. כללים אלו לא נוגעים לתוכן ההגשות אלא יותר ל"מעטפת" ומטרתם גיוון התוכן:</p>
-    <ul>
-      <li>הגבלה על מספר ההרצאות מכל ארגון/חברה.</li>
-      <li>הגבלה על מספר ההרצאות בטרק מכל ארגון.</li>
-      <li>הרצאה אחת בלבד לכל מרצה.</li>
-    </ul>
+      <h2>להצליח במספר טורנירים</h2>
+      <p>
+        השנה נשלחו לכנס למעלה מ-500 הגשות שחולקו ל-7 מסלולים: Ignites,
+        Infrastructure, Backend, Craft, Culture, AI/ML, Frontend+Product. בסוף
+        התהליך נבחרו 14 הרצאות Ignite, ו-6-7 הרצאות בכל אחד מהמסלולים האחרים.
+      </p>
+      <p>
+        המטרה של צוות התוכן היא שכל אחד מהמסלולים האלה יהיה אטרקטיבי בכללותו.
+        כלומר: שתמהיל ההרצאות בכל אחד מהמסלולים יהיה כזה שהקהל ירגיש שהוא קיבל
+        ערך גבוה, ולכן תהליך המיון/בחירה הוא שילוב בין הסתכלות על כל הגשה בנפרד
+        לבין הסתכלות על המסלול בכללותו. למשל: במסלול ה-frontend יכולות להיות שתי
+        הגשות נפלאות שהנושא של שתיהן הוא ה-Temporal API החדש ב-JavaScript. גם אם
+        שתי ההגשות האלה הן בשתי רמות מעל כל ההגשות האחרות במסלול, סביר מאד להניח
+        שרק אחת מהן תיכנס. למה? גיוון. בראייה כוללנית של הערך, לקהל עדיף לא
+        לשמוע הרצאה שחופפת להרצאה קודמת.
+      </p>
+      <p>
+        ספציפית השנה נושאים כמו "Building a company brain" או "Running Agents in
+        Production" היו מאוד פופולריים. הגשות שהתמקדו בנושאים כאלה מצאו את עצמן
+        בתחרות קשה יחסית (ראו גם את
+        <a
+          href="https://summit2026.reversim.com/reports/cfp/#tag-cloud"
+          target="_blank"
+          rel="noopener"
+          >ענן המילים</a
+        >).
+      </p>
+      <p>
+        בנוסף, הרצאה יכולה להידחות בגלל הכללים הקשיחים שהזכרנו מקודם. למשל:
+        סיטואציה שבה יש שלוש הרצאות מאותה חברה בשלושה מסלולים שונים. במקרה כזה,
+        נפעיל שיקול דעת ויש סיכוי גבוה שאחת ההגשות מבין השלוש תידחה, למרות
+        שייתכן שכל השלוש מצוינות (המספרים להמחשה בלבד).
+      </p>
+      <p>
+        בעצם, כדי להיבחר לכנס הגשה צריכה להצליח במספר טורנירים שונים: להיות בין
+        ה-6-7 המובילות במסלול שלה, להתעלות על הגשות אחרות באותו נושא, ולהצליח
+        בתחרות אל מול הגשות אחרות מאותה חברה.
+      </p>
 
-    <h2>להצליח במספר טורנירים</h2>
-    <p>השנה נשלחו לכנס למעלה מ-500 הגשות שחולקו ל-7 מסלולים: Ignites, Infrastructure, Backend, Craft, Culture, AI/ML,
-      Frontend+Product. בסוף התהליך נבחרו 14 הרצאות Ignite, ו-6-7 הרצאות בכל אחד מהמסלולים האחרים.</p>
-    <p>המטרה של צוות התוכן היא שכל אחד מהמסלולים האלה יהיה אטרקטיבי בכללותו. כלומר: שתמהיל ההרצאות בכל אחד מהמסלולים
-      יהיה כזה שהקהל ירגיש שהוא קיבל ערך גבוה, ולכן תהליך המיון/בחירה הוא שילוב בין הסתכלות על כל הגשה בנפרד לבין
-      הסתכלות על המסלול בכללותו. למשל: במסלול ה-frontend יכולות להיות שתי הגשות נפלאות שהנושא של שתיהן הוא ה-Temporal
-      API החדש ב-JavaScript. גם אם שתי ההגשות האלה הן בשתי רמות מעל כל ההגשות האחרות במסלול, סביר מאד להניח שרק אחת מהן
-      תיכנס. למה? גיוון. בראייה כוללנית של הערך, לקהל עדיף לא לשמוע הרצאה שחופפת להרצאה קודמת.</p>
-    <p>ספציפית השנה נושאים כמו "Building a company brain" או "Running Agents in Production" היו מאוד פופולריים. הגשות
-      שהתמקדו בנושאים כאלה מצאו את עצמן בתחרות קשה יחסית
-      (ראו גם את <a href="https://summit2026.reversim.com/reports/cfp/#tag-cloud" target="_blank" rel="noopener">ענן המילים</a>).</p>
-    <p>בנוסף, הרצאה יכולה להידחות בגלל הכללים הקשיחים שהזכרנו מקודם. למשל: סיטואציה שבה יש שלוש הרצאות מאותה חברה בשלושה
-      מסלולים שונים. במקרה כזה, נפעיל שיקול דעת ויש סיכוי גבוה שאחת ההגשות מבין השלוש תידחה, למרות שייתכן שכל השלוש
-      מצוינות (המספרים להמחשה בלבד).</p>
-    <p>בעצם, כדי להיבחר לכנס הגשה צריכה להצליח במספר טורנירים שונים: להיות בין ה-6-7 המובילות במסלול שלה, להתעלות על
-      הגשות אחרות באותו נושא, ולהצליח בתחרות אל מול הגשות אחרות מאותה חברה.</p>
+      <h2>אי-וודאות מהווה סיכון</h2>
+      <p>
+        בהגשה יש שני חלקים עיקריים: (i) ה-Description שהוא מעין טקסט "שיווקי"
+        שיהיה חלק מהתוכנייה של הכנס - זה הטקסט שבאי הכנס יחליטו לפיו האם לבוא
+        לשמוע את ההרצאה; (ii) ה-Outline שהוא המקום שבו המגיש יכול לספר לצוות מה
+        יהיה התוכן - החלק הזה לא חשוף לקהל.
+      </p>
+      <p>
+        הגשה שמשאירה גם את ה-Description וגם את ה-Outline באותה רמת פירוט לא
+        נותנת לצוות כלים לקבוע האם ההרצאה תהיה חדשנית או טריוויאלית. הנה דוגמא:
+      </p>
 
-    <h2>אי-וודאות מהווה סיכון</h2>
-    <p>בהגשה יש שני חלקים עיקריים: (i) ה-Description שהוא מעין טקסט "שיווקי" שיהיה חלק מהתוכנייה של הכנס - זה הטקסט שבאי
-      הכנס יחליטו לפיו האם לבוא לשמוע את ההרצאה; (ii) ה-Outline שהוא המקום שבו המגיש יכול לספר לצוות מה יהיה התוכן -
-      החלק הזה לא חשוף לקהל.</p>
-    <p>הגשה שמשאירה גם את ה-Description וגם את ה-Outline באותה רמת פירוט לא נותנת לצוות כלים לקבוע האם ההרצאה תהיה
-      חדשנית או טריוויאלית. הנה דוגמא:</p>
-
-    <div class="code">
-      <div class="title-row"><i></i><i></i><i></i>&nbsp;Outline</div>
-      <pre><span class="h">When the User Becomes an Agent: Rethinking the Stack</span>
+      <div class="code">
+        <div class="title-row"><i></i><i></i><i></i>&nbsp;Outline</div>
+        <pre><span class="h">When the User Becomes an Agent: Rethinking the Stack</span>
 <span class="t">[1m]</span> Who am I
 <span class="t">[3m]</span> Why the UI-first stack collapses when the user becomes an agent
 <span class="t">[4m]</span> What agents actually need from an API that humans never did
 <span class="t">[5m]</span> How identity, permissions, and audit have to change
 <span class="t">[8m]</span> Five Lessons from teams that have already made the shift
 <span class="t">[3m]</span> What the agent-native stack looks like</pre>
-    </div>
+      </div>
 
-    <p>Outline שכזה מכניס את צוות התוכן למשחק של ניחושים: מה יהיו הלקחים שמוצגים בסעיף החמישי? איך נראית הארכיטקטורה
-      שמוצגת בסעיף השישי? אי-הוודאות הזאת מייצגת סיכון והסיכון הופך לא פעם להחלטת דחייה. נקודת הכשל הזאת היא אחת הסיבות
-      הנפוצות ביותר לאי-קבלת הרצאה. בניתוח שעשינו, <strong>ביותר מרבע מההגשות שלא התקבלו</strong> (לא כולל הגשות
-      ל-Ignites), היו הערות של הצוות על כך שה-Outline לא אינפורמטיבי מספיק.</p>
+      <p>
+        Outline שכזה מכניס את צוות התוכן למשחק של ניחושים: מה יהיו הלקחים
+        שמוצגים בסעיף החמישי? איך נראית הארכיטקטורה שמוצגת בסעיף השישי?
+        אי-הוודאות הזאת מייצגת סיכון והסיכון הופך לא פעם להחלטת דחייה. נקודת
+        הכשל הזאת היא אחת הסיבות הנפוצות ביותר לאי-קבלת הרצאה. בניתוח שעשינו,
+        <strong>ביותר מרבע מההגשות שלא התקבלו</strong> (לא כולל הגשות
+        ל-Ignites), היו הערות של הצוות על כך שה-Outline לא אינפורמטיבי מספיק.
+      </p>
 
-    <div class="callout">
-      <p><span class="label">טיפ להמשך:</span> תשקיעו ב-Outline. תכתבו אותו כך שמי שקורא אותו יוכל לדמיין את השקפים
-        שתציגו.</p>
-      <p><span class="label">טיפ נוסף:</span> תשקיעו בשדה ה-Audience Takeaway. הרבה מחברי צוות התוכן מציינים את השדה הזה
-        בתור אחד השדות המרכזיים שעוזר להם להבין/להיזכר על מה ההרצאה. השדה הזה צריך לענות על השאלה הבאה: מהו המשהו הממשי
-        שהקהל יוכל להתחיל לחשוב/לעשות בצורה שונה ביום שלמחרת ההרצאה?</p>
-    </div>
+      <div class="callout">
+        <p>
+          <span class="label">טיפ להמשך:</span> תשקיעו ב-Outline. תכתבו אותו כך
+          שמי שקורא אותו יוכל לדמיין את השקפים שתציגו.
+        </p>
+        <p>
+          <span class="label">טיפ נוסף:</span> תשקיעו בשדה ה-Audience Takeaway.
+          הרבה מחברי צוות התוכן מציינים את השדה הזה בתור אחד השדות המרכזיים
+          שעוזר להם להבין/להיזכר על מה ההרצאה. השדה הזה צריך לענות על השאלה
+          הבאה: מהו המשהו הממשי שהקהל יוכל להתחיל לחשוב/לעשות בצורה שונה ביום
+          שלמחרת ההרצאה?
+        </p>
+      </div>
 
-    <h2>טוב על הנייר, לא תמיד טוב על הבמה</h2>
-    <p>בחלק (יחסית קטן) מההגשות ה-Outline מציין שחלק מסוים יהיה ב-live coding או live demo. הערך של האלמנט הזה ברור: זה
-      מרגש, זה מעורר עניין, ועל פי רוב זאת דרך מצוינת להבהיר נקודה מסוימת. כשהרצאה כזאת נבחנת האלמנט הזה הוא גם פעמון
-      אזהרה. למה? כי זה משהו שיכול להתקלקל בזמן אמת מול הקהל. למשל: מחשב של מרצה שלא מצליח להקרין על הציוד של האולם. או:
-      כישלון להתחבר ל-WiFi, מה שמאד יכול לקרות בכנס שבו נמצאים מעל 1,000 איש בתוך שטח מוגבל. ובנוסף לזה: האם המרצה יצליח
-      להכין גיבוי שיהיה מספיק טוב ושיצליח להעביר את המסר הרצוי במקום הדמו? החששות האלה לא פוסלים את ההגשה אבל הם כן
-      משקפים גורם סיכון שבסופו של דבר פוגע בדירוג (הכמותי או האיכותני) שההגשה מקבלת.</p>
-    <p>עוד אלמנט כזה הוא הגשה בשניים - שני מרצים שיעבירו נושא ביחד. על פניו זה נראה אטרקטיבי: הדיאלוג בין שני אנשים על
-      הבמה יכול להיות משעשע, להזריק אנרגטיות ולהגדיל את הערך. יחד עם זאת יש פה גם סיכונים: כמה שני המרצים הללו מכירים אחד
-      את השני? האם הם יכולים להגיע לרמת התיאום הנדרש כדי שהכל יזרום? האם שניהם ביחד יוכלו לקבל משוב (ב-dry run) וליישם
-      אותו באופן אפקטיבי? גם כאן, סימני השאלה מהווים גורם סיכון שמתגלם בדירוג.</p>
+      <h2>טוב על הנייר, לא תמיד טוב על הבמה</h2>
+      <p>
+        בחלק (יחסית קטן) מההגשות ה-Outline מציין שחלק מסוים יהיה ב-live coding
+        או live demo. הערך של האלמנט הזה ברור: זה מרגש, זה מעורר עניין, ועל פי
+        רוב זאת דרך מצוינת להבהיר נקודה מסוימת. כשהרצאה כזאת נבחנת האלמנט הזה
+        הוא גם פעמון אזהרה. למה? כי זה משהו שיכול להתקלקל בזמן אמת מול הקהל.
+        למשל: מחשב של מרצה שלא מצליח להקרין על הציוד של האולם. או: כישלון להתחבר
+        ל-WiFi, מה שמאד יכול לקרות בכנס שבו נמצאים מעל 1,000 איש בתוך שטח מוגבל.
+        ובנוסף לזה: האם המרצה יצליח להכין גיבוי שיהיה מספיק טוב ושיצליח להעביר
+        את המסר הרצוי במקום הדמו? החששות האלה לא פוסלים את ההגשה אבל הם כן
+        משקפים גורם סיכון שבסופו של דבר פוגע בדירוג (הכמותי או האיכותני) שההגשה
+        מקבלת.
+      </p>
+      <p>
+        עוד אלמנט כזה הוא הגשה בשניים - שני מרצים שיעבירו נושא ביחד. על פניו זה
+        נראה אטרקטיבי: הדיאלוג בין שני אנשים על הבמה יכול להיות משעשע, להזריק
+        אנרגטיות ולהגדיל את הערך. יחד עם זאת יש פה גם סיכונים: כמה שני המרצים
+        הללו מכירים אחד את השני? האם הם יכולים להגיע לרמת התיאום הנדרש כדי שהכל
+        יזרום? האם שניהם ביחד יוכלו לקבל משוב (ב-dry run) וליישם אותו באופן
+        אפקטיבי? גם כאן, סימני השאלה מהווים גורם סיכון שמתגלם בדירוג.
+      </p>
 
-    <h2>רוחב</h2>
-    <p>רברסים הוא כנס שפונה לקהילה רחבה מאד של מתכנתים. הקהילה הזאת לא מוגדרת על פי חתך טכנולוגי מסוים, בניגוד לכנסים
-      כגון: <a href="https://www.nodetlv.com/" target="_blank" rel="noopener">NodeTLV</a>,
-      <a href="https://pycon.org.il/2025/" target="_blank" rel="noopener">PyCon Israel</a>
-      או <a href="https://aws.amazon.com/events/summits/tel-aviv/" target="_blank" rel="noopener">AWS Summit Tel
-        Aviv</a>. לכן, כשיש הרצאה שהמוקד שלה הוא טכנולוגיה ספציפית צוות התוכן
-      ישאל את השאלה הבאה: "כמה הטכנולוגיה נישתית?" או בצורה אחרת: "איזה חלק מהקהל במסלול הזה יתעניין בה?". אם ההערכה היא
-      שקהל היעד מצומצם מדי, דירוג ההגשה ייפגע. במילים אחרות - עם כל הכבוד לקהילת הראסט (ויש הרבה כבוד) הרצאה כמו "Six
-      Amazing Rust Patterns" פחות תתאים לכנס שלא ממוקד על שפת תכנות ספציפית. מאידך יש מקרים שבהם הרצאה נישתית לכאורה
-      דווקא יכולה לעניין קהל רחב. למשל "איך בניתי רובוט שמשחק שחמט?". לא הרבה אנשים יבנו רובוט כזה, עדיין הלקחים שיעלו
-      בהרצאה כזו, האתגרים הטכנולוגיים, היוזמה, יכולים להיות מעניינים ורלוונטיים לכולם. לפעמים סיפור נישתי יכול להוות
-      השראה.
-    </p>
+      <h2>רוחב</h2>
+      <p>
+        רברסים הוא כנס שפונה לקהילה רחבה מאד של מתכנתים. הקהילה הזאת לא מוגדרת
+        על פי חתך טכנולוגי מסוים, בניגוד לכנסים כגון:
+        <a href="https://www.nodetlv.com/" target="_blank" rel="noopener"
+          >NodeTLV</a
+        >,
+        <a href="https://pycon.org.il/2025/" target="_blank" rel="noopener"
+          >PyCon Israel</a
+        >
+        או
+        <a
+          href="https://aws.amazon.com/events/summits/tel-aviv/"
+          target="_blank"
+          rel="noopener"
+          >AWS Summit Tel Aviv</a
+        >. לכן, כשיש הרצאה שהמוקד שלה הוא טכנולוגיה ספציפית צוות התוכן ישאל את
+        השאלה הבאה: "כמה הטכנולוגיה נישתית?" או בצורה אחרת: "איזה חלק מהקהל
+        במסלול הזה יתעניין בה?". אם ההערכה היא שקהל היעד מצומצם מדי, דירוג ההגשה
+        ייפגע. במילים אחרות - עם כל הכבוד לקהילת הראסט (ויש הרבה כבוד) הרצאה כמו
+        "Six Amazing Rust Patterns" פחות תתאים לכנס שלא ממוקד על שפת תכנות
+        ספציפית. מאידך יש מקרים שבהם הרצאה נישתית לכאורה דווקא יכולה לעניין קהל
+        רחב. למשל "איך בניתי רובוט שמשחק שחמט?". לא הרבה אנשים יבנו רובוט כזה,
+        עדיין הלקחים שיעלו בהרצאה כזו, האתגרים הטכנולוגיים, היוזמה, יכולים להיות
+        מעניינים ורלוונטיים לכולם. לפעמים סיפור נישתי יכול להוות השראה.
+      </p>
 
-    <h2>מדריכים לימודיים <span class="en">(Tutorials)</span></h2>
-    <p>יש הגשות שמהותן היא ללמד על איך להשתמש בכלי טכנולוגי כלשהו: ספרייה, פריימוורק, דאטה-בייס, שירות, וכו'. גם הגשות
-      כאלה צריכות לעבור את משוכת הרוחב שהוסברה מקודם. בנוסף, נבדקת בהן השאלה האם יהיה בהרצאה ערך מוסף מעבר ל-tutorials
-      שניתן למצוא ברשת (או ליצור בעזרת ה-LLM החביב עליכם). למשל: האם ההרצאה תסתפק בסקירה של הפונקציונליות של הכלי
-      המגניב, או שהיא גם תקדיש חלק משמעותי ליתרונות ולחסרונות שלו אל מול כלים שמתחרים בו?</p>
+      <h2>מדריכים לימודיים <span class="en">(Tutorials)</span></h2>
+      <p>
+        יש הגשות שמהותן היא ללמד על איך להשתמש בכלי טכנולוגי כלשהו: ספרייה,
+        פריימוורק, דאטה-בייס, שירות, וכו'. גם הגשות כאלה צריכות לעבור את משוכת
+        הרוחב שהוסברה מקודם. בנוסף, נבדקת בהן השאלה האם יהיה בהרצאה ערך מוסף
+        מעבר ל-tutorials שניתן למצוא ברשת (או ליצור בעזרת ה-LLM החביב עליכם).
+        למשל: האם ההרצאה תסתפק בסקירה של הפונקציונליות של הכלי המגניב, או שהיא
+        גם תקדיש חלק משמעותי ליתרונות ולחסרונות שלו אל מול כלים שמתחרים בו?
+      </p>
 
-    <h2>מי מגיש ומאיפה</h2>
-    <p>אחד הדברים שנבדקים בכל הגשה הוא כמה המגיש/ה מנוסה בנושא הספציפי של ההרצאה. בכל הגשה יש שדה ("How did you become
-      knowledgeable about the topic") שהמגיש ממלא על עצמו. בנוסף אנחנו מסתכלים על מקורות כגון עמוד הלינקדאין של המגיש,
-      או משוחחים איתו כדי לוודא שיש לנו תמונה טובה של המומחיות שלו. דוגמא: הרצאה על הנחלת תרבות
-      מיטיבה בצוותי פיתוח ממגיש שנמצא בתפקיד הניהולי הראשון שלו, לעומת הרצאה דומה ממגיש שכבר כמה שנים בתפקידי הובלה וכעת
-      הוא גם מנהל קבוצות. הפרספקטיבה העמוקה יותר שיש למגיש השני היא נקודה שתוסיף לדירוג של ההגשה שלו.</p>
-    <p>מומחיות היא שיקול אחד; שיקול נוסף שקשור למגיש הוא נקודת המבט שהוא מביא. בנקודות שונות בתהליך מוצא את עצמו הצוות
-      בהתלבטות בין הגשות. הקו שמנחה אותנו ברגעים האלה הוא גיוון: להעדיף את ההגשה שמגיעה
-      מזווית לא טיפוסית. זה יכול להיות הסקטור שבו פועלת החברה או הרקע האישי של המגיש. למשל, בהתלבטות בין שתי הרצאות
-      בעלות איכות דומה, נעדיף את זאת שהגיעה ממגיש שעדיין לא היה דובר בכנס. <a
-        href="https://summit2026.reversim.com/reports/cfp/#first-timers" target="_blank" rel="noopener">61% מהדוברים ברברסים 26</a>
-      יהיו כאלה שזאת הפעם הראשונה שלהם בכנס.</p>
+      <h2>מי מגיש ומאיפה</h2>
+      <p>
+        אחד הדברים שנבדקים בכל הגשה הוא כמה המגיש/ה מנוסה בנושא הספציפי של
+        ההרצאה. בכל הגשה יש שדה ("How did you become knowledgeable about the
+        topic") שהמגיש ממלא על עצמו. בנוסף אנחנו מסתכלים על מקורות כגון עמוד
+        הלינקדאין של המגיש, או משוחחים איתו כדי לוודא שיש לנו תמונה טובה של
+        המומחיות שלו. דוגמא: הרצאה על הנחלת תרבות מיטיבה בצוותי פיתוח ממגיש
+        שנמצא בתפקיד הניהולי הראשון שלו, לעומת הרצאה דומה ממגיש שכבר כמה שנים
+        בתפקידי הובלה וכעת הוא גם מנהל קבוצות. הפרספקטיבה העמוקה יותר שיש למגיש
+        השני היא נקודה שתוסיף לדירוג של ההגשה שלו.
+      </p>
+      <p>
+        מומחיות היא שיקול אחד; שיקול נוסף שקשור למגיש הוא נקודת המבט שהוא מביא.
+        בנקודות שונות בתהליך מוצא את עצמו הצוות בהתלבטות בין הגשות. הקו שמנחה
+        אותנו ברגעים האלה הוא גיוון: להעדיף את ההגשה שמגיעה מזווית לא טיפוסית.
+        זה יכול להיות הסקטור שבו פועלת החברה או הרקע האישי של המגיש. למשל,
+        בהתלבטות בין שתי הרצאות בעלות איכות דומה, נעדיף את זאת שהגיעה ממגיש
+        שעדיין לא היה דובר בכנס.
+        <a
+          href="https://summit2026.reversim.com/reports/cfp/#first-timers"
+          target="_blank"
+          rel="noopener"
+          >61% מהדוברים ברברסים 26</a
+        >
+        יהיו כאלה שזאת הפעם הראשונה שלהם בכנס.
+      </p>
 
-    <h2>עוד חומר</h2>
-    <p>פרט למה שנכתב פה, מומלץ מאד לצפות בהקלטות של סדנאות ה-CFP. יש בהן הרבה מידע על תהליך הקבלה וטיפים שיכולים לסייע
-      לכל מי שרוצה להגיש בעתיד. ואם מעניין אתכם איך השתנו הנושאים שהקהילה מגישה לאורך השנים, רחל מצוות התוכן
-      השוותה בפוסט בלינקדאין בין ההגשות של 2022 לאלה של 2026:</p>
-    <ul class="resources">
-      <li>
-        <a href="https://www.youtube.com/watch?v=MrUWRHssI6A" target="_blank" rel="noopener">
-          <span class="name">CFP Workshop 2025</span>
-          <span class="src">
-            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M10 8.5v7l6-3.5-6-3.5zM12 3c5 0 8.2.3 9.4.6.8.2 1.3.8 1.5 1.6.3 1.3.5 3.5.5 6.8s-.2 5.5-.5 6.8c-.2.8-.7 1.4-1.5 1.6-1.2.3-4.4.6-9.4.6s-8.2-.3-9.4-.6c-.8-.2-1.3-.8-1.5-1.6C.3 17.5.1 15.3.1 12s.2-5.5.5-6.8c.2-.8.7-1.4 1.5-1.6C3.8 3.3 7 3 12 3z"/></svg>
-            YouTube
-          </span>
-        </a>
-      </li>
-      <li>
-        <a href="https://www.youtube.com/watch?v=TmspogdEt3Y" target="_blank" rel="noopener">
-          <span class="name">MeDS Club: Reversim 2026 CFP Session</span>
-          <span class="src">
-            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M10 8.5v7l6-3.5-6-3.5zM12 3c5 0 8.2.3 9.4.6.8.2 1.3.8 1.5 1.6.3 1.3.5 3.5.5 6.8s-.2 5.5-.5 6.8c-.2.8-.7 1.4-1.5 1.6-1.2.3-4.4.6-9.4.6s-8.2-.3-9.4-.6c-.8-.2-1.3-.8-1.5-1.6C.3 17.5.1 15.3.1 12s.2-5.5.5-6.8c.2-.8.7-1.4 1.5-1.6C3.8 3.3 7 3 12 3z"/></svg>
-            YouTube
-          </span>
-        </a>
-      </li>
-      <li>
-        <a href="https://www.linkedin.com/posts/rachel-wities_%D7%90%D7%99%D7%9A-%D7%94%D7%A9%D7%AA%D7%A0%D7%A0%D7%95-%D7%9B%D7%A7%D7%94%D7%99%D7%9C%D7%94-%D7%91%D7%90%D7%A8%D7%91%D7%A2-%D7%A9%D7%A0%D7%99%D7%9D-%D7%94%D7%AA%D7%A9%D7%95%D7%91%D7%94-%D7%A0%D7%9E%D7%A6%D7%90%D7%AA-ugcPost-7505733758185107457-WzKC/" target="_blank" rel="noopener">
-          <span class="name">איך השתנינו כקהילה בארבע שנים? (Rachel Wities)</span>
-          <span class="src">
-            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></svg>
-            LinkedIn
-          </span>
-        </a>
-      </li>
-    </ul>
+      <h2>עוד חומר</h2>
+      <p>
+        פרט למה שנכתב פה, מומלץ מאד לצפות בהקלטות של סדנאות ה-CFP. יש בהן הרבה
+        מידע על תהליך הקבלה וטיפים שיכולים לסייע לכל מי שרוצה להגיש בעתיד. ואם
+        מעניין אתכם איך השתנו הנושאים שהקהילה מגישה לאורך השנים, רחל מצוות התוכן
+        השוותה בפוסט בלינקדאין בין ההגשות של 2022 לאלה של 2026:
+      </p>
+      <ul class="resources">
+        <li>
+          <a
+            href="https://www.youtube.com/watch?v=MrUWRHssI6A"
+            target="_blank"
+            rel="noopener"
+          >
+            <span class="name">CFP Workshop 2025</span>
+            <span class="src">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path
+                  d="M10 8.5v7l6-3.5-6-3.5zM12 3c5 0 8.2.3 9.4.6.8.2 1.3.8 1.5 1.6.3 1.3.5 3.5.5 6.8s-.2 5.5-.5 6.8c-.2.8-.7 1.4-1.5 1.6-1.2.3-4.4.6-9.4.6s-8.2-.3-9.4-.6c-.8-.2-1.3-.8-1.5-1.6C.3 17.5.1 15.3.1 12s.2-5.5.5-6.8c.2-.8.7-1.4 1.5-1.6C3.8 3.3 7 3 12 3z"
+                />
+              </svg>
+              YouTube
+            </span>
+          </a>
+        </li>
+        <li>
+          <a
+            href="https://www.youtube.com/watch?v=TmspogdEt3Y"
+            target="_blank"
+            rel="noopener"
+          >
+            <span class="name">MeDS Club: Reversim 2026 CFP Session</span>
+            <span class="src">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path
+                  d="M10 8.5v7l6-3.5-6-3.5zM12 3c5 0 8.2.3 9.4.6.8.2 1.3.8 1.5 1.6.3 1.3.5 3.5.5 6.8s-.2 5.5-.5 6.8c-.2.8-.7 1.4-1.5 1.6-1.2.3-4.4.6-9.4.6s-8.2-.3-9.4-.6c-.8-.2-1.3-.8-1.5-1.6C.3 17.5.1 15.3.1 12s.2-5.5.5-6.8c.2-.8.7-1.4 1.5-1.6C3.8 3.3 7 3 12 3z"
+                />
+              </svg>
+              YouTube
+            </span>
+          </a>
+        </li>
+        <li>
+          <a
+            href="https://www.linkedin.com/posts/rachel-wities_%D7%90%D7%99%D7%9A-%D7%94%D7%A9%D7%AA%D7%A0%D7%A0%D7%95-%D7%9B%D7%A7%D7%94%D7%99%D7%9C%D7%94-%D7%91%D7%90%D7%A8%D7%91%D7%A2-%D7%A9%D7%A0%D7%99%D7%9D-%D7%94%D7%AA%D7%A9%D7%95%D7%91%D7%94-%D7%A0%D7%9E%D7%A6%D7%90%D7%AA-ugcPost-7505733758185107457-WzKC/"
+            target="_blank"
+            rel="noopener"
+          >
+            <span class="name"
+              >איך השתנינו כקהילה בארבע שנים? (Rachel Wities)</span
+            >
+            <span class="src">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path
+                  d="M20.45 20.45h-3.56v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"
+                />
+              </svg>
+              LinkedIn
+            </span>
+          </a>
+        </li>
+      </ul>
 
-    <h2>לסיום</h2>
-    <p>כמו בכל שנה, נאלצנו לוותר על הגשות מעולות. כל מסלול מאפשר 6-7 הרצאות, ולא תמיד אפשר להקיף את כל היריעה שהיינו
-      רוצים לפרוס בפני הקהל. זה מצער גם את הצוות, אבל כמו כל דבר בחיים, גם פה יש מגבלות שמחייבות ויתורים. חוט השני שעובר
-      לאורך כל הדוגמאות שנתנו פה הוא שיש שלל גורמים שיכולים להשפיע על קבלה של הגשה, ולא פעם גם הגשות ממש טובות לא
-      מתקבלות.</p>
-    <p>ולפני שניפרד נחזור אל הנקודה החשובה ביותר, שאיתה גם התחלנו:</p>
+      <h2>לסיום</h2>
+      <p>
+        כמו בכל שנה, נאלצנו לוותר על הגשות מעולות. כל מסלול מאפשר 6-7 הרצאות,
+        ולא תמיד אפשר להקיף את כל היריעה שהיינו רוצים לפרוס בפני הקהל. זה מצער
+        גם את הצוות, אבל כמו כל דבר בחיים, גם פה יש מגבלות שמחייבות ויתורים. חוט
+        השני שעובר לאורך כל הדוגמאות שנתנו פה הוא שיש שלל גורמים שיכולים להשפיע
+        על קבלה של הגשה, ולא פעם גם הגשות ממש טובות לא מתקבלות.
+      </p>
+      <p>ולפני שניפרד נחזור אל הנקודה החשובה ביותר, שאיתה גם התחלנו:</p>
 
-    <div class="closing">
-      <p class="big">תמשיכו <span>לנסות!</span></p>
-      <p class="small">בהצלחה. נתראה בכנס.</p>
-    </div>
-  </article>
-
-
-</body>
-
+      <div class="closing">
+        <p class="big">תמשיכו <span>לנסות!</span></p>
+        <p class="small">בהצלחה. נתראה בכנס.</p>
+      </div>
+    </article>
+  </body>
 </html>

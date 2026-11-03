@@ -2,6 +2,7 @@
 const { currentDay, rowIndex, row, session, track, duration } = Astro.props;
 
 import {
+  agendaSessionAnalytics,
   createSessionUrl,
   formatTime,
   getTalkCategoryColor,
@@ -35,7 +36,7 @@ const isSession =
     class="full-width-session-cell"
     data-talk-id={session.id}
     onclick={track === "Keynote"
-      ? `window.location.href='${createSessionUrl(session.title)}'`
+      ? "if (!event.target.closest('a, button')) this.querySelector('a.break-title').click()"
       : null}
   >
     <div
@@ -70,7 +71,11 @@ const isSession =
       {
         track === "Keynote" && (
           <div class="keynote-session">
-            <a class="break-title" href={createSessionUrl(session.title)}>
+            <a
+              class="break-title"
+              href={createSessionUrl(session.title)}
+              {...agendaSessionAnalytics(session.title)}
+            >
               {session.title}
             </a>
             <SessionSpeakers speakers={session.speakers} />

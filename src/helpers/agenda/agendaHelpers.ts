@@ -2,6 +2,11 @@ import type { AgendaSession } from "../../types/agenda";
 import { getTrackColor } from "../../config/trackColors";
 import { resolveTrack } from "./resolveTrack";
 import slugify from "slug";
+import {
+  AnalyticsEvent,
+  SessionSource,
+  analyticsAttrs,
+} from "../../config/analytics";
 
 // Category color from a full session (server-side version)
 export function getTalkCategoryColor(session: AgendaSession): string {
@@ -31,6 +36,15 @@ export function createSpeakerUrl(speakerName: string): string {
 // Helper function to create session URL
 export function createSessionUrl(talkTitle: string): string {
   return `/session/${slugify(talkTitle)}`;
+}
+
+// Attributes for a session link in the agenda, so picking it records session_select.
+export function agendaSessionAnalytics(talkTitle: string) {
+  return analyticsAttrs(AnalyticsEvent.SessionSelect, {
+    session_title: talkTitle,
+    session_href: createSessionUrl(talkTitle),
+    session_source: SessionSource.Agenda,
+  });
 }
 
 // Helper function to format time

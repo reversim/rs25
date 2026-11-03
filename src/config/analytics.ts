@@ -30,6 +30,7 @@ export const NavLocation = {
 export const SessionSource = {
   SessionsList: "sessions_list",
   SpeakerPage: "speaker_page",
+  Agenda: "agenda",
 } as const;
 
 // Which registration entry point was clicked.

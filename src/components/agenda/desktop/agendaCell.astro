@@ -1,5 +1,6 @@
 ---
 import {
+  agendaSessionAnalytics,
   createSessionUrl,
   getSessionDuration,
   getTalkCategoryColor,
@@ -49,12 +50,17 @@ const { cells, currentDay, desiredRooms } = Astro.props;
       <div
         class="session-cell"
         style={`--col-index: ${roomIndex + 2}`}
-        onclick={`window.location.href='${createSessionUrl(session.title)}'`}
+        onclick="if (!event.target.closest('a, button')) this.querySelector('.session-title a').click()"
       >
         <div class="session-content" data-talk-id={session.id}>
           <div class="session-duration">{duration} minutes</div>
           <h3 class="session-title">
-            <a href={createSessionUrl(session.title)}>{session.title}</a>
+            <a
+              href={createSessionUrl(session.title)}
+              {...agendaSessionAnalytics(session.title)}
+            >
+              {session.title}
+            </a>
           </h3>
           <SessionSpeakers speakers={session.speakers} />
           <SessionCategory track={track} categoryColor={categoryColor} />

@@ -1,5 +1,6 @@
 import { describe, expect, it, vi } from "vitest";
 import {
+  agenda,
   agendaLocation,
   calendarButton,
   calendarOption,
@@ -68,6 +69,63 @@ describe("agenda on desktop", () => {
     await expect.element(star(talk.title, true)).toBeVisible();
     expect(navigated()).toBe(false);
     expect(agendaLocation()).toBe(path);
+  });
+
+  it.for([
+    ["13:20", "Rubber Ducking for Teams"],
+    ["10:20", keynote.title],
+  ])(
+    "clicking the card at %s records session_select once and opens %s",
+    async ([time, title]) => {
+      await openAgenda(path);
+      const debug = vi.spyOn(win().console, "debug");
+      await slotAt(time)
+        .getByText(/\d+ minutes/)
+        .first()
+        .click();
+      const selects = debug.mock.calls.filter(
+        ([, event]) => event === "session_select",
+      );
+      expect(selects).toEqual([
+        [
+          "[analytics]",
+          "session_select",
+          expect.objectContaining({
+            session_title: title,
+            session_source: "agenda",
+          }),
+        ],
+      ]);
+      await expect
+        .poll(agendaLocation, { timeout: 8_000 })
+        .toMatch(/^\/session\//);
+    },
+  );
+
+  it("clicking the star does not record session_select", async () => {
+    await openAgenda(path);
+    const debug = vi.spyOn(win().console, "debug");
+    await star(talk.title).click();
+    await expect.element(star(talk.title, true)).toBeVisible();
+    expect(debug).not.toHaveBeenCalledWith(
+      "[analytics]",
+      "session_select",
+      expect.anything(),
+    );
+  });
+
+  it("clicking a speaker opens the speaker, without session_select", async () => {
+    await openAgenda(path);
+    const debug = vi.spyOn(win().console, "debug");
+    await agenda.getByRole("link", { name: talk.speakers[0] }).first().click();
+    expect(debug).not.toHaveBeenCalledWith(
+      "[analytics]",
+      "session_select",
+      expect.anything(),
+    );
+    await expect
+      .poll(agendaLocation, { timeout: 8_000 })
+      .toMatch(/^\/speaker\//);
   });
 
   // Trial click: Playwright's actionability checks, without clicking. Guards
