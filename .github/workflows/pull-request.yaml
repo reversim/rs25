@@ -1,0 +1,90 @@
+name: Pull Request
+
+on:
+  pull_request:
+
+# A new push replaces the run still in progress for the same PR.
+concurrency:
+  group: pr-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+  pull-requests: write
+
+jobs:
+  validate-and-preview:
+    name: Validate and preview
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: "yarn"
+
+      - name: Install dependencies
+        run: yarn install --frozen-lockfile
+
+      - name: Set timezone
+        uses: szenius/set-timezone@v2.0
+        with:
+          timezoneLinux: Asia/Jerusalem
+
+      - name: Lint
+        run: yarn lint
+
+      - name: Check types
+        run: yarn astro-check
+
+      - name: Install Playwright browser
+        run: yarn playwright install --with-deps chromium
+
+      - name: Test
+        run: yarn test:ci
+
+      # The production build, which the preview build below doesn't cover.
+      - name: Build
+        run: yarn build
+
+      # Pull requests from forks don't get secrets, so they stop at validation.
+      - name: Deploy preview
+        id: preview
+        if: github.event.pull_request.head.repo.full_name == github.repository
+        env:
+          BRANCH: ${{ github.head_ref }}
+          FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
+        run: |
+          # Channel IDs allow lowercase letters, numbers and hyphens, and the
+          # length is capped so the channel's hostname stays a valid DNS label.
+          channel=$(printf '%s' "$BRANCH" \
+            | tr '[:upper:]' '[:lower:]' \
+            | sed -E 's/[^a-z0-9-]+/-/g; s/^-+//' \
+            | cut -c1-40 \
+            | sed -E 's/-+$//')
+
+          yarn deploy:preview "$channel" 7d
+
+          url=$(npx -y firebase-tools hosting:channel:list --json \
+            | jq -r --arg name "$channel" \
+              '.result.channels[] | select(.name | endswith("/channels/" + $name)) | .url')
+          test -n "$url"
+          echo "url=$url" >> "$GITHUB_OUTPUT"
+
+      # Updates the same comment on every push rather than adding a new one.
+      - name: Comment preview URL on the pull request
+        if: steps.preview.outcome == 'success'
+        env:
+          GH_TOKEN: ${{ github.token }}
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+          PREVIEW_URL: ${{ steps.preview.outputs.url }}
+          COMMIT_SHA: ${{ github.event.pull_request.head.sha }}
+        run: |
+          gh pr comment "$PR_NUMBER" --edit-last --create-if-none --body \
+            "🚀 **Preview deployed:** $PREVIEW_URL
+
+          Commit: $COMMIT_SHA. The preview expires 7 days after the last push."
